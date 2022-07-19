@@ -1,5 +1,0 @@
-D:\Particular\Dropbox\Scripts\SQL Server\Diagnostic Information Queries\SQLDiagUI\SQLDiagCmd-master\SQLDiagCmd-master\SQLDiagRunner\bin\Debug\SQLDiagRunner.dll
-D:\Particular\Dropbox\Scripts\SQL Server\Diagnostic Information Queries\SQLDiagUI\SQLDiagCmd-master\SQLDiagCmd-master\SQLDiagRunner\bin\Debug\SQLDiagRunner.pdb
-D:\Particular\Dropbox\Scripts\SQL Server\Diagnostic Information Queries\SQLDiagUI\SQLDiagCmd-master\SQLDiagCmd-master\SQLDiagRunner\obj\Debug\SQLDiagRunner.csprojResolveAssemblyReference.cache
-D:\Particular\Dropbox\Scripts\SQL Server\Diagnostic Information Queries\SQLDiagUI\SQLDiagCmd-master\SQLDiagCmd-master\SQLDiagRunner\obj\Debug\SQLDiagRunner.dll
-D:\Particular\Dropbox\Scripts\SQL Server\Diagnostic Information Queries\SQLDiagUI\SQLDiagCmd-master\SQLDiagCmd-master\SQLDiagRunner\obj\Debug\SQLDiagRunner.pdb
