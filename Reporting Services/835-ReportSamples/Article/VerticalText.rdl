@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <InteractiveHeight>11in</InteractiveHeight>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>1in</RightMargin>
+  <LeftMargin>1in</LeftMargin>
+  <BottomMargin>1in</BottomMargin>
+  <rd:ReportID>c6decbbf-ca21-44ca-baaa-186b7c34a02d</rd:ReportID>
+  <CodeModules>
+    <CodeModule>System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</CodeModule>
+  </CodeModules>
+  <Code>Shared Function LoadImage(ByVal text As String) As Byte()
+  Dim bmp As New System.Drawing.Bitmap(1, 1)
+  Dim graphic As System.Drawing.Graphics = System.Drawing.Graphics.FromImage(bmp)
+  Dim font As New System.Drawing.Font("Arial", 10)
+  Dim width As Integer = graphic.MeasureString(text, font).Width
+  Dim height As Integer = graphic.MeasureString(text, font).Height
+
+  bmp = New System.Drawing.Bitmap(height, width)
+  graphic = System.Drawing.Graphics.FromImage(bmp)
+  graphic.Clear(System.Drawing.Color.White)
+  graphic.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias
+  graphic.TranslateTransform(0, width)
+  graphic.RotateTransform(270)
+  graphic.DrawString(text, font, New System.Drawing.SolidBrush(System.Drawing.Color.Black), 0, 0)
+  graphic.Flush()
+
+  Dim ms As New IO.MemoryStream
+  bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg)
+
+  Return ms.ToArray()
+End Function
+</Code>
+  <Width>2.625in</Width>
+  <Body>
+    <ReportItems>
+      <Image Name="image1">
+        <Sizing>AutoSize</Sizing>
+        <Top>0.375in</Top>
+        <Width>0.375in</Width>
+        <MIMEType>image/jpeg</MIMEType>
+        <Source>Database</Source>
+        <Style />
+        <ZIndex>1</ZIndex>
+        <Left>1.5in</Left>
+        <Height>0.875in</Height>
+        <Value>=Code.LoadImage("Hello World")</Value>
+      </Image>
+      <Textbox Name="textbox1">
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Top>0.375in</Top>
+        <Width>1in</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <WritingMode>tb-rl</WritingMode>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Left>0.25in</Left>
+        <Height>0.25in</Height>
+        <Value>Hello World</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>2in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>1in</TopMargin>
+</Report>

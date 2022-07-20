@@ -1,0 +1,6 @@
+Rotina de backup
+
+ - Selecionar quais databases entram e quais nao entram
+ - Seleciona dia do backup
+ - Copiar arquivos do backup entre os servidores
+ - Realiza restore no caminho correto

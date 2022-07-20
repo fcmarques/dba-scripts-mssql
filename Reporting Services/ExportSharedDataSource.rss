@@ -1,0 +1,44 @@
+' Put this code into FileName.rss and then
+'   execute with: rs -i FileName.rss -s ServerName/ReportServer
+' Originally from http://social.msdn.microsoft.com/Forums/en/sqlreportingservices/thread/a2a9ebe1-0417-46bf-8589-ae4e4a16181c   in a post by Igor Gelin
+' Additional fields from http://msdn.microsoft.com/en-us/library/reportservice2005.datasourcedefinition.aspx added.
+'  This appears to ONLY work for Shared data sources, not Custom data source or embedded data source (i.e. per-report data sources)
+Public Sub Main()
+  Dim items As CatalogItem() = Nothing
+  Dim dataSource As DataSourceDefinition
+  Dim count as Integer = 0
+
+  Try
+  items = rs.ListChildren("/", True)
+  Console.WriteLine("Datasources:")
+  Console.WriteLine()
+  For Each catalogItem as CatalogItem in items
+    if (catalogItem.Type = ItemTypeEnum.DataSource)
+      Console.WriteLine(catalogItem.Path)
+      dataSource = rs.GetDataSourceContents(catalogItem.Path)
+      If Not (dataSource Is Nothing) Then
+        Console.WriteLine(" Connection String: {0}", dataSource.ConnectString)
+        Console.WriteLine(" Extension name: {0}", dataSource.Extension)
+        Console.WriteLine(" Credential retrieval: {0}", dataSource.CredentialRetrieval)
+        Console.WriteLine(" Windows credentials: {0}", dataSource.WindowsCredentials)
+        Console.WriteLine(" Username: {0}", dataSource.UserName)
+        Console.WriteLine(" Password: {0}", dataSource.Password)
+        Console.WriteLine(" Enabled: {0}", dataSource.Enabled)
+        Console.WriteLine(" EnabledSpecified: {0}", dataSource.EnabledSpecified)
+        Console.WriteLine(" ImpersonateUser: {0}", dataSource.ImpersonateUser)
+        Console.WriteLine(" ImpersonateUserSpecified: {0}", dataSource.ImpersonateUserSpecified)
+        Console.WriteLine(" OriginalConnectStringExpressionBased: {0}", dataSource.OriginalConnectStringExpressionBased)
+        Console.WriteLine(" Prompt: {0}", dataSource.Prompt)
+        Console.WriteLine(" UseOriginalConnectString: {0}", dataSource.UseOriginalConnectString)
+        Console.WriteLine("===================================")
+      End If
+      count = count + 1
+   end if
+  Next catalogItem
+  Console.WriteLine()
+  Console.WriteLine("Total {0} datasources", count)
+
+  Catch e As IOException
+   Console.WriteLine(e.Message)
+  End Try
+End Sub

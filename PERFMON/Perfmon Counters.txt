@@ -1,0 +1,71 @@
+;Memory Utilization
+\Memory\Available MBytes
+\Memory\Free System Page Table Entries
+\Memory\Pages Input/Sec
+\Memory\Pages/Sec
+
+;Paging File
+\Paging File\% Usage
+\Paging File\% Usage Peak
+
+;CPU Utilization
+\Processor(*)\% Privileged Time
+\Processor(_Total)\% Processor Time
+
+\Process(sqlservr)\% Privileged Time
+\Process(sqlservr)\% Processor Time
+
+;System Utilization
+\System\Context Switches/sec
+\System\Processor Queue Length
+
+;Disk Utilization
+\PhysicalDisk(_Total)\Avg. Disk sec/Read
+\PhysicalDisk(_Total)\Avg. Disk sec/Write
+
+;SQL Utilization
+\SQLServer:Access Methods\Forwarded Records/sec
+\SQLServer:Access Methods\FreeSpace Scans/sec
+\SQLServer:Access Methods\Full Scans/sec
+\SQLServer:Access Methods\Index Searches/sec
+\SQLServer:Access Methods\Mixed page allocations/sec
+\SQLServer:Access Methods\Page Splits/sec
+\SQLServer:Access Methods\Range scans/sec
+\SQLServer:Access Methods\Scan Point Revalidations/sec
+\SQLServer:Access Methods\Workfiles Created/sec
+\SQLServer:Access Methods\Worktables Created/sec
+\SQLServer:Access Methods\Worktables From Cache Ratio
+\SQLServer:Buffer Manager\Buffer cache hit ratio
+\SQLServer:Buffer Manager\Checkpoint pages/sec
+\SQLServer:Buffer Manager\Free pages
+\SQLServer:Buffer Manager\Lazy writes/sec
+\SQLServer:Buffer Manager\Page life expectancy
+\SQLServer:Buffer Manager\Page lookups/sec
+\SQLServer:Buffer Manager\Page reads/sec
+\SQLServer:Buffer Manager\Page writes/sec
+\SQLServer:General Statistics\Processes blocked
+\SQLServer:General Statistics\Temp Tables Creation Rate
+\SQLServer:General Statistics\Temp Tables For Destruction
+\SQLServer:General Statistics\Logins/sec
+\SQLServer:General Statistics\Logouts/sec
+\SQLServer:Latches\Latch Waits/sec
+\SQLServer:Latches\Total Latch Wait Time (ms)
+\SQLServer:Locks\Lock Requests/sec
+\SQLServer:Locks\Lock Waits/sec
+\SQLServer:Locks\Lock Wait Time (ms)
+\SQLServer:Locks\Lock Timeouts (timeout > 0)/sec
+\SQLServer:Locks\Number of Deadlocks/sec
+\SQLServer:Memory Manager\Memory Grants Pending
+\SQLServer:Memory Manager\Target Server Memory (KB)
+\SQLServer:Memory Manager\Total Server Memory (KB)
+\SQLServer:SQL Statistics\Batch Requests/sec
+\SQLServer:SQL Statistics\SQL Compilations/sec
+\SQLServer:SQL Statistics\SQL Re-Compilations/sec
+\SQLServer:Wait Statistics\Lock waits
+\SQLServer:Wait Statistics\Log write waits
+\SQLServer:Wait Statistics\Network IO waits
+\SQLServer:Wait Statistics\Non-Page latch waits
+\SQLServer:Wait Statistics\Page IO latch waits
+\SQLServer:Wait Statistics\Page latch waits
+\SQLServer:Wait Statistics\Wait for the worker
+\SQLServer:Databases(*)\Transactions/sec

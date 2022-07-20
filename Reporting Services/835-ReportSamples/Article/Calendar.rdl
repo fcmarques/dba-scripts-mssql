@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="Reports">
+      <rd:DataSourceID>f9ed2bbd-b8f5-4d52-ac51-ac9fd287f6ae</rd:DataSourceID>
+      <DataSourceReference>Reports</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>8.5in</InteractiveHeight>
+  <Description>This is the proposed template all reports should be designed from.</Description>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>11in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>0.5in</RightMargin>
+  <LeftMargin>0.5in</LeftMargin>
+  <PageHeader>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <ReportItems>
+      <Textbox Name="textbox2">
+        <rd:DefaultName>textbox2</rd:DefaultName>
+        <Style>
+          <FontSize>20pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Value>=MonthName(Today().Month, False)</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>0.5in</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageHeader>
+  <BottomMargin>0.5in</BottomMargin>
+  <rd:ReportID>bc2c8e85-4671-4f1a-ab63-bec0fe141da8</rd:ReportID>
+  <PageWidth>11in</PageWidth>
+  <DataSets>
+    <DataSet Name="dsCalendar">
+      <Fields>
+        <Field Name="Order">
+          <DataField>Order</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Date">
+          <DataField>Date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="WeekDay">
+          <DataField>WeekDay</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Day">
+          <DataField>Day</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Month">
+          <DataField>Month</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="EventDate">
+          <DataField>EventDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Note">
+          <DataField>Note</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Reports</DataSourceName>
+        <CommandText>DECLARE @StartDate DATETIME, @EndDate DATETIME
+SET @StartDate = DATEADD(s,0,DATEADD(mm, DATEDIFF(m,0,GETDATE()),0)) --First day of current month
+SET @StartDate = DATEADD(DAY,-DATEPART(WEEKDAY,@StartDate)+1,@StartDate) --First day of calendar
+SET @EndDate = DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,GETDATE())+1,0)) --Last day of month
+SET @EndDate = DATEADD(DAY,6-DATEPART(WEEKDAY,@EndDate),@EndDate) --Last day of calendar
+
+; WITH Dates([Date]) AS (
+	--Select First day in range
+	SELECT CONVERT(DATETIME,@StartDate) AS [Date]
+	UNION ALL
+	--Add a record for every day in the range
+	SELECT DATEADD(DAY, 1, [Date]) FROM Dates WHERE Date &lt; CONVERT(DATETIME,@EndDate)
+), Events AS (
+	--Create some events to place on the calendar
+	SELECT EventDate = CONVERT(VARCHAR(2),DATEADD(MONTH, -1,GETDATE()),101) + '/30/2009 02:00:00 PM', Note = 'Event 1'
+	UNION SELECT EventDate = CONVERT(VARCHAR(2),GETDATE(),101) + '/23/2009 12:00:00 PM', Note = 'Event 2'
+	UNION SELECT EventDate = CONVERT(VARCHAR(2),GETDATE(),101) + '/28/2009 02:00:00 PM', Note = 'Event 3'
+	UNION SELECT EventDate = CONVERT(VARCHAR(2),GETDATE(),101) + '/28/2009 06:30:00 PM', Note = 'Event 4'
+	UNION SELECT EventDate = CONVERT(VARCHAR(2),GETDATE(),101) + '/30/2009 07:00:00 PM', Note = 'Event 5'
+	UNION SELECT EventDate = CONVERT(VARCHAR(2),DATEADD(MONTH, 1,GETDATE()),101) + '/01/2009 01:30:00 PM', Note = 'Event 6'
+) SELECT
+	-- Number the records based on the date, if multiple records have the same
+	-- date then they will be numbered the same. Used in calculation to determine
+	-- row record is to display on.
+	[Order] = DENSE_RANK() OVER (ORDER BY d.[Date]), 
+	d.[Date], -- date used in all caluclation for date
+	[WeekDay] = DATEPART(WEEKDAY, d.[Date]), --generates matrix columns
+	[Day] = DATEPART(DAY,d.[Date]), --used to display day of month on calendar
+	[Month] = DATEPART(MONTH,d.[Date]), --used in some calculations for display
+	e.EventDate, -- used to get the time of the event
+	e.Note --event details to display
+--CTEs defined above are used as the queries for the results
+FROM Dates d
+	LEFT JOIN Events e ON CAST(CONVERT(VARCHAR(10),e.EventDate,101) AS DATETIME) = d.[Date]
+
+--Set the maximum times the cte can recurse
+OPTION (MAXRECURSION 100)</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Author>Ryan Duclos</Author>
+  <Code />
+  <Width>10in</Width>
+  <Body>
+    <ReportItems>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>1.42in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <DataSetName>dsCalendar</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Ceiling(Fields!Order.Value/7)</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox3">
+                  <rd:DefaultName>textbox3</rd:DefaultName>
+                  <Style>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>1</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value />
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <KeepTogether>true</KeepTogether>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.25in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_DayOfWeek">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!WeekDay.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="DayOfWeek">
+                  <rd:DefaultName>DayOfWeek</rd:DefaultName>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>2</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=WeekdayName(Fields!WeekDay.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>1.45125in</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox1">
+              <rd:DefaultName>textbox1</rd:DefaultName>
+              <Style>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+              <ZIndex>3</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.4in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Table Name="table1">
+                    <Details>
+                      <TableRows>
+                        <TableRow>
+                          <TableCells>
+                            <TableCell>
+                              <ReportItems>
+                                <Textbox Name="textbox7">
+                                  <rd:DefaultName>textbox7</rd:DefaultName>
+                                  <Style>
+                                    <Color>=iIf(Fields!Month.Value = Today().Month, "Black", "Gray")</Color>
+                                    <FontSize>8pt</FontSize>
+                                    <TextAlign>Left</TextAlign>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                  <ZIndex>1</ZIndex>
+                                  <CanGrow>true</CanGrow>
+                                  <Value>=iIf(Fields!Note.Value = Nothing, "", CDate(Fields!EventDate.Value).ToShortTimeString + ":")</Value>
+                                </Textbox>
+                              </ReportItems>
+                            </TableCell>
+                            <TableCell>
+                              <ReportItems>
+                                <Textbox Name="Note">
+                                  <rd:DefaultName>Note</rd:DefaultName>
+                                  <Style>
+                                    <Color>=iIf(Fields!Month.Value = Today().Month, "Black", "Gray")</Color>
+                                    <FontSize>8pt</FontSize>
+                                    <TextAlign>Left</TextAlign>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                  <CanGrow>true</CanGrow>
+                                  <Value>=Fields!Note.Value</Value>
+                                </Textbox>
+                              </ReportItems>
+                            </TableCell>
+                          </TableCells>
+                          <Height>0.2in</Height>
+                        </TableRow>
+                      </TableRows>
+                    </Details>
+                    <Style>
+                      <BorderColor>
+                        <Default>=iIf(Fields!Day.Value = Today().Day And Fields!Month.Value = Today().Month, "Red", "Black")</Default>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderWidth>
+                        <Default>=iIf(Fields!Day.Value = Today().Day And Fields!Month.Value = Today().Month, "2pt", "1pt")</Default>
+                      </BorderWidth>
+                    </Style>
+                    <Header>
+                      <TableRows>
+                        <TableRow>
+                          <TableCells>
+                            <TableCell>
+                              <ColSpan>2</ColSpan>
+                              <ReportItems>
+                                <Textbox Name="Day">
+                                  <rd:DefaultName>Day</rd:DefaultName>
+                                  <Style>
+                                    <Color>=iIf(Fields!Month.Value = Today().Month, "Black", "Gray")</Color>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>700</FontWeight>
+                                    <TextAlign>Center</TextAlign>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                  <ZIndex>2</ZIndex>
+                                  <CanGrow>true</CanGrow>
+                                  <Value>=Fields!Day.Value</Value>
+                                </Textbox>
+                              </ReportItems>
+                            </TableCell>
+                          </TableCells>
+                          <Height>0.2in</Height>
+                        </TableRow>
+                      </TableRows>
+                    </Header>
+                    <TableColumns>
+                      <TableColumn>
+                        <Width>0.6in</Width>
+                      </TableColumn>
+                      <TableColumn>
+                        <Width>0.82in</Width>
+                      </TableColumn>
+                    </TableColumns>
+                  </Table>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+      </Matrix>
+    </ReportItems>
+    <Height>0.65in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>0.5in</TopMargin>
+  <PageHeight>8.5in</PageHeight>
+</Report>

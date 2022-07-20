@@ -1,0 +1,266 @@
+**********************
+Início da transcrição do Windows PowerShell
+Hora de início: 20170215162121
+Nome de usuário: RIACHUELO\3406555
+Executar como Usuário: RIACHUELO\3406555
+Computador: RIMTDTIDT74436 (Microsoft Windows NT 10.0.14393.0)
+Aplicativo Host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+ID do Processo: 764
+PSVersion: 5.1.14393.0
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14393.0
+BuildVersion: 10.0.14393.0
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcrição iniciada, o arquivo de saída é SSRS_LOG_20170215_0421.txt
+Server
+R-RPTSRV
+Searching for riachuelo\3406555
+SSRS Instance:  RS_MSSQLSERVER
+ Application  ReportServerWebService
+  SQL 2008 R2  10.50.2500.0
+ Looking for usage...
+
+PS>TerminatingError(New-WebServiceProxy): "URI inválido: não foi possível determinar o formato do URI."
+New-WebServiceProxy : URI inválido: não foi possível determinar o formato do URI.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:240 caractere:26
++ ... reporting = New-WebServiceProxy -uri $uri -UseDefaultCredential -name ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-WebServiceProxy], UriFormatException
+    + FullyQualifiedErrorId : System.UriFormatException,Microsoft.PowerShell.Commands.NewWebServiceProxy
+New-WebServiceProxy : URI inválido: não foi possível determinar o formato do URI.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:240 caractere:26
++ ... reporting = New-WebServiceProxy -uri $uri -UseDefaultCredential -name ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-WebServiceProxy], UriFormatException
+    + FullyQualifiedErrorId : System.UriFormatException,Microsoft.PowerShell.Commands.NewWebServiceProxy
+
+A propriedade 'url' não foi encontrada neste objeto. Verifique se a propriedade existe e pode ser definida.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:241 caractere:13
++             $reporting.url = $uri    #Makes sure URL is set correctly ...
++             ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertyNotFound
+A propriedade 'url' não foi encontrada neste objeto. Verifique se a propriedade existe e pode ser definida.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:241 caractere:13
++             $reporting.url = $uri    #Makes sure URL is set correctly ...
++             ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertyNotFound
+
+>> TerminatingError(New-Object): "Não é possível localizar o tipo [ReportingService2010.ExtensionSettings]: verifique se o o assembly contendo o tipo está carregado."
+new-object : Não é possível localizar o tipo [ReportingService2010.ExtensionSettings]: verifique se o o assembly 
+contendo o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:243 caractere:34
++ ... nSettings = new-object -TypeName ReportingService2010.ExtensionSettin ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+new-object : Não é possível localizar o tipo [ReportingService2010.ExtensionSettings]: verifique se o o assembly
+contendo o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:243 caractere:34
++ ... nSettings = new-object -TypeName ReportingService2010.ExtensionSettin ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+>> TerminatingError(New-Object): "Não é possível localizar o tipo [ReportingService2010.ExtensionSettings]: verifique se o o assembly contendo o tipo está carregado."
+new-object : Não é possível localizar o tipo [ReportingService2010.ExtensionSettings]: verifique se o o assembly 
+contendo o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:244 caractere:29
++ ... ensionRow = new-object -TypeName ReportingService2010.ExtensionSettin ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+new-object : Não é possível localizar o tipo [ReportingService2010.ExtensionSettings]: verifique se o o assembly
+contendo o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:244 caractere:29
++ ... ensionRow = new-object -TypeName ReportingService2010.ExtensionSettin ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+>> TerminatingError(New-Object): "Não é possível localizar o tipo [ReportingService2010.DataRetrievalPlan]: verifique se o o assembly contendo o tipo está carregado."
+new-object : Não é possível localizar o tipo [ReportingService2010.DataRetrievalPlan]: verifique se o o assembly 
+contendo o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:245 caractere:34
++ ... ievalPlan = new-object -TypeName ReportingService2010.DataRetrievalPl ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+new-object : Não é possível localizar o tipo [ReportingService2010.DataRetrievalPlan]: verifique se o o assembly
+contendo o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:245 caractere:34
++ ... ievalPlan = new-object -TypeName ReportingService2010.DataRetrievalPl ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+>> TerminatingError(New-Object): "Não é possível localizar o tipo [ReportingService2010.ActiveState]: verifique se o o assembly contendo o tipo está carregado."
+new-object : Não é possível localizar o tipo [ReportingService2010.ActiveState]: verifique se o o assembly contendo o 
+tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:246 caractere:24
++ ...      $Active =  new-object -TypeName ReportingService2010.ActiveState
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+new-object : Não é possível localizar o tipo [ReportingService2010.ActiveState]: verifique se o o assembly contendo o
+tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:246 caractere:24
++ ...      $Active =  new-object -TypeName ReportingService2010.ActiveState
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+>> TerminatingError(New-Object): "Não é possível localizar o tipo [ReportingService2010.ParameterValue]: verifique se o o assembly contendo o tipo está carregado."
+new-object : Não é possível localizar o tipo [ReportingService2010.ParameterValue]: verifique se o o assembly contendo 
+o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:247 caractere:32
++ ... etersValue = new-object -TypeName ReportingService2010.ParameterValue
++                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+new-object : Não é possível localizar o tipo [ReportingService2010.ParameterValue]: verifique se o o assembly contendo
+o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:247 caractere:32
++ ... etersValue = new-object -TypeName ReportingService2010.ParameterValue
++                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+>> TerminatingError(New-Object): "Não é possível localizar o tipo [ReportingService2010.Subscription]: verifique se o o assembly contendo o tipo está carregado."
+new-object : Não é possível localizar o tipo [ReportingService2010.Subscription]: verifique se o o assembly contendo o 
+tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:248 caractere:29
++ ... subscriptions= new-object -TypeName ReportingService2010.Subscription
++                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+new-object : Não é possível localizar o tipo [ReportingService2010.Subscription]: verifique se o o assembly contendo o
+tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:248 caractere:29
++ ... subscriptions= new-object -TypeName ReportingService2010.Subscription
++                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+>> TerminatingError(New-Object): "Não é possível localizar o tipo [ReportingService2010.Subscription]: verifique se o o assembly contendo o tipo está carregado."
+new-object : Não é possível localizar o tipo [ReportingService2010.Subscription]: verifique se o o assembly contendo o 
+tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:249 caractere:28
++ ... $subscription= new-object -TypeName ReportingService2010.Subscription
++                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+new-object : Não é possível localizar o tipo [ReportingService2010.Subscription]: verifique se o o assembly contendo o
+tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:249 caractere:28
++ ... $subscription= new-object -TypeName ReportingService2010.Subscription
++                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+>> TerminatingError(New-Object): "Não é possível localizar o tipo [ReportingService2010.ParameterValue]: verifique se o o assembly contendo o tipo está carregado."
+new-object : Não é possível localizar o tipo [ReportingService2010.ParameterValue]: verifique se o o assembly contendo 
+o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:250 caractere:34
++ ... onPassword = new-object -TypeName ReportingService2010.ParameterValue
++                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+new-object : Não é possível localizar o tipo [ReportingService2010.ParameterValue]: verifique se o o assembly contendo
+o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:250 caractere:34
++ ... onPassword = new-object -TypeName ReportingService2010.ParameterValue
++                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+>> TerminatingError(New-Object): "Não é possível localizar o tipo [ReportingService2010.ParameterValue]: verifique se o o assembly contendo o tipo está carregado."
+new-object : Não é possível localizar o tipo [ReportingService2010.ParameterValue]: verifique se o o assembly contendo 
+o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:251 caractere:27
++ ... Parameters = new-object -TypeName ReportingService2010.ParameterValue
++                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+new-object : Não é possível localizar o tipo [ReportingService2010.ParameterValue]: verifique se o o assembly contendo
+o tipo está carregado.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:251 caractere:27
++ ... Parameters = new-object -TypeName ReportingService2010.ParameterValue
++                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+Não é possível chamar um método em uma expressão de valor nulo.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:253 caractere:13
++             $reports = $reporting.listchildren("/", $true) | Where-Ob ...
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+Não é possível chamar um método em uma expressão de valor nulo.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:253 caractere:13
++             $reports = $reporting.listchildren("/", $true) | Where-Ob ...
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+A propriedade 'Name' não foi encontrada neste objeto. Verifique se a propriedade existe e pode ser definida.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:263 caractere:5
++     $ExtensionPassword.Name = "PASSWORD"
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertyNotFound
+A propriedade 'Name' não foi encontrada neste objeto. Verifique se a propriedade existe e pode ser definida.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:263 caractere:5
++     $ExtensionPassword.Name = "PASSWORD"
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertyNotFound
+
+A propriedade 'value' não foi encontrada neste objeto. Verifique se a propriedade existe e pode ser definida.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:264 caractere:5
++     $ExtensionPassword.value = $password
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertyNotFound
+A propriedade 'value' não foi encontrada neste objeto. Verifique se a propriedade existe e pode ser definida.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:264 caractere:5
++     $ExtensionPassword.value = $password
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertyNotFound
+
+Não é possível chamar um método em uma expressão de valor nulo.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:294 caractere:13
++             $reports = $reporting.listchildren("/", $true) | Where-Ob ...
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+Não é possível chamar um método em uma expressão de valor nulo.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:294 caractere:13
++             $reports = $reporting.listchildren("/", $true) | Where-Ob ...
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+Não é possível chamar um método em uma expressão de valor nulo.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:337 caractere:17
++ ...             $reports = $reporting.listchildren("/", $true) | Where-Ob ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+Não é possível chamar um método em uma expressão de valor nulo.
+No C:\Cloud\OneDrive - Lojas Riachuelo S.A\Scripts\SQL Server\Reporting Services\GetSSRS.ps1:337 caractere:17
++ ...             $reports = $reporting.listchildren("/", $true) | Where-Ob ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+**********************
+Fim da transcrição do Windows PowerShell
+Hora de término: 20170215162125
+**********************

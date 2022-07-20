@@ -1,0 +1,485 @@
+Datasources:
+
+/Automa‡Æo Comercial/Data Sources/Autcom
+ Connection String: Data Source=RIACHU_DBAUTC;Initial Catalog=SISRET
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: UsrPrdReport
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Automa‡Æo Comercial/Data Sources/Padm01
+ Connection String: Data Source=RIACHU_DBGEN;Initial Catalog=Padm01
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Automa‡Æo Comercial/Data Sources/RIACHU_DBAUTC
+ Connection String: Data Source=RIACHU_DBAUTC;Initial Catalog=AUTCOM
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: direcao
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Automa‡Æo Comercial/Data Sources/SISRET - QA
+ Connection String: Data Source=DEVDB64\DEV;Initial Catalog=SISRET
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdev
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Banco de Dados/Data Sources/DEVDB64_QA
+ Connection String: Data Source=DEVDB64\QA;Initial Catalog=DBALOG
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: True
+ Username: RIACHUELO\SILVANAC
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Banco de Dados/Data Sources/RIACHU_FIN
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=DBALOG
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: True
+ Username: RIACHUELO\SILVANAC
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Bandeira/MidwayAutorizador
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=MidwayAutorizadorConsulta
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/DBCliente
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=DBCliente
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/ECON
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=ECON
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/Midway
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=Midway
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/MidwayAutorizador
+ Connection String: Data Source=riachu_fin;Initial Catalog=ProdutoFinanceiro
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/MidwayAutorizadorConsulta
+ Connection String: Data Source=riachu_fin;Initial Catalog=MidwayAutorizadorConsulta
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/PastaDigital
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=PastaDigital
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/PrevencaoFraude
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=PrevencaoFraude
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/ProdutoFinanceiro
+ Connection String: Data Source=riachu_fin;Initial Catalog=ProdutoFinanceiro
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/SegAdmin
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=Segadmin
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/SICC
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=Sicc
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/SICC_BAND
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=Sicc_band
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/SICC_LOG
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=Sicc_Log
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Data Sources/SIPF
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=SIPF
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Datasets/AUT_COM
+ Connection String: Data Source=RIACHU_DBAUTC;Initial Catalog=Autcom
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: direcao
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Datasets/MIDWAY
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=midway
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Datasets/PastaDigital
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=PastaDigital
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Datasets/SEGADMIN
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=SEGADMIN
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Datasets/SICC
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=SICC
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Datasets/SICC_BAND
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=SICC_BAND
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Datasets/SICC_LOG
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=SICC_LOG
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/Datasets/SIPF
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=SIPF
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/ModuloFinanceiro/Carteira 360/Datasets/sdsMidway
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=CRIP;Connect Timeout=390;Network Library=dbmssocn
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: UsrPrdCrip
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/OCORRENCIAS/BUGTRACKER
+ Connection String: Data Source=RIACHU_DBGEN;Initial Catalog=BugTracker
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrtracker
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/SICC/Bureaux/DataSource/ConexaoOracle_Bureau
+ Connection String: Data Source=(DESCRIPTION= (ADDRESS=(PROTOCOL=TCP)(HOST=rimtexa-scan.riachuelo.net)(PORT=1533))(CONNECT_DATA=(SERVER=dedicated)(SERVICE_NAME=SBCP_TAF)));Unicode=True
+ Extension name: ORACLE
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: SBCU001
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite ou insira um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+/Financeiros/SICC/DadosPagamento/DataSource/Conexao
+ Connection String: Data Source=riachu_fin;Initial Catalog=Sicc
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Digite um nome de usu rio e uma senha para acessar a fonte de dados:
+ UseOriginalConnectString: False
+===================================
+
+Total 32 datasources
+The command completed successfully

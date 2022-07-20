@@ -1,0 +1,305 @@
+Datasources:
+
+/05 - Indice de Atendimento Fabrica/dataSourceBID
+ Connection String: Data Source=SAPDWDBP;Initial Catalog=bid
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: UsrPrdReport
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: False
+===================================
+/Automa‡Æo Comercial - Relat¢rios Operacionais/Monitoramento/OCOMON
+ Connection String: 
+ Extension name: SQL
+ Credential retrieval: Prompt
+ Windows credentials: False
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/Automa‡Æo Comercial - Relat¢rios Operacionais/RIACHU_DBAUTC
+ Connection String: Data Source=R-DBGEN64;Initial Catalog=AUTCOM
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: UsrPrdReport
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: False
+===================================
+/Automa‡Æo Comercial - Relat¢rios Operacionais/Sistemas Satelites/dsAutcom
+ Connection String: 
+ Extension name: SQL
+ Credential retrieval: Prompt
+ Windows credentials: False
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/ControlePonto/Padm01
+ Connection String: Data Source=RIACHU_DBGEN;Initial Catalog=Padm01
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrdes
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: False
+===================================
+/Data Sources/DataSource1
+ Connection String: 
+ Extension name: SQL
+ Credential retrieval: Prompt
+ Windows credentials: False
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: True
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/Data Sources/RIACHU_DBGEN_V2005
+ Connection String: Data Source=RIACHU_DBGEN\V2005;Initial Catalog=Intranet
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: teste
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: False
+===================================
+/DB_Fast_Fashion
+ Connection String: Data Source=SAPDWDBP;Initial Catalog=fast_fashion
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: UsrReportEdw
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: False
+===================================
+/iBasel/ds_sa
+ Connection String: 
+ Extension name: SQL
+ Credential retrieval: Prompt
+ Windows credentials: False
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/iBasel_Hom/ds_sa
+ Connection String: 
+ Extension name: SQL
+ Credential retrieval: Prompt
+ Windows credentials: False
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/Planejamento Desenvolvimento/BUGTRACKER
+ Connection String: 
+ Extension name: SQL
+ Credential retrieval: Prompt
+ Windows credentials: False
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/Recursos Humanos/dsRH_SITE
+ Connection String: 
+ Extension name: SQL
+ Credential retrieval: Prompt
+ Windows credentials: False
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/Recursos Humanos/dsScm
+ Connection String: 
+ Extension name: SQL
+ Credential retrieval: Prompt
+ Windows credentials: False
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/SAPDWDBP
+ Connection String: Data Source=SAPDWDBP;Initial Catalog=analitico
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: UsrReportEdw
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: False
+===================================
+/SCHED/SOURCE_SCHED
+ Connection String: 
+ Extension name: SQL
+ Credential retrieval: Prompt
+ Windows credentials: False
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/SegmentacaoLojas/RIACHU_WEBN
+ Connection String: 
+ Extension name: ODBC
+ Credential retrieval: Prompt
+ Windows credentials: True
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: True
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/SegmentacaoLojas/STORE_BID
+ Connection String: 
+ Extension name: SQL
+ Credential retrieval: Prompt
+ Windows credentials: False
+ Username: 
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: True
+===================================
+/SIPF/SIPF
+ Connection String: Data Source=RIACHU_FIN;Initial Catalog=SIPF
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: UsrPrdReport
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: False
+===================================
+/Tesouraria/DSTesouraria
+ Connection String: Data Source=riachu_dbgen;Initial Catalog=Padm02_r3
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: UsrReportEdw
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: False
+===================================
+/Teste_conect_analitico
+ Connection String: Data Source=SAPDWDBP;Initial Catalog=analitico
+ Extension name: SQL
+ Credential retrieval: Store
+ Windows credentials: False
+ Username: usrsas
+ Password: 
+ Enabled: True
+ EnabledSpecified: True
+ ImpersonateUser: False
+ ImpersonateUserSpecified: True
+ OriginalConnectStringExpressionBased: False
+ Prompt: Enter a user name and password to access the data source:
+ UseOriginalConnectString: False
+===================================
+
+Total 20 datasources
+The command completed successfully
