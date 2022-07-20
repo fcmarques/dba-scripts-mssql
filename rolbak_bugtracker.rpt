@@ -1,0 +1,28 @@
+﻿Text
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+create proc dbo.pr_criar_usuario_replicar_permissoes
+  @username_from nvarchar(80),
+  @username nvarchar(80),
+  @firstname nvarchar(120),
+  @lastname nvarchar(120),
+  @email nvarchar(240)
+as
+
+declare @us_id_from int
+select @us_id_from = us_id from users where us_username = @username_from
+
+insert users (us_username, us_password, us_firstname, us_lastname, us_email, us_admin, us_default_query, us_enable_notifications, us_auto_subscribe, us_auto_subscribe_own_bugs, us_auto_subscribe_reported_bugs, us_send_notifications_to_self, us_active, us_
+bugs_per_page, us_forced_project, us_reported_notifications, us_assigned_notifications, us_subscribed_notifications, us_signature) 
+select @username, us_password, @firstname, @lastname, @email, us_admin, us_default_query, us_enable_notifications, us_auto_subscribe, us_auto_subscribe_own_bugs, us_auto_subscribe_reported_bugs, us_send_notifications_to_self, us_active, us_bugs_per_page, 
+us_forced_project, us_reported_notifications, us_assigned_notifications, us_subscribed_notifications, us_signature 
+from users (nolock)
+where us_id = @us_id_from
+
+declare @us_id_to int
+select @us_id_to = @@identity
+
+insert project_user_xref (pu_project, pu_user, pu_auto_subscribe, pu_permission_level, pu_admin)
+select pu_project, @us_id_to, pu_auto_subscribe, pu_permission_level, pu_admin
+from project_user_xref
+where pu_user = @us_id_from
+
