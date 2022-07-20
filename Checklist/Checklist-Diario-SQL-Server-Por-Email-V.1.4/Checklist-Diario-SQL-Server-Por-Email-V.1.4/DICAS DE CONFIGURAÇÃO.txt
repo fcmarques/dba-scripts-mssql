@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+JOBS:
+- Para configurar os jobs críticos basta colocar o nome do job no espaço '' neste INSERT abaixo:
+=======
+JOBS:
+- Para configurar os jobs críticos basta colocar o nome do job no espaço '' neste INSERT abaixo:
+>>>>>>> d4022b1c698892c56d61a9072b03678cdc0fa4fe
+INSERT INTO [dbo].[JobsCriticos] ([Nome], [Critical]) VALUES ('', 'S')

@@ -1,0 +1,53 @@
+<<<<<<< HEAD
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Checklist", "Checklist\Checklist.rptproj", "{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Debug|Default.ActiveCfg = Debug
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Debug|Default.Build.0 = DebugLocal
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Debug|Default.Deploy.0 = DebugLocal
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.DebugLocal|Default.Build.0 = DebugLocal
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Release|Default.ActiveCfg = Release
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Release|Default.Build.0 = Release
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
+=======
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Checklist", "Checklist\Checklist.rptproj", "{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Debug|Default.ActiveCfg = Debug
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Debug|Default.Build.0 = DebugLocal
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Debug|Default.Deploy.0 = DebugLocal
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.DebugLocal|Default.Build.0 = DebugLocal
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Release|Default.ActiveCfg = Release
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Release|Default.Build.0 = Release
+		{4F63CDDC-1EBE-41DB-893E-05464EAA5C66}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
+>>>>>>> d4022b1c698892c56d61a9072b03678cdc0fa4fe

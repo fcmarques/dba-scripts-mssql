@@ -1,0 +1,163 @@
+<<<<<<< HEAD
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">           
+<html>           
+<head>           
+<style type='text/css'>           
+<!--           
+<!--           
+table {           
+border: 1px solid #cfcfcf;           
+}         
+          
+th {           
+font: 700 13px "Trebuchet MS", Arial, Helvetica, sans-serif;           
+text-transform: uppercase;           
+color: #fff;           
+background-color: #069;           
+text-align: left;           
+padding: 0 10px;           
+}          
+          
+td {           
+font: 11px Tahoma, Geneva, sans-serif;           
+color: #505050;           
+background-color: #EEE9E9;           
+padding: 4px;           
+}           
+          
+          
+          
+-->           
+          
+</style>           
+          
+<title>Generated table</title>           
+</head>           
+<body>    
+
+     
+<H4>Status dos Jobs</H>           
+<table>           
+           
+          
+<tr>           
+<th>Nome do Job</th><th>Data</th><th>Status</th>          
+<tr><td>Agent history clean up: distribution</td><td>Mar 24 2017  3:50PM</td><td>Successful</td></tr><tr><td>CentralDB: Baseline Stats</td><td>Mar 24 2017  3:20PM</td><td>Successful</td></tr><tr><td>CentralDB: Server Ping Status</td><td>Mar 24 2017  3:50PM</td><td>Successful</td></tr><tr><td>CentralDB: SQL Server Inventory</td><td>Mar 24 2017  4:00AM</td><td>Failed</td></tr><tr><td>collection_set_1_noncached_collect_and_upload</td><td>Mar 24 2017 12:00PM</td><td>Successful</td></tr><tr><td>DBA - Monitoramento Disco</td><td>Mar 24 2017  6:00AM</td><td>Failed</td></tr><tr><td>EE314D98-E0A5-45AB-8468-F4FA9332C8A7</td><td>Mar 24 2017  7:00AM</td><td>Successful</td></tr><tr><td>Expired subscription clean up</td><td>Mar 24 2017  1:00AM</td><td>Successful</td></tr><tr><td>Replication agents checkup</td><td>Mar 24 2017  3:50PM</td><td>Successful</td></tr><tr><td>Start_MSPFE_ProActiceMon</td><td>Mar 24 2017  6:00AM</td><td>Successful</td></tr><tr><td>Stop_MSPFE_ProActiveMon</td><td>Mar 24 2017  5:55AM</td><td>Successful</td></tr><tr><td>syspolicy_purge_history</td><td>Mar 24 2017  2:00AM</td><td>Successful</td></tr></table>           
+  
+     
+<H4>Jobs com falha em Step</H>           
+<table>           
+         
+<tr>          
+<th>Nome do Job</th><th>Step</th><th>Erro</th>
+        
+<tr><td>DBA - Monitoramento Disco</td><td>ScriptMonitoramentoDisco</td><td>Executed as user: RIACHUELO\usrsrvsqlprd. The job script encountered the following errors. These errors did not stop the script:  A job step received an error at line 32 in a PowerShell script. The corresponding line is '   $saida = Get-WMIObject win32_volume -filter DriveType=3 -computer $servidor[$a] | select SystemName, Name, $TotalGB, $FreeGB, $FreePerc | Where-object {$_.DriveLetter -eq $null}'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Provider load failure   '  A job step received an error at line 37 in a PowerShell script. The corresponding line is '            $aux = $saida[$i]'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Cannot index into a null array.  '.  Process Exit Code -1.  The step failed.</td></tr><tr><td>CentralDB: SQL Server Inventory</td><td>SQL Server Inventory</td><td>Executed as user: RIACHUELO\usrsrvsqlprd. A job step received an error at line 1208 in a PowerShell script. The corresponding line is '$null = $cmd.ExecuteNonQuery()'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Exception calling "ExecuteNonQuery" with "0" argument(s): "Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.  The statement has been terminated."  '.  Process Exit Code -1.  The step failed.</td></tr><tr><td>DBA - Monitoramento Disco</td><td>ScriptMonitoramentoDisco</td><td>Executed as user: RIACHUELO\usrsrvsqlprd. A job step received an error at line 32 in a PowerShell script. The corresponding line is '   $saida = Get-WMIObject win32_volume -filter DriveType=3 -computer $servidor[$a] | select SystemName, Name, $TotalGB, $FreeGB, $FreePerc | Where-object {$_.DriveLetter -eq $null}'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))  '.  Process Exit Code -1.  The step failed.</td></tr><tr><td>CentralDB: SQL Server Inventory</td><td>SQL Server Inventory</td><td>Executed as user: RIACHUELO\usrsrvsqlprd. A job step received an error at line 1208 in a PowerShell script. The corresponding line is '$null = $cmd.ExecuteNonQuery()'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Exception calling "ExecuteNonQuery" with "0" argument(s): "Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.  The statement has been terminated."  '.  Process Exit Code -1.  The step failed.</td></tr><tr><td>DBA - Monitoramento Disco</td><td>ScriptMonitoramentoDisco</td><td>Executed as user: RIACHUELO\usrsrvsqlprd. A job step received an error at line 32 in a PowerShell script. The corresponding line is '   $saida = Get-WMIObject win32_volume -filter DriveType=3 -computer $servidor[$a] | select SystemName, Name, $TotalGB, $FreeGB, $FreePerc | Where-object {$_.DriveLetter -eq $null}'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))  '.  Process Exit Code -1.  The step failed.</td></tr></table>           
+  
+<H4>Status dos Backups - Full</H>           
+          
+<table>           
+           
+          
+<tr>           
+<th>Database</th><th>Data</th><th>Device</th>          
+<tr><td>master</td><td>Feb 12 2017  4:58AM</td><td>VNBU0-16500-16144-1486882517</td></tr><tr><td>model</td><td>Feb 12 2017  4:58AM</td><td>VNBU0-16500-8692-1486882700</td></tr><tr><td>msdb</td><td>Feb 12 2017  4:59AM</td><td>VNBU0-16500-11584-1486882742</td></tr><tr><td>CentralDB</td><td>Jan 19 2017 12:28PM</td><td>D:\BACKUP\CentralDB.bak</td></tr><tr><td>DB_RIACHUELO_DATA_201702</td><td>Mar  8 2017  4:09PM</td><td>\\r-dbgen64\n$\MSSQL\Export.bak</td></tr><tr><td>DB_RIACHUELO_DATA_20170217</td><td>Mar 14 2017  3:37PM</td><td>f:\DB_RIACHUELO_DATA_20170217.bak</td></tr><tr><td>ReportServer$MAPS</td><td>Mar 19 2017  1:14AM</td><td>VNBU0-5452-18176-1489878052</td></tr><tr><td>ReportServer$MAPSTempDB</td><td>Mar 19 2017  1:15AM</td><td>VNBU0-2336-21000-1489878060</td></tr><tr><td>ignite_riachuelo</td><td>Mar 24 2017  4:31AM</td><td>VNBU0-8096-20008-1490317325</td></tr><tr><td>SystemInfo</td><td>Oct 18 2016  7:16PM</td><td>C:\Program Files\Microsoft Assessment and Planning Toolkit\Database\SystemInfo.bak</td></tr><tr><td>dbalog</td><td>Sep 18 2016  7:53AM</td><td>VNBU0-7388-13612-1474188574</td></tr><tr><td>MAP_ConfigInfo</td><td>Sep 20 2016 11:57AM</td><td>VNBU0-12884-12124-1474383276</td></tr><tr><td>MAP_Users</td><td>Sep 20 2016 11:58AM</td><td>VNBU0-12884-712-1474383481</td></tr><tr><td>MapRchlo</td><td>Sep 20 2016 12:04PM</td><td>VNBU0-12884-7060-1474383592</td></tr></table>          
+           
+           
+<H4>Status dos Backups - Log</H>           
+          
+<table>           
+           
+          
+<tr>           
+<th>Database</th><th>Data</th><th>Device</th>          
+NADA</table>          
+<H4>Espaço em Disco</H>           
+          
+<table>           
+           
+          
+<tr>           
+<th>Drive</th><th>Livre(MB)</th><th>Total(MB)</th><th>Livre(%)</th>          
+<tr><td>A</td><td>3014</td><td>10239</td><td>29</td></tr><tr><td>C</td><td>4472</td><td>118752</td><td>3</td></tr><tr><td>D</td><td>6781</td><td>10238</td><td>66</td></tr><tr><td>F</td><td>55853</td><td>102269</td><td>54</td></tr><tr><td>M</td><td>4796</td><td>10205</td><td>46</td></tr></table>       
+=======
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">           
+<html>           
+<head>           
+<style type='text/css'>           
+<!--           
+<!--           
+table {           
+border: 1px solid #cfcfcf;           
+}         
+          
+th {           
+font: 700 13px "Trebuchet MS", Arial, Helvetica, sans-serif;           
+text-transform: uppercase;           
+color: #fff;           
+background-color: #069;           
+text-align: left;           
+padding: 0 10px;           
+}          
+          
+td {           
+font: 11px Tahoma, Geneva, sans-serif;           
+color: #505050;           
+background-color: #EEE9E9;           
+padding: 4px;           
+}           
+          
+          
+          
+-->           
+          
+</style>           
+          
+<title>Generated table</title>           
+</head>           
+<body>    
+
+     
+<H4>Status dos Jobs</H>           
+<table>           
+           
+          
+<tr>           
+<th>Nome do Job</th><th>Data</th><th>Status</th>          
+<tr><td>Agent history clean up: distribution</td><td>Mar 24 2017  3:50PM</td><td>Successful</td></tr><tr><td>CentralDB: Baseline Stats</td><td>Mar 24 2017  3:20PM</td><td>Successful</td></tr><tr><td>CentralDB: Server Ping Status</td><td>Mar 24 2017  3:50PM</td><td>Successful</td></tr><tr><td>CentralDB: SQL Server Inventory</td><td>Mar 24 2017  4:00AM</td><td>Failed</td></tr><tr><td>collection_set_1_noncached_collect_and_upload</td><td>Mar 24 2017 12:00PM</td><td>Successful</td></tr><tr><td>DBA - Monitoramento Disco</td><td>Mar 24 2017  6:00AM</td><td>Failed</td></tr><tr><td>EE314D98-E0A5-45AB-8468-F4FA9332C8A7</td><td>Mar 24 2017  7:00AM</td><td>Successful</td></tr><tr><td>Expired subscription clean up</td><td>Mar 24 2017  1:00AM</td><td>Successful</td></tr><tr><td>Replication agents checkup</td><td>Mar 24 2017  3:50PM</td><td>Successful</td></tr><tr><td>Start_MSPFE_ProActiceMon</td><td>Mar 24 2017  6:00AM</td><td>Successful</td></tr><tr><td>Stop_MSPFE_ProActiveMon</td><td>Mar 24 2017  5:55AM</td><td>Successful</td></tr><tr><td>syspolicy_purge_history</td><td>Mar 24 2017  2:00AM</td><td>Successful</td></tr></table>           
+  
+     
+<H4>Jobs com falha em Step</H>           
+<table>           
+         
+<tr>          
+<th>Nome do Job</th><th>Step</th><th>Erro</th>
+        
+<tr><td>DBA - Monitoramento Disco</td><td>ScriptMonitoramentoDisco</td><td>Executed as user: RIACHUELO\usrsrvsqlprd. The job script encountered the following errors. These errors did not stop the script:  A job step received an error at line 32 in a PowerShell script. The corresponding line is '   $saida = Get-WMIObject win32_volume -filter DriveType=3 -computer $servidor[$a] | select SystemName, Name, $TotalGB, $FreeGB, $FreePerc | Where-object {$_.DriveLetter -eq $null}'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Provider load failure   '  A job step received an error at line 37 in a PowerShell script. The corresponding line is '            $aux = $saida[$i]'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Cannot index into a null array.  '.  Process Exit Code -1.  The step failed.</td></tr><tr><td>CentralDB: SQL Server Inventory</td><td>SQL Server Inventory</td><td>Executed as user: RIACHUELO\usrsrvsqlprd. A job step received an error at line 1208 in a PowerShell script. The corresponding line is '$null = $cmd.ExecuteNonQuery()'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Exception calling "ExecuteNonQuery" with "0" argument(s): "Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.  The statement has been terminated."  '.  Process Exit Code -1.  The step failed.</td></tr><tr><td>DBA - Monitoramento Disco</td><td>ScriptMonitoramentoDisco</td><td>Executed as user: RIACHUELO\usrsrvsqlprd. A job step received an error at line 32 in a PowerShell script. The corresponding line is '   $saida = Get-WMIObject win32_volume -filter DriveType=3 -computer $servidor[$a] | select SystemName, Name, $TotalGB, $FreeGB, $FreePerc | Where-object {$_.DriveLetter -eq $null}'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))  '.  Process Exit Code -1.  The step failed.</td></tr><tr><td>CentralDB: SQL Server Inventory</td><td>SQL Server Inventory</td><td>Executed as user: RIACHUELO\usrsrvsqlprd. A job step received an error at line 1208 in a PowerShell script. The corresponding line is '$null = $cmd.ExecuteNonQuery()'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Exception calling "ExecuteNonQuery" with "0" argument(s): "Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.  The statement has been terminated."  '.  Process Exit Code -1.  The step failed.</td></tr><tr><td>DBA - Monitoramento Disco</td><td>ScriptMonitoramentoDisco</td><td>Executed as user: RIACHUELO\usrsrvsqlprd. A job step received an error at line 32 in a PowerShell script. The corresponding line is '   $saida = Get-WMIObject win32_volume -filter DriveType=3 -computer $servidor[$a] | select SystemName, Name, $TotalGB, $FreeGB, $FreePerc | Where-object {$_.DriveLetter -eq $null}'. Correct the script and reschedule the job. The error information returned by PowerShell is: 'Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))  '.  Process Exit Code -1.  The step failed.</td></tr></table>           
+  
+<H4>Status dos Backups - Full</H>           
+          
+<table>           
+           
+          
+<tr>           
+<th>Database</th><th>Data</th><th>Device</th>          
+<tr><td>master</td><td>Feb 12 2017  4:58AM</td><td>VNBU0-16500-16144-1486882517</td></tr><tr><td>model</td><td>Feb 12 2017  4:58AM</td><td>VNBU0-16500-8692-1486882700</td></tr><tr><td>msdb</td><td>Feb 12 2017  4:59AM</td><td>VNBU0-16500-11584-1486882742</td></tr><tr><td>CentralDB</td><td>Jan 19 2017 12:28PM</td><td>D:\BACKUP\CentralDB.bak</td></tr><tr><td>DB_RIACHUELO_DATA_201702</td><td>Mar  8 2017  4:09PM</td><td>\\r-dbgen64\n$\MSSQL\Export.bak</td></tr><tr><td>DB_RIACHUELO_DATA_20170217</td><td>Mar 14 2017  3:37PM</td><td>f:\DB_RIACHUELO_DATA_20170217.bak</td></tr><tr><td>ReportServer$MAPS</td><td>Mar 19 2017  1:14AM</td><td>VNBU0-5452-18176-1489878052</td></tr><tr><td>ReportServer$MAPSTempDB</td><td>Mar 19 2017  1:15AM</td><td>VNBU0-2336-21000-1489878060</td></tr><tr><td>ignite_riachuelo</td><td>Mar 24 2017  4:31AM</td><td>VNBU0-8096-20008-1490317325</td></tr><tr><td>SystemInfo</td><td>Oct 18 2016  7:16PM</td><td>C:\Program Files\Microsoft Assessment and Planning Toolkit\Database\SystemInfo.bak</td></tr><tr><td>dbalog</td><td>Sep 18 2016  7:53AM</td><td>VNBU0-7388-13612-1474188574</td></tr><tr><td>MAP_ConfigInfo</td><td>Sep 20 2016 11:57AM</td><td>VNBU0-12884-12124-1474383276</td></tr><tr><td>MAP_Users</td><td>Sep 20 2016 11:58AM</td><td>VNBU0-12884-712-1474383481</td></tr><tr><td>MapRchlo</td><td>Sep 20 2016 12:04PM</td><td>VNBU0-12884-7060-1474383592</td></tr></table>          
+           
+           
+<H4>Status dos Backups - Log</H>           
+          
+<table>           
+           
+          
+<tr>           
+<th>Database</th><th>Data</th><th>Device</th>          
+NADA</table>          
+<H4>Espaço em Disco</H>           
+          
+<table>           
+           
+          
+<tr>           
+<th>Drive</th><th>Livre(MB)</th><th>Total(MB)</th><th>Livre(%)</th>          
+<tr><td>A</td><td>3014</td><td>10239</td><td>29</td></tr><tr><td>C</td><td>4472</td><td>118752</td><td>3</td></tr><tr><td>D</td><td>6781</td><td>10238</td><td>66</td></tr><tr><td>F</td><td>55853</td><td>102269</td><td>54</td></tr><tr><td>M</td><td>4796</td><td>10205</td><td>46</td></tr></table>       
+>>>>>>> d4022b1c698892c56d61a9072b03678cdc0fa4fe

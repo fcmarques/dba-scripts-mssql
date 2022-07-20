@@ -1,0 +1,18 @@
+<<<<<<< HEAD
+Checklist Diario
+
+ - Verificar backup
+ - Verificar espaço em disco
+ - Verificar jobs
+ - Verificar Logs - Event Viewer e Error Log
+ - Verificar conectividade - Ping, Linked Server, Alias
+=======
+Checklist Diario
+
+ - Verificar backup
+ - Verificar espaço em disco
+ - Verificar jobs
+ - Verificar Logs - Event Viewer e Error Log
+ - Verificar conectividade - Ping, Linked Server, Alias
+>>>>>>> d4022b1c698892c56d61a9072b03678cdc0fa4fe
+ 

@@ -1,0 +1,54 @@
+<<<<<<< HEAD
+Checklist Diário:
+Verifique os backups de transaction log da noite anterior e erros de Jobs do Agent do SQL Server.
+Verifique todas as bases de dados se todas estão online e não estão marcadas como suspect. Verifique também DBCC CHECKDB para encontrar possíveis erros.
+Verifique os Error logs do SQL Server, Windows application e o system event log files e determino se alguma coisa deve ser investigada mais detalhadamente.
+Procure por quaisquer violações da política de segurança. Verifique tamanho dos arquivos, otimize o crescimento para projeções de longo prazo, faça baselines e verifique o desempenho dos níveis estabelecidos por essa baseline, como leituras e escritas em disco, CPU, Page Life Expectancy etc.
+Verifique as consultas que estão demorando muito tempo para serem executadas, existem algumas ferramentas que podem te auxiliar nisso como os sp_blitzCache do Brent Ozar.
+Verifique se todas as replicações estão operando normalmente, mirroring, log shipping, Guarde e compare atividade de CPU do dia anterior e compare com o dia atual.
+
+Checklist Semanal:
+Verifique a integridade dos backups full fazendo restaurações no ambiente de testes.
+Verifique se sua instância está fazendo backup da base MSDB.
+Verifique se como estão as manutenções de índices e estatísticas do banco de dados.
+Examine as estatísticas do SQL Server para encontrar “pain points” que se tornaram grandes pontos de contenção.
+Verifique o tempo de execução dos jobs para encontrar variações aos tempos de execução do baseline criado por você.
+Investigue os objetos no banco de dados que violam regras estabelecidas.
+Verifique se o SQL está enviando e-mail corretamente.
+
+Checklist Mensal:
+Execute a manutenção do sistema como desfragmentação de disco, atualização do Windows, e Atualizações do SQL Server.
+Verifique se a velocidade de acesso aos dados está em níveis normais.
+Execute a atualização completa da projeção de crescimento do sistema.
+Checklist a cada 15 dias:
+Execute uma análise de índice completa para todos os bancos de dados. Determine índices não utilizados e desabilite, se apropriado. Determinar índices ausentes e investigar o processo para atualizar ou adicionar índices para melhor cobrir o uso de dados.
+Revise os contadores, buffer cache, page life expectancy, I/O e Network, consultas que usam muito recurso de CPU, trabalhe na performance dessas consultas.
+Faça um teste full do plano de recuperação.
+=======
+Checklist Diário:
+Verifique os backups de transaction log da noite anterior e erros de Jobs do Agent do SQL Server.
+Verifique todas as bases de dados se todas estão online e não estão marcadas como suspect. Verifique também DBCC CHECKDB para encontrar possíveis erros.
+Verifique os Error logs do SQL Server, Windows application e o system event log files e determino se alguma coisa deve ser investigada mais detalhadamente.
+Procure por quaisquer violações da política de segurança. Verifique tamanho dos arquivos, otimize o crescimento para projeções de longo prazo, faça baselines e verifique o desempenho dos níveis estabelecidos por essa baseline, como leituras e escritas em disco, CPU, Page Life Expectancy etc.
+Verifique as consultas que estão demorando muito tempo para serem executadas, existem algumas ferramentas que podem te auxiliar nisso como os sp_blitzCache do Brent Ozar.
+Verifique se todas as replicações estão operando normalmente, mirroring, log shipping, Guarde e compare atividade de CPU do dia anterior e compare com o dia atual.
+
+Checklist Semanal:
+Verifique a integridade dos backups full fazendo restaurações no ambiente de testes.
+Verifique se sua instância está fazendo backup da base MSDB.
+Verifique se como estão as manutenções de índices e estatísticas do banco de dados.
+Examine as estatísticas do SQL Server para encontrar “pain points” que se tornaram grandes pontos de contenção.
+Verifique o tempo de execução dos jobs para encontrar variações aos tempos de execução do baseline criado por você.
+Investigue os objetos no banco de dados que violam regras estabelecidas.
+Verifique se o SQL está enviando e-mail corretamente.
+
+Checklist Mensal:
+Execute a manutenção do sistema como desfragmentação de disco, atualização do Windows, e Atualizações do SQL Server.
+Verifique se a velocidade de acesso aos dados está em níveis normais.
+Execute a atualização completa da projeção de crescimento do sistema.
+Checklist a cada 15 dias:
+Execute uma análise de índice completa para todos os bancos de dados. Determine índices não utilizados e desabilite, se apropriado. Determinar índices ausentes e investigar o processo para atualizar ou adicionar índices para melhor cobrir o uso de dados.
+Revise os contadores, buffer cache, page life expectancy, I/O e Network, consultas que usam muito recurso de CPU, trabalhe na performance dessas consultas.
+Faça um teste full do plano de recuperação.
+>>>>>>> d4022b1c698892c56d61a9072b03678cdc0fa4fe
+Execute a restauração completa do sistema em uma máquina virtual para que todos os sistemas e serviços essenciais possam ser colocados em isolamento e testados a integridade.
