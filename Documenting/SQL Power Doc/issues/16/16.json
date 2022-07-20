@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "I love this script. It provides a ton of useful infomation.  Thank you for creating it.  I'm receiving the following error and I'm not sure what is causing it.  It seems to be an access or permissions issue.  The account that is running the script is a local admin on the sever and sa on the SQL Server.  Please provide guidance.  \r\n\r\nERROR: Unable to retrieve service information from SERVRNAME (IP ADDRESS): Exception calling \"EndInvoke\" with \"1\" argument(s): \"The following exception occurred while trying to enumerate the collection: \"Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))\".\"",
+    "LastUpdatedDate": "2017-09-07T20:57:51.713-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2015-07-13T12:18:30.05-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "): Exception calling \"EndInvoke\" with \"1\" argument(s): ",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 16
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "If this is still an issue can you use verbose logging and post the log (remove server names if necessary) here so I have a better idea of where this is taking place in code?",
+      "PostedDate": "2016-05-27T11:48:36.523-07:00",
+      "Id": 199748
+    },
+    {
+      "Message": "Hi I have started having this exact issue when setting up a new PC.  Works fine on the old one but on the new one it has this permissions issue which seems weird because I am using the same SQL Server account user/pwd (not Windows).  Perhaps there is something I need to open up on my end (not the target server)?\n\nAny help would be welcomed!\n\nLog follows:\n2017-09-08 15:44:57.8791 ? Starting Script: D:\\Users\\######\\Documents\\WindowsPowerShell\\Scripts\\SQLServerInventory\\Get-SqlServerInventoryToClixml.ps1\n2017-09-08 15:44:57.8841 ? Beginning SQL Server Inventory\n2017-09-08 15:44:57.8871 ? \t-LoggingPreference: Verbose\n2017-09-08 15:44:57.8921 ? \t-ComputerName: ######\n2017-09-08 15:44:57.8941 ? \t-Username: ###########\n2017-09-08 15:44:57.8951 ? \t-Password: ###########\n2017-09-08 15:44:57.8971 ? \t-MaxConcurrencyThrottle: 8\n2017-09-08 15:44:57.8991 ? \t-PrivateOnly: False\n2017-09-08 15:44:57.9011 ? \t-ParentProgressId: -1\n2017-09-08 15:44:57.9021 ? \t-IncludeDatabaseObjectPermissions: False\n2017-09-08 15:44:57.9071 ? \t-IncludeDatabaseObjectInformation: False\n2017-09-08 15:44:57.9091 ? \t-IncludeDatabaseSystemObjects: False\n2017-09-08 15:44:57.9161 ? Beginning network scan\n2017-09-08 15:44:57.9181 ? \t-ComputerName: ######\n2017-09-08 15:44:57.9281 ? \t-PrivateOnly: False\n2017-09-08 15:44:57.9301 ? \t-MaxConcurrencyThrottle: 8\n2017-09-08 15:44:57.9331 ? \t-ResolveAliases: True\n2017-09-08 15:44:57.9371 ? Resolving IP address for ######\n2017-09-08 15:44:57.9811 ? Testing PING connectivity to 1 addresses\n2017-09-08 15:44:57.9901 $ Testing PING connectivity to ###### (192.168.###.###) [1 of 1]\n2017-09-08 15:45:03.8111 $ PING response from ###### (192.168.###.###): True\n2017-09-08 15:45:04.0723 $ PING connectivity test complete\n2017-09-08 15:45:04.0793 ? Testing WMI connectivity to 1 addresses\n2017-09-08 15:45:04.0903 $ Testing WMI connectivity to ###### (192.168.###.###) [1 of 1]\n2017-09-08 15:45:04.8678 $ WMI response from ###### (192.168.###.###): True\n2017-09-08 15:45:05.1336 $ WMI connectivity test complete\n2017-09-08 15:45:05.1446 ? Network scan complete\n2017-09-08 15:45:05.1516 ? \t-IP Addresses Scanned: 1\n2017-09-08 15:45:05.1577 ? \t-PING Replies: 1\n2017-09-08 15:45:05.1662 ? \t-WMI Replies: 1\n2017-09-08 15:45:05.1753 ? Beginning SQL Service discovery scan\n2017-09-08 15:45:05.2062 ? Scanning ###### at IP address 192.168.###.### for SQL Services [Device 1 of 1]\n2017-09-08 15:45:05.9686 ? ERROR: Unable to retrieve service information from ###### (192.168.###.###): Exception calling \"EndInvoke\" with \"1\" argument(s): \"The following exception occurred while trying to enumerate the collection: \"Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))\".\"\n2017-09-08 15:45:06.2343 ? SQL Server service discovery complete\n2017-09-08 15:45:06.2523 ? Beginning scan of 0 instance(s)\n2017-09-08 15:45:06.5304 ? Instance scan complete (Success: 0; Failure: 0)\n2017-09-08 15:45:06.5404 ? Writing Inventory to disk\n2017-09-08 15:45:06.5424 + No machines found!\n2017-09-08 15:45:06.5484 ? End Script: D:\\Users\\######\\Documents\\WindowsPowerShell\\Scripts\\SQLServerInventory\\Get-SqlServerInventoryToClixml.ps1\n\n",
+      "PostedDate": "2017-09-07T20:57:51.713-07:00",
+      "Id": 208804
+    }
+  ]
+}

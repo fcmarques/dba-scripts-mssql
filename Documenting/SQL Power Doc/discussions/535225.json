@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1214338",
+    "ThreadId": "535225",
+    "Html": "Hi, I would like to get the results of this tool into database tables, so that I can exploit it for other purposes in my management : login copy from a server to another, permission copy and other points like that.\r<br />\n<br />\nIs there somebody who can help ?<br />\n",
+    "PostedDate": "2014-02-25T01:57:26.75-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1219639",
+    "ThreadId": "535225",
+    "Html": "Currently there is nothing built into SQL Power Doc to persist the results to a database. It's on my to-do list at some point in time but with so much information collected I'm not sure what the schema that holds it all would even look like.\r<br />\n<br />\nFor copying logins from one instance to another have you seen (<a href=\"sp_help_revlogin\" rel=\"nofollow\">http://support.microsoft.com/kb/918992</a>?\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-03-05T13:23:41.143-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1219675",
+    "ThreadId": "535225",
+    "Html": "Hi Kendal, I know there are some parts of tools that are implemented for copying logins. But my idea is a little bit further in depth : for a login, you have a user that is mapped. You can have permissions, group membership at login, or at user level.\r<br />\n One of the actions I would like to do in a « single click » is to copy all the security related informations for a particular login / user and apply it elsewhere. The same kind of operation could be done for instance for sql agent jobs with their schedule\r<br />\n and so on. Another point for me is to constitute a « documentation/repository », which would be firstly based on this inventory. Building up the inventory from time to time would simple be the checking of differences between current inventory and the documented\r<br />\n inventory. This way, I have almost everything under control… Best regards, Jefferson Elias.<br />\n",
+    "PostedDate": "2014-03-05T14:36:39.07-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1308430",
+    "ThreadId": "535225",
+    "Html": "Hi Jefferson, \r<br />\nFor copying Jobs and Logins from one server to another, you can use SSIS package. There is a good article explaining this <a href=\"http://www.mssqltips.com/sqlservertip/2081/transfer-sql-server-jobs-task-and-transfer-sql-server-logins-task-in-ssis/\" rel=\"nofollow\">http://www.mssqltips.com/sqlservertip/2081/transfer-sql-server-jobs-task-and-transfer-sql-server-logins-task-in-ssis/</a>\r<br />\nI hope I understood correctly.\r<br />\n<br />\nBest, -Anil<br />\n",
+    "PostedDate": "2014-09-26T09:41:48.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

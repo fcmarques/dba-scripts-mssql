@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1164316",
+    "ThreadId": "495998",
+    "Html": "Hello\r<br />\nIs there a way to specify a custom path to the Modules folder?\r<br />\n<br />\nRegards\r<br />\nOlegas<br />\n",
+    "PostedDate": "2014-01-14T01:32:25.313-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1193516",
+    "ThreadId": "495998",
+    "Html": "Hi Olegas,\r<br />\nThere's nothing specific in the code that allows you to specify a custom directory for modules. All code simply uses Import-Module with a specified module name and lets PowerShell take care of figuring the rest out. \r<br />\n<br />\nAs long as you place the modules in one of the folders specified by $env:PSModulePath things should work fine. The PowerShell documentation on <a href=\"http://msdn.microsoft.com/en-us/library/dd878350(v=vs.85).aspx\" rel=\"nofollow\">Installing Modules</a> has a full explanation of how to specify custom locations for modules.\r<br />\n<br />\nThanks for checking out SQL Power Doc!\r<br />\n<br />\n-- Kendal<br />\n",
+    "PostedDate": "2014-01-23T12:31:35.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

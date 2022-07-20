@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1102509",
+    "ThreadId": "460868",
+    "Html": "How can I modify the Get-WindowsInventoryToClixml.ps1 file to handle server logon errors with TRY/CATCH , and skip to the next Server to Logon to on in the list?<br />\n",
+    "PostedDate": "2013-10-01T16:40:12.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1103322",
+    "ThreadId": "460868",
+    "Html": "Hi Barnyardi,\r<br />\nThat's already in the code - when 3 errors are encountered the code gives up on the server and moves on. I should also note that if you specify multiple servers to include in the inventory the code is pseudo-multithreaded. I say pseudo because PowerShell doesn't support true multithreading, but basically by default the code will attempt to simultaneously inventory as many servers as there are logical CPUs on the machine where the code is running.\r<br />\n<br />\nFor now, if you want to modify the error threshold change the value of ScanErrorThreshold in WindowsInventory.psm1 (line 6). \r<br />\n<br />\nI can hook this up as a parameter for the inventory scripts in the next version.\r<br />\n<br />\nThanks for checking out SQL Power Doc!\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-10-03T12:36:05.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

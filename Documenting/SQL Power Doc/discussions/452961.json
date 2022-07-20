@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1078802",
+    "ThreadId": "452961",
+    "Html": "HI,\r<br />\n<br />\nI watched the recording of your 24HOP session and I'm interested in using Power Doc.<br />\n\r<br />\nI do have a question about how much network traffic this tool will generate.  I have tried to use the MS MAP toolkit in the past and it causes the network admins to call me and ask why I'm gernerating so much of network traffic. Is this tool similar or is it easier on the network.<br />\n\r<br />\nIf needed I can use a list of sql servers and take that approach.\r<br />\n<br />\nthanks<br />\n",
+    "PostedDate": "2013-08-09T10:22:50.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1078819",
+    "ThreadId": "452961",
+    "Html": "Thanks for checking out SQL Power Doc!\r<br />\n<br />\nThat's a great question - I haven't compared network utilization of SPD against MAP so I don't have a definitive answer. Am I allowed to say &quot;it depends&quot;? ;-)\r<br />\n<br />\nGenerally speaking, for the discovery step SQL Power Doc tests PING and WMI connectivity which are pretty lightweight operations. When collecting information about a SQL instance SQL Power Doc will use set based queries wherever possible but even at the defaults you're looking at a few hundred select statements (all run against meta-data tables); that number will go higher if you collect information about database objects and include system objects. When collecting OS information and I use filters on the WMI queries to only return the properties that are being documented.\r<br />\n<br />\nI've made an effort to be as efficient at collecting data as possible but there's only so much you can do when you collect as much information as SQL Power Doc does.\r<br />\n<br />\nHope this helps and please let me know what you think of SQL Power Doc if you decide to start using it in your environment!\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-08-09T10:56:12.727-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1078853",
+    "ThreadId": "452961",
+    "Html": "Thanks for the prompt reply. \r<br />\n<br />\nThat helps.  I'll let you know after I get some time to check it out in detail.\r<br />\n<br />\nmike<br />\n",
+    "PostedDate": "2013-08-09T12:16:05.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1048661",
+    "ThreadId": "444977",
+    "Html": "Hello again Kendal !\r<br />\n<br />\nAnd what about DTS/SSIS packages ?\r<br />\nThis time, I've looked carefully but I can't find them.\r<br />\n<br />\nKukah<br />\n",
+    "PostedDate": "2013-05-25T09:45:51.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1066788",
+    "ThreadId": "444977",
+    "Html": "Kukah, sorry for the delayed response. I'm not collecting any information about DTS or SSIS packages in the current version. It's not on my roadmap at the moment but that doesn't mean it couldn't appear in a future version. What kinds of things would you expect to see in an inventory of DTS &amp; SSIS packages?\r<br />\n<br />\n-Kendal<br />\n",
+    "PostedDate": "2013-07-10T14:43:56.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

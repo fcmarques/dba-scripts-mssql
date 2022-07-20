@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1037107",
+    "ThreadId": "441952",
+    "Html": "Hi Kendal,\r<br />\nI may have missed it, but I haven't found Service Pack information for SQL.\r<br />\nWill It be possible to include it in next version ?\r<br />\nThanks for this greats scripts.\r<br />\nKukah<br />\n",
+    "PostedDate": "2013-04-29T06:36:11.453-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1037127",
+    "ThreadId": "441952",
+    "Html": "Hi Kukah,\r<br />\nThe SP level is in two places in the Database Engine Config workbook:<br />\n<ul>\n<li>2nd tab (Server Overview), column H (Level)</li>\n<li>\n3rd tab (Server Config - General), column D (Level).<br />\n</li>\n</ul>\nThanks for checking out SQL Power Doc!\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-04-29T07:04:42.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1037221",
+    "ThreadId": "441952",
+    "Html": "Thank you Kendal !<br />\nI had missed them indeed.<br />\n<br />\nEdit: <br />\n<br />\nHello again Kendal !<br />\n<br />\nAnd what about DTS/SSIS packages ?<br />\nThis time, I've looked carefully but I can't find them.<br />\n<br />\nKukah<br />\n",
+    "PostedDate": "2013-04-29T09:40:33.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

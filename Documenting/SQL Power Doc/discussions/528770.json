@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1202128",
+    "ThreadId": "528770",
+    "Html": "Following along in the <a href=\"https://sqlpowerdoc.codeplex.com/wikipage?title=Guide%20For%20PowerShell%20Beginners\" rel=\"nofollow\">Documentation</a> my properties page for SQL Power Doc v1.0.2.1.zip does not have an 'unblock' button or even a security section.  There is a security tab but does not have any unblock option either.  It does show I have Full control.  I am using Windows 7.  I assume this is an important step as the 'Get-WindowsInventoryToClixml.ps1' script does not run.  How do I unblock the zip file before extracting?<br />\n",
+    "PostedDate": "2014-02-03T09:31:21.93-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1209609",
+    "ThreadId": "528770",
+    "Html": "If you're running PowerShell 3.0 or higher (highly recommended) you can use the Unblock-File cmdlet. See <a href=\"http://technet.microsoft.com/en-us/library/hh849924(v=wps.620).aspx\" rel=\"nofollow\">http://technet.microsoft.com/en-us/library/hh849924(v=wps.620).aspx</a> for the documentation on it.\r<br />\n<br />\n(Come to think of it, I should add this to the documentation!)\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-02-17T14:07:35.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

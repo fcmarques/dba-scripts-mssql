@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": null,
+    "Description": "Hi\r\n\r\nI have been trying to use your tool to scan and document SQL Servers.\r\n\r\nAll servers are Windows 2012 R2 64-bit and SQL Servers are 2012 SP 2.\r\n \r\nI downloaded the latest beta, but I still get same errors:\r\n\r\nWrite-Log : Failed to scan SQLSERVER.DOMAIN.LOCAL -  3 errors\r\nAt C:\\Users\\administrator\\Documents\\WindowsPowerShell\\Modules\\SqlServerInventory\\SqlServerInventory.psm1:274 char:4\r\n+             Write-Log -Message $Message -MessageLevel $MessageLevel\r\n+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException\r\n    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Write-Log\r\n\r\n\r\n\r\nAny ideas what I could try?\r\n\r\nThanks!\r\n\r\n-Miikka-",
+    "LastUpdatedDate": "2015-01-07T02:11:56.263-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2015-01-05T05:15:48.297-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Problems with scanning",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 15
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I got the scanning part working party. I did re-do every step on the pre-scan list with the latest beta package. Now I am able to scan windows server and SQL servers with single instances. \n\nFor some reason connection fails if there are multiple instances on a single server.\n\nI also noticed that convert to Excel doesn't work with Excel 2013 64-bit?  ",
+      "PostedDate": "2015-01-06T23:36:07.89-08:00",
+      "Id": 169603
+    },
+    {
+      "Message": "It also happends on 32-bit version of Excel, I get this error:\n\n\nException calling \"Add\" with \"0\" argument(s): \"Old format or invalid type library. (Exception from HRESULT: 0x80028018\n(TYPE_E_INVDATAREAD))\"\nAt C:\\Users\\Administrator.000\\Documents\\WindowsPowerShell\\Modules\\WindowsInventory\\WindowsInventory.psm1:849 char:3\n+         $Workbook = $Excel.Workbooks.Add()\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException\n    + FullyQualifiedErrorId : ComMethodTargetInvocation\n",
+      "PostedDate": "2015-01-07T02:06:04.797-08:00",
+      "Id": 169607
+    },
+    {
+      "Message": "I resolved the issue by adding this code in PS Module SqlServerInventory.psm1:\r\n[Threading.Thread]::CurrentThread.CurrentCulture = 'en-US'",
+      "PostedDate": "2015-01-07T02:11:56.263-08:00",
+      "Id": 169610
+    }
+  ]
+}

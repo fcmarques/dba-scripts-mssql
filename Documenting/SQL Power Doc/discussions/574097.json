@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1329021",
+    "ThreadId": "574097",
+    "Html": "is this fixed? thx \r<br />\n<br />\n&quot;(For what it's worth, version 1.0.2.1 of SQL Power Doc does NOT do this, meaning some permissions could be excluded from the documentation. I'll have a new beta that fixes this posted within the next week or two)&quot;<br />\n",
+    "PostedDate": "2014-12-05T01:16:55.77-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1354322",
+    "ThreadId": "574097",
+    "Html": "Yes, it's included in version 1.0.2.2 which I published recently. Grab it from the downloads tab and you're good to go!<br />\n",
+    "PostedDate": "2015-02-20T06:41:38.457-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

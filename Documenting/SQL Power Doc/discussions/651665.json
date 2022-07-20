@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1464107",
+    "ThreadId": "651665",
+    "Html": "Is SQL Server Management Objects (SMO) needed for only Windows inventory?<br />\n",
+    "PostedDate": "2016-02-23T04:39:41.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1465974",
+    "ThreadId": "651665",
+    "Html": "SMO is only needed if you're collecting information about SQL Server.<br />\n",
+    "PostedDate": "2016-03-07T11:48:14.847-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

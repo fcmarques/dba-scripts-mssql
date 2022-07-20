@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1239381",
+    "ThreadId": "543747",
+    "Html": "Used SQL Powerdoc successfully at my last job.  Ran it at my new job and 4 out of 9 servers got the &quot;No Machines Found Error&quot;.  One common factor on all 4 machines was that SQL Configuration manager would fail to load and give  a &quot;Cannot connect to WMI provider...&quot; error.  Run the following in a CMD window (as administrator) and it will fix both:\r<br />\n<br />\nmofcomp &quot;C:\\Program Files (x86)\\Microsoft SQL Server\\100\\Shared\\sqlmgmproviderxpsp2up.mof&quot;. \r<br />\n<br />\nFor more info:\r<br />\n <a href=\"http://support.microsoft.com/kb/956013/en-us\" rel=\"nofollow\">http://support.microsoft.com/kb/956013/en-us</a>\r<br />\n<a href=\"http://www.mssqltips.com/sqlservertip/2382/sql-server-configuration-manager-cannot-connect-to-wmi-provider/\" rel=\"nofollow\">http://www.mssqltips.com/sqlservertip/2382/sql-server-configuration-manager-cannot-connect-to-wmi-provider/</a><br />\n",
+    "PostedDate": "2014-04-29T08:22:30.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

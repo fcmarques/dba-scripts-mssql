@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1128696",
+    "ThreadId": "471053",
+    "Html": "As I use Local settings for my country on my Laptop, I guess I get this error, when I try to run the convert script, I would prefer not to change the local setting of my laptop..\r<br />\n<br />\nbut How can I avoid this error?\r<br />\n<br />\nForEach-Object : Exception setting &quot;NumberFormat&quot;: &quot;Unable to set the NumberFormat property of the Range class&quot;\r<br />\nAt D:\\Users\\jjonsson\\Documents\\WindowsPowerShell\\Modules\\WindowsInventory\\WindowsInventory.psm1:2326 char:57<br />\n<ul>\n<li>$WorksheetFormat[$WorksheetNumber].ColumnFormat | ForEach-Object {</li>\n<li>\n~~~~~~~~~~~~~~~~\n<ul>\n<li>CategoryInfo          : NotSpecified: (:) [ForEach-Object], SetValueInvocationException</li>\n<li>FullyQualifiedErrorId : CatchFromBaseAdapterSetValueTI,Microsoft.PowerShell.Commands.ForEachObjectCommand</li>\n</ul>\n</li>\n</ul>\n",
+    "PostedDate": "2013-11-25T06:35:33.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1129078",
+    "ThreadId": "471053",
+    "Html": "Hint about the challenge:\r<br />\n<a href=\"http://technet.microsoft.com/en-us/library/ff730954.aspx\" rel=\"nofollow\">http://technet.microsoft.com/en-us/library/ff730954.aspx</a><br />\n",
+    "PostedDate": "2013-11-26T01:21:04.793-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

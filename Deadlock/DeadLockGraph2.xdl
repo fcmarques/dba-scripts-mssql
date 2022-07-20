@@ -1,0 +1,74 @@
+﻿<deadlock>
+  <victim-list>
+    <victimProcess id="process5e3a748" />
+    <victimProcess id="processbe44e08" />
+  </victim-list>
+  <process-list>
+    <process id="process5e3a748" taskpriority="0" logused="2472" waitresource="KEY: 8:72057594983612416 (5c1aedd03a62)" waittime="4305" ownerId="464343858465" transactionguid="0x140822e4276c1a468ae0b0ebc4342d54" transactionname="DTCXact" lasttranstarted="2018-09-04T16:59:02.527" XDES="0xf67b5da20" lockMode="X" schedulerid="26" kpid="16960" status="suspended" spid="2610" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2018-09-04T16:59:04.993" lastbatchcompleted="2018-09-04T16:59:04.993" clientapp="Microsoft® Windows® Operating System" hostname="RSMTPRDFINWSE2" hostpid="792" loginname="CPSBDDBS" isolationlevel="serializable (4)" xactid="464343858465" currentdb="8" lockTimeout="4294967295" clientoption1="671221856" clientoption2="128056">
+      <executionStack>
+        <frame procname="" line="1" stmtstart="120" sqlhandle="0x02000000cd6cb9397585904d4b15a713196057db34cc1a26" />
+        <frame procname="" line="1" sqlhandle="0x020000009bbc6115c3b4b9d98903d93b383c0d6202a81e83" />
+      </executionStack>
+      <inputbuf>
+UPDATE C_CONTROLE_SALDO SET val_saldo_disp = ISNULL(val_saldo_disp, 0) - '10', val_a_vencer = ISNULL(val_a_vencer, 0) + '10', qtd_compras_periodo = ISNULL(qtd_compras_periodo, 0) + 1, dat_atual = GetDate(), txt_resp_atual = 'SCV07b200 Atualizar_Conta'             WHERE COD_EMP  = 2  AND   COD_FIL  = 79  AND   NUM_CLI  = 18466   </inputbuf>
+    </process>
+    <process id="process9e63048" taskpriority="0" logused="2472" waitresource="KEY: 8:72057594983612416 (5c1aedd03a62)" waittime="4536" ownerId="464343845942" transactionguid="0x6ff4d174197b004c970c6fb9f19076c5" transactionname="DTCXact" lasttranstarted="2018-09-04T16:59:02.300" XDES="0x14a50a4ef40" lockMode="X" schedulerid="50" kpid="121576" status="suspended" spid="753" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2018-09-04T16:59:04.760" lastbatchcompleted="2018-09-04T16:59:04.760" clientapp="Microsoft® Windows® Operating System" hostname="RSMTPRDFINWSE2" hostpid="792" loginname="CPSBDDBS" isolationlevel="serializable (4)" xactid="464343845942" currentdb="8" lockTimeout="4294967295" clientoption1="671221856" clientoption2="128056">
+      <executionStack>
+        <frame procname="" line="1" stmtstart="120" sqlhandle="0x02000000cd6cb9397585904d4b15a713196057db34cc1a26" />
+        <frame procname="" line="1" sqlhandle="0x020000009bbc6115c3b4b9d98903d93b383c0d6202a81e83" />
+      </executionStack>
+      <inputbuf>
+UPDATE C_CONTROLE_SALDO SET val_saldo_disp = ISNULL(val_saldo_disp, 0) - '10', val_a_vencer = ISNULL(val_a_vencer, 0) + '10', qtd_compras_periodo = ISNULL(qtd_compras_periodo, 0) + 1, dat_atual = GetDate(), txt_resp_atual = 'SCV07b200 Atualizar_Conta'             WHERE COD_EMP  = 2  AND   COD_FIL  = 79  AND   NUM_CLI  = 18466   </inputbuf>
+    </process>
+    <process id="processbe44e08" taskpriority="0" logused="2476" waitresource="KEY: 8:72057594983612416 (fba6de98d2a9)" waittime="3473" ownerId="464343928528" transactionguid="0xb7102479555a4744bcd71cfb8e4a3690" transactionname="DTCXact" lasttranstarted="2018-09-04T16:59:03.353" XDES="0xf1047df640" lockMode="X" schedulerid="67" kpid="21604" status="suspended" spid="1272" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2018-09-04T16:59:05.820" lastbatchcompleted="2018-09-04T16:59:05.820" clientapp="Microsoft® Windows® Operating System" hostname="RSMTPRDFINWSE2" hostpid="792" loginname="CPSBDDBS" isolationlevel="serializable (4)" xactid="464343928528" currentdb="8" lockTimeout="4294967295" clientoption1="671221856" clientoption2="128056">
+      <executionStack>
+        <frame procname="" line="1" stmtstart="120" sqlhandle="0x02000000b495592b7ebec6bf9a974765ad110196ac0c4936" />
+        <frame procname="" line="1" sqlhandle="0x020000005b2420069f1de026ffa44e2f8e51f23734b4633b" />
+      </executionStack>
+      <inputbuf>
+UPDATE C_CONTROLE_SALDO SET val_saldo_disp = ISNULL(val_saldo_disp, 0) - '74.23', val_a_vencer = ISNULL(val_a_vencer, 0) + '74.23', qtd_compras_periodo = ISNULL(qtd_compras_periodo, 0) + 1, dat_atual = GetDate(), txt_resp_atual = 'SCV07b200 Atualizar_Conta'             WHERE COD_EMP  = 2  AND   COD_FIL  = 46  AND   NUM_CLI  = 31246   </inputbuf>
+    </process>
+    <process id="process7ebd048" taskpriority="0" logused="2476" waitresource="KEY: 8:72057594983612416 (fba6de98d2a9)" waittime="5582" ownerId="464343772635" transactionguid="0xe318b46508491448a051d96986c232e5" transactionname="DTCXact" lasttranstarted="2018-09-04T16:59:01.220" XDES="0x740b252080" lockMode="X" schedulerid="19" kpid="118644" status="suspended" spid="2374" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2018-09-04T16:59:03.710" lastbatchcompleted="2018-09-04T16:59:03.710" clientapp="Microsoft® Windows® Operating System" hostname="RSMTPRDFINWSE2" hostpid="792" loginname="CPSBDDBS" isolationlevel="serializable (4)" xactid="464343772635" currentdb="8" lockTimeout="4294967295" clientoption1="671221856" clientoption2="128056">
+      <executionStack>
+        <frame procname="" line="1" stmtstart="120" sqlhandle="0x02000000cf78de0c63fba9807bf325a13a449053254edf2e" />
+        <frame procname="" line="1" sqlhandle="0x02000000f8b5190b23b3e4485ac589994ec9cfe96b20a734" />
+      </executionStack>
+      <inputbuf>
+UPDATE C_CONTROLE_SALDO SET val_saldo_disp = ISNULL(val_saldo_disp, 0) - '13.02', val_a_vencer = ISNULL(val_a_vencer, 0) + '13.02', qtd_compras_periodo = ISNULL(qtd_compras_periodo, 0) + 1, dat_atual = GetDate(), txt_resp_atual = 'SCV07b200 Atualizar_Conta'             WHERE COD_EMP  = 2  AND   COD_FIL  = 46  AND   NUM_CLI  = 31246   </inputbuf>
+    </process>
+  </process-list>
+  <resource-list>
+    <keylock hobtid="72057594983612416" dbid="8" objectname="" indexname="" id="lockdece92400" mode="S" associatedObjectId="72057594983612416">
+      <owner-list>
+        <owner id="process9e63048" mode="S" />
+      </owner-list>
+      <waiter-list>
+        <waiter id="process5e3a748" mode="X" requestType="convert" />
+      </waiter-list>
+    </keylock>
+    <keylock hobtid="72057594983612416" dbid="8" objectname="" indexname="" id="lockdece92400" mode="S" associatedObjectId="72057594983612416">
+      <owner-list>
+        <owner id="process5e3a748" mode="S" />
+      </owner-list>
+      <waiter-list>
+        <waiter id="process9e63048" mode="X" requestType="convert" />
+      </waiter-list>
+    </keylock>
+    <keylock hobtid="72057594983612416" dbid="8" objectname="" indexname="" id="lock866f4f8580" mode="S" associatedObjectId="72057594983612416">
+      <owner-list>
+        <owner id="process7ebd048" mode="S" />
+      </owner-list>
+      <waiter-list>
+        <waiter id="processbe44e08" mode="X" requestType="convert" />
+      </waiter-list>
+    </keylock>
+    <keylock hobtid="72057594983612416" dbid="8" objectname="" indexname="" id="lock866f4f8580" mode="S" associatedObjectId="72057594983612416">
+      <owner-list>
+        <owner id="processbe44e08" mode="S" />
+      </owner-list>
+      <waiter-list>
+        <waiter id="process7ebd048" mode="X" requestType="convert" />
+      </waiter-list>
+    </keylock>
+  </resource-list>
+</deadlock>

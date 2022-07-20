@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1080803",
+    "ThreadId": "453469",
+    "Html": "2013-08-14 23:03:58.5764 ? Resolving IP address for CG9088S4\r<br />\n2013-08-14 23:03:58.6389 ? Testing PING connectivity to 1 addresses\r<br />\n2013-08-14 23:03:58.6545 $ Testing PING connectivity to CG9088S4.mydomain.com (10.152.2.125) [1 of 1]\r<br />\n2013-08-14 23:04:00.7167 $ PING response from CG9088S4.mydomain.com (10.152.2.125): True\r<br />\n2013-08-14 23:04:00.9667 $ PING connectivity test complete\r<br />\n2013-08-14 23:04:00.9823 ? Testing WMI connectivity to 1 addresses\r<br />\n2013-08-14 23:04:00.9979 $ Testing WMI connectivity to CG9088S4.mydomain.com (10.152.2.125) [1 of 1]\r<br />\n2013-08-14 23:04:01.2479 $ WMI response from CG9088S4.mydomain.com (10.152.2.125): True\r<br />\n2013-08-14 23:04:01.4979 $ WMI connectivity test complete\r<br />\n2013-08-14 23:04:01.5135 ? Network scan complete\r<br />\n2013-08-14 23:04:01.5135 ? \t-IP Addresses Scanned: 1\r<br />\n2013-08-14 23:04:01.5135 ? \t-PING Replies: 1\r<br />\n2013-08-14 23:04:01.5291 ? \t-WMI Replies: 1\r<br />\n2013-08-14 23:04:01.5291 * End Function: Find-IPv4Device\r<br />\n2013-08-14 23:04:01.5916 ? Beginning SQL Service discovery scan\r<br />\n2013-08-14 23:04:01.7322 ? Scanning CG9088S4.mydomain.com at IP address 10.152.2.125 for SQL Services [Device 1 of 1]\r<br />\n2013-08-14 23:04:02.7477 ? Found SQL Server default instance CG9088S4.mydomain.com at IP address 10.152.2.125\r<br />\n2013-08-14 23:04:02.7633 ? Found SQL Server Browser default instance CG9088S4.mydomain.com at IP address 10.152.2.125\r<br />\n2013-08-14 23:04:02.7633 ? Found SQL Server Agent default instance CG9088S4.mydomain.com at IP address 10.152.2.125\r<br />\n2013-08-14 23:04:03.0133 ? SQL Server service discovery complete\r<br />\n2013-08-14 23:04:03.0289 ? \t-SQL Server Instance Count: 1\r<br />\n2013-08-14 23:04:03.0289 ? \t-SQL Server Agent Instance Count: 1\r<br />\n2013-08-14 23:04:03.0289 ? \t-SQL Server Browser Instance Count: 1\r<br />\n2013-08-14 23:04:03.0289 * End Function: Find-SqlServerService\r<br />\n2013-08-14 23:04:03.0445 ? Beginning scan of 1 instance(s)\r<br />\n2013-08-14 23:04:03.1695 ? Gathering information from CG9088S4.mydomain.com at 10.152.2.125 [Instance 1 of 1]\r<br />\n2013-08-14 23:04:18.3704 + Failed to connect to CG9088S4.mydomain.com\r<br />\n2013-08-14 23:04:18.3704 + Failed to connect to CG9088S4.mydomain.com\r<br />\n2013-08-14 23:04:18.3860 + Failed to connect to CG9088S4.mydomain.com\r<br />\n2013-08-14 23:04:18.3860 + [CG9088S4.mydomain.com] Error gathering instance information - max error threshold reached (3)\r<br />\n2013-08-14 23:04:18.5110 ! Failed to scan CG9088S4.mydomain.com -  3 errors\r<br />\n2013-08-14 23:04:18.7610 ? Instance scan complete (Success: 0; Errors: 1)<br />\n",
+    "PostedDate": "2013-08-14T21:24:04.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1080951",
+    "ThreadId": "453469",
+    "Html": "Thanks for checking out SQL Power Doc!\r<br />\n<br />\nThe connectivity error you're seeing on usually occurs when the TCP/IP protocol isn't configured for the instance. You can either enable it or give the beta version a shot - I've got some code in there that fixed that issue on my test instances. (Though I have heard from some folks that they're still seeing the problem w\\ the beta code but I haven't been able to reproduce it yet)\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-08-15T07:17:22.613-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1081232",
+    "ThreadId": "453469",
+    "Html": "I just checked and TCP/IP is enabled and there is only one default instance running on SQL 2008R2 SP2 CU7<br />\nStill getting this -  Error gathering instance information - max error threshold reached (3)<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-08-15T23:41:10.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1090638",
+    "ThreadId": "453469",
+    "Html": "I have faced the same problem on my SQL-servers. The script Version 1.0.2.0 has been started localy. UAC, Firewall are disabled. wmi works. In the moment haven't got any *.xml file on sql2005-2008 and express versions under windows server 2008 R2 std.(64-bit)  It seems that it cann't detect the version of SQL instance. (SP, CU..)  Please, check it again.  Thanks.\r<br />\n...\r<br />\n2013-09-10 12:28:05.2111 ? Scanning sqlexp99.x.y.dom at IP address 10.40.3.99 for SQL Services [Device 1 of 1]\r<br />\n2013-09-10 12:28:06.5528 ? Found SQL Server named instance sqlexp99.x.y.dom\\SQLEXPRESS at IP address \r<br />\n2013-09-10 12:28:06.5528 ? Found SQL Full-text Filter Daemon Launcher named instance sqlexp99.x.y.dom\\SQLEXPRESS at IP address 10.40.3.99\r<br />\n2013-09-10 12:28:06.5684 ? Found SQL Server Reporting Services named instance sqlexp99.x.y.dom\\SQLEXPRESS at IP address 10.40.3.99\r<br />\n2013-09-10 12:28:06.5840 ? Found SQL Server Agent named instance sqlexp99.x.y.dom\\SQLEXPRESS at IP address 10.40.3.99\r<br />\n2013-09-10 12:28:06.5840 ? Found SQL Server Browser default instance sqlexp99.x.y.dom at IP address 10.40.3.99\r<br />\n2013-09-10 12:28:06.8492 ? SQL Server service discovery complete\r<br />\n2013-09-10 12:28:06.8492 ? \t-SQL Full-text Filter Daemon Launcher Instance Count: 1\r<br />\n2013-09-10 12:28:06.8648 ? \t-SQL Server Instance Count: 1\r<br />\n2013-09-10 12:28:06.8648 ? \t-SQL Server Agent Instance Count: 1\r<br />\n2013-09-10 12:28:06.8648 ? \t-SQL Server Browser Instance Count: 1\r<br />\n2013-09-10 12:28:06.8648 ? \t-SQL Server Reporting Services Instance Count: 1\r<br />\n2013-09-10 12:28:06.8804 ? Beginning scan of 1 instance(s)\r<br />\n2013-09-10 12:28:06.9584 ? Gathering information from sqlexp99.x.y.dom\\SQLEXPRESS [Instance 1 of 1]\r<br />\n2013-09-10 12:28:22.1847 + Failed to connect to sqlexp99.x.y.dom\\SQLEXPRESS\r<br />\n2013-09-10 12:28:22.1847 + Failed to connect to sqlexp99.x.y.dom\\SQLEXPRESS\r<br />\n2013-09-10 12:28:22.2003 + Failed to connect to sqlexp99.x.y.dom\\SQLEXPRESS\r<br />\n2013-09-10 12:28:22.2003 + [sqlexp99.x.y.dom\\SQLEXPRESS] Error gathering instance information - max error threshold reached (3)\r<br />\n2013-09-10 12:28:22.3563 ! Failed to scan sqlexp99.x.y.dom\\SQLEXPRESS -  3 errors\r<br />\n2013-09-10 12:28:22.6215 ? Instance scan complete (Success: 0; Failure: 1)\r<br />\n2013-09-10 12:28:22.6371 ? Beginning network scan\r<br />\n...\r<br />\nPS C:\\Users\\user1\\Documents\\WindowsPowerShell&gt; gwmi win32_operatingsystem -computername localhost\r<br />\n<br />\nSystemDirectory : C:\\Windows\\system32\r<br />\nOrganization    :\r<br />\nBuildNumber     : 7601\r<br />\nRegisteredUser  : Windows User\r<br />\nSerialNumber    : 00477-001-0000421-84764\r<br />\nVersion         : 6.1.7601\r<br />\n...<br />\n",
+    "PostedDate": "2013-09-10T06:39:00.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092317",
+    "ThreadId": "453469",
+    "Html": "Hi nalivai,\r<br />\nIs the TCP/IP protocol enabled for your SQL Express instance? If not, you'll want to enable it. It turns out I don't account for Shared Memory only scenarios in the current code but I've got a version that I'm posting soon that should fix that.\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-09-13T07:16:58.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1110724",
+    "ThreadId": "453469",
+    "Html": "Hi nalivai,\r<br />\nJust wanted to follow up on this - version 1.0.2.1 was posted last week and properly accounts for named instances using only the shared memory protocol.\r<br />\n<br />\nThanks!\r<br />\nKendal<br />\n",
+    "PostedDate": "2013-10-22T11:54:09.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

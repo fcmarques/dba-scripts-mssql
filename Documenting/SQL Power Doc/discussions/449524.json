@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1066409",
+    "ThreadId": "449524",
+    "Html": "Hi,\r<br />\n<br />\non Win7, Sql Server - doing a local test before trying on the network servers.\r<br />\n<br />\nThe scan process doesn't appear to be working on my machine.  I have a local copy of Sql Server 2012 (I have sysadmin) and a copy of Sql Express, and I'm getting the following error in the log:<br />\n<pre><code>2013-07-10 13:10:54.5635 ? Beginning scan of 2 instance(s)\n2013-07-10 13:10:54.6415 ? Gathering information from ASSET-101084.F.Q.N\\SQLEXPRESS at 10.2.110.187 [Instance 1 of 2]\n2013-07-10 13:10:54.6495 ? Gathering information from ASSET-101084.F.Q.N at 10.2.110.187 [Instance 2 of 2]\n2013-07-10 13:11:09.7915 ! Failed to scan ASSET-101084.F.Q.N\\SQLEXPRESS -  3 errors\n2013-07-10 13:11:09.7975 ! Failed to scan ASSET-101084.F.Q.N -  3 errors\n2013-07-10 13:11:10.0615 ? Instance scan complete (Success: 0; Errors: 2)</code></pre>\n\nI am starting the process with the following: <br />\n<pre><code>.\\Get-SqlServerInventoryToClixml.ps1 -ComputerName ASSET-101084 -IncludeDatabaseObjectInformation -IncludeDatabaseObjectPermissions -LoggingPreference debug -DirectoryPath .\\Log</code></pre>\n\nI have Admin access on my machine, and tried both with a normal Powershell session and an administrator Powershell session.\r<br />\n<br />\nWhat am I doing wrong?\r<br />\n<br />\ncheers<br />\n",
+    "PostedDate": "2013-07-09T22:43:10.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1066787",
+    "ThreadId": "449524",
+    "Html": "Grab the beta version that's currently available in the downloads section (<a href=\"https://sqlpowerdoc.codeplex.com/releases/view/105891\" rel=\"nofollow\">1.0.2.0</a>). There are some issues with scanning SQL Express instances in the current version that are fixed in the beta.\r<br />\n<br />\nThanks for trying out SQL Power Doc!\r<br />\n<br />\n-Kendal<br />\n",
+    "PostedDate": "2013-07-10T14:41:46.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1066955",
+    "ThreadId": "449524",
+    "Html": "Hi Kendal\r<br />\n<br />\nI tried 1.0.2.0, but came up with the same error:\r<br />\n<br />\n2013-07-11 17:42:30.4701 ? Gathering information from ASSET-101084.F.Q.D.N\\SQLEXPRESS [Instance 1 of 2]\r<br />\n2013-07-11 17:42:30.4761 ? Gathering information from ASSET-101084.F.Q.D.N [Instance 2 of 2]\r<br />\n2013-07-11 17:42:30.6051 ! An unrecoverable error was encountered while attempting to retrieve information from ASSET-101084.F.Q.D.N\\SQLEXPRESS\r<br />\n2013-07-11 17:42:30.8701 ! An unrecoverable error was encountered while attempting to retrieve information from ASSET-101084.F.Q.D.N\r<br />\n2013-07-11 17:42:31.1341 ? Instance scan complete (Success: 0; Failure: 2)\r<br />\n<br />\n<br />\nany further ideas?\r<br />\n<br />\ncheers<br />\n",
+    "PostedDate": "2013-07-11T02:45:47.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1067246",
+    "ThreadId": "449524",
+    "Html": "Are you using the Verbose logging level? That should give a clearer idea of what errors are going on.\r<br />\n<br />\nYou can also try running this code snippet in a PowerShell ISE window (make sure to change the instance name):<br />\n<pre><code>$Error.Clear()\nImport-Module -Name SqlServerDatabaseEngineInformation\nGet-SqlServerDatabaseEngineInformation -InstanceName 'ASSET-101084.F.Q.D.N'\nRemove-Module -Name SqlServerDatabaseEngineInformation\n$Error</code></pre>\n\nAnd then copy and paste the error here (after sanitizing the names in the output, of course).\r<br />\n<br />\n-Kendal<br />\n",
+    "PostedDate": "2013-07-11T14:29:02.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

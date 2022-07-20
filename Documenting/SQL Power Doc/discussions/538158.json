@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1219889",
+    "ThreadId": "538158",
+    "Html": "Hi \r<br />\n<br />\nFirstly, great piece of code. I have used it and like it a lot. However I do have a slight problem. \r<br />\n<br />\nIn my company, we get 2 domain accounts within active directory. One is used for access to servers and the other is used for workstations. etc but we have our workstation account in the sysadmin group across our sql servers.\r<br />\n<br />\nHow would I go about running the script under my account used to connect to servers to pull server related info and then somehow tell the sql part to used my other account?\r<br />\n<br />\nRegards, \r<br />\nKarl<br />\n",
+    "PostedDate": "2014-03-06T07:15:21.04-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1219898",
+    "ThreadId": "538158",
+    "Html": "Hey Karl,\r<br />\nSupplying different credentials for Windows vs. SQL as parameters is on my long term to-do list but in the meantime the way to accomplish this is twofold: Use <a href=\"http://technet.microsoft.com/en-us/library/cc771525.aspx\" rel=\"nofollow\">runas</a> and your domain account that has access to servers to gather Windows information and a SQL login for gathering SQL Server data.\r<br />\n<br />\nFor the runas piece you're going to launch a PowerShell console with the /netonly option so that the console uses your workstation account profile but a different set of credentials when accessing network resources, e.g.:<br />\n<pre><code>runas /netonly /user:DOMAIN\\username &quot;%SystemRoot%\\system32\\WindowsPowerShell\\v1.0\\powershell.exe&quot;</code></pre>\n\nI know this isn't the most ideal scenario - especially if you don't have mixed authentication enabled on your instances.\r<br />\n<br />\nThanks for using SQL Power Doc!\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-03-06T07:34:03.187-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

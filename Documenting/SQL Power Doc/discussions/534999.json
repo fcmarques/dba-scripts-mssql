@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1214029",
+    "ThreadId": "534999",
+    "Html": "I've tried to use a variable to pass a list of computers I want processed.  I have yet to have success.\r<br />\n<br />\n$ServerList = &quot;Server1,Server2,Server3&quot;\r<br />\n.\\Get-SQLServerInventoryToCLixml.ps1 -Computername $ServerList -LoggingPreference Verbose\r<br />\n<br />\nWhen I look at the log file this is what I see:\r<br />\n<br />\nError resolving IP address for Server1,Server2,Server3: No such host is known\r<br />\n<br />\nWhen I execute this .\\Get-SQLServerInventoryToCLixml.ps1 -Computername Server1,Server2,Server3 -LoggingPreference Verbose  all works as expected.\r<br />\n<br />\nAny thoughts would be great.\r<br />\n<br />\nThank you\r<br />\n<br />\nJim<br />\n",
+    "PostedDate": "2014-02-24T15:52:41.557-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1214089",
+    "ThreadId": "534999",
+    "Html": "Jim,\r<br />\nYou're close; PowerShell treats the entire list in quotes as a string. What you want is an array of strings. Try this:<br />\n<pre><code>$ServerList = @('Server1','Server2','Server3')\n.\\Get-SQLServerInventoryToCLixml.ps1 -Computername $ServerList -LoggingPreference Verbose </code></pre>\n\nThanks for checking out SQL Power Doc!\r<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-02-24T17:51:51.87-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1214694",
+    "ThreadId": "534999",
+    "Html": "\r\n<div>\r\n<p>That did it. I should have guess that. Thank you for your help, and thank you for SQL Power Doc.</p>\r\n<p></p>\r\n<p><b><span style=\"font-size:10.0pt; font-family:\">James M. Dorame</span></b></p>\r\n<p><span style=\"font-size:10.0pt; font-family:\">Database Systems Manager</span></p>\r\n<p></p>\r\n<p><span style=\"font-size:10.0pt; font-family:\">Questar Assessment, Inc.</span></p>\r\n<p><span style=\"font-size:10.0pt; font-family:\">(952) 997-0755 (Office)</span></p>\r\n<p><span style=\"font-size:10.0pt; font-family:\">(952) 997-2700 (Fax)</span></p>\r\n<p></p>\r\n<p><b><span style=\"font-size:10.0pt; font-family:\">Success by your Standards</span></b></p>\r\n<p><span style=\"font-size:10.0pt; font-family:\"><a href=\"http://www.questarai.com/\"><span style=\"font-family:\">www.QuestarAI.com</span></a></span></p>\r\n<p></p>\r\n<p><span style=\"font-size:8.0pt; font-family:\">CONFIDENTIALITY NOTICE: The information contained in this e-mail and any attachments may be confidential. If you are not an intended recipient, you are hereby notified that any dissemination, distribution, or copying\r\n of this e-mail is strictly prohibited. If you have received this e-mail in error, please notify the sender and permanently delete the e-mail and any attachments immediately. You should not retain, copy, or use this e-mail or any attachment for any purpose,\r\n nor disclose all or any part of the contents to any other person. Thank you. To reply to our email administrator directly, please send an email to [email removed].</span></p>\r\n<p></p>\r\n<p></p>\r\n</div>\r\n",
+    "PostedDate": "2014-02-25T09:21:48.663-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1215529",
+    "ThreadId": "534999",
+    "Html": "Hi Kendal<br />\n<br />\nBusy testing SQL power doc and came across a weird error with the same method James mentions above. <br />\n<br />\nFirst off this was the method behind the madness:<br />\n<br />\nThe requirement was for complete OU in AD to be included in the inventory, so I went with generating a comma delimited list from the servers in the OU with get-adcomputer and passing it to get-windowsinventorytoclixml.ps1 via a variable.  Now it work like a charm until it hits server 142 of 158 then powershell stops responding. <br />\n<br />\nMy question is two fold, is there a better way for to collect the server from the OU and pass it to the script and if not what would your recommendation be given the current amount of servers in the OU that we would like to include in the inventory?<br />\n<br />\nFyi:<br />\nServer specs used for running the inventory<br />\n2 CPU's<br />\n10GB Memory<br />\n<br />\nThank you very much for SQL power doc and the amount of effort you put into this, it's much appreciated.<br />\n<br />\nWillie<br />\n",
+    "PostedDate": "2014-02-27T02:19:58.303-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1218343",
+    "ThreadId": "534999",
+    "Html": "Hi Willie,\r<br />\nOne question and one answer for your twofold question!\r<br />\n1) When you hit server 142 of 158 and PowerShell stops responding do the logs show it's happening when verifying PING and WMI connectivity, or have you gotten past that point and getting held up on collecting information from an instance on that server?\r<br />\n<br />\n2) Your best bet for targeting servers in a specific OU is to build the list of computer names ahead of time and pass that to the SQL Power Doc scripts. For example, here's how you can use the ActiveDirectory module to get a list of computers from an OU called &quot;Production&quot; in a domain called demo.local:<br />\n<pre><code>Import-Module -Name ActiveDirectory\n$Computer = Get-ADComputer -SearchBase 'OU=Production,DC=demo,DC=local' -Filter 'ObjectClass -eq &quot;computer&quot;' | ForEach-Object {\n    $_.Name\n}\nRemove-Module -Name ActiveDirectory</code></pre>\n\nFrom there you can pass $Computer to Get-SqlServerInventoryToClixml.ps1, e.g.:<br />\n<pre><code>.\\Get-SqlServerInventoryToClixml.ps1 -ComputerName $Computer -LoggingPreference Verbose</code></pre>\n\nThanks for checking out SQL Power Doc!\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-03-03T13:43:22.903-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1222226",
+    "ThreadId": "534999",
+    "Html": "That's more or less the same idea I had, pushed the servers in the OU into an array and worked with them from there. \r<br />\n<br />\nWhen PowerShell crashes the log just ends abruptly at:<br />\n<pre><code>2014-03-04 12:35:33.0220 $ [xxx.xxx.xxx.xxx] Gathering Video Controller information\n2014-03-04 12:35:33.1340 $ [xxx.xxx.xxx.xxx] Gathering Startup Commands information\n2014-03-04 12:35:33.3921 $ [xxx.xxx.xxx.xxx] Gathering registry size information\n2014-03-04 12:35:33.4281 $ [xxx.xxx.xxx.xxx] Gathering information about services\n</code></pre>\n\nThe error occurs when the script starts doing the actual gathering of information after the &quot;scanning on IP step&quot;. Seems that the size of the XML file that it generates in memory(My not so educated assumption) causes PowerShell ISE to crash. The weird bit though his that this happens at random, sometimes at the 100th server other times at the 120th server. It might be worth wile mentioning that I am using the &quot;-additionaldata all&quot; flag. So I am collecting a very large amount of data at the moment. \r<br />\n<br />\nTo try and get around this I approached it from another angle and submitted the server names in batches of 10, but to no avail. \r<br />\n<br />\nWas still testing my script in the ISE though and once I did the same execution via the shell it worked like a charm. \r<br />\n<br />\nSo lesson learned, dev work on ISE and heavy lifting in die shell.\r<br />\n<br />\nRegards\r<br />\nWillie<br />\n",
+    "PostedDate": "2014-03-13T00:48:17.777-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1222767",
+    "ThreadId": "534999",
+    "Html": "Willie,\r<br />\nYes, good call - the console has less overhead than the ISE. Are you running a SQL Server Inventory or just a Windows Inventory? Also, PowerShell 3.0 offers significant improvements with custom objects (which SQL Power Doc uses heavily) over PowerShell 2.0, so if you can make sure to use PoSh v3 or higher.\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-03-14T06:54:26.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

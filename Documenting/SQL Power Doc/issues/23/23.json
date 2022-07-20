@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "Hi,\r\n\r\nThanks for this project. I just tested it on a sql 2012 server and couldn't go beyond this error:\r\n\r\nInstance name is server\\sp2013 (server is netbios  servername). The tool is using a fqn.\r\nServer IP is ok and I'm running the tool with -computername server (netbios name)\r\n\r\nWARNING: Failed to connect to Server.domain.com\\SP2013\r\nWARNING: Failed to connect to Server.domain.com\\SP2013\r\nWARNING: Failed to connect to Server.domain.com\\SP2013\r\nWARNING: [Server.domain.com\\SP2013] Error gathering instance information - max error threshold reached (3)\r\nWrite-Log : Failed to scan Server.domain.com\\SP2013 -  3 errors\r\nAt C:\\Users\\Administrator\\Documents\\WindowsPowerShell\\Modules\\SqlServerInventory\\SqlServerInventory.psm1:275\r\nchar:4\r\n+             Write-Log -Message $Message -MessageLevel $MessageLevel\r\n+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException\r\n    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Write-Log\r\n\r\nWARNING: [1.0.0.102] Error gathering information about logged on users: Exception calling \"SizeOf\" with \"1\"\r\nargument(s): \"Type 'System.RuntimeType' cannot be marshaled as an unmanaged structure; no meaningful size or offset can\r\n be computed.\" (RDS-Manager.psm1 line 601, char 9)\r\nWARNING: [1.0.0.102] Reverting to Win32_Process to determine logged on users\r\nWARNING: No machines found!\r\n",
+    "LastUpdatedDate": "2016-11-18T10:23:33.427-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2016-10-19T13:02:49.567-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Exception calling \"SizeOf\" with \"1\" argument(s): ",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 23
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm using windows 2012 R2.",
+      "PostedDate": "2016-10-19T13:10:41.213-07:00",
+      "Id": 204761
+    },
+    {
+      "Message": "Getting same error with same version. Any resolution to this?",
+      "PostedDate": "2016-11-18T10:23:33.427-08:00",
+      "Id": 205183
+    }
+  ]
+}

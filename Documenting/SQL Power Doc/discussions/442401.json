@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1038777",
+    "ThreadId": "442401",
+    "Html": "Hi Kendal,\r<br />\n<br />\nI entered a problem under the Issue Tracker tab on Monday and haven't gotten any response.   I'm assuming that's because I didn't post about it here in the Discussions tab.  When you have a chance, can you take a look?\r<br />\n<br />\nThanks\r<br />\n-A.<br />\n",
+    "PostedDate": "2013-05-02T14:04:00.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038785",
+    "ThreadId": "442401",
+    "Html": "Oops, I hadn't subscribed to notifications for that page and I had no idea!\r<br />\n<br />\nThe way the code currently works is that when logging is enabled (i.e. logging preference is <strong>standard</strong>, <strong>verbose</strong>, or <strong>debug</strong>) all warnings, errors, information, etc. are written to the log (except for some errors that occur in the RDS-Manager module which I don't control).\r<br />\n<br />\nWhen logging is disabled (i.e. logging preference is <strong>none</strong>, which is the default) then errors are written to the error stream (via Write-Error), warnings to the warning stream (via Write-Warning), verbose messages to the verbose stream (via Write-Verbose), and everything else to the debug stream (via Write-Debug).  Errors and Warnings will always show up on the console in this case. Everything else depends on the values for <strong>$VerbosePreference</strong> and <strong>$DebugPreference</strong> (which are normally set to <strong>SilentlyContinue</strong> so you won't see them).\r<br />\n<br />\nKnowing how it works now, what do you think should be changed with this behavior? Is the change to the default behavior or an enhancement along the lines of supported by a switch parameter?\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-05-02T14:29:29.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1039007",
+    "ThreadId": "442401",
+    "Html": "Hmm, given that information, then I think a couple things need to be changed/addressed.  I was using logging, first standard then debug when it wouldn't produce the Database Engine Assessment spreadsheet.\r<br />\n<br />\n1) Update the documentation on the logging to reflect the fact that if you use a logging preference, you won't see anything in the stream.  Makes sense, but not intuitive, at least not to me.\r<br />\n<br />\n2) There is definitely something wrong, because the log contained the errors, yet right under the error in the log, this entry occurs:\r<br />\n<br />\nInstance scan complete (Success: 4; Errors: 0)\r<br />\n<br />\nwhen I really did get 4 errors.\r<br />\n<br />\nAlso, I'm finding that the only servers that are failing for me are the windows 2012/sql 2012 combinations.  I'm investigating that, but was wondering if anyone else had the same issue with: \r<br />\n<br />\nMethod invocation failed because [Microsoft.SqlServer.Management.Smo.Server] doesn't contain a method named 'EnumClusterMembersState'. (SqlServerDatabaseEngineInformation.psm1 line 6556, char 41)\r<br />\n<br />\nLet me know if you want any further details.\r<br />\n<br />\nThanks\r<br />\n-A.<br />\n",
+    "PostedDate": "2013-05-03T05:55:48.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1039036",
+    "ThreadId": "442401",
+    "Html": "Good feedback!\r<br />\n<br />\n1 - No problem, I'll make a point to do that. (FWIW also on my to-do list is to write detailed information about each module for anyone who is interested in going beyond the 2 scripts I provided and write their own interesting things. You may have noticed the ?, $, *, !, and + symbols in the log files and wondered what the heck those mean, for example.)\r<br />\n<br />\n2 - I think it's a semantic issue more than anything. It's a non-fatal error but I log it so you know there was some kind of problem that may need to be addressed. Would it make more sense in the final message to say something like: (Success: 4; Failure: 0) ?\r<br />\n<br />\nI've had someone else privately tell me they've run into the same problem with EnumClusterMembersState but were running SQL 2012. I check to make sure the target server is SQL 2012, the DB Engine is standalone (i.e. not Azure), and the major version of SMO is 11 (i.e. SMO 2012) but it looks like something else is going on. What OS version are you running the scripts on? Is it 32 bit or 64 bit?\r<br />\n<br />\nIt's definitely part of SMO (see <a href=\"http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.management.smo.server.enumclustermembersstate.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.management.smo.server.enumclustermembersstate.aspx</a>) and I haven't been able to reproduce the problem on my (64 bit, RTM) 2012 VMs.\r<br />\n<br />\nThe resolution for the other person was to download and install SMO from <a href=\"http://www.microsoft.com/en-us/download/details.aspx?id=29065\" rel=\"nofollow\">http://www.microsoft.com/en-us/download/details.aspx?id=29065</a>.\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-05-03T07:18:24.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1040385",
+    "ThreadId": "442401",
+    "Html": "I'm running the scripts from my laptop, windows 7, 64-bit.  I'll try running them on a server and see what happens.  Unfortunately the servers that I'm having an issue with are production servers so I'll have to schedule the update of SMO during our maintenance window.  However, I did compare the version of SMO on successful servers to the failing servers and they are the same.\r<br />\n<br />\nI'll keep you posted.<br />\n",
+    "PostedDate": "2013-05-07T07:07:41.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1040390",
+    "ThreadId": "442401",
+    "Html": "Hi Angela,\r<br />\nSMO only needs to be updated on your laptop (i.e. where the scripts run). Hopefully that makes things a little easier. :-)\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-05-07T07:14:28.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

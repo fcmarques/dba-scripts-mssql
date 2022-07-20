@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "As reported on Twitter:\r\n\r\nDuring the Excel conversion phase, using the example provided:\r\n\r\n```\r\n.\\Convert-SqlServerInventoryClixmlToExcel.ps1 -FromPath \"C:\\Inventory\\SQL Server Inventory.xml.gz\"\r\n```\r\n\r\nI received a divide-by-zero error in line 2908 of SqlServerInventory.psm1, for the value $LogicalDisk.SizeBytes.\r\n\r\nIn the collection phase, I used the Example 4 values in the README document:\r\n\r\n```\r\n.\\Get-SqlServerInventoryToClixml.ps1 -Computername $env:COMPUTERNAME -IncludeDatabaseObjectInformation -LoggingPreference Verbose\r\n```\r\n\r\nI'm running two instances on this machine: SQL Server 2012 and 2014 CTP 2.\r\n\r\nI have kept the capture file. It's 15MB so just let me know which section you need.\r\n",
+    "LastUpdatedDate": "2013-11-29T09:22:20.803-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2013-11-29T09:22:20.803-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Divide by zero error in Excel conversion",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 7
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

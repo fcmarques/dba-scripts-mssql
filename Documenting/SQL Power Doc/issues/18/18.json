@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Hi, I seem to be failing at the first hurdle.\r\nI downloaded, unblocked and extracted the zip to c:\\tools\\sql doc.\r\nI open PS ISE and type \r\n.\\Get-SqlServerInventoryToClixml.ps1 -ComputerName 'domain\\servername' \r\nI only want to document one server at this stage to see how it goes.\r\nI get a page full of errors that start with:\r\n\r\nImport-Module : The specified module 'LogHelper' was not loaded because no valid module file was found in any module directory.\r\nAt C:\\tools\\SQL Doc\\Get-SqlServerInventoryToClixml.ps1:353 char:1\r\n+ Import-Module -Name LogHelper, SqlServerInventory\r\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : ResourceUnavailable: (LogHelper:String) [Import-Module], FileNotFoundException\r\n    + FullyQualifiedErrorId : Modules_ModuleNotFound,Microsoft.PowerShell.Commands.ImportModuleCommand\r\n \r\nImport-Module : The specified module 'SqlServerInventory' was not loaded because no valid module file was found in any module directory.\r\nAt C:\\tools\\SQL Doc\\Get-SqlServerInventoryToClixml.ps1:353 char:1\r\n+ Import-Module -Name LogHelper, SqlServerInventory\r\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : ResourceUnavailable: (SqlServerInventory:String) [Import-Module], FileNotFoundException\r\n    + FullyQualifiedErrorId : Modules_ModuleNotFound,Microsoft.PowerShell.Commands.ImportModuleCommand\r\n \r\nSet-LogFile : The term 'Set-LogFile' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path \r\nwas included, verify that the path is correct and try again.\r\nAt C:\\tools\\SQL Doc\\Get-SqlServerInventoryToClixml.ps1:357 char:1\r\n+ Set-LogFile -Path $LogPath\r\n+ ~~~~~~~~~~~\r\n    + CategoryInfo          : ObjectNotFound: (Set-LogFile:String) [], CommandNotFoundException\r\n    + FullyQualifiedErrorId : CommandNotFoundException\r\n \r\nSet-LoggingPreference : The term 'Set-LoggingPreference' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of \r\nthe name, or if a path was included, verify that the path is correct and try again.\r\nAt C:\\tools\\SQL Doc\\Get-SqlServerInventoryToClixml.ps1:358 char:1\r\n+ Set-LoggingPreference -Preference $LoggingPreference\r\n+ ~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : ObjectNotFound: (Set-LoggingPreference:String) [], CommandNotFoundException\r\n    + FullyQualifiedErrorId : CommandNotFoundException",
+    "LastUpdatedDate": "2016-05-27T11:46:12.21-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2015-08-26T15:33:52.94-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "No valid module",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 18
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "PowerShell looks for modules in the paths that are specified in the PSModulePath environment variable. If you put modules anywhere else you have provide the full path to the module in order to load it. Since there's no way to understand every possible place that someone could put the modules I assume you're placing them in one of the paths in PSModulePath.\n\nYou've got three options here:\n1. Modify all the module references in Power Doc to provide the full path where you're extracted them to (Hard)\n2. Modify your PSModulePath - see https://msdn.microsoft.com/en-us/library/dd878326(v=vs.85).aspx (Easier)\n3. Put the SQL Power Doc modules in one of the paths already specified in PSModulePath, e.g. \\Documents\\WindowsPowerShell\\Modules (Easiest)\n\nHope this helps.",
+      "PostedDate": "2016-05-27T11:46:12.21-07:00",
+      "Id": 199746
+    }
+  ]
+}

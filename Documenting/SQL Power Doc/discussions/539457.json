@@ -1,0 +1,130 @@
+[
+  {
+    "Id": "1224374",
+    "ThreadId": "539457",
+    "Html": "Hi Kendal\r<br />\nI have 2 machines I am running an inventory on - S1 and S2\r<br />\n<br />\nI can run the SQL inventory locally on each machine with no issues.\r<br />\nWhen I try to run an inventory for S2 from S1 and vice-versa, I get this:\r<br />\n<br />\n2014-03-19 13:34:28.2585 ? Starting Script: C:\\Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1\r<br />\n2014-03-19 13:34:28.3155 ? Beginning SQL Server Inventory\r<br />\n2014-03-19 13:34:28.3205 ? \t-LoggingPreference: Verbose\r<br />\n2014-03-19 13:34:28.3245 ? \t-ComputerName: S1\r<br />\n2014-03-19 13:34:28.3275 ? \t-MaxConcurrencyThrottle: 2\r<br />\n2014-03-19 13:34:28.3315 ? \t-PrivateOnly: False\r<br />\n2014-03-19 13:34:28.3345 ? \t-ParentProgressId: -1\r<br />\n2014-03-19 13:34:28.3385 ? \t-IncludeDatabaseObjectPermissions: False\r<br />\n2014-03-19 13:34:28.3415 ? \t-IncludeDatabaseObjectInformation: False\r<br />\n2014-03-19 13:34:28.3445 ? \t-IncludeDatabaseSystemObjects: False\r<br />\n2014-03-19 13:34:28.3835 ? Beginning network scan\r<br />\n2014-03-19 13:34:28.3875 ? \t-ComputerName: S1\r<br />\n2014-03-19 13:34:28.3915 ? \t-PrivateOnly: False\r<br />\n2014-03-19 13:34:28.3945 ? \t-MaxConcurrencyThrottle: 2\r<br />\n2014-03-19 13:34:28.4005 ? \t-ResolveAliases: True\r<br />\n2014-03-19 13:34:28.4075 ? Resolving IP address for S1\r<br />\n2014-03-19 13:34:28.6535 ? Testing PING connectivity to 1 addresses\r<br />\n2014-03-19 13:34:28.7295 $ Testing PING connectivity to S1.DOMAIN.COM (111.111.111.111) [1 of 1]\r<br />\n2014-03-19 13:34:30.8508 $ PING response from S1.DOMAIN.COM (111.111.111.111): True\r<br />\n2014-03-19 13:34:31.1378 $ PING connectivity test complete\r<br />\n2014-03-19 13:34:31.1928 ? Testing WMI connectivity to 1 addresses\r<br />\n2014-03-19 13:34:31.2648 $ Testing WMI connectivity to S1.DOMAIN.COM (111.111.111.111) [1 of 1]\r<br />\n2014-03-19 13:34:31.5318 $ WMI response from S1.DOMAIN.COM (111.111.111.111): True\r<br />\n2014-03-19 13:34:31.8519 $ WMI connectivity test complete\r<br />\n2014-03-19 13:34:31.9159 ? Network scan complete\r<br />\n2014-03-19 13:34:31.9209 ? \t-IP Addresses Scanned: 1\r<br />\n2014-03-19 13:34:31.9249 ? \t-PING Replies: 1\r<br />\n2014-03-19 13:34:31.9329 ? \t-WMI Replies: 1\r<br />\n2014-03-19 13:34:31.9429 ? Beginning SQL Service discovery scan\r<br />\n2014-03-19 13:34:32.1799 ? Scanning S1.DOMAIN.COM at IP address 111.111.111.111 for SQL Services [Device 1 of 1]\r<br />\n2014-03-19 13:34:32.7080 ? Found SQL Server default instance S1.DOMAIN.COM at IP address 111.111.111.111\r<br />\n2014-03-19 13:34:32.7120 ? Found SQL Server Agent default instance S1.DOMAIN.COM at IP address 111.111.111.111\r<br />\n2014-03-19 13:34:33.0250 ? SQL Server service discovery complete\r<br />\n2014-03-19 13:34:33.0320 ? \t-SQL Server Instance Count: 1\r<br />\n2014-03-19 13:34:33.0370 ? \t-SQL Server Agent Instance Count: 1\r<br />\n2014-03-19 13:34:33.0550 ? Beginning scan of 0 instance(s)\r<br />\n2014-03-19 13:34:33.6621 ? Instance scan complete (Success: 0; Failure: 0)\r<br />\n2014-03-19 13:34:33.7111 ? Writing Inventory to disk\r<br />\n2014-03-19 13:34:33.7151 + No machines found!\r<br />\n2014-03-19 13:34:33.7281 ? End Script: C:\\Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1\r<br />\n<br />\nI've removed server names and IP's\r<br />\n<br />\nAny ideas?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2014-03-19T04:39:07.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234356",
+    "ThreadId": "539457",
+    "Html": "I had someone else tell me about a similar problem. In their case the SMO ManagedComputer object was not returning the state of each service. Can you try running this (fill in the right server name, of course) snippet in a PowerShell ISE window and see if the service state is returned?<br />\n<pre><code># Load SMO Assemblies\n[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO') | ForEach-Object {\n if ($_.GetName().Version.Major -ge 10) {\n  [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMOExtended') | Out-Null\n   [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SQLWMIManagement') | Out-Null\n }\n}\n\n$error.Clear()\n$ManagedComputer = New-Object -TypeName 'Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer' -ArgumentList 'S1.DOMAIN.COM'\n$ManagedComputer.Services | Format-Table -Property DisplayName, StartMode, ServiceState, ProcessId\nRemove-Variable -Name ManagedComputer\n$Error</code></pre>\n\n",
+    "PostedDate": "2014-04-15T08:44:09.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1236572",
+    "ThreadId": "539457",
+    "Html": "Thanks Kendal\r<br />\n<br />\nI tested it and it returned the following:<br />\n<pre><code>The following exception was thrown when trying to enumerate the collection: &quot;SQL Server WMI provider is not available on S1.DOMAIN.COM.&quot;.\nAt line:11 char:1\n+  &lt;&lt;&lt;&lt; $ManagedComputer.Services | Format-Table -Property DisplayName, StartMode, ServiceState, ProcessId\n    + CategoryInfo          : NotSpecified: (:) [], ExtendedTypeSystemException\n    + FullyQualifiedErrorId : ExceptionInGetEnumerator</code></pre>\n\n",
+    "PostedDate": "2014-04-22T06:42:38.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1239330",
+    "ThreadId": "539457",
+    "Html": "Hi,\r<br />\n<br />\nYou need replace S1.Domain.COM with the name of the remote computer (ie  Server1.YourDomain.com).  If it still doesn't work, just use the server name and leave out the YourDomain.com part. You should get a list of the SQLServer Services and there states on the machine.<br />\n",
+    "PostedDate": "2014-04-29T07:12:17.72-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1290065",
+    "ThreadId": "539457",
+    "Html": "I have this same issue, only on some of my machines.  Running the above snippet locally returns status of all SQL Server services, but running it remotely gives the following:<br />\n<pre><code>The following exception occurred while trying to enumerate the collection: &quot;SQL Server WMI provider is not available on xxxxxxxxxx.&quot;.\nAt line:11 char:1\n+ $ManagedComputer.Services | Format-Table -Property DisplayName, StartMode, Servi ...\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (:) [], ExtendedTypeSystemException\n    + FullyQualifiedErrorId : ExceptionInGetEnumerator</code></pre>\n\nThis was tested with firewall disabled.  Basically occurs on ALL SQL Server 2012 instances in my network, but works normally (as expected) on 2008R2 and 2014.<br />\n<br />\nEdit: I ran it successfully on a machine with (1) 2012 and (1) 2014 instance and it discovered both instances.  But every machine in my network that ONLY has 2012 instances it fails to find the WMI provider.<br />\n",
+    "PostedDate": "2014-08-14T07:59:16.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1304799",
+    "ThreadId": "539457",
+    "Html": "<strong>kendalvandyke wrote:</strong><br />\n<blockquote>\nI had someone else tell me about a similar problem. In their case the SMO ManagedComputer object was not returning the state of each service. Can you try running this (fill in the right server name, of course) snippet in a PowerShell ISE window and see if the service state is returned?<br />\n<pre><code># Load SMO Assemblies\n[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO') | ForEach-Object {\n if ($_.GetName().Version.Major -ge 10) {\n  [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMOExtended') | Out-Null\n   [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SQLWMIManagement') | Out-Null\n }\n}\n\n$error.Clear()\n$ManagedComputer = New-Object -TypeName 'Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer' -ArgumentList 'S1.DOMAIN.COM'\n$ManagedComputer.Services | Format-Table -Property DisplayName, StartMode, ServiceState, ProcessId\nRemove-Variable -Name ManagedComputer\n$Error</code></pre>\n\n</blockquote>\nHi Kendal,\r<br />\nI've just had a similar problem and it looks like in my case it was caused by the SQL 2014 SMO library being installed on the server even though there were no SQL 2014 instances. \r<br />\n<br />\nIt seems the Services property of the ManagedComputer object was not returning anything. When I forced the load of the SQL 2012 SMO library I was able to complete the scan.\r<br />\n<br />\nThanks\r<br />\nPaul.<br />\n",
+    "PostedDate": "2014-09-15T06:25:27.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1337826",
+    "ThreadId": "539457",
+    "Html": "I've got the same problem - as soon as the SQL 2014 SMO is used I can't query SQL 2012 services (&quot;Der SQL Server-WMI-Anbieter ist in 'hostname' nicht verfügbar.&quot; - &quot;SQL Server WMI provider is not available on&quot;). It seems to work as soon as I install the SQL Server 2014 components on a SQL 2012 maschine. Just the SMO from the feature pack is not enough :(\r<br />\n<br />\nInstalling the SQL 2012 SMO components on my querying maschine, it works:<br />\n<pre><code>Add-Type -Path &quot;C:\\Program Files\\Microsoft SQL Server\\110\\SDK\\Assemblies\\Microsoft.SqlServer.Smo.dll&quot;\nAdd-Type -Path &quot;C:\\Program Files\\Microsoft SQL Server\\110\\SDK\\Assemblies\\Microsoft.SqlServer.SmoExtended.dll&quot;\nAdd-Type -Path &quot;C:\\Program Files\\Microsoft SQL Server\\110\\SDK\\Assemblies\\Microsoft.SqlServer.SqlWmiManagement.dll&quot;\n$ManagedComputer = New-Object -TypeName 'Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer' -ArgumentList $hostname\n$ManagedComputer.Services</code></pre>\n\nBut with the SQL 2012 SMO Types I can't query SQL 2014 instances...<br />\n",
+    "PostedDate": "2014-12-30T02:02:04.743-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1337834",
+    "ThreadId": "539457",
+    "Html": "I've opened <a href=\"https://connect.microsoft.com/SQLServer/feedback/details/1070235\" rel=\"nofollow\">https://connect.microsoft.com/SQLServer/feedback/details/1070235</a><br />\n",
+    "PostedDate": "2014-12-30T02:39:40.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456502",
+    "ThreadId": "539457",
+    "Html": "Hi Guys,\r<br />\n<br />\nI have the same problem. <strong>Have found any solution for this : &quot;SQL Server WMI provider is not available on xxxxxx&quot;</strong>?\r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2015-12-19T20:34:48.163-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456904",
+    "ThreadId": "539457",
+    "Html": "<strong>chirayu547 wrote:</strong><br />\n<blockquote>\nHi Guys,<br />\n<br />\nI have the same problem. <strong>Have found any solution for this : &quot;SQL Server WMI provider is not available on xxxxxx&quot;</strong>?<br />\n<br />\nThanks.<br />\n</blockquote>\nHave you verified that the version of SMO on the machine where you're running the scripts matches the version of SQL Server that you're trying to gather information from?\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2015-12-22T14:09:21.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456928",
+    "ThreadId": "539457",
+    "Html": "We have rewritten the whole logic and are using directly WMI - not SMO. This way the scan works with all versions.<br />\n",
+    "PostedDate": "2015-12-22T23:40:55.54-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1463270",
+    "ThreadId": "539457",
+    "Html": "I am having this issue.  I have a powershell script that runs from a central location.  It connects to each of our SQL Server instances and collects information.  It uses SMO and WMI the to get the port number of each SQL Server instance.   If SQL 2014 client tools are installed on the central server, it fails to get the 2012 port numbers.  I get the error &quot;SQL Server WMI provider is not available&quot;.\r<br />\n<br />\nDoes anyone know when/if Microsoft plans to fix this?\r<br />\n<br />\nJensthebrain, can you explain how you rewrote the logic to use WMI directly instead of SMO?  I'd like to know if I could change my powershell script to do that or if when running it from a central location to get info about each instance, I need to use SMO.\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2016-02-15T08:36:35.417-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1465255",
+    "ThreadId": "539457",
+    "Html": "This is an example of the alternative way:<br />\n<pre><code>$namespaces = Get-WMIObject -ComputerName $hostName -NameSpace root\\Microsoft\\SQLServer -Class &quot;__NAMESPACE&quot; |\n    Where Name -Like &quot;ComputerManagement*&quot;\nForeach ($namespace IN $namespaces)\n        {\n        $services = Get-WmiObject -ComputerName $hostname -Namespace &quot;$($namespace.__NAMESPACE)\\$($namespace.Name)&quot; -Class SqlService |\n        Select __SERVER, ServiceName, DisplayName, StartName,\n         @{l='TypeDescr';e={switch($_.SQLServiceType){1 {'Database Engine'} 2 {'SQL Agent'} 3 {'Full Text Search'} 4 {'SSIS'} 5 {'SSAS'} 6 {'SSRS'} 7 {'SQL Browser'} 8 {'Unknown'} 9 {'FullTextFilter Daemon Launcher'}}}},\n          @{l='status';e={switch($_.state){ 1 {'Stopped'} 2 {'Start Pending'}  3 {'Stop Pending' } 4 {'Running'}}}},\n          @{l='startmodus';e={switch($_.startmode){ 1 {'unknown'} 2 {'Automatic'}  3 {'Manual' } 4 {'Disabled'}}}}\n        }</code></pre>\n\n",
+    "PostedDate": "2016-03-02T04:33:36.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1476824",
+    "ThreadId": "539457",
+    "Html": "Hi Kendal. <br />\n<br />\nFirst of all I would like to thank you for sharing this great solution with us! It's realy usefull and contains toons of usefull information and great overview of environment. <br />\nLike others I'm having same issue too when trying to document SQL cluster - &quot;No machines found!&quot; while documenting standalone setups works great. <br />\n<br />\nMy environment; <br />\n<ul>\n<li>Cluster with three nodes runing Windows Server 2012 </li>\n<li>Three SQL 2012 FCI instances (two database engines and one SSAS)</li>\n<li>Windows 7 computer collecting data</li>\n<li>SMO on computer collecting data<br />\n<img src=\"http://shrani.si/f/3l/R0/2dsd2A6x/smo.png\" alt=\"Image\" /></li>\n<li>\nAll servers and computer for collecting data are in same domain<br />\n</li>\n</ul>\nWhen I run<br />\n<pre><code>.\\Get-SqlServerInventoryToClixml.ps1 -ComputerName GENINGCSQL01,GENINGCSQL02,GENINGCSQL03 -MaxConcurrencyThrottle 8 -IncludeDatabaseObjectPermissions -IncludeDatabaseSystemObjects -LoggingPreference Verbose -DirectoryPath &quot;C:\\Users\\dejand\\Documents\\SQL PowerDoc&quot;</code></pre>\n\nI get this result in log<br />\n<pre><code>2016-06-20 14:05:36.3290 ? Starting Script: C:\\Users\\foo\\Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1\n2016-06-20 14:05:36.3446 ? Beginning SQL Server Inventory\n2016-06-20 14:05:36.3446 ?  -LoggingPreference: Verbose\n2016-06-20 14:05:36.3446 ?  -ComputerName: SERVERSQL01,SERVERSQL02,SERVERSQL03\n2016-06-20 14:05:36.3602 ?  -MaxConcurrencyThrottle: 8\n2016-06-20 14:05:36.3602 ?  -PrivateOnly: False\n2016-06-20 14:05:36.3602 ?  -ParentProgressId: -1\n2016-06-20 14:05:36.3602 ?  -IncludeDatabaseObjectPermissions: True\n2016-06-20 14:05:36.3758 ?  -IncludeDatabaseObjectInformation: False\n2016-06-20 14:05:36.3758 ?  -IncludeDatabaseSystemObjects: True\n2016-06-20 14:05:36.3758 ? Beginning network scan\n2016-06-20 14:05:36.3914 ?  -ComputerName: SERVERSQL01,SERVERSQL02,SERVERSQL03\n2016-06-20 14:05:36.3914 ?  -PrivateOnly: False\n2016-06-20 14:05:36.3914 ?  -MaxConcurrencyThrottle: 8\n2016-06-20 14:05:36.4070 ?  -ResolveAliases: True\n2016-06-20 14:05:36.4070 ? Resolving IP address for SERVERSQL01\n2016-06-20 14:05:36.4070 ? Resolving IP address for SERVERSQL02\n2016-06-20 14:05:36.4226 ? Resolving IP address for SERVERSQL03\n2016-06-20 14:05:36.4538 ? Testing PING connectivity to 3 addresses\n2016-06-20 14:05:36.4694 $ Testing PING connectivity to SERVERSQL03.MYDOMAIN.CORP (192.168.1.170) [1 of 3]\n2016-06-20 14:05:36.4850 $ Testing PING connectivity to SERVERSQL02.MYDOMAIN.CORP (192.168.1.168) [2 of 3]\n2016-06-20 14:05:36.5318 $ Testing PING connectivity to SERVERSQL01.MYDOMAIN.CORP (192.168.1.167) [3 of 3]\n2016-06-20 14:05:38.7158 $ PING response from SERVERSQL03.MYDOMAIN.CORP (192.168.1.170): True\n2016-06-20 14:05:38.7158 $ PING response from SERVERSQL02.MYDOMAIN.CORP (192.168.1.168): True\n2016-06-20 14:05:38.7158 $ PING response from SERVERSQL01.MYDOMAIN.CORP (192.168.1.167): True\n2016-06-20 14:05:38.9966 $ PING connectivity test complete\n2016-06-20 14:05:38.9966 ? Testing WMI connectivity to 3 addresses\n2016-06-20 14:05:39.0122 $ Testing WMI connectivity to SERVERSQL03.MYDOMAIN.CORP (192.168.1.170) [1 of 3]\n2016-06-20 14:05:39.0278 $ Testing WMI connectivity to SERVERSQL02.MYDOMAIN.CORP (192.168.1.168) [2 of 3]\n2016-06-20 14:05:39.0278 $ Testing WMI connectivity to SERVERSQL01.MYDOMAIN.CORP (192.168.1.167) [3 of 3]\n2016-06-20 14:05:39.2930 $ WMI response from SERVERSQL03.MYDOMAIN.CORP (192.168.1.170): True\n2016-06-20 14:05:39.2930 $ WMI response from SERVERSQL02.MYDOMAIN.CORP (192.168.1.168): True\n2016-06-20 14:05:39.2930 $ WMI response from SERVERSQL01.MYDOMAIN.CORP (192.168.1.167): True\n2016-06-20 14:05:39.5738 $ WMI connectivity test complete\n2016-06-20 14:05:39.5894 ? Network scan complete\n2016-06-20 14:05:39.5894 ?  -IP Addresses Scanned: 3\n2016-06-20 14:05:39.5894 ?  -PING Replies: 3\n2016-06-20 14:05:39.6050 ?  -WMI Replies: 3\n2016-06-20 14:05:39.6206 ? Beginning SQL Service discovery scan\n2016-06-20 14:05:39.6674 ? Scanning SERVERSQL03.MYDOMAIN.CORP at IP address 192.168.1.170 for SQL Services [Device 1 of 3]\n2016-06-20 14:05:39.6674 ? Scanning SERVERSQL02.MYDOMAIN.CORP at IP address 192.168.1.168 for SQL Services [Device 2 of 3]\n2016-06-20 14:05:39.7298 ? Scanning SERVERSQL01.MYDOMAIN.CORP at IP address 192.168.1.167 for SQL Services [Device 3 of 3]\n2016-06-20 14:05:40.3070 ? Found SQL Server named instance SERVERSQL03.MYDOMAIN.CORP\\INSTANCE at IP address 192.168.1.170\n2016-06-20 14:05:40.3070 ? Found SQL Server Agent named instance SERVERSQL03.MYDOMAIN.CORP\\INSTANCE at IP address 192.168.1.170\n2016-06-20 14:05:40.5722 ? Found SQL Server named instance SERVERSQL01.MYDOMAIN.CORP\\INSTANCE at IP address 192.168.1.167\n2016-06-20 14:05:40.5722 ? Found SQL Server Agent named instance SERVERSQL01.MYDOMAIN.CORP\\INSTANCE at IP address 192.168.1.167\n2016-06-20 14:05:40.5878 ? Found SQL Server named instance SERVERSQL01.MYDOMAIN.CORP\\INSTANCE2 at IP address 192.168.1.167\n2016-06-20 14:05:40.5878 ? Found SQL Server Agent named instance SERVERSQL01.MYDOMAIN.CORP\\INSTANCE2 at IP address 192.168.1.167\n2016-06-20 14:05:40.8530 ? Found SQL Server named instance SERVERSQL02.MYDOMAIN.CORP\\INSTANCE at IP address 192.168.1.168\n2016-06-20 14:05:40.8530 ? Found SQL Server Agent named instance SERVERSQL02.MYDOMAIN.CORP\\INSTANCE at IP address 192.168.1.168\n2016-06-20 14:05:40.8686 ? Found SQL Server named instance SERVERSQL02.MYDOMAIN.CORP\\INSTANCE2 at IP address 192.168.1.168\n2016-06-20 14:05:40.8686 ? Found SQL Server Agent named instance SERVERSQL02.MYDOMAIN.CORP\\INSTANCE2 at IP address 192.168.1.168\n2016-06-20 14:05:41.1338 ? SQL Server service discovery complete\n2016-06-20 14:05:41.1650 ?  -SQL Server Instance Count: 5\n2016-06-20 14:05:41.1650 ?  -SQL Server Agent Instance Count: 5\n2016-06-20 14:05:41.1650 ? Beginning scan of 0 instance(s)\n2016-06-20 14:05:41.4771 ? Instance scan complete (Success: 0; Failure: 0)\n2016-06-20 14:05:41.4927 ? Writing Inventory to disk\n2016-06-20 14:05:41.4927 + No machines found!\n2016-06-20 14:05:41.5083 ? End Script: C:\\Users\\foo\\Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1</code></pre>\n\nI've run snippet in PS you have provided to DerekrhSQL and that's the result;<br />\n<pre><code>The following exception occurred while trying to enumerate the collection: &quot;SQL Server WMI provider is not available on SERVERSQL01.MYDOMAIN.CORP.&quot;.\nAt line:11 char:1\n+ $ManagedComputer.Services | Format-Table -Property DisplayName, StartMode, Servi ...\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (:) [], ExtendedTypeSystemException\n    + FullyQualifiedErrorId : ExceptionInGetEnumerator\n \nThe following exception occurred while trying to enumerate the collection: &quot;SQL Server WMI provider is not available on SERVERSQL01.MYDOMAIN.CORP.&quot;.\nAt line:11 char:1\n+ $ManagedComputer.Services | Format-Table -Property DisplayName, StartMode, Servi ...\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (:) [], ExtendedTypeSystemException\n    + FullyQualifiedErrorId : ExceptionInGetEnumerator</code></pre>\n\nThank you for your time and help. Looking forward to solve this issue. <br />\n<br />\nPS: I've changed names of computers, domain and IP addresses. <br />\n",
+    "PostedDate": "2016-06-20T06:04:52.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477015",
+    "ThreadId": "539457",
+    "Html": "Hi ddragman,\r<br />\nI've seen this caused by two issues:<br />\n<ol>\n<li>The version of SMO that gets loaded by Power Doc is lower than the version of SQL Server that you're connecting to</li>\n<li>\nSomething's wrong with the WMI provider on the machine running SQL Server<br />\n</li>\n</ol>\nIt looks like you might have #1 going on here...What's the output if you run the following in a PowerShell console?<br />\n<pre><code>[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO')</code></pre>\n\nYou can tell if #2 is the issue because SQL Server Configuration Manager will give you a similar error message when you run it on your SQL Server and try to view services. There's an easy fix - re-register the WMI MOF files for SQL. See <a href=\"https://support.microsoft.com/en-us/kb/956013\" rel=\"nofollow\">https://support.microsoft.com/en-us/kb/956013</a> for instructions on how to do this.<br />\n",
+    "PostedDate": "2016-06-22T08:57:26.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477082",
+    "ThreadId": "539457",
+    "Html": "Hi Kendal, \r<br />\n<br />\nThanks for your reply!\r<br />\n<br />\nI've run the code in PowerShell console on computer from which I'm collecting data and that's the result.<br />\n<pre><code>PS C:\\Windows\\system32&gt; [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO')\n\nGAC    Version        Location                                                                                                                                           \n---    -------        --------                                                                                                                                           \nTrue   v2.0.50727     C:\\Windows\\assembly\\GAC_MSIL\\Microsoft.SqlServer.SMO\\13.0.0.0__89845dcd8080cc91\\Microsoft.SqlServer.SMO.dll                                        </code></pre>\n\nI've also run the same code in PowerShell on all three cluster node computers and that's the result. I believe that's OK, because SQL cluster is SQL 2012.<br />\n<pre><code>PS C:\\Windows\\system32&gt; [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO')\n\nGAC    Version        Location                                                                                                                    \n---    -------        --------                                                                                                                    \nTrue   v2.0.50727     C:\\Windows\\assembly\\GAC_MSIL\\Microsoft.SqlServer.SMO\\11.0.0.0__89845dcd8080cc91\\Microsoft.SqlServer.SMO.dll</code></pre>\n\nWMI provider looks fine on machines runing SQL Server. SQL Server Configuration Manager runs without errors and I can view services runing on the machine. <br />\n",
+    "PostedDate": "2016-06-23T05:25:06.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

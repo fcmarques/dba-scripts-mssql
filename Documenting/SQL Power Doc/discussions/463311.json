@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "1111244",
+    "ThreadId": "463311",
+    "Html": "I'm working with Power Doc for the first time (awesome presentation at SQLPass Summit). I was able to create an inventory of the 2 instances on my Windows 8.1 laptop. I copied the .gz file to a new folder under my user\\documents\\powershell folder and ran \r<br />\n<br />\n.\\Convert-SqlServerInventoryClixmlToExcel.ps1 -FromPath &quot;C:\\Users\\curtisk\\Documents\\WindowsPowerShell\\Output\\SQL Server Inventory - 2013-10-23-15-16.xml.gz&quot;\r<br />\n<br />\nThe ISE (running in admin mode) immediately starts returning thousands of lines (which don't stop or show any progress in 10 minutes) reading\r<br />\n<br />\nWARNING: Could not deserialize : Exception calling &quot;Invoke&quot; with &quot;2&quot; argument(s): &quot;Parameter count mismatch.&quot;\r<br />\n<br />\nRepeating the steps above with verbose logging writes the following to the log:\r<br />\n<br />\n2013-10-23 16:10:05.3607 ? Starting Script: C:\\Users\\curtisk\\Documents\\WindowsPowerShell\\Convert-SqlServerInventoryClixmlToExcel.ps1\r<br />\n2013-10-23 16:10:05.3607 ? Loading inventory from 'C:\\Users\\curtisk\\Documents\\WindowsPowerShell\\Output\\SQL Server Inventory - 2013-10-23-15-16.xml.gz'\r<br />\n<br />\nIdeas?  Help?<br />\n",
+    "PostedDate": "2013-10-23T13:12:11.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1113743",
+    "ThreadId": "463311",
+    "Html": "I am getting a similar message... \r<br />\nthis is from the Powershell console\r<br />\nin yellow\r<br />\nWARNING: Could not serialize psobject[]: Exception calling &quot;Invoke&quot; with &quot;2&quot; argument(s): &quot;The Write is closed or in error state.&quot; \r<br />\nin red\r<br />\nException calling &quot;Invoke&quot; with &quot;2&quot; argument(s): &quot;The writer is closed or in error state.&quot; \r<br />\nAt C:\\Users\\mike\\Documents\\WindowsPowerShell\\Modules\\SqlServerInventory.psm1:121 char:3<br />\n<ul>\n<li>[void]$done.invoke($serializer, @())</li>\n<li>\n~~~~~~~~~~~~~~~~~~~~~~~<br />\n<ul>\n<li>CategoryInfo             : NotSpecified: (:) [], MethodInvicationException</li>\n<li>\nFullyQualifiedErrorId  : InvalideOperationException<br />\n</li>\n</ul>\n</li>\n</ul>\nthen for the log I had verbose turned on and the last lines are \r<br />\n2013-10-29 11:19:37.3280 ? Scanned BHM-DOCS-SQL at IP address 192.168.55.3 with 0 errors\r<br />\n2013-10-29 11:19:37.6712 ? Machine scan complete (Success: 6; Failure: 0)\r<br />\n2013-10-29 11:19:37.7180 ? Writing Inventory to disk\r<br />\n<br />\nI have run it a couple of times without issue... so not sure whats up... \r<br />\nbut wanted to let you know\r<br />\nThanks for writing this ... it is awesome... <br />\n",
+    "PostedDate": "2013-10-29T09:41:38.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1113769",
+    "ThreadId": "463311",
+    "Html": "more information I was running with command .\\Get-SqlServerInventoryToClixml.ps1 -Computername My-Server -LoggingPreference Verbose -DirectoryPath C:\\Users\\mike\\Documents\\SQLDocs -IncludeDatabaseObjectInformation -IncludeDatabaseObjectPermissions -IncludeDatabaseSystemObjects\r<br />\n<br />\nwhen I removed the -IncludeDatabaseObjectInformation -IncludeDatabaseObjectPermissions  options it worked fine...  it was running against a SQL 2000 server<br />\n",
+    "PostedDate": "2013-10-29T11:11:07.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1114597",
+    "ThreadId": "463311",
+    "Html": "I've figured out what's going on here - an issue was introduced with PowerShell 4.0 and how the .NET methods for serialization/deserialization are being invoked via reflection. I've uploaded 1.0.2.2 BETA 1 with the fix. You can grab it from <a href=\"https://sqlpowerdoc.codeplex.com/releases/view/114187\" rel=\"nofollow\">https://sqlpowerdoc.codeplex.com/releases/view/114187</a><br />\n",
+    "PostedDate": "2013-10-30T14:57:27.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1123335",
+    "ThreadId": "463311",
+    "Html": "Thank you for the beta fix.\r<br />\nI've re-run the data collection part Get-SqlServerInventoryToClixml.ps1.\r<br />\n<br />\nApparently the serialization issue has been fixed for the Convert-SqlServerInventoryClixmlToExcel.ps1.\r<br />\nOn my Win7 x86 sp1 with PoSh4 and office 2007 it now produces :\r<br />\n<br />\nException calling &quot;Add&quot; with &quot;0&quot; argument(s): &quot;Old format or invalid type library. (Exception from HRESULT: 0x80028018 (TYPE_E_INVDATAREAD))&quot;\r<br />\nAt C:\\Users\\ItsMe\\Documents\\WindowsPowerShell\\Modules\\SqlServerInventory\\SqlServerInventory.psm1:4657 char:3<br />\n<ul>\n<li>$Workbook = $Excel.Workbooks.Add()</li>\n<li>\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br />\n<ul>\n<li>CategoryInfo          : NotSpecified: (:) [], MethodInvocationException</li>\n<li>\nFullyQualifiedErrorId : ComMethodTargetInvocation<br />\n</li>\n</ul>\n</li>\n</ul>\nI'll request an upgrade to Office 2010 and see if that still produces this issue.\r<br />\n<br />\nJohan<br />\n",
+    "PostedDate": "2013-11-14T00:27:37.593-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1123542",
+    "ThreadId": "463311",
+    "Html": "Johan,\r<br />\nI tested the latest version this morning on a VM running Windows 7 N SP 1 with .NET Framework 4.5.1, PoSh 4.0, and Office 2007 (x86) RTM. I was able to create all the Excel workbooks with no problem.\r<br />\n<br />\nI <em>think</em> I might have found a similar issue to what you're experiencing - see <a href=\"http://stackoverflow.com/questions/687891/exception-automating-excel-2007-with-powershell-when-calling-workbooks-add\" rel=\"nofollow\">http://stackoverflow.com/questions/687891/exception-automating-excel-2007-with-powershell-when-calling-workbooks-add</a>\r<br />\n<br />\nIn a PoSh console, for $Home is your CurrentCulture set to something other than en-US?\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-11-14T08:42:28.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1123631",
+    "ThreadId": "463311",
+    "Html": "ah, indeed. Current culture is nl-be.\r<br />\nI'll test it tomorrow.\r<br />\n<br />\nThank you for the follow up.\r<br />\n<br />\nJohan<br />\n",
+    "PostedDate": "2013-11-14T11:50:19.987-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1123633",
+    "ThreadId": "463311",
+    "Html": "OK, the temporary fix is to change your culture to EN-US (via Regions and Language in control panel) to create the Excel workbooks. Not a great fix, but it'll work while I look into how to fix it in the code.\r<br />\n<br />\n(I've reproduced the problem by changing the culture in my VM as well, so now I can test that a fix works too!)\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-11-14T11:53:11.43-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1125998",
+    "ThreadId": "463311",
+    "Html": "as a workaround, not messing around with my client settings, and getting confused with azerty-querty keyboard switch, this can be a great option:\r<br />\nAs you can see I grabbed this function from a technet forum.<br />\n<pre><code>#Region XLSStuff\n#SPECIAL STUFF\n# http://social.technet.microsoft.com/Forums/en-US/908dea46-1bb9-492f-b85a-3d5972765c03/adding-new-sheets-to-excel-workbook \n#1. CULTURE/INTERNATIONALIZATION\nFunction Use-Culture ([System.Globalization.CultureInfo]$Culture,[ScriptBlock]$Script)\n    {\n    # What does this code do? Basically, it sort of resolves and age-old problem with Excel\n    # (or probably with the whole Office suite, but I never tried stuff in Word or Access with\n    # PowerShell) and internationalisation.\n    # For certain code to run properly, the internal culture should be set to EN-US. EN-UK might\n    # work too, but expect a lot of HRESULT errors when trying to execute automatisation code\n    # on non-English systems. This code runs the current thread as EN-US, whatever the culture\n    # of the Operating System. At the end of the script, it restores the old culture settings.\n    #\n    # Because the whole Excel (or Office) related code runs inside the script block given to this\n    # function, there's one huge disadvantage however for debugging: any error will probably refer\n    # to this Use-Culture code block. \n    $OldCulture = [System.Threading.Thread]::CurrentThread.CurrentCulture\n    Trap \n        {\n        [System.Threading.Thread]::CurrentThread.CurrentCulture = $OldCulture\n        }\n    [System.Threading.Thread]::CurrentThread.CurrentCulture = $Culture\n    Invoke-Command $Script\n    [System.Threading.Thread]::CurrentThread.CurrentCulture = $OldCulture\n    }\n#EndRegion XLSStuff\n\n#How do you run it?\nUse-Culture EN-US {\n        &amp; .\\Convert-SqlServerInventoryClixmlToExcel.ps1 -FromPath &quot;$TargetFile&quot; -ToDirectoryPath &quot;$TargetPath&quot; \n        }\n\n\n</code></pre>\n\n",
+    "PostedDate": "2013-11-18T05:44:28.187-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1210313",
+    "ThreadId": "463311",
+    "Html": "Hi Kendal i know this thread is maybe a little old but I found an easier solution to the &quot;could not deserialize issue&quot; I get this error on my Windows 8 machine and this is what I did to resolve the issue: <br />\nopen a command prompt and then just start Windows Powershell in mode 2.0. like this :<br />\nPowershell.exe -version 2<br />\nthen use the .\\Convert-SqlServerInventoryClixmlToExcel.ps1 as per manual and it just works fine.<br />\nthought I would just share this bit of information to anyone that came across this problem. On my Windows 7 machine with a different locale/culture than en-us the script worked, it was just on my windows 8 machine that it did not work.<br />\np.s. also make sure under windows features that Windows Powershell 2.0. is also selected and installed.<br />\nHope this helps someone Cheers<br />\nEugene van den Bergh<br />\n",
+    "PostedDate": "2014-02-18T23:28:45.547-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1219641",
+    "ThreadId": "463311",
+    "Html": "Eugene,\r<br />\nThanks for the tip. So I understand, your Windows 8 machine where the code does not work is a different locale/culture than en-us?\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-03-05T13:25:10.33-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1220142",
+    "ThreadId": "463311",
+    "Html": "\r\n<div dir=\"ltr\" style=\"font-family:'Calibri','Segoe UI','Meiryo','Microsoft YaHei UI','Microsoft JhengHei UI','Malgun Gothic','sans-serif'; font-size:12pt\">\r\n<div>Hi Kendal yes I am using South African English<br>\r\n</div>\r\n<div>\r\n<div><br>\r\n</div>\r\n<div>Sent from Windows Mail</div>\r\n<div><br>\r\n</div>\r\n</div>\r\n<div style=\"padding-top:5px; border-top-color:rgb(229,229,229); border-top-width:1px; border-top-style:solid\">\r\n<div><font face=\" 'Calibri', 'Segoe UI', 'Meiryo', 'Microsoft YaHei UI', 'Microsoft JhengHei UI', 'Malgun Gothic', 'sans-serif'\" style=\"line-height:15pt; letter-spacing:0.02em; font-family:\"><b></b></font></div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2014-03-06T21:33:04.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1316735",
+    "ThreadId": "463311",
+    "Html": "sorry, what i wrote, didt work after all.. <br />\n",
+    "PostedDate": "2014-10-27T06:10:44.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

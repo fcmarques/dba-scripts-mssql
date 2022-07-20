@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "While running Convert-SqlServerInventoryClixmlToExcel.ps1 after my PS version was upgraded to version 5, I started getting errors.  Have you seen this before and is there a resolution?\r\n\r\nConvert-SqlServerInventoryClixmlToExcel.ps1 -FromPath \"C:\\Users\\<user>\\Documents\\SQL Server Inventory - 2017-06-28-15-16.xml.gz\" -ColorTheme Blue -ColorScheme medium -ToDirectoryPath \"C:\\PS\\Inventory\"\r\n\r\nException setting \"visible\": \"Unable to cast COM object of type \r\n'Microsoft.Office.Interop.Excel.ApplicationClass' to interface type \r\n'Microsoft.Office.Interop.Excel._Application'. This operation failed because the QueryInterface call on \r\nthe COM component for the interface with IID '{000208D5-0000-0000-C000-000000000046}' failed due to the \r\nfollowing error: Error loading type library/DLL. (Exception from HRESULT: 0x80029C4A \r\n(TYPE_E_CANTLOADLIBRARY)).\"\r\nAt \r\nC:\\Users\\<user>\\Documents\\WindowsPowerShell\\Modules\\SqlServerInventory\\SqlServerInventory.psm1:4685 \r\nchar:3\r\n+         $Excel.visible = $false\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [], SetValueInvocationException\r\n    + FullyQualifiedErrorId : ExceptionWhenSetting\r\n",
+    "LastUpdatedDate": "2017-06-29T11:41:09.85-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2017-06-28T14:37:13.98-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Convert-SqlServerInventoryClixmlToExcel.ps1 fails on PS 5",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 26
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "In the event this helps someone, I resolved my issue with the following:\nI am running Windows 10 PS 5 and Excel 2013.  Looking at the registry there were 2 entries:\nComputer\\HKEY_CLASSES_ROOT\\TypeLib\\{00020813-0000-0000-C000-000000000046}\\1.8\nand\nComputer\\HKEY_CLASSES_ROOT\\TypeLib\\{00020813-0000-0000-C000-000000000046}\\1.9\n\nI removed the 1.9 which was for Excel 16.0 and that resolved my issue.\n",
+      "PostedDate": "2017-06-29T11:41:09.85-07:00",
+      "Id": 208640
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1097573",
+    "ThreadId": "458703",
+    "Html": "Hi,\r<br />\n<br />\nDid run 'SQL Power Doc' for the first time and did get this error:\r<br />\n<br />\nError querying for A records from DNS Server\r<br />\n<br />\nWhat could be the problem ?\r<br />\n<br />\nRegards,\r<br />\n<br />\nBert Berntsen.<br />\n",
+    "PostedDate": "2013-09-22T04:09:38.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1098546",
+    "ThreadId": "458703",
+    "Html": "Hi Bert,\r<br />\nIs the machine that you ran SQL Power Doc on part of an Active Directory domain?\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-09-24T07:11:16.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1098566",
+    "ThreadId": "458703",
+    "Html": "\r\n<div>Hi Kendal,<br>\r\n<br>\r\nDid solve the problem by giving the servername from the DNS server.<br>\r\n<br>\r\nThanks.<br>\r\n<br>\r\nBert.<br>\r\n<br>\r\nOp 24-9-2013 16:11, kendalvandyke schreef:<br>\r\n</div>\r\n<blockquote type=\"cite\">\r\n<p>From: kendalvandyke</p>\r\n<div id=\"ThreadNotificationPostBody\">Hi Bert, <br>\r\nIs the machine that you ran SQL Power Doc on part of an Active Directory domain? <br>\r\n<br>\r\n--Kendal<br>\r\n</div>\r\n<p color=\"#000000\" align=\"left\">Geen virus gevonden in dit bericht.<br>\r\nGecontroleerd door AVG - <a href=\"http://www.avg.com\">www.avg.com</a><br>\r\nVersie: 2013.0.3408 / Virusdatabase: 3222/6694 - datum van uitgifte: 09/24/13</p>\r\n</blockquote>\r\n<br>\r\n",
+    "PostedDate": "2013-09-24T08:15:05.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1098574",
+    "ThreadId": "458703",
+    "Html": "Hi Bert,\r<br />\nGlad that you got it resolved, but I'm a bit curious why not specifying a DNS servername (which implies 'automatic' is used as a parameter value) didn't work for you.\r<br />\n<br />\nIn the code I grab the DNS server information from all IP enabled adapters that are part of an AD domain. Would you mind running the following code in a PowerShell ISE window and tell me if the DNS server that you manually specified shows up in the list? <br />\n<pre><code>Get-WmiObject -Namespace root\\CIMV2 -Class Win32_NetworkAdapterConfiguration `\n    -Property DnsServerSearchOrder, DNSDomain `\n    -Filter &quot;(IPEnabled = True) and (DNSDomain &lt;&gt; 'domain_not_set.invalid') and (DNSDomain &lt;&gt; '')&quot;</code></pre>\n\n-- Kendal<br />\n",
+    "PostedDate": "2013-09-24T08:34:27.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1103583",
+    "ThreadId": "458703",
+    "Html": "\r\n<div>Hi Kendal,<br>\r\n<br>\r\nDid get this back.<br>\r\n<br>\r\n<font face=\"sans-serif\" size=\"2\">PS C:\\Users\\apidbe3232&gt; Get-WmiObject -Namespace root\\CIMV2 -Class Win32_NetworkAdapterConfiguration ` -Property DnsServ\r\n</font><br>\r\n<font face=\"sans-serif\" size=\"2\">erSearchOrder, DNSDomain ` -Filter &quot;(IPEnabled = True) and (DNSDomain &lt;&gt; 'domain_not_set.invalid') and (DNSDomain &lt;&gt; '')\r\n</font><br>\r\n<font face=\"sans-serif\" size=\"2\">&quot; </font><br>\r\n<font face=\"sans-serif\" size=\"2\">Get-WmiObject : A positional parameter cannot be found that accepts argument 'System.Object[]'.\r\n</font><br>\r\n<font face=\"sans-serif\" size=\"2\">At line:1 char:14 </font><br>\r\n<font face=\"sans-serif\" size=\"2\">&#43; Get-WmiObject &lt;&lt;&lt;&lt; -Namespace root\\CIMV2 -Class Win32_NetworkAdapterConfiguration ` -Property DnsServerSearchOrder,\r\n</font><br>\r\n<font face=\"sans-serif\" size=\"2\">DNSDomain ` -Filter &quot;(IPEnabled = True) and (DNSDomain &lt;&gt; 'domain_not_set.invalid') and (DNSDomain &lt;&gt; '')&quot;\r\n</font><br>\r\n<font face=\"sans-serif\" size=\"2\">&#43; CategoryInfo : InvalidArgument: (:) [Get-WmiObject], ParameterBindingException\r\n</font><br>\r\n<font face=\"sans-serif\" size=\"2\">&#43; FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.GetWmiObjectCommand</font>\r\n<br>\r\n<font face=\"sans-serif\" size=\"2\"></font><br>\r\nAnother question.<br>\r\nIf I run the discovery I get these messages:<br>\r\n<br>\r\nSQLSERVER inventory<br>\r\nDicovery sqlserver instances<br>\r\nTesting ping connectivity<br>\r\n589 addresses tested, 539 replies<br>\r\nTesting WMI connectivity<br>\r\nScanning for SQL Services<br>\r\ndevice xxx of 460<br>\r\n<br>\r\nAnd then the script hangs. I also cannot find any output.<br>\r\n<br>\r\nPlease advice what to do.<br>\r\n<br>\r\nThanks.<br>\r\n<br>\r\nBert Berntsen.<br>\r\n<br>\r\nOp 24-9-2013 17:34, kendalvandyke schreef:<br>\r\n</div>\r\n<blockquote type=\"cite\">\r\n<p>From: kendalvandyke</p>\r\n<div id=\"ThreadNotificationPostBody\">Hi Bert, <br>\r\nGlad that you got it resolved, but I'm a bit curious why not specifying a DNS servername (which implies 'automatic' is used as a parameter value) didn't work for you.\r\n<br>\r\n<br>\r\nIn the code I grab the DNS server information from all IP enabled adapters that are part of an AD domain. Would you mind running the following code in a PowerShell ISE window and tell me if the DNS server that you manually specified shows up in the list?\r\n<br>\r\n<pre><code>Get-WmiObject -Namespace root\\CIMV2 -Class Win32_NetworkAdapterConfiguration `\r\n    -Property DnsServerSearchOrder, DNSDomain `\r\n    -Filter &quot;(IPEnabled = True) and (DNSDomain &lt;&gt; 'domain_not_set.invalid') and (DNSDomain &lt;&gt; '')&quot;</code></pre>\r\n-- Kendal<br>\r\n</div>\r\n<p color=\"#000000\" align=\"left\">Geen virus gevonden in dit bericht.<br>\r\nGecontroleerd door AVG - <a href=\"http://www.avg.com\">www.avg.com</a><br>\r\nVersie: 2013.0.3408 / Virusdatabase: 3222/6694 - datum van uitgifte: 09/24/13</p>\r\n</blockquote>\r\n<br>\r\n",
+    "PostedDate": "2013-10-04T04:32:34.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1104709",
+    "ThreadId": "458703",
+    "Html": "Hi Bert,\r<br />\nI wasn't expecting an error to be returned by that Get-WmiObject call...If you run the following do you still get an error? (Make sure it's all on a single line when you execute it)<br />\n<pre><code>Get-WmiObject -Namespace root\\CIMV2 -Class Win32_NetworkAdapterConfiguration | ft -Property DnsServerSearchOrder, DNSDomain</code></pre>\n\nRe: the discovery hanging, I recommend using verbose logging (-LoggingPreference Verbose). Details about what SQL Power Doc is doing will be written to the log file in the output directory; if it appears that something is hung you can review the log file and see if things are still happening. If that's still not writing anything to the log and things are really not responding let me know and I'll help troubleshoot further.\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-10-07T12:12:52.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1105046",
+    "ThreadId": "458703",
+    "Html": "Kendal, I think this is more what you expect. DnsServerSearchOrder DNSDomain -------------------- --------- {10.124.237.66, 10.124.226.228, 10.103.45.81} branches.pi.test.nl.eu.abnamro.com But now I had this problem. That was yesterday evening. Did try\r\n today again but is was hanging during the windows scan. The program did not write any output. Is it possible to do only the sqlserver scan and not the windows scan? Regards, Bert Berntsen. Op 7-10-2013 21:12, kendalvandyke schreef: &gt; &gt; From: kendalvandyke\r\n &gt; &gt; Hi Bert, &gt; I wasn't expecting an error to be returned by that Get-WmiObject &gt; call...If you run the following do you still get an error? (Make sure &gt; it's all on a single line when you execute it) &gt; |Get-WmiObject -Namespace root\\CIMV2 -Class Win32_NetworkAdapterConfiguration\r\n | ft -Property DnsServerSearchOrder, DNSDomain| &gt; Re: the discovery hanging, I recommend using verbose logging &gt; (-LoggingPreference Verbose). Details about what SQL Power Doc is &gt; doing will be written to the log file in the output directory; if it &gt; appears\r\n that something is hung you can review the log file and see if &gt; things are still happening. If that's still not writing anything to &gt; the log and things are really not responding let me know and I'll help &gt; troubleshoot further. &gt; &gt; --Kendal &gt; &gt; Read the full\r\n discussion online &gt; . &gt; &gt; To add a post to this discussion, reply to this email &gt; ([email removed] &gt; ) &gt; &gt; To start a new discussion for this project, email &gt; [email removed] &gt; &gt; &gt; You are receiving this email because you subscribed to this discussion &gt; on\r\n CodePlex. You can unsubscribe &gt; on &gt; CodePlex.com. &gt; &gt; Please note: Images and attachments will be removed from emails. Any &gt; posts to this discussion will also be available online at CodePlex.com &gt; &gt; Geen virus gevonden in dit bericht. &gt; Gecontroleerd door\r\n AVG - www.avg.com &gt; Versie: 2014.0.4142 / Virusdatabase: 3604/6729 - datum van uitgifte: &gt; 10/07/13 &gt;\r\n<div>Kendal,<br>\r\n<br>\r\nI think this is more what you expect.<br>\r\n<br>\r\n<font face=\"sans-serif\" size=\"2\">DnsServerSearchOrder DNSDomain</font> <br>\r\n<font face=\"sans-serif\" size=\"2\">-------------------- ---------</font> <br>\r\n<br>\r\n<font face=\"sans-serif\" size=\"2\">{10.124.237.66, 10.124.226.228, 10.103.45.81} branches.pi.test.nl.eu.abnamro.com</font>\r\n<br>\r\n<br>\r\nBut now I had this problem.<br>\r\n<br>\r\n<img src=\"cid:[email removed]\"><br>\r\n<br>\r\nThat was yesterday evening. Did try today again but is was hanging during the windows scan.<br>\r\n<br>\r\nThe program did not write any output.<br>\r\n<br>\r\nIs it possible to do only the sqlserver scan and not the windows scan?<br>\r\n<br>\r\nRegards,<br>\r\n<br>\r\nBert Berntsen.<br>\r\n<br>\r\nOp 7-10-2013 21:12, kendalvandyke schreef:<br>\r\n</div>\r\n<blockquote type=\"cite\">\r\n<p>From: kendalvandyke</p>\r\n<div id=\"ThreadNotificationPostBody\">Hi Bert, <br>\r\nI wasn't expecting an error to be returned by that Get-WmiObject call...If you run the following do you still get an error? (Make sure it's all on a single line when you execute it)<br>\r\n<pre><code>Get-WmiObject -Namespace root\\CIMV2 -Class Win32_NetworkAdapterConfiguration | ft -Property DnsServerSearchOrder, DNSDomain</code></pre>\r\nRe: the discovery hanging, I recommend using verbose logging (-LoggingPreference Verbose). Details about what SQL Power Doc is doing will be written to the log file in the output directory; if it appears that something is hung you can review the log file and\r\n see if things are still happening. If that's still not writing anything to the log and things are really not responding let me know and I'll help troubleshoot further.\r\n<br>\r\n<br>\r\n--Kendal<br>\r\n</div>\r\n<p color=\"#000000\" align=\"left\">Geen virus gevonden in dit bericht.<br>\r\nGecontroleerd door AVG - <a href=\"http://www.avg.com\">www.avg.com</a><br>\r\nVersie: 2014.0.4142 / Virusdatabase: 3604/6729 - datum van uitgifte: 10/07/13</p>\r\n</blockquote>\r\n<br>\r\n",
+    "PostedDate": "2013-10-08T08:34:34.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

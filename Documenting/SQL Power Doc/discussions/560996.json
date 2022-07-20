@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1289443",
+    "ThreadId": "560996",
+    "Html": "Hi Kendal,\r<br />\n<br />\nI had an idea for a feature request.  I am getting a false positive performance suggestion that isn't relevant as mount points are being used: \r<br />\n<br />\n&quot;The Default Data Path is configured for a drive (Z:) that currently holds database files of another type. This may result in multiple file types on the same drive when new databases are created which can negatively impact performance.&quot;\r<br />\n<br />\nMaking SQL Power Doc mount point aware would rock!\r<br />\n<br />\n<br />\nCan't say thank you enough,\r<br />\n<br />\nChuck<br />\n",
+    "PostedDate": "2014-08-12T13:28:01.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1321008",
+    "ThreadId": "560996",
+    "Html": "Chuck,\r<br />\nI am working on a set of changes to SQL Power Doc and will look into including mountpoint data. Good suggestion!\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-11-11T11:04:26.79-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

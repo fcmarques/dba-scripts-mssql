@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1043411",
+    "ThreadId": "443612",
+    "Html": "command was &quot;\\Get-SqlServerInventoryToClixml.ps1  -computername abc.xyz.lan -IncludeDatabaseObjectInformation -LoggingPreference verbose&quot;<br />\n<br />\nthe logfile shows the script connects to the server and then fails with:<br />\n<br />\n2013-05-14 17:03:51.6746 ? ERROR: Unable to retrieve service information from abc.xyz.LAN (***): Exception calling &quot;EndInvoke&quot; with &quot;1&quot; argument(s): &quot;You cannot call a method on a null-valued expression.&quot;<br />\n<br />\nwhat's that supposed to mean?<br />\n",
+    "PostedDate": "2013-05-14T08:08:01.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1043619",
+    "ThreadId": "443612",
+    "Html": "Thanks for checking out SQL Power Doc! This error could be happening if SMO is not installed on the machine where you're running the scripts. \r<br />\n<br />\nHave you verified that SMO is installed?\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-05-14T19:15:00.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1043766",
+    "ThreadId": "443612",
+    "Html": "argh. thanks, i actually <em>did</em> read the requirements. i just didn't check if the sql management studio was installed on the server i was trying it from because i was sure it was...\r<br />\n<br />\njozi<br />\n",
+    "PostedDate": "2013-05-15T02:54:42.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1214880",
+    "ThreadId": "443612",
+    "Html": "So, I've been using this for the last few months now, and I've been generating the reports monthly.  This month I have 3 servers that are getting the below error, does this mean SMO was un-installed?  I ran this at least 2 times on these servers.\r<br />\n<br />\nUnable to retrieve service information from SERVERNAME/IPADDRESS: Exception calling &quot;EndInvoke&quot; with &quot;1&quot; argument(s): &quot;The following exception occurred while trying to enumerate the collection: &quot;An exception occurred in SMO while trying to manage a service.&quot;.&quot;\r<br />\n<br />\nI LOVE this script btw!\r<br />\n<br />\nThanks,\r<br />\nCindy<br />\n",
+    "PostedDate": "2014-02-25T14:15:32.933-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1218352",
+    "ThreadId": "443612",
+    "Html": "Hi Cindy,\r<br />\nI'm glad you like the script! :-)\r<br />\n<br />\nIt looks like something's up with SMO on the machine where you're running SQL Power Doc from. Can you try running this snippet of code on the same machine (Change $ServerName on line 10 to the name of one of those 3 problem servers) and paste the full contents of $Error in this thread (sanitize any computer names, of course!)?<br />\n<pre><code>$Error.clear()\n[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO') | ForEach-Object {\n    if ($_.GetName().Version.Major -ge 10) {\n        [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMOExtended') | Out-Null\n        [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SQLWMIManagement') | Out-Null\n    }\n}\n\n&lt;# Change this to the name of the server that's giving you problems #&gt;\n$ServerName = 'ServerName'\n\n$ManagedComputer = New-Object -TypeName 'Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer' -ArgumentList $ServerName\n$ManagedComputer.Services | Out-Null\n$Error</code></pre>\n\nThis is a very basic version of the same code that SQL Power Doc is running but should give a more specific error message that I can use to help troubleshoot.\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-03-03T13:53:36.19-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1218427",
+    "ThreadId": "443612",
+    "Html": "Hmmmmm.....  So, now I'm even more confused.  I run the SQL Power Doc from my desktop, under my creds, as my creds have access to all the sql servers.  If SMO wasn't working on my desktop, I would expect none of the servers to give me the output file, but it's only 3 out of like 12 that I'm having the issue with.  If I run the command posted above from my desktop, and put in a 'ServerName' on line 10, that I'm having an issue w/ ,  I get the following... is this what you expected? \r<br />\n<br />\nThe following exception occurred while trying to enumerate the collection: &quot;An exception occurred in SMO while trying\r<br />\nto manage a service.&quot;.\r<br />\nAt line:1 char:1<br />\n<ul>\n<li>$ManagedComputer.Services | Out-Null</li>\n<li>\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br />\n<ul>\n<li>CategoryInfo          : NotSpecified: (:) [], ExtendedTypeSystemException</li>\n<li>\nFullyQualifiedErrorId : ExceptionInGetEnumerator<br />\n</li>\n</ul>\n</li>\n</ul>\nOr did I not run it correctly w/in powershell?  I'm thinking I didnt' run it correctly in powershell....<br />\n\r<br />\nThanks,\r<br />\nCindy<br />\n",
+    "PostedDate": "2014-03-03T15:17:04.88-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1219638",
+    "ThreadId": "443612",
+    "Html": "Cindy,\r<br />\nIt looks like you ran the command properly. The error suggests you've either got an issue with WMI on the server that you're trying to get information from or a problem with SMO on your local machine. Is the version of SMO on your machine the same as or higher than the version of SQL Server on the machine that you're getting errors back from?\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-03-05T13:20:51.617-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

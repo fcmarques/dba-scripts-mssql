@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have  run  to get the  SQL server  inventory  fine, I  got  the  .xml.gz  file sucessfully,  but  while  converting  sql server  inventory to excel  it  has stuck at formatting  sheet  55, I  ran  while  I was  leaving office and  in the  morning when I  returned its the same status, Kendal  can you  help  me  to resolve the  problem.\r\n\r\nAppreciate your response.",
+    "LastUpdatedDate": "2014-09-02T21:50:21.867-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2014-09-02T21:50:21.867-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": ".\\Convert-SqlServerInventoryClixmlToExcel.ps1 stuck at  formatting  sheet  55",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 12
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

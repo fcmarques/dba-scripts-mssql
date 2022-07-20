@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 13,
+    "Custom": null,
+    "Description": "Installed.  Ran under ISE as it's easier to copy-paste.  Executed for just the local machine, standard logging to zip.\r\n\r\nPS emitted red error messages stating that the cited modules could not be found in any module directory.\r\n\r\nAre there additional setup needs that for a first-time on the remote semi locked-down Customer box I need to check out, please?\r\n\r\n__UPDATE__:\r\nI was using the README from the .zip and its instructions are ___far___ less clear than this site's.  Rerunning the Extract so trust all will be well.\r\n\r\n__QUESTION__:\r\nIs there ANY way an Installer could be developed.  Newbies, like me, to PowerShell can get, 1) intimidated by the foreign syntax, 2) put off by the failure of the sl command that doesn't recognize \"...\\My Documents\\WindowsPowerShell\" despite my having just created it!, and 3) \"What a load of opening, closing, setting, just to try out a tool...\"  An intelligent Installer that did a survey of the install machine for the chosen \"style\", \"Gather only\" or \"gather and reporter\" would lower the entry bar significantly.  To have to go through the setup paroxysms for every remote machine where I must RDP through special VPN's and Aventail, thereby having no direct connection, (I have 60+ remote machines) is enough for it to be a level of effort that takes serious weighing against the benefits...  Installer, please...?",
+    "LastUpdatedDate": "2013-05-15T10:38:46.83-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2013-05-08T10:46:10.8-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "LogHelper and SQLServerInventory modules not found",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Good feedback and I will certainly look into what it takes to create an installer.\n\nI will also update the readme included in the ZIP so it matches the guide I've published here on the site.\n\nYou mentioned setting up on every remote machine - just to be clear, that's not necessary. The scripts and modules only need to be installed on one machine that has access to all the other machines that will be included in the inventory.\n\n--Kendal",
+      "PostedDate": "2013-05-08T12:58:03.873-07:00",
+      "Id": 99719
+    },
+    {
+      "Message": "Thanks, Kendal.\n\nI mean that I have to go to each box and run the collection script there because firewall, security, VPN issues, Aventail CISCO Remote desktop and a host of other connectivity issues/pains means I can't just install in one place and expect to be able to click-once and see-all.  Sad, but that's the inheritance I tolerate.\n\nI just ran for the first time on an Aventail box, where the entire DNS/host/IP resolution is taken over unconditionally by the Customer (BIG no-argument Customer).  We had to set up a \"disposable\" machine just to isolate ourselves from their takeover strategy...\n\nDespite \"Seeing\" the SQL Express instance, the \"Scanning\" stage errored out with a NULL method call for the Resource Governor, followed by a \"cannot index into a null array\" for Database Mail and \"cannot bind argument to parameter\" on SQL Agent.  Max errors having been reached, that's all she wrote!\n\nWe deploy over 95% of our Customer machines as SQL Express instances.  This one was just updated to SQL2008R2SP2 and has only one User Database.  Obviously no SQL Agent or Mail for an Express instance, so perhaps SQL Power Doc doesn't handle these installs?\n\nYour tool does look promising as our predecessors left nothing behind them in regards to ANY machine configuration in the field, so we're playing \"Discover the config\" every time we have a field issue. Hoping we can collate your output into a catalog...\n\nI had all kinds of \"not signed\" issues after rerunning the unzip, having stated \"unblock\" on the zip itself.  Had to visit every folder and manually unblock every file.  A pain, but finally appear to have a working tool as there were no PS errors or warnings.  Don't know much about PS to say why there were issues - maybe you know what I did wrong the first time to have issues the second time...\n\nRegards,\n\nStephen",
+      "PostedDate": "2013-05-08T14:26:29.18-07:00",
+      "Id": 99726
+    },
+    {
+      "Message": "Stephen,\nWhat version of SQL Express are you running? I'll set up a VM to match and see what issues I run into.\n\nYou also make a very good case for another feature that I've been kicking around - the ability to generate an inventory report from multiple files.\n\nKendal",
+      "PostedDate": "2013-05-08T15:04:40.543-07:00",
+      "Id": 99729
+    },
+    {
+      "Message": "SQL Server 2008 R2 SP2 with Advanced stuff.  I downloaded SP2 fresh on May 7th and applied to a near RTM instance successfully.\n\nIt's and odd OS - Windows POS Embedded 2009 V2 SP3, which, I believe, is the embedded version of XP SP3.\n\nAlso an odd box - Intel Atom 1.6GHz, 1GB RAM, 60GB drive.\n\nHope this helps.\n\nStephen",
+      "PostedDate": "2013-05-08T18:11:54.753-07:00",
+      "Id": 99752
+    },
+    {
+      "Message": "Stephen,\nI've checked in changes to SqlServerDatabaseEngineInformation.psm1 that should correct the Express edition errors. You can grab the latest version of the file from [https://sqlpowerdoc.codeplex.com/SourceControl/latest#Modules/SqlServerDatabaseEngineInformation/SqlServerDatabaseEngineInformation.psm1](https://sqlpowerdoc.codeplex.com/SourceControl/latest#Modules/SqlServerDatabaseEngineInformation/SqlServerDatabaseEngineInformation.psm1)\n\nI've tested the Windows Inventory piece against XP but not the specific version you're running; if you run into problems there let me know what the errors are (please use verbose logging so they're captured) and I'll look into them.\n\nKendal",
+      "PostedDate": "2013-05-09T08:14:48.917-07:00",
+      "Id": 99807
+    },
+    {
+      "Message": "Thanks, Kendal.  Will download and give it a try on a local VM to save the hassles of Aventail et al.\n\nCheers!\n\nStephen.",
+      "PostedDate": "2013-05-09T09:17:47.277-07:00",
+      "Id": 99814
+    },
+    {
+      "Message": "Downloaded, installed OK, went through the \"newbies\" instructions carefully and used example 4 from the central Windows 2003 Server to catalog a single remote Windows Server 2008 R2 machine that has the SQL Express instance we use as a template for all deployments.\n\nI am a local admin on every machine in the domain, including the host and the remote.\n\nLog file shows an error:\n\n2013-05-09 10:17:58.3828 ? Starting Script: C:\\Documents and Settings\\<me>My Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1\n2013-05-09 10:17:58.5390 ? Beginning SQL Server Inventory\n2013-05-09 10:17:58.5546 ? \t-ComputerName: xcDev3\n2013-05-09 10:17:58.5703 ? \t-MaxConcurrencyThrottle: 2\n2013-05-09 10:17:58.5859 ? \t-PrivateOnly: False\n2013-05-09 10:17:58.6015 ? \t-ParentProgressId: -1\n2013-05-09 10:17:58.6015 ? \t-IncludeDatabaseObjectPermissions: False\n2013-05-09 10:17:58.6015 ? \t-IncludeDatabaseObjectInformation: False\n2013-05-09 10:17:58.6171 ? \t-IncludeDatabaseSystemObjects: False\n2013-05-09 10:17:58.6328 ? Beginning network scan\n2013-05-09 10:17:58.6484 ? \t-ComputerName: xcDev3\n2013-05-09 10:17:58.6484 ? \t-PrivateOnly: False\n2013-05-09 10:17:58.6484 ? \t-MaxConcurrencyThrottle: 2\n2013-05-09 10:17:58.6640 ? \t-ResolveAliases: True\n2013-05-09 10:17:58.6640 ? Resolving IP address for XCDEV3\n2013-05-09 10:17:58.9921 ? Testing PING connectivity to 1 addresses\n2013-05-09 10:18:02.1172 ? Testing WMI connectivity to 1 addresses\n2013-05-09 10:18:02.6953 ? Network scan complete\n2013-05-09 10:18:02.6953 ? \t-IP Addresses Scanned: 1\n2013-05-09 10:18:02.7109 ? \t-PING Replies: 1\n2013-05-09 10:18:02.7109 ? \t-WMI Replies: 1\n2013-05-09 10:18:02.7265 ? Beginning SQL Service discovery scan\n2013-05-09 10:18:02.8672 ? Scanning XCDEV3.XC.LOCAL at IP address 172.18.42.48 for SQL Services [Device 1 of 1]\n__2013-05-09 10:18:04.4141 ? ERROR: Unable to retrieve service information from XCDEV3.XC.LOCAL (172.18.42.48): Exception calling \"EndInvoke\" with \"1\" argument(s): \"The following exception was thrown when trying to enumerate the collection: \"Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))\".\"__\n2013-05-09 10:18:04.7891 ? SQL Server service discovery complete\n2013-05-09 10:18:04.8047 ? Beginning scan of 0 instance(s)\n2013-05-09 10:18:05.1953 ? Instance scan complete (Success: 0; Failure: 0)\n2013-05-09 10:18:05.2266 ? Writing Inventory to disk\n2013-05-09 10:18:05.2266 + No machines found!\n2013-05-09 10:18:05.2422 ? End Script: C:\\Documents and Settings\\<me>\\My Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1\n",
+      "PostedDate": "2013-05-09T10:25:02.767-07:00",
+      "Id": 99819
+    },
+    {
+      "Message": "Stephen,\nThat error is coming back from WMI. Can you run the following in a PowerShell console (on the same machine where the scripts logged an error) to see that your account isn't being blocked from WMI calls?\n\ngwmi win32_operatingsystem -computername 172.18.42.48\n\n\nKendal",
+      "PostedDate": "2013-05-09T11:43:00.177-07:00",
+      "Id": 99825
+    },
+    {
+      "Message": "Get-WmiObject : Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))\nAt line:1 char:5\n+ gwmi <<<<  win32_operatingsystem -computername 172.18.42.48\n    + CategoryInfo          : NotSpecified: (:) [Get-WmiObject], UnauthorizedAccessException\n    + FullyQualifiedErrorId : System.UnauthorizedAccessException,Microsoft.PowerShell.Commands.GetWmiObjectCommand\n\nIs there a simple configuration change?  The target server is VERY quiet, only running a Dev UI that nobody is testing right now and a SQL Express instance that's also unused right now, so timeout issues mentioned elsewhere aren't in play IMO.\n\nThanks!",
+      "PostedDate": "2013-05-09T12:31:27.13-07:00",
+      "Id": 99829
+    },
+    {
+      "Message": "I'd follow the guidance provided by Microsoft at [http://msdn.microsoft.com/en-us/library/windows/desktop/aa822854(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/aa822854(v=vs.85).aspx)\n\nOnce you get the WMI permissions worked out the scripts should be much more useful! :-)",
+      "PostedDate": "2013-05-09T12:51:49.163-07:00",
+      "Id": 99831
+    },
+    {
+      "Message": "So I ran:\n\nnetsh advfirewall firewall set rule group=\"windows management instrumentation (wmi)\" new enable=yes\n\non the remote machine via a CMD prompt.\n\n4 rules created.\nOK\n\nRetried the gwmi command back on the host - same error.\n\nCopied each of the four individual commands and ran OK.\n\nI also changed the CIMOM registry setting to 1.\n\ngwmi gives the same access denied error.\n\nLogged onto the host as the Domain Admin.  Installed, etc, ran example 4 with the machine name substituted and same failure.\n\nStumped!",
+      "PostedDate": "2013-05-09T14:15:14.23-07:00",
+      "Id": 99847
+    },
+    {
+      "Message": "Stephen,\nI came across two more options to try:\n* [WMI Remote \"Access Denied\"](http://social.technet.microsoft.com/Forums/en-US/winserverManagement/thread/4f33837b-1cb1-4648-85b1-3ba87cbfe93e)\n* [Enable or Disable DCOM](http://technet.microsoft.com/en-us/library/cc771387.aspx)\n\nSorry, WMI seems to be one of those things that works great when it works but is a real PITA when it doesn't. :-(\n\nKendal",
+      "PostedDate": "2013-05-14T18:36:36.763-07:00",
+      "Id": 100216
+    },
+    {
+      "Message": "Many thanks, again, Kendal, for your persistence and patience.\n\nStill no joy.  I followed the directions in both links to the letter and had issues running the \"rundll32 wbemupgd, UpgradeRepository\" on both the Win2003 Server and the Win@k*r2 Server - the first complained about the UpgradeRepository not being recognized, the 2K8R2 couldn't even find wbemupgd.\n\nAfter the initial failures, I even turned remote COM on as well as remote DCOM and gave rights to do all things to all service, user, everyone et al and still I get the same \"Remote calls are not allowed for this process\" exception.  I fully agree, WMI is a ROYAL pain in the buttocks!\n\nShould I reboot the servers in case it's one of those, \"Windows won't fully recognize the configuration change until it has been rebooted\" issues?",
+      "PostedDate": "2013-05-15T10:38:46.83-07:00",
+      "Id": 100271
+    }
+  ]
+}

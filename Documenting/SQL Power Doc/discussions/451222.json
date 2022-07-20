@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1072871",
+    "ThreadId": "451222",
+    "Html": "Hey Kendal,<br />\n<br />\nThis is a great tool, thank you for offering it on CodePlex.  This is probably the most thorough SQL Server/Windows Inventory tool I have came across. I am new to PowerShell, but I'm loving it, being that I come from a Unix admin background.  At this point in time I don't need to unleash the entire program on the network, however I have been searching for a simple algorithm that will scan the network for unknown SQL Server instances.  I have already used Quest Discovery Wizard and some cmd line tools for this, however it seems to only detect stand alone instances.  I have quite a few SQL Server instances on vm's.  I've been dissecting your code on network scan... Would you be able to provide me with the best way to scan a network for SQL Server Instances on both clustered/vm's and stand alone?  In the meantime I am going to keep reviewing your PowerShell script.  - Thanks  SQLLayman<br />\n",
+    "PostedDate": "2013-07-25T09:34:17.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077917",
+    "ThreadId": "451222",
+    "Html": "Hi SQLLayman,\r<br />\nSQL Power Doc makes use of PowerShell modules and one of the great things about modules is that you can reuse them for your own scripts. In this case the NetworkScan module is what handles the service discovery. Here's a basic example (without any logging) which loads the module and finds SQL Services on your network by querying Active Directory for a list of hosts.<br />\n<pre><code>Import-Module -Name NetworkScan\nFind-SqlServerService -DnsServer Automatic -DnsDomain Automatic\nRemove-Module -Name NetworkScan\n</code></pre>\n\nThe Find-SqlServerService accepts many of the same parameters as the inventory scripts included with SQL Power Doc - you can see the syntax using the Get-Help cmdlet:<br />\n<pre><code>Import-Module -Name NetworkScan\nGet-Help Find-SqlServerService\nRemove-Module -Name NetworkScan\n</code></pre>\n\nOnce you have the list of services you can pipe the output to a CSV, or to Format-Table, or Format-List, or Out-GridView, or use the output in your own custom scripts. Because it's PowerShell you've got lots of options.\r<br />\n<br />\nHope this gets you pointed in the right direction!\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-08-07T12:29:54.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

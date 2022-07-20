@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1040321",
+    "ThreadId": "442793",
+    "Html": "Hi,\r<br />\n<br />\nI seem to be having an issue when using the Windows Inventory where the &quot;Test WMI connectivity&quot; gets stick on the very last node, in my case 207 of 208.\r<br />\n<br />\nI've attempted to run it a number of times and it keeps happening.\r<br />\nPlease help.\r<br />\n<br />\nThanks\r<br />\nDerek<br />\n",
+    "PostedDate": "2013-05-07T03:52:02.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1040366",
+    "ThreadId": "442793",
+    "Html": "Hi Derek,\r<br />\nThanks for checking out SQL Power Doc. I've run into the problem you're describing once before and it turned out to be that a machine I was trying to make WMI calls against was pegged at 100% CPU (and for the most part unresponsive) but responsive enough that the WMI call would never error out.\r<br />\n<br />\nThe challenge is figuring out which one of the 208 machines is the problem. If you set <strong>-LoggingPreference Verbose</strong> when you run the script the log file would contain all the details and with a bit of parsing you could figure out which machine hasn't returned a result yet. Admittedly that's kludge so option 2 might work better for you - open Resource Monitor on the machine where the script is running and look at the TCP Connections in the Network tab. You may have to filter by the PowerShell process ID but that one connection should eventually be the only one hanging around and at the point you'll know which remote machine is holding things up.\r<br />\n<br />\nI've got an idea for how I may be able to set a timeout external to the WMI call that I'm going to look into. If it works like I think it will I can put it into the next planned release so that nonresponsive machines don't hold things up.\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-05-07T06:37:03.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1040438",
+    "ThreadId": "442793",
+    "Html": "Thanks Kendal,\r<br />\n<br />\nI'll definitely give the verbose logging a try and see what I can find. It would be great if the WMI call can make use of a timeout feature, perhaps even be included with a switch like &quot; -timeout 30&quot; or something to accommodate for running over slow WAN links? Just my suggestion.\r<br />\n<br />\nThanks again.<br />\n",
+    "PostedDate": "2013-05-07T08:35:25.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1040540",
+    "ThreadId": "442793",
+    "Html": "Derek,\r<br />\nTry out the 1.0.2.0 beta that I pushed to the downloads section. I added a 30 second timeout when checking for WMI connectivity. If the timeout is exceeded you should see a message in the log file that tells you which machine the timeout occurred on.\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-05-07T12:01:46.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1040776",
+    "ThreadId": "442793",
+    "Html": "Hi Kendal,\r<br />\n<br />\nI've tested out the 1.0.2.0 beta and the same thing is happening. I was able to check on resource monitor to find the computer in question which was based at a remote site. Oddly it still seems to hang on the WMI call and does not timeout.\r<br />\n<br />\nI am sure this is an issue with the PC and I'll be troubleshooting it later today. Another question on that, I see there is a parameter for -ExcludeComputerName, will this work for IP addresses or could you consider that for a future release.\r<br />\n<br />\nDerek<br />\n",
+    "PostedDate": "2013-05-08T03:01:45.347-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1040789",
+    "ThreadId": "442793",
+    "Html": "Hi Derek,\r<br />\nHmm, I'll have to take another look at the code and see if I missed something on the timeout. Was there anything in the log file about a WMI timeout exceeded?\r<br />\n<br />\nYou can exclude by IP address by using the <strong>-ExcludeSubnet</strong> parameter to specify a subnet range with a /32 subnet for a specific host. For example, to exclude the loopback IP it would look like <strong>-ExcludeSubnet 127.0.0.1/32</strong>.\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-05-08T03:37:32.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

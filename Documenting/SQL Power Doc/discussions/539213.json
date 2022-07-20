@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1223425",
+    "ThreadId": "539213",
+    "Html": "Hi Kendal<br />\n<br />\nI've recently started using your SQL Power Doc solution for documenting my SQL Servers.<br />\n<br />\nI have a few questions that I'm hoping you can clear up for me<br />\n<ol>\n<li>\nIs there a way to scan the network for SQL Servers without doing the actual discovery? I'm looking for a solution that will basically just give me a list of SQL Servers on my domain(s).<br />\n</li>\n<li>\nIs there a way to do a batch conversion of XML's? I need to be able to feed it all the XML's I've collected and then it needs to convert all of them into separate Excel documents for each server, is this possible? <br />\n</li>\n</ol>\nAny assistance would be appreciated <br />\n",
+    "PostedDate": "2014-03-17T01:33:25.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234362",
+    "ThreadId": "539213",
+    "Html": "Good questions! (and sorry it's taken me a while to reply - been insanely busy at work lately)<br />\n<ol>\n<li>\nYes, you can use the NetworkScan module and the Find-SqlServerService function to find SQL Server Services. The parameters are a subset of what you'd use when you call Get-SqlServerInventoryToClixml.ps1. The following snippet will import the module and show you the options for parameters:<br />\n</li>\n</ol>\n<pre><code>Import-Module -Name NetworkScan\nGet-Help Find-SqlServerService </code></pre>\n\n<ol>\n<li>You could do something like Get-ChildItem to iterate through each XML file and call Convert-SqlServerInventoryClixmlToExcel.ps1. This doesn't help if you have several servers included in a single XML file, though. In that case you may want to call Get-SqlServerInventoryToClixml.ps1 for each server so that you just end up with one XML file per server.</li>\n</ol>\n--\r<br />\nKendal<br />\n",
+    "PostedDate": "2014-04-15T08:58:15.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234665",
+    "ThreadId": "539213",
+    "Html": "Thanks Kendal\r<br />\n<br />\nI've managed to find a way to do a batch conversion of XML's using the below and it works quite well<br />\n<pre><code>Get-Item &quot;C:\\Users\\Me\\Documents\\Inventory\\*.gz&quot; | ForEach-Object {.\\Convert-SqlServerInventoryClixmlToExcel.ps1 -FromPath $_.FullName}</code></pre>\n\nI used the NetworkScan as you advised, it works great but outputs more info than I need. All I basically want is the server name. <br />\n",
+    "PostedDate": "2014-04-16T05:16:50.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1239369",
+    "ThreadId": "539213",
+    "Html": "The nice thing about PowerShell is that you can filter out the stuff you don't want from the results, e.g.<br />\n<pre><code>Find-SqlServerService [parameters here] | select-object -property ServerName, ComputerName</code></pre>\n\n--Kendal<br />\n",
+    "PostedDate": "2014-04-29T08:07:44.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

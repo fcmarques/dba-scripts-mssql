@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1315781",
+    "ThreadId": "570444",
+    "Html": "Hi there,<br />\nFirst off, THANKS for this, just the thing I was looking for (and was going to attempt to develop)...but is there a way to scan by OU in AD? Or the reason I ask is I only want to scan servers in our network and exclude workstations with SQL services installed...is it possible to do that (or filter out those ones)?<br />\nWe have an OU for just servers which would be handy to use if possible.<br />\n",
+    "PostedDate": "2014-10-22T11:52:16.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1320979",
+    "ThreadId": "570444",
+    "Html": "Good suggestion! Unfortunately there's nothing baked in to scan by OU but the nice thing about PowerShell is that there <em>are</em> ways to get that with minimal effort (and they're probably better written, too!) \r<br />\n<br />\nOne way would be to use Get-ADComputer to search for an OU in your domain. Check out <a href=\"http://technet.microsoft.com/en-us/library/ee617192.aspx\" rel=\"nofollow\">http://technet.microsoft.com/en-us/library/ee617192.aspx</a> for documentation; here's a basic example of how you'd use it:<br />\n<pre><code>Import-Module -Name ActiveDirectory\n\n$ADComputer = Get-ADComputer -Filter * -SearchBase 'ou=Kendal,dc=demo,dc=local' |\n    Where-Object {\n        -not [String]::IsNullOrEmpty($_.DNSHostName)\n    } |\n    Select-Object -ExpandProperty DNSHostName\n\n$ComputerName = $ADComputer -join ','\n\nRemove-Module -Name ActiveDirectory</code></pre>\n\nAnother possibility would be to use System.DirectoryServices objects, which are outlined (including plenty of great examples) at <a href=\"http://technet.microsoft.com/en-us/library/ff730967.aspx\" rel=\"nofollow\">http://technet.microsoft.com/en-us/library/ff730967.aspx</a>\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-11-11T09:41:48.387-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

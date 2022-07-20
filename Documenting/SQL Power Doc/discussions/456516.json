@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1091162",
+    "ThreadId": "456516",
+    "Html": "Hey guys,\r<br />\n<br />\nis there the opportunity to export the sql server inventory to other formats like csv or import the results directly in MSSQL databases?\r<br />\n<br />\nThanks in advance!<br />\n",
+    "PostedDate": "2013-09-11T06:47:35.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092305",
+    "ThreadId": "456516",
+    "Html": "Hi FuriouZ,\r<br />\nRight now Excel workbooks are the only formatted output option that I've written. The nice thing about PowerShell is that the modules return a PSObject which you can do anything that you please with.\r<br />\n<br />\nPersistence to other formats is on my long term To-Do list; I just haven't figured out the best way to go about it yet. I'll get there eventually. :-)\r<br />\n<br />\nThanks for checking out SQL Power Doc!\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-09-13T07:01:06.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

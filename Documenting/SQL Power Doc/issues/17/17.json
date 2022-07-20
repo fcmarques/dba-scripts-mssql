@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "probably a minor issue as these scenarios are going to disappear soon (hopefully), but if you have a database with compatiblity level 6.5 on a SQL Server 2000 instance, the following error is risen:\r\n\r\nWARNING: [servername] Error gathering Database information: Exception calling \"ExecuteWithResults\" with \"1\"\r\nargument(s): \"Execute with results failed for Database 'databasename'. \" (SqlServerDatabaseEngineInformation.psm1 line 8391\r\nchar 42)\r\n\r\nSeems no other database information is recorded after the error ad the Excel reports don't have them.",
+    "LastUpdatedDate": "2016-05-27T11:47:24.14-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2015-08-06T02:30:18.063-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Problem with databases having 6.5 compatibility level",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 17
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'll have to try and reproduce this one. This might be an artifact of using SMO against SQL 2000 and an older compatibility level.",
+      "PostedDate": "2016-05-27T11:47:24.14-07:00",
+      "Id": 199747
+    }
+  ]
+}

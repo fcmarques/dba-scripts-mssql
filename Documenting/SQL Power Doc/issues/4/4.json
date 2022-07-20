@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Hello,\r\ni'm facing an issue to connect to a Windows 2008 R2 host with Wmi , how can i resolved this issue please :\r\n2013-08-23 15:04:23.6865 ? Starting Script: D:\\esimbozel\\Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1\r\n2013-08-23 15:04:23.6975 ? Beginning SQL Server Inventory\r\n2013-08-23 15:04:23.6995 ? \t-ComputerName: 10.32.1.107\r\n2013-08-23 15:04:23.7015 ? \t-MaxConcurrencyThrottle: 4\r\n2013-08-23 15:04:23.7035 ? \t-PrivateOnly: False\r\n2013-08-23 15:04:23.7045 ? \t-ParentProgressId: -1\r\n2013-08-23 15:04:23.7065 ? \t-IncludeDatabaseObjectPermissions: False\r\n2013-08-23 15:04:23.7085 ? \t-IncludeDatabaseObjectInformation: True\r\n2013-08-23 15:04:23.7095 ? \t-IncludeDatabaseSystemObjects: True\r\n2013-08-23 15:04:23.7155 ? Beginning network scan\r\n2013-08-23 15:04:23.7175 ? \t-ComputerName: xx.xx.xx.xx\r\n2013-08-23 15:04:23.7195 ? \t-PrivateOnly: False\r\n2013-08-23 15:04:23.7205 ? \t-MaxConcurrencyThrottle: 4\r\n2013-08-23 15:04:23.7225 ? \t-ResolveAliases: True\r\n2013-08-23 15:04:23.7246 ? Resolving IP address for xx.xx.xx.xx\r\n2013-08-23 15:04:23.8116 ? Testing PING connectivity to 1 addresses\r\n2013-08-23 15:04:26.3378 ? Testing WMI connectivity to 1 addresses\r\n2013-08-23 15:04:26.8649 ? Network scan complete\r\n2013-08-23 15:04:26.8669 ? \t-IP Addresses Scanned: 1\r\n2013-08-23 15:04:26.8689 ? \t-PING Replies: 1\r\n2013-08-23 15:04:26.8709 ? \t-WMI Replies: 1\r\n2013-08-23 15:04:26.8739 ? Beginning SQL Service discovery scan\r\n2013-08-23 15:04:26.9579 ? Scanning xx.xx.xx.xx at IP address 10.32.1.107 for SQL Services [Device 1 of 1]\r\n2013-08-23 15:04:27.2139 ? ERROR: Unable to retrieve service information from xx.xx.xx (xx.xx.xx.xx): Exception calling \"EndInvoke\" with \"1\" argument(s): \"The following exception was thrown when trying to enumerate the collection: \"Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))\".\"\r\n2013-08-23 15:04:27.4739 ? SQL Server service discovery complete\r\n2013-08-23 15:04:27.4769 ? Beginning scan of 0 instance(s)\r\n2013-08-23 15:04:27.8170 ? Instance scan complete (Success: 0; Errors: 0)\r\n2013-08-23 15:04:27.8370 ? Writing Inventory to disk\r\n2013-08-23 15:04:27.8390 + No machines found!\r\n2013-08-23 15:04:27.8410 ? End Script: D:\\esimbozel\\Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1\r\n",
+    "LastUpdatedDate": "2013-09-04T14:08:55.92-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2013-08-23T06:21:41.107-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Remote Wmi connection on Windows 2008 R2 host",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 4
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "You might want to start by verifying the WMI is working on the computer itself by opening a remote desktop connection and running the following in a PowerShell Prompt:\n\n```\nGet-WmiObject -Class Win32_OperatingSystem\n```\n\nIf that works then log out of the remote desktop session and from a different machine (I recommend your laptop/desktop where you initiated the remote desktop connection from) run the following in a PowerShell prompt to confirm that you can make a remote WMI connection to the machine in question:\n\n```\nGet-WmiObject -Class Win32_OperatingSystem -ComputerName 'Computer'\n```\nWhere 'Computer' is the name of the machine you're trying to connect to. If that doesn't work then Microsoft has published guidance at [http://msdn.microsoft.com/en-us/library/windows/desktop/aa822854(v=vs.85).aspx](http://www.example.com) which walks through all the requirements for making a remote WMI connection.",
+      "PostedDate": "2013-09-04T14:08:55.92-07:00",
+      "Id": 112073
+    }
+  ]
+}

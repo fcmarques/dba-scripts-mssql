@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1343186",
+    "ThreadId": "578034",
+    "Html": "Hi everyone,\r<br />\n<br />\nGreat scripts you have provided Kendal, makes my life sooooo much easier for auditing! I've just register to post my solution to a problem I was having and hoping it might help fellow people if they get the same issue.\r<br />\n<br />\nAnyway, I had an error last week on quite a lot of servers that said the following:\r<br />\n<br />\n<strong>ERROR: Unable to retrieve service information from FQDN (IP Address): Exception calling &quot;EndInvoke&quot; with &quot;1&quot; argument(s): &quot;The following exception occurred while trying to enumerate the collection: &quot;An exception occurred in SMO while trying to manage a service.&quot;.&quot;</strong>\r<br />\n<br />\nI also noticed someone else had the same issue as documented <a href=\"https://sqlpowerdoc.codeplex.com/discussions/443612\" rel=\"nofollow\">here</a>, so I ran the script you suggested and it returned the same error. I took a quick crash course in powershell and SMO and created a 3 line query to test the basic info to run in powershell:\r<br />\n<br />\n<strong>[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SQLWMIManagement') | Out-Null\r<br />\n$m = New-Object ('Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer') 'servername'\r<br />\n$m.ClientProtocols | select DisplayName, IsEnabled</strong>\r<br />\n<br />\nThis was returning the error of:\r<br />\n<br />\n<strong>An exception was thrown when trying to enumerate the collection: &quot;An exception occurred in SMO while trying to manage a service.&quot;.\r<br />\nAt line:1 char:1+ $ &lt;&lt;&lt;&lt; m.ClientProtocols | select DisplayName, IsEnabled</strong>\r<br />\n<br />\nSo, obviously something was wrong if you can't return the most basic of information. A couple of hours on Google and I stumbled across a link about opening SQL Service configuration manager. Low and behold, I had the same issue <a href=\"http://blogs.msdn.com/b/spike/archive/2012/03/19/quot-sql-server-configuration-manager-quot-gives-quot-invalid-class-0x80041010-when-starting.aspx\" rel=\"nofollow\">link</a>. Running said command from the link, then trying my basic 3 line code, it worked! So I reran your powerdoc scripts and it worked beautifully!\r<br />\n<br />\nHopefully this will help someone if they run into the same problem!\r<br />\n<br />\nKeep up the great scripts Kendal :-)<br />\n",
+    "PostedDate": "2015-01-19T02:27:03.41-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1354327",
+    "ThreadId": "578034",
+    "Html": "Thanks for posting that fix - and for checking out SQL Power Doc. Glad that you find it useful!<br />\n",
+    "PostedDate": "2015-02-20T06:46:54.28-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "I signed the Convert-SqlServerInventoryClixmlToExcel.ps1 using Idera Powershell Plus IDE (a lovely IDE).  But when I run the signed script I get this error:\r\n\r\nFile C:\\Users\\bforest\\Documents\\WindowsPowerShell\\Convert-SqlServerInventoryClixmlToExcel.ps1 cannot be loaded. A certificate chain processed, but terminated in a root certificate which is not trusted by the trust provider.\r\nAt line:1 char:46\r\n\r\nCan you provide any insight and recommendations to remediate this issue?\r\n\r\nThanks!\r\n\r\nBrandon_Forest@calquake.com",
+    "LastUpdatedDate": "2013-10-22T12:01:55.523-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2013-10-15T16:20:47.193-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Convert-SqlServerInventoryClixmlToExcel.ps1 cannot be loaded.",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 5
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Brandon,\nIs there a specific reason that you're trying to sign the scripts?\n\n--Kendal\n",
+      "PostedDate": "2013-10-22T12:01:55.523-07:00",
+      "Id": 119242
+    }
+  ]
+}

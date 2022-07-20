@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1259394",
+    "ThreadId": "549571",
+    "Html": "Hi Kendal,\r<br />\n<br />\nWhat permissions do I need for SQL POWER DOC to query records from DNS? Getting Access is denied from DNS servers when I use -DNSServer automatic -DNSDomain automatic -PrivateOnly\r<br />\n<br />\nThanks,\r<br />\n<br />\nChuck<br />\n",
+    "PostedDate": "2014-06-24T14:03:31.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1289303",
+    "ThreadId": "549571",
+    "Html": "I found out that the issue was that the DNS servers are Unix.  I am using SQL Power Doc with &quot;-Subnet automatic&quot; and am having success.<br />\n",
+    "PostedDate": "2014-08-12T08:16:03.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

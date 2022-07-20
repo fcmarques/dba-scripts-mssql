@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1303486",
+    "ThreadId": "567080",
+    "Html": "Hi,\r<br />\n<br />\nJust wanted to start by saying thank you for providing such a great tool. I have already used it successfully on a couple of environments and it has saved me a lot of time.\r<br />\n<br />\nI've just started working for a new client and I am trying to use the tool to document a SQL 2000 clustered instance and I am hitting a road block during the WMI connectivity test.\r<br />\n<br />\nThe log file is reporting;\r<br />\n<br />\nWMI response from XXXXX: False\r<br />\n<br />\nI've tried using the differing logging modes and I haven't really got any clearer of an idea why this is happening. I thought it maybe that the WMI service isn't installed for the SQL 2000 instance but not being a WMI guru I'm not sure how to verify this. \r<br />\n<br />\nAny help you can provide would be greatfully received.\r<br />\n<br />\nThanks again\r<br />\n<br />\nSimon<br />\n",
+    "PostedDate": "2014-09-10T23:53:32.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1321005",
+    "ThreadId": "567080",
+    "Html": "Simon,\r<br />\nYou can test if WMI is working and you've got the necessary rights to access it by simply dropping to a PowerShell console and running the following (make sure to change the computername parameter to match the SQL 2000 computer name):<br />\n<pre><code>gwmi win32_operatingsystem -computername 'SQL2000ComputerName'</code></pre>\n\nIf you get data back then you know WMI is working; if you get an error then the reason why you can't connect should be in the error message.\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-11-11T11:02:02.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

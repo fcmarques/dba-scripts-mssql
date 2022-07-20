@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1456647",
+    "ThreadId": "649028",
+    "Html": "So... Can anyone help me getting this PowerShell cmdlet to work?<br />\n<pre><code>New-Item -type directory -path &quot;$([Environment]::GetFolderPath([Environment+SpecialFolder]::MyDocuments))\\WindowsPowerShell\\Modules&quot;</code></pre>\n\nIt's from the configuration steps inside &quot;SqlServerInventory ReadMe.txt&quot;. I'd like to know were should I insert the path to the newly created folder and where should I insert the newly created folder's name.\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2015-12-21T08:13:01.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456899",
+    "ThreadId": "649028",
+    "Html": "That will create a subfolder named \\WindowsPowerShell\\Modules in your &quot;My Documents&quot; directory. I'm not sure what you mean by inserting a path since this does the work of figuring out where your &quot;My Documents&quot; folder is for you.\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2015-12-22T13:51:20.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456952",
+    "ThreadId": "649028",
+    "Html": "oh, ok, thanks!\r<br />\nI thought I had to include the paths myself.\r<br />\n<br />\nNow I'm having another problem: When documenting a Azure SQL Server, which parameters should I use? -ComputerName or - Subnet?\r<br />\nCould you provide an example, please?\r<br />\n<br />\nThanks again and a merry Xmas!<br />\n",
+    "PostedDate": "2015-12-23T05:10:11.943-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1465975",
+    "ThreadId": "649028",
+    "Html": "For an Azure SQL Database use -ComputerName and provide the DNS name that you use in SSMS to connect to the instance.<br />\n",
+    "PostedDate": "2016-03-07T11:49:15.08-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

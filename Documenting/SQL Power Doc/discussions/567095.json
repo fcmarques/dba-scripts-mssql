@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1303517",
+    "ThreadId": "567095",
+    "Html": "Problem is that an instance is found but is not scanned and no xml file is written to disk. I can't see any errors in the event logs on my computer or the Server. I have tried multiple user accounts all with same problem.<br />\n<br />\nI am running the script on windows7, sql server 2012 is running on windows server 2008 r2. Both is on the same domain.<br />\n<br />\nCommand used to execute<br />\n.\\Get-SqlServerInventory ToClixml.ps1 -Computername SERVER -LoggingPreference verbose -directorypath c:\\inventory<br />\n<br />\n<br />\n2014-09-11 10:42:15.7209 ? Starting Script: C:\\users\\administrator\\documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1<br />\n2014-09-11 10:42:15.7299 ? Beginning SQL Server Inventory<br />\n2014-09-11 10:42:15.7329 ? \t-LoggingPreference: verbose<br />\n2014-09-11 10:42:15.7359 ? \t-ComputerName: SERVER<br />\n2014-09-11 10:42:15.7389 ? \t-MaxConcurrencyThrottle: 4<br />\n2014-09-11 10:42:15.7419 ? \t-PrivateOnly: False<br />\n2014-09-11 10:42:15.8149 ? \t-ParentProgressId: -1<br />\n2014-09-11 10:42:15.8179 ? \t-IncludeDatabaseObjectPermissions: False<br />\n2014-09-11 10:42:15.8209 ? \t-IncludeDatabaseObjectInformation: False<br />\n2014-09-11 10:42:15.8239 ? \t-IncludeDatabaseSystemObjects: False<br />\n2014-09-11 10:42:15.8299 ? Beginning network scan<br />\n2014-09-11 10:42:15.8339 ? \t-ComputerName: SERVER<br />\n2014-09-11 10:42:15.8359 ? \t-PrivateOnly: False<br />\n2014-09-11 10:42:15.8389 ? \t-MaxConcurrencyThrottle: 4<br />\n2014-09-11 10:42:15.8419 ? \t-ResolveAliases: True<br />\n2014-09-11 10:42:15.8449 ? Resolving IP address for SERVER<br />\n2014-09-11 10:42:15.8930 ? Testing PING connectivity to 1 addresses<br />\n2014-09-11 10:42:15.9000 $ Testing PING connectivity to SERVER.DOMAIN.LOCAL (XX.XX.XX.XX) [1 of 1]<br />\n2014-09-11 10:42:18.1652 $ PING response from SERVER.DOMAIN.LOCAL (XX.XX.XX.XX): True<br />\n2014-09-11 10:42:18.4432 $ PING connectivity test complete<br />\n2014-09-11 10:42:18.4512 ? Testing WMI connectivity to 1 addresses<br />\n2014-09-11 10:42:18.4572 $ Testing WMI connectivity to SERVER.DOMAIN.LOCAL (XX.XX.XX.XX) [1 of 1]<br />\n2014-09-11 10:42:18.7132 $ WMI response from SERVER.DOMAIN.LOCAL (XX.XX.XX.XX): True<br />\n2014-09-11 10:42:18.9753 $ WMI connectivity test complete<br />\n2014-09-11 10:42:18.9893 ? Network scan complete<br />\n2014-09-11 10:42:18.9943 ? \t-IP Addresses Scanned: 1<br />\n2014-09-11 10:42:18.9983 ? \t-PING Replies: 1<br />\n2014-09-11 10:42:19.0023 ? \t-WMI Replies: 1<br />\n2014-09-11 10:42:19.0063 ? Beginning SQL Service discovery scan<br />\n2014-09-11 10:42:19.0573 ? Scanning SERVER.DOMAIN.LOCAL at IP address XX.XX.XX.XX for SQL Services [Device 1 of 1]<br />\n2014-09-11 10:42:19.5643 ? Found SQL Server named instance SERVER.DOMAIN.LOCAL\\BI at IP address XX.XX.XX.XX<br />\n2014-09-11 10:42:19.5713 ? Found SQL Server Agent named instance SERVER.DOMAIN.LOCAL\\BI at IP address XX.XX.XX.XX<br />\n2014-09-11 10:42:19.8964 ? SQL Server service discovery complete<br />\n2014-09-11 10:42:19.9024 ? \t-SQL Server Instance Count: 1<br />\n2014-09-11 10:42:19.9064 ? \t-SQL Server Agent Instance Count: 1<br />\n2014-09-11 10:42:19.9114 ? Beginning scan of 0 instance(s)<br />\n2014-09-11 10:42:20.2184 ? Instance scan complete (Success: 0; Failure: 0)<br />\n2014-09-11 10:42:20.2304 ? Writing Inventory to disk<br />\n2014-09-11 10:42:20.2354 + No machines found!<br />\n2014-09-11 10:42:20.2384 ? End Script: C:\\users\\administrator\\documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1<br />\n",
+    "PostedDate": "2014-09-11T01:51:30.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1304718",
+    "ThreadId": "567095",
+    "Html": "Hi,\r<br />\nI have just been investigating a similar problem. After a bit of digging around I noticed that someone had installed the SQL 2014 SMO objects on the server. There are no 2014 instances installed. \r<br />\n<br />\nYou can check which versions are installed in here C:\\Windows\\assembly and look for Microsoft.SqlServer.Smo.\r<br />\n<br />\nI'm just experimenting with a local fix for this.\r<br />\n<br />\nThanks\r<br />\nPaul.<br />\n",
+    "PostedDate": "2014-09-15T02:27:09.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1305138",
+    "ThreadId": "567095",
+    "Html": "I have installed SQL Server 2014 on my computer so thanks for the help. Please let me know when our fix is finished :)<br />\n",
+    "PostedDate": "2014-09-16T03:52:13.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1307083",
+    "ThreadId": "567095",
+    "Html": "Hello,\r<br />\n<br />\nI believe I may have observed a similar failure state. Specifically, I am remotely scanning a SQL Server 2014 host. The logs indicate SQL Power Doc works as expected during ping, WMI, and SQL instance detection phases, but then does not see the instance when its begins to actually scan the instance.\r<br />\n<br />\nI have SQL Server 2014 Feature Pack installed on the host performing the scanning.\r<br />\n<br />\nAny guidance or workarounds appreciated.\r<br />\n<br />\nThank you<br />\n<pre><code>2014-09-22 17:29:55.5221 ? Starting Script: C:\\Users\\pa_user\\Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1\n2014-09-22 17:29:55.5318 ? Beginning SQL Server Inventory\n2014-09-22 17:29:55.5348 ?  -LoggingPreference: Verbose\n2014-09-22 17:29:55.5367 ?  -ComputerName: host\n2014-09-22 17:29:55.5396 ?  -MaxConcurrencyThrottle: 4\n2014-09-22 17:29:55.5416 ?  -PrivateOnly: False\n2014-09-22 17:29:55.5436 ?  -ParentProgressId: -1\n2014-09-22 17:29:55.5455 ?  -IncludeDatabaseObjectPermissions: False\n2014-09-22 17:29:55.5465 ?  -IncludeDatabaseObjectInformation: False\n2014-09-22 17:29:55.5484 ?  -IncludeDatabaseSystemObjects: False\n2014-09-22 17:29:55.5621 ? Beginning network scan\n2014-09-22 17:29:55.5650 ?  -ComputerName: host\n2014-09-22 17:29:55.5670 ?  -PrivateOnly: False\n2014-09-22 17:29:55.5689 ?  -MaxConcurrencyThrottle: 4\n2014-09-22 17:29:55.5768 ?  -ResolveAliases: True\n2014-09-22 17:29:55.5787 ? Resolving IP address for host\n2014-09-22 17:29:55.7398 ? Testing PING connectivity to 1 addresses\n2014-09-22 17:29:55.7496 $ Testing PING connectivity to host.example.com (10.1.31.53) [1 of 1]\n2014-09-22 17:29:58.0173 $ PING response from host.example.com (10.1.31.53): True\n2014-09-22 17:29:58.2722 $ PING connectivity test complete\n2014-09-22 17:29:58.2771 ? Testing WMI connectivity to 1 addresses\n2014-09-22 17:29:58.4108 $ Testing WMI connectivity to host.example.com (10.1.31.53) [1 of 1]\n2014-09-22 17:29:58.6736 $ WMI response from host.example.com (10.1.31.53): True\n2014-09-22 17:29:58.9333 $ WMI connectivity test complete\n2014-09-22 17:29:58.9363 ? Network scan complete\n2014-09-22 17:29:58.9392 ?  -IP Addresses Scanned: 1\n2014-09-22 17:29:58.9421 ?  -PING Replies: 1\n2014-09-22 17:29:58.9441 ?  -WMI Replies: 1\n2014-09-22 17:29:58.9470 ? Beginning SQL Service discovery scan\n2014-09-22 17:29:59.0456 ? Scanning host.example.com at IP address 10.1.31.53 for SQL Services [Device 1 of 1]\n2014-09-22 17:29:59.5681 ? Found SQL Server default instance host.example.com at IP address 10.1.31.53\n2014-09-22 17:29:59.5701 ? Found SQL Server Agent default instance host.example.com at IP address 10.1.31.53\n2014-09-22 17:29:59.8289 ? SQL Server service discovery complete\n2014-09-22 17:29:59.8328 ?  -SQL Server Instance Count: 1\n2014-09-22 17:29:59.8347 ?  -SQL Server Agent Instance Count: 1\n2014-09-22 17:29:59.8416 ? Beginning scan of 0 instance(s)\n2014-09-22 17:30:00.3074 ? Instance scan complete (Success: 0; Failure: 0)\n2014-09-22 17:30:00.3406 ? Writing Inventory to disk\n2014-09-22 17:30:00.3435 + No machines found!\n2014-09-22 17:30:00.3484 ? End Script: C:\\Users\\pa_user\\Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1</code></pre>\n\n",
+    "PostedDate": "2014-09-22T10:36:42.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1307092",
+    "ThreadId": "567095",
+    "Html": "False alarm -- I just needed to start a new PowerShell ISE instance after installing the SQL Server 2014 Feature Pack.\r<br />\n<br />\nMy old Powershell ISE instance still had a mix of SQL Server 2008/2012 management assemblies loaded, confirmed via procexp.exe. The new PowerShell ISE instance has only 2014 assemblies loaded.<br />\n",
+    "PostedDate": "2014-09-22T10:50:47.237-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1313182",
+    "ThreadId": "567095",
+    "Html": "I'm getting the same issue with SMO on clustered instances.  It seems to work fine on my one stand alone VM, but when I try to connect to the clusters (win 2008R2, SQL 2008R2) using the active node names it either throws an SMO error or it finds no machines when the Get-SQLServerInventory runs.  2 clusters get through the WMI discovery and find no machines when they get to the cluster while the other 2 clusters get the SMO error. I tried running from my machine and on the active node.  I get the following error from the SMO Test and SMO assemblies are version 10.0.0.0 in c:\\windows\\assembly on the nodes:\r<br />\n<br />\nThe following exception was thrown when trying to enumerate the collection: &quot;An exception occurred in SMO while trying\r<br />\nto manage a service.&quot;.\r<br />\nAt line:1 char:1<br />\n<ul>\n<li>\n&lt;&lt;&lt;&lt; $ManagedComputer.Services | Format-Table -Property DisplayName, StartMode, ServiceState, ProcessId\n<ul>\n<li>CategoryInfo          : NotSpecified: (:) [], ExtendedTypeSystemException</li>\n<li>FullyQualifiedErrorId : ExceptionInGetEnumerator</li>\n</ul>\n</li>\n</ul>\n",
+    "PostedDate": "2014-10-14T08:58:13.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1321004",
+    "ThreadId": "567095",
+    "Html": "mrbru2,\r<br />\nUsually this error happens when you try to connect to a version of SQL Server that is newer than the version of SMO that's being used for the connection. What version number of SQL Power Doc are you using?  It's also possible this is a code issue that needs to be fixed.\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-11-11T10:59:01.72-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1038730",
+    "ThreadId": "442388",
+    "Html": "i see this type of error in the log. \r<br />\n<br />\n2013-04-21 22:01:41.0073 + [10.193.8.236] Error gathering information about logged on users: Cannot convert value &quot;832984089040&quot; to type &quot;System.Int32&quot;. Error: &quot;Arithmetic operation resulted in an overflow.&quot; (RDS-Manager.psm1 line 1640, char 23)\r<br />\n2013-04-21 22:01:41.0073 + [10.193.8.236] Reverting to Win32_Process to determine logged on users\r<br />\n<br />\n<br />\n2013-05-01 18:42:32.2835 + [10.193.8.134] Error gathering information about logged on users: Cannot convert value &quot;609630364256&quot; to type &quot;System.Int32&quot;. Error: &quot;Arithmetic operation resulted in an overflow.&quot; (RDS-Manager.psm1 line 605, char 13)\r<br />\n2013-05-01 18:42:32.2835 + [10.193.8.30] Error gathering information about logged on users: Cannot convert value &quot;609638496352&quot; to type &quot;System.Int32&quot;. Error: &quot;Arithmetic operation resulted in an overflow.&quot; (RDS-Manager.psm1 line 605, char 13)\r<br />\n2013-05-01 18:42:32.2992 + [10.193.8.134] Reverting to Win32_Process to determine logged on users\r<br />\n2013-05-01 18:42:32.3148 + [10.193.8.30] Reverting to Win32_Process to determine logged on users\r<br />\n2013-05-01 18:42:40.8615 + [10.193.8.146] Error gathering information about logged on users: Cannot convert value &quot;609668004288&quot; to type &quot;System.Int32&quot;. Error: &quot;Arithmetic operation resulted in an overflow.&quot; (RDS-Manager.psm1 line 605, char 13)\r<br />\n2013-05-01 18:42:40.8772 + [10.193.8.146] Reverting to Win32_Process to determine logged on users<br />\n",
+    "PostedDate": "2013-05-02T12:28:50.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038743",
+    "ThreadId": "442388",
+    "Html": "Unfortunately my hands are tied on this error since the RDS-Manager module isn't mine. It was published by the Microsoft Remote Desktop Services team (original download at <a href=\"http://gallery.technet.microsoft.com/ScriptCenter/e8c3af96-db10-45b0-88e3-328f087a8700/\" rel=\"nofollow\">http://gallery.technet.microsoft.com/ScriptCenter/e8c3af96-db10-45b0-88e3-328f087a8700/</a>)\r<br />\n<br />\nThe best I can do is trap the error and log it as you've noticed. I'd encourage you to visit the download URL and post a comment to their Q&amp;A page.\r<br />\n<br />\nThanks for checking out SQL Power Doc!\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-05-02T12:51:29.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

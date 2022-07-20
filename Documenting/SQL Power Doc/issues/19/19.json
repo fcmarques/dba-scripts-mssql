@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "While I would like to report that I have used this product, unfortunately, it has failed every time I have attempted to use it.  Specifically, I am getting the following error and need an immediate reply from the author as to the cause along with a timeline for an update\"\r\n\r\n___Unable to retrieve service information from SERVERNAME.DOMAN (xxx.xxx.xxx.xxx): Exception calling \"EndInvoke\" with \"1\" argument(s): \"An error occurred while creating the pipeline.\"___\r\n\r\nThis error occurs after the folowing log message is received: ___Beginning SQL Service discovery scan___\r\n\r\nPlease advise on the code update for this error.  Currently, I see another has reported a similar problem.  Also, this error is a show stopper from my using your product, and from me recommending its use to others.\r\n\r\nThank you in advance for your prompt attention.",
+    "LastUpdatedDate": "2016-05-27T11:38:52.21-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2015-08-26T15:42:10.923-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Exception calling \"EndInvoke\" with \"1\" argument(s)",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 19
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Also experienced this today ,see the author has not responded to the original issue experienced.Have not moved forward will have to debug ourselves it seems.\n\n",
+      "PostedDate": "2016-05-27T01:49:14.263-07:00",
+      "Id": 199739
+    },
+    {
+      "Message": "Hmmm, seems like CodePlex finally decided to start sending me emails when issues have been posted. Sorry about that...\n\nIf you're using verbose logging and can post the log files it would be helpful in diagnosing what's going on.\n\nWhat version(s) of SMO (or SSMS) do you have installed on the machine where you're running the scripts? What version of SQL Server are you connecting to? There are known issues with connecting to uplevel versions of SQL Server with downlevel SMO components (e.g. using SMO for SQL 2012 to connect to SQL 2014).",
+      "PostedDate": "2016-05-27T11:38:52.21-07:00",
+      "Id": 199744
+    }
+  ]
+}

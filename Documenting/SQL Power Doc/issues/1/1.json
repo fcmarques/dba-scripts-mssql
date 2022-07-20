@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "I have discovered that when errors occur in the SQL Server inventory gathering phase, they are not reported in the output of the script execution, but exist in the log file.\r\n\r\nExamples from log files:\r\nError gathering Server configuration information: Method invocation failed because [Microsoft.SqlServer.Management.Smo.Server] doesn't contain a method named 'EnumClusterMembersState'. (SqlServerDatabaseEngineInformation.psm1 line 6556, char 41)\r\n\r\nError gathering information about logged on users: Exception calling \"QueryAllSessionInformation\" with \"3\" argument(s): \"Unable to load DLL 'Wts.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)\" (RDS-Manager.psm1 line 608, char 85)\r\n\r\nThese are from a Windows 2012 Server with SQL Server 2012.\r\n\r\nLet me know if you need more info.\r\n-A.\r\n\r\n",
+    "LastUpdatedDate": "2017-11-28T14:37:36.723-08:00",
+    "PlannedForRelease": "Version 1.0.2.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2013-04-29T12:56:24.057-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Errors not correctly reported",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 1
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I've tweaked the logging wording in 1.0.2.0 to clarify failures vs. errors. Errors themselves aren't necessarily bad but too many errors will result in a failure.",
+      "PostedDate": "2013-09-04T14:15:47.26-07:00",
+      "Id": 112531
+    }
+  ]
+}

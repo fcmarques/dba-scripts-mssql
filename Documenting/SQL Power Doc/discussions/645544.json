@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1446196",
+    "ThreadId": "645544",
+    "Html": "Hello.  I followed all pre-configured steps listed at <a href=\"https://sqlpowerdoc.codeplex.com/wikipage?title=Guide%20For%20PowerShell%20Beginners\" rel=\"nofollow\">https://sqlpowerdoc.codeplex.com/wikipage?title=Guide%20For%20PowerShell%20Beginners</a>.  I tried executing Example #1 but I recieved the following error message - Any suggestions would be greatly appreciated.\r<br />\n<br />\n<br />\nWARNING: Error querying for A records from DNS Server xx.xx.xx.xxx for domain 'xzy.com': The RPC server is\r<br />\nunavailable. (Exception from HRESULT: 0x800706BA)\r<br />\n<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2015-09-28T08:57:31.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1465979",
+    "ThreadId": "645544",
+    "Html": "Looks like the account you're running Power Doc with doesn't have the necessary permissions to make a DNS query using the DNS WMI provider. Try this link and see if that resolves your issue: <br />\n<br />\n<a href=\"http://stackoverflow.com/questions/15472411/what-permissions-are-required-for-ms-dns-wmi-api\" rel=\"nofollow\">Stack Overflow: What permissions are required for MS DNS WMI API?</a><br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2016-03-07T11:56:51.733-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

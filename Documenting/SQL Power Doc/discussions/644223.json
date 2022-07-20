@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1441951",
+    "ThreadId": "644223",
+    "Html": "I get the message &quot;The Default Data Path is configured for a drive (E:) that currently holds database files of another type. This may result in multiple file types on the same drive when new databases are created which can negatively impact performance.&quot; as a performance alert in the database engine assesment.\r<br />\nThis is due to the use of mountend volumes.\r<br />\nIs there a solution for this issue ?\r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2015-08-26T01:28:16.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1465978",
+    "ThreadId": "644223",
+    "Html": "Mountpoints has been on my to-do list for a while now. I've got some ideas, hope to tackle it in the next 1-2 months with a new release that adds support for SQL 2016, too.\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2016-03-07T11:51:31.563-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

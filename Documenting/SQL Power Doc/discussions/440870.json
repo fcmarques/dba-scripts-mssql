@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1032872",
+    "ThreadId": "440870",
+    "Html": "Hi Kendal,\r<br />\n<br />\nfirst of all: Thank you for this great script. It's a huge help.\r<br />\nOne thing I did not figure out yet: how can I exclude Computers when querying a domain?\r<br />\nI have several different machines to exclude (Exchange, FileServer, AppServer and so on).\r<br />\nSince the naming convention looks like this:  yyyFSxx (a file server in that case) I need to set two wildcards for one type of computer.\r<br />\nSo my exclusion list looks like this  -ExcludeComputerName <em>fs</em>, <em>ex</em>, <em>as</em><br />\nBut then I get an error &quot;AmbigousParameterSet&quot;\r<br />\n<br />\nAny ideas? Otherwise I will create a list of Computers first an paste this list into the script call.\r<br />\n<br />\nRegards\r<br />\nDirk<br />\n",
+    "PostedDate": "2013-04-19T01:49:35.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1033454",
+    "ThreadId": "440870",
+    "Html": "Dirk,\r<br />\nCan you provide all the parameters that you're using to run the scripts? I'd like to try and reproduce the problem that you're seeing.\r<br />\n<br />\nTo answer your question as best as I can for now, the ExcludeComputerName parameter will accept wildcards, so if you wanted to exclude anything with fs, ex, or as in the name it would look like:<br />\n<pre><code>.\\Get-SqlServerInventoryToClixml.ps1 -DnsServer automatic -ExcludeComputerName '*fs*','*as*','*ex*'</code></pre>\n\nAlso, the ExcludeComputerName parameter must be used in combination with either the <strong>-DnsServer</strong> or <strong>-Subnet</strong> parameters.\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-04-20T16:05:04.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1033456",
+    "ThreadId": "440870",
+    "Html": "Hi Kendal, <br>\r\n<br>\r\nI will run another test on Monday. <br>\r\nAs far as I remember, I have used the syntax you have given in your example. But I'll check.\r\n<br>\r\n<br>\r\nRegards<br>\r\nDirk<br>\r\n<br>\r\n<br>\r\n<div><br>\r\n<br>\r\nkendalvandyke &lt;[email removed]&gt; schrieb:\r\n<blockquote style=\"margin:0pt 0pt 0pt 0.8ex; border-left:1px solid rgb(204,204,204); padding-left:1ex\">\r\n<p>From: kendalvandyke</p>\r\n<div id=\"ThreadNotificationPostBody\">Dirk, <br>\r\nCan you provide all the parameters that you're using to run the scripts? I'd like to try and reproduce the problem that you're seeing.\r\n<br>\r\n<br>\r\nTo answer your question as best as I can for now, the ExcludeComputerName parameter will accept wildcards, so if you wanted to exclude anything with fs, ex, or as in the name it would look like:<br>\r\n<pre><code>.\\Get-SqlServerInventoryToClixml.ps1 -DnsServer automatic -ExcludeComputerName '*fs*','*as*','*ex*'</code></pre>\r\nAlso, the ExcludeComputerName parameter must be used in combination with either the\r\n<strong>-DnsServer</strong> or <strong>-Subnet</strong> parameters. <br>\r\n<br>\r\nKendal<br>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n-- <br>\r\nDiese Nachricht wurde von meinem Android-Mobiltelefon mit K-9 Mail gesendet.",
+    "PostedDate": "2013-04-20T16:15:54.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034549",
+    "ThreadId": "440870",
+    "Html": "Hi Kendal,\r<br />\n<br />\nI got the following error:<br />\n<pre><code>C:\\Users\\MyUser\\Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1 : Parameter set cannot be resolved using the specified named parameters.\nAt line:1 char:37\n+ .\\Get-SqlServerInventoryToClixml.ps1 &lt;&lt;&lt;&lt;  -DnsServer 10.250.132.190 -ExcludeComputerName '*fs*', '*as*', '*ex*'\n    + CategoryInfo          : InvalidArgument: (:) [Get-SqlServerInventoryToClixml.ps1], ParameterBindingException\n    + FullyQualifiedErrorId : AmbiguousParameterSet,Get-SqlServerInventoryToClixml.ps1</code></pre>\n\nThe script call was:<br />\n<pre><code>.\\Get-SQLServerInventoryToClixml.ps1 -DnsServer www.xxx.yyy.zzz -ExcludeComputerName '*fs*','*as*','*ex*'  </code></pre>\n\nDid not want to paste the real IP, therefore the wwxxyyzz stuff\r<br />\n<br />\nIf I try to use the name of a DNSServer (namingconvention is yyyBDCzzz, then I get the following error:<br />\n<pre><code>C:\\Users\\MyUser\\Documents\\WindowsPowerShell\\Get-SqlServerInventoryToClixml.ps1 : Cannot validate argument on parameter 'DnsServer'. The argument\n&quot;yyybdczzz&quot; does not match the &quot;^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.)\n{3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|^auto$|^automatic$&quot; pattern. Supply an argument that matches \n&quot;^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|^auto$|^automatic$&quot; \nand try the command again.\nAt line:1 char:48\n+ .\\Get-SqlServerInventoryToClixml.ps1 -DnsServer &lt;&lt;&lt;&lt;  849bdc999 -ExcludeCompu,terName '*fs*', '*as*', '*ex*'\n    + CategoryInfo          : InvalidData: (:) [Get-SqlServerInventoryToClixml.ps1], ParameterBindingValidationException\n    + FullyQualifiedErrorId : ParameterArgumentValidationError,Get-SqlServerInventoryToClixml.ps1</code></pre>\n\nDirk<br />\n",
+    "PostedDate": "2013-04-23T07:12:45.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034757",
+    "ThreadId": "440870",
+    "Html": "Dirk,\r<br />\nI've reproduced the problem on my test VMs and am working on a fix. Should have something posted in the next day or two.\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-04-23T12:44:11.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034960",
+    "ThreadId": "440870",
+    "Html": "Dirk,\r<br />\nI've released version 1.0.1.0 which fixes the parameter name set resolution problem you're having. (Thanks for reporting it!)\r<br />\n<br />\nLet me know if you're still having the problem or run into anything else that I can help with!<br />\n<ul>\n<li>Kendal</li>\n</ul>\n",
+    "PostedDate": "2013-04-24T00:04:34.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034983",
+    "ThreadId": "440870",
+    "Html": "Wow,\r<br />\n<br />\nthat's awesome.\r<br />\nI'll check in a few minutes. Thanks for the support. <br />\n",
+    "PostedDate": "2013-04-24T00:57:24.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
