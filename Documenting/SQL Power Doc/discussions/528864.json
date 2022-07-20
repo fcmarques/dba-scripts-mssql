@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1202435",
+    "ThreadId": "528864",
+    "Html": "Hi for various reasons (different firewalls etc.) i have to create multiple xml.gz copies for the same company with the SQLpowerdoc script. I would like to combine these results into one file before converting it into excel documentation so all SQL documentation for the same company is listed in one place. Can anyone please give me any suggestions. Sorry if this question was answered in another thread. I did not pick it up.<br />\n",
+    "PostedDate": "2014-02-04T04:27:50.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1209608",
+    "ThreadId": "528864",
+    "Html": "Hi and thanks for checking out SQL Power Doc!\r<br />\n<br />\nFirst the bad news - currently there is no way to merge multiple GZ files into a single output. Now the good news - I'm working on this because you're not the first person to ask for it!\r<br />\n<br />\nI don't have a timeline on when I'll have this particular feature done (I work on this in my spare time), but I'll post here when it looks like I'm getting close to having it written.\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-02-17T14:06:04.233-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1317654",
+    "ThreadId": "528864",
+    "Html": "Hi Kendal,\r<br />\n<br />\nI have the same needs as Eugenius77, have you had enough spare time to lay the code?\r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2014-10-30T06:19:10.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1320961",
+    "ThreadId": "528864",
+    "Html": "I ran into a similar problem myself and while it's not baked into the SQL Power Doc code (yet) here's what I did to merge multiple inventory files into a single new file. Note there's no de-duping going on here so if an instance is in both files it will show up twice in the reports.\r<br />\n<br />\n_Note: Make sure to update <strong>$BasePath</strong> and <strong>$ServerInventory</strong> before running!_<br />\n<pre><code>Import-Module -Name SqlServerInventory\n\n&lt;# Specify the base path and the paths to the inventories to merge #&gt;\n$BasePath = &quot;Z:\\Users\\kenda_000\\Documents\\SQL Power Doc&quot;\n\n$ServerInventory = @(\n    &quot;$BasePath\\SQL01\\SQL Server Inventory - 2014-10-10-01-11.xml.gz&quot;,\n    &quot;$BasePath\\SQL02\\SQL Server Inventory - 2014-10-10-00-50.xml.gz&quot;,\n    &quot;$BasePath\\SQL Server Inventory - 2014-10-10-00-28.xml.gz&quot;\n)\n\n&lt;# Import all inventories into a collection #&gt;\n$Inventory = Import-SqlServerInventoryFromGzClixml -Path $ServerInventory\n\n&lt;# Merge the collection of inventories into a single inventory object #&gt;\n$MergedInventory = New-Object -TypeName psobject -Property @{\n    Service = $Inventory | ForEach-Object { $_.Service }\n    Version = $Inventory | ForEach-Object { $_.Version }\n    DatabaseServerScanSuccessCount = ($Inventory | Measure-Object -Property DatabaseServerScanSuccessCount -Sum).Sum\n    StartDateUTC = $Inventory | ForEach-Object { $_.StartDateUTC }\n    DatabaseServerScanFailCount = ($Inventory | Measure-Object -Property DatabaseServerScanFailCount -Sum).Sum\n    DatabaseServer = $Inventory | ForEach-Object { $_.DatabaseServer }\n    EndDateUTC = $Inventory | ForEach-Object { $_.StartDateUTC }\n    WindowsInventory = $Inventory | ForEach-Object { $_.WindowsInventory }\n    DatabaseServerScanCount = ($Inventory | Measure-Object -Property DatabaseServerScanCount -Sum).Sum\n}\n\n&lt;# Create the new inventory filename #&gt;\n$CliXmlPath = (Join-Path -Path $BasePath -ChildPath $('SQL Server Inventory - {0:yyyy-MM-dd-HH-mm}.xml.gz' -f $(Get-Date)))\n\n&lt;# Write the merged inventory to disk #&gt;\nExport-SqlServerInventoryToGzClixml -SqlServerInventory $MergedInventory -Path $CliXmlPath\n\nRemove-Module -Name SqlServerInventory\nRemove-Variable -Name BasePath, ServerInventory, Inventory, MergedInventory, CliXmlPath</code></pre>\n\n",
+    "PostedDate": "2014-11-11T08:55:31.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1343174",
+    "ThreadId": "528864",
+    "Html": "Hi Kendal, thanks for this, I played around with this script you posted. I am able to merge SQL inventories but when I get to the Windows inventory I am getting the following error :\r<br />\nForEach-Object : Array assignment failed because index '1,0' was out of range.\r<br />\nAt C:\\Users\\eugene\\Documents\\WindowsPowerShell\\Modules\\WindowsInventory\\WindowsInventory.psm1:914 char:46\r<br />\n<br />\nI appreciate any suggestions you have for this please, many thanks\r<br />\nEugene van den Bergh<br />\n",
+    "PostedDate": "2015-01-19T01:51:24.63-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1354329",
+    "ThreadId": "528864",
+    "Html": "Does each file that you're trying to merge have a Windows inventory in it? It almost sounds like one file does not.<br />\n",
+    "PostedDate": "2015-02-20T06:48:43.9-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1354837",
+    "ThreadId": "528864",
+    "Html": "OK that makes sense I will check thanks <br>\r\n<br>\r\n<br>\r\n<div id=\"acompli_signature\">Sent by <a href=\"http://taps.io/outlookmobile\">Outlook</a> for Android<br>\r\n</div>\r\n<br>\r\n<br>\r\n<br>\r\n<div>On Fri, Feb 20, 2015 at 6:48 AM -0800, &quot;kendalvandyke&quot; <span dir=\"ltr\">&lt;[email removed]&gt;</span> wrote:<br>\r\n<br>\r\n</div>\r\n<p>From: kendalvandyke</p>\r\n<div id=\"ThreadNotificationPostBody\">Does each file that you're trying to merge have a Windows inventory in it? It almost sounds like one file does not.<br>\r\n</div>\r\n<div></div>\r\n",
+    "PostedDate": "2015-02-23T02:15:41.377-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

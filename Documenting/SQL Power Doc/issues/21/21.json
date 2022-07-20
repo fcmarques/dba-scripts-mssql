@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "The named SQL instance is reported ad disabled when it is running if the default instance is disabled.  ",
+    "LastUpdatedDate": "2015-12-22T15:50:50.473-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2015-09-08T06:20:53.577-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Named SQL Instance is Reported as Disabled",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 21
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you provide more details please? What version(s) of SQL Server are running on the disabled and enabled instances? What OS and version? What version of Power Doc are you using?\n\nI've tried to reproduce the issue in my local VM lab but I'm not seeing the same behavior.",
+      "PostedDate": "2015-12-22T15:50:50.473-08:00",
+      "Id": 194795
+    }
+  ]
+}

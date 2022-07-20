@@ -1,0 +1,281 @@
+<div class="wikidoc">
+<h1>The SQL Power Doc Guide For PowerShell Beginners</h1>
+<p>SQL Power Doc is built on Windows PowerShell, but don't let that scare you if you've never touched PowerShell before! In this guide we'll assume you're opening a PowerShell console for the first time and walk through everything you need to do to use SQL
+ Power Doc to discover, document, and diagnose your SQL Servers.</p>
+<h2>In this Guide:</h2>
+<ul>
+<li>Requirements </li><li>Configure Windows PowerShell </li><li>Download And Install SQL Power Doc </li><li>Collect A SQL Server Inventory </li><li>Create A SQL Server Inventory Report </li><li>Additional Help</li></ul>
+<p>&nbsp;</p>
+<h2>Requirements</h2>
+<p>If you haven't already reviewed the list of things you'll need to run SQL Power Doc then take a minute to
+<a href="https://sqlpowerdoc.codeplex.com/wikipage?title=Requirements">read over the requirements</a>.</p>
+<p>&nbsp;</p>
+<h2>Configure Windows PowerShell</h2>
+<p>You'll want to make sure that PowerShell is configured properly on <strong>both</strong> the machine that you're using to perform the inventory and the machine that's building the documentation. (Repeat: Do this on
+<strong>both</strong> machines!)</p>
+<h3>Set Execution Policy</h3>
+<p>By default PowerShell tries to keep you from shooting yourself in the foot by not letting you run scripts that you download from the internet. In PowerShell lingo this is referred to as the Execution Policy (see
+<a title="http://technet.microsoft.com/en-us/library/hh847748.aspx" href="http://technet.microsoft.com/en-us/library/hh847748.aspx">
+http://technet.microsoft.com/en-us/library/hh847748.aspx</a>) and in order to use SQL Power Doc you'll need to change it by following these steps:</p>
+<ol>
+<li>Open a PowerShell console in elevated mode:<br>
+Start -&gt; All Programs -&gt; Accessories -&gt; Windows PowerShell -&gt; Windows PowerShell (right click, choose &quot;Run as Administrator&quot;)<br>
+<img title="Start PowerShell[10]" border="0" alt="Start PowerShell[10]" src="http://www.codeplex.com/Download?ProjectName=sqlpowerdoc&DownloadId=658199" width="341" height="307" style="border-left-width:0px; border-right-width:0px; border-bottom-width:0px; float:none; padding-top:10px; padding-left:0px; margin:10px auto; display:block; padding-right:0px; border-top-width:0px">
+</li><li>Set the execution policy to allow for remotely signed scripts<br>
+<br>
+<pre><strong>Set-ExecutionPolicy RemoteSigned -Force</strong></pre>
+</li><li>Exit the PowerShell console </li></ol>
+<p>&nbsp;</p>
+<h3>Configure Windows PowerShell Directory</h3>
+<p>Now you'll need to create a directory to hold PowerShell code.</p>
+<ol>
+<li>Open a new PowerShell console (but not in elevated mode as when you set the execution policy):<br>
+Start -&gt; All Programs -&gt; Accessories -&gt; Windows PowerShell -&gt; Windows PowerShell
+</li><li>Create PowerShell and PowerShell modules directory in your &quot;My Documents&quot; folder<br>
+<br>
+<pre><strong>New-Item -type directory -path &quot;$([Environment]::GetFolderPath([Environment&#43;SpecialFolder]::MyDocuments))\WindowsPowerShell\Modules&quot;</strong></pre>
+</li><li>Exit the PowerShell console </li></ol>
+<p>&nbsp;</p>
+<h2>Download And Install</h2>
+<p>Grab the latest version of the code from the <a href="https://sqlpowerdoc.codeplex.com/releases">
+downloads page</a> but don't extract the ZIP file yet! Because the file came from the internet it needs to be unblocked or PowerShell gets cranky because it's considered untrusted.</p>
+<p>To unblock a file, navigate to it in Windows Explorer, right click, and choose the Properties menu option. On the General tab, click the Unblock button, then click the OK button to close the Properties dialog.</p>
+<p><img title="Unblock File_thumb[1]" border="0" alt="Unblock File_thumb[1]" src="http://www.codeplex.com/Download?ProjectName=sqlpowerdoc&DownloadId=658200" width="361" height="158" style="border-left-width:0px; border-right-width:0px; border-bottom-width:0px; float:none; padding-top:0px; padding-left:0px; margin:10px auto; display:block; padding-right:0px; border-top-width:0px"></p>
+<p>Once the file is unblocked you can extract the contents to the WindowsPowerShell folder (in your &quot;My Documents&quot; directory) that you created in the last step.</p>
+<p><strong>Note: </strong>Make sure to keep the folder names in the zip file intact so that everything in the Modules folder is extracted into WindowsPowerShell\Modules and the .ps1 files are extracted into the WindowsPowerShell folder.</p>
+<p>The Windows Inventory portion of SQL Power Doc will attempt to use the RDS-Manager PowerShell module provided by the Microsoft Remote Desktop Services team. You can download this optional module from
+<a title="http://gallery.technet.microsoft.com/ScriptCenter/e8c3af96-db10-45b0-88e3-328f087a8700/" href="http://gallery.technet.microsoft.com/ScriptCenter/e8c3af96-db10-45b0-88e3-328f087a8700/">
+http://gallery.technet.microsoft.com/ScriptCenter/e8c3af96-db10-45b0-88e3-328f087a8700/</a> . Make sure to save it in the WindowsPowerShell\Modules\RDS-Manager folder (in your &quot;My Documents&quot; directory) that you recently created. It's not the end of the world
+ if it's missing but you'll get more details about users' desktop sessions when it's installed.</p>
+<p>&nbsp;</p>
+<h2>Collect A SQL Server And Windows Inventory</h2>
+<p>So far, so good...now it's time to discover your SQL Servers and perform an inventory! In this step you're going to run a PowerShell script which will discover SQL Servers on your network (or verify they're running), collect information about them and their
+ underlying OS, and write the results as a Gzip compressed XML file that you'll use in the next step.</p>
+<p>Start by opening a PowerShell console on the machine that will be collecting the information from your SQL Servers and set your current location to the WindowsPowerShell folder:</p>
+<blockquote>
+<p></p>
+<pre><strong>Set-Location &quot;$([Environment]::GetFolderPath([Environment&#43;SpecialFolder]::MyDocuments))\WindowsPowerShell&quot;</strong></pre>
+</blockquote>
+<h3>Running The Script, Choosing The Right Parameters</h3>
+<p>You're going to execute the script <span style="font-family:courier new"><strong>.\Get-SqlServerInventoryToClixml.ps1</strong></span> to do all the work but it requires a few parameters to know what to do.</p>
+<h4>Discover &amp; Verify SQL Server Services</h4>
+<p>The first set of parameters define how to find &amp; verify machines with SQL Server services installed on them.</p>
+<h5><font style="font-weight:bold">Find SQL Server services by querying Active Directory DNS for hosts</font></h5>
+<blockquote>
+<h6>-DnsServer</h6>
+<p>Valid values are &quot;automatic&quot; or a comma delimited list of AD DNS server IP addresses to query for DNS A records that may be running SQL Server.<br clear="all">
+</p>
+<h6>-DnsDomain</h6>
+<p><em>Optional.</em> Valid values are &quot;automatic&quot; (the default if this parameter is not specified) or the AD domain name to query for DNS records from.<br clear="all">
+</p>
+<h6>-ExcludeSubnet</h6>
+<p><em>Optional. </em>This is a comma delimited list of <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">
+CIDR notation</a> subnets to exclude when looking for SQL Servers.<br clear="all">
+</p>
+<h6>-LimitSubnet</h6>
+<p><em>Optional. </em>This is an inclusive comma delimited list of CIDR notation subnets to limit the scope when looking for SQL Servers.<br clear="all">
+</p>
+<h6>-ExcludeComputerName</h6>
+<p><em>Optional.</em> This is a comma delimited list of computer names to exclude when looking for SQL Servers.<br clear="all">
+</p>
+<h6>-PrivateOnly</h6>
+<p><em>Optional.</em> This switch limits the scope to private class A, B, and C IP addresses when looking for SQL Servers.<br clear="all">
+</p>
+</blockquote>
+<h5><font style="font-weight:bold">Find SQL Server services by scanning a subnet of IP Addresses</font></h5>
+<blockquote>
+<h6><strong><span style="font-family:courier new">-</strong>Subnet</span></h6>
+<p><span style="font-family:courier new"></span>Valid values are &quot;automatic&quot; or a comma delimited list of CIDR notation subnets to scan for IPv4 hosts that may be running SQL Server.</p>
+<h6>-LimitSubnet</h6>
+<p><em>Optional. </em>This is an inclusive comma delimited list of CIDR notation subnets to limit the scope when looking for SQL Servers.<br clear="all">
+</p>
+<h6>-ExcludeComputerName</h6>
+<p><em>Optional.</em> This is a comma delimited list of computer names to exclude when looking for SQL Servers.<br clear="all">
+</p>
+<h6>-PrivateOnly</h6>
+<p><em>Optional.</em> This switch limits the scope to private class A, B, and C IP addresses when looking for SQL Servers.<br clear="all">
+</p>
+</blockquote>
+<h5><font style="font-weight:bold">Find SQL Server services by computer name</font></h5>
+<blockquote>
+<h6>-ComputerName</h6>
+<p>This is a comma delimited list of computer names that may be running SQL Server.</p>
+<h6>-PrivateOnly</h6>
+<p><em>Optional</em>. This switch limits the scope to private class A, B, and C IP addresses when looking for SQL Servers.</p>
+</blockquote>
+<h4>Authentication</h4>
+<p>SQL Power Doc will default to using Windows Authentication when attempting to connect to SQL Server instances that it finds. If you want to connect using SQL Server authentication instead, or if you are connecting to Windows Azure SQL Database instances,
+ provide the following parameters:</p>
+<blockquote>
+<h6>-Username</h6>
+<p>SQL Server username to use when connecting to an instance.</p>
+<h6>-Password</h6>
+<p>SQL Server password to use when connecting to an instance.</p>
+</blockquote>
+<h4>Additional Information To Collect</h4>
+<p>By default, SQL Power Doc does <span style="text-decoration:underline">not </span>
+collect Database object information (e.g. tables, views, procedures, etc.), Database object permissions, or information about Database system objects. The following switch parameters alter the default behavior:</p>
+<blockquote>
+<h6>-IncludeDatabaseObjectInformation</h6>
+<p>Include database object information (e.g. tables, views, procedures, functions, etc.).</p>
+<h6>-IncludeDatabaseObjectPermissions</h6>
+<p>Include database object permissions (e.g. GRANT SELECT on tables, columns, views, etc.).</p>
+<h6>-IncludeDatabaseSystemObjects</h6>
+<p>Include system objects when collecting information about database objects and\or database object permissions.</p>
+</blockquote>
+<h4>Logging, Output, &amp; Resource Utilization</h4>
+<p>Finally, the following parameters control logging, output, and system resources SQL Power Doc will use when finding and collecting information from SQL Servers:</p>
+<blockquote>
+<h6>-DirectoryPath</h6>
+<p><em>Optional</em>. A fully qualified directory path where all output will be written. The default value is your &quot;My Documents&quot; folder.</p>
+<h6>-LoggingPreference</h6>
+<p><em>Optional</em>. Specifies how much information will be written to a log file (in the same directory as the output file). Valid values are None, Standard, Verbose, and Debug. The default value is None (i.e. no logging).</p>
+<h6>-Zip</h6>
+<p><em>Optional</em>. If provided, create a Zip file containing all output in the directory specified by the DirectoryPath parameter.</p>
+<h6>-MaxConcurrencyThrottle</h6>
+<p><em>Optional</em>. A number between 1-100 which indicates how many tasks to perform concurrently. The default is the number of logical CPUs present on the OS.</p>
+</blockquote>
+<h3>Examples</h3>
+<p>The following examples demonstrate how to combine all the parameters together when running the script.</p>
+<h6>Example 1:</h6>
+<blockquote>
+<p></p>
+<pre><strong>.\Get-SqlServerInventoryToClixml.ps1 -DNSServer automatic -DNSDomain automatic -PrivateOnly</strong></pre>
+</blockquote>
+<blockquote>
+<p>Collect an inventory by querying Active Directory for a list of hosts to scan for SQL Server instances.
+</p>
+<p>The list of hosts will be restricted to private IP addresses only. </p>
+<p>Windows Authentication will be used to connect to each instance. </p>
+<p>Database objects will NOT be included in the results. </p>
+<p>The Inventory file will be written to your &quot;My Documents&quot; folder. </p>
+<p>No log file will be written.</p>
+<p>&nbsp;</p>
+</blockquote>
+<h6>Example 2:</h6>
+<blockquote>
+<p></p>
+<pre><strong>.\Get-SqlServerInventoryToClixml.ps1 -Subnet 172.20.40.0/28 -Username sa -Password BetterNotBeBlank</strong></pre>
+</blockquote>
+<blockquote>
+<p>Collect an inventory by scanning all hosts in the subnet 172.20.40.0/28 for SQL Server instances.
+</p>
+<p>SQL authentication (username = &quot;sa&quot;, password = &quot;BetterNotBeBlank&quot;) will be used to connect to the instance.
+</p>
+<p>Database objects will NOT be included in the results. </p>
+<p>The Inventory file will be written to your &quot;My Documents&quot; folder. </p>
+<p>No log file will be written.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h6>Example 3:</h6>
+<blockquote>
+<p></p>
+<pre><strong>.\Get-SqlServerInventoryToClixml.ps1 -Computername Server1,Server2,Server3 -LoggingPreference Standard</strong></pre>
+</blockquote>
+<blockquote>
+<p>Collect an inventory by scanning Server1, Server2, and Server3 for SQL Server instances.
+</p>
+<p>Windows Authentication will be used to connect to the instance. </p>
+<p>Database objects will NOT be included in the results. </p>
+<p>The Inventory file will be written to your &quot;My Documents&quot; folder. </p>
+<p>Standard logging will be used.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h6>Example 4:</h6>
+<blockquote>
+<p></p>
+<pre><strong>.\Get-SqlServerInventoryToClixml.ps1 -Computername $env:COMPUTERNAME -IncludeDatabaseObjectInformation -LoggingPreference Verbose</strong></pre>
+</blockquote>
+<blockquote>
+<p>Collect an inventory by scanning the local machine for SQL Server instances. </p>
+<p>Windows Authentication will be used to connect to the instance. </p>
+<p>Database objects (EXCLUDING system objects) will be included in the results. </p>
+<p>The Inventory file will be written to your &quot;My Documents&quot; folder. </p>
+<p>Verbose logging will be used.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h6>Example 5:</h6>
+<blockquote>
+<p></p>
+<pre><strong>.\Get-SqlServerInventoryToClixml.ps1 -Computername $env:COMPUTERNAME -IncludeDatabaseObjectInformation -IncludeDatabaseSystemObjects</strong></pre>
+</blockquote>
+<blockquote>
+<p>Collect an inventory by scanning the local machine for SQL Server instances. </p>
+<p>Windows Authentication will be used to connect to the instance. </p>
+<p>Database objects (INCLUDING system objects) will be included in the results.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h3>How Long Will It Take?</h3>
+<p>When run with the defaults (i.e. do not collect database object information or permissions) on a machine with 2 CPUs you can expect the script to take about 15-20 minutes to complete an inventory of 20 instances. Your mileage will vary depending on how many
+ instances you are collecting information from and what additional information you're including.</p>
+<p>A few suggestions\observations:</p>
+<ul>
+<li>Features have been added to each version of SQL Server so it stands to reason that the more recent your versions of SQL Server are, the longer it will take to collect information from them - especially if you include database object information and system
+ objects as part of the inventory. </li><li>Progress is written to the PowerShell console to give you a better idea what the script's up to. If you've got logging enabled (highly recommended) you can also check the logs for progress updates.
+</li><li>Just like any other software it's possible to run into issues if you try and do too much. In other words, you may have more success getting the script to complete in a reasonable amount of time if you limit what it's doing.
+<ul>
+<li>If you're collecting database object information and permissions, consider limiting the number of instances you include in the inventory. Do you really need to include ALL of development, QA, test, and production in a single inventory?
+</li><li>SQL Server has a LOT of system objects under the covers so unless you have a good reason to, don't bother collecting system object details...and if you need to, you may want to limit the inventory to a few machines at a time.
+</li></ul>
+</li></ul>
+<p>&nbsp;</p>
+<h2>Generate A SQL Inventory Report</h2>
+<p>Once the inventory collection phase is complete you'll want to copy the output file to the machine where you'll create the inventory reports (Excel workbooks).</p>
+<p>To create an inventory report, start by opening a PowerShell console and set your current location to the WindowsPowerShell folder:</p>
+<blockquote>
+<p></p>
+<pre><strong>Set-Location &quot;$([Environment]::GetFolderPath([Environment&#43;SpecialFolder]::MyDocuments))\WindowsPowerShell&quot;</strong></pre>
+</blockquote>
+<p>This time you're going to execute the script <span style="font-family:courier new">
+<strong>.\Convert-SqlServerInventoryClixmlToExcel.ps1</strong></span> and supply the following parameters:</p>
+<blockquote>
+<h6>-FromPath</h6>
+<p>The literal path to the output file created by Get-SqlServerInventoryToClixml.ps1.</p>
+<h6>-ToDirectoryPath</h6>
+<p><em>Optional</em>. Specifies the literal path to the directory where the Excel workbooks will be written. This path must exist prior to executing the script. If this parameter is not provided the workbooks will be written to the same directory specified
+ in the <strong>FromPath</strong> parameter.</p>
+<h6>-ColorTheme</h6>
+<p><em>Optional</em>. An Office Theme Color to apply to each worksheet. If not specified or if an unknown theme color is provided the default &quot;Office&quot; theme colors will be used.</p>
+<p>Office 2013 theme colors include: Aspect, Blue Green, Blue II, Blue Warm, Blue, Grayscale, Green Yellow, Green, Marquee, Median, Office, Office 2007 - 2010, Orange Red, Orange, Paper, Red Orange, Red Violet, Red, Slipstream, Violet II, Violet, Yellow Orange,
+ Yellow</p>
+<p>Office 2010 theme colors include: Adjacency, Angles, Apex, Apothecary, Aspect, Austin, Black Tie, Civic, Clarity, Composite, Concourse, Couture, Elemental, Equity, Essential, Executive, Flow, Foundry, Grayscale, Grid, Hardcover, Horizon, Median, Metro, Module,
+ Newsprint, Office, Opulent, Oriel, Origin, Paper, Perspective, Pushpin, Slipstream, Solstice, Technic, Thatch, Trek, Urban, Verve, Waveform</p>
+<p>Office 2007 theme colors include: Apex, Aspect, Civic, Concourse, Equity, Flow, Foundry, Grayscale, Median, Metro, Module, Office, Opulent, Oriel, Origin, Paper, Solstice, Technic, Trek, Urban, Verve</p>
+<h6>-ColorScheme</h6>
+<p><em>Optional</em>. The color theme to apply to each worksheet. Valid values are &quot;Light&quot;, &quot;Medium&quot;, and &quot;Dark&quot;. If not specified then &quot;Medium&quot; is used as the default value .</p>
+</blockquote>
+<blockquote>
+<h6>-LoggingPreference</h6>
+<p><em>Optional</em>. Specifies how much information will be written to a log file (location specified in the
+<strong>LogPath</strong> parameter). Valid values are None, Standard, Verbose, and Debug. The default value is None (i.e. no logging).</p>
+<h6>-LogPath</h6>
+<p><em>Optional</em>. A literal path to a log file to write details about what this script is doing. The filename does not need to exist prior to executing this script but the specified directory does.
+</p>
+<p>If a <strong>LoggingPreference</strong> other than &quot;None&quot; is specified and this parameter is not provided then the file is named &quot;SQL Server Inventory - [Year][Month][Day][Hour][Minute].log&quot; and is written to the same directory specified by the
+<strong>ToDirectoryPath</strong> paramter.</p>
+<p>&nbsp;</p>
+</blockquote>
+<h3>Examples</h3>
+<p>The following examples demonstrate how to combine all the parameters together when running the script.</p>
+<h6>Example 1:</h6>
+<blockquote>
+<p></p>
+<pre><strong>.\Convert-SqlServerInventoryClixmlToExcel.ps1 -FromPath &quot;C:\Inventory\SQL Server Inventory.xml.gz&quot;</strong></pre>
+<p>Writes Excel files for the Database Engine and Windows Operating System information contained in &quot;C:\Inventory\SQL Server Inventory.xml.gz&quot; to &quot;C:\Inventory\SQL Server - Database Engine.xlsx&quot; and &quot;C:\Inventory\SQL Server - Windows.xlsx&quot;, respectively.
+</p>
+<p>The Office color theme and Medium color scheme will be used by default.</p>
+</blockquote>
+<h6>Example 2:</h6>
+<blockquote>
+<p></p>
+<pre><strong>.\Convert-SqlServerInventoryClixmlToExcel.ps1 -FromPath &quot;C:\Inventory\SQL Server Inventory.xml.gz&quot;&nbsp; -ColorTheme Blue -ColorScheme Dark</strong></pre>
+<p>Writes Excel files for the Database Engine and Windows Operating System information contained in &quot;C:\Inventory\SQL Server Inventory.xml.gz&quot; to &quot;C:\Inventory\SQL Server - Database Engine.xlsx&quot; and &quot;C:\Inventory\SQL Server - Windows.xlsx&quot;, respectively.&nbsp;
+</p>
+<p>The Blue color theme and Dark color scheme will be used.</p>
+<p>&nbsp;</p>
+</blockquote>
+<h2>Additional Help</h2>
+<p>If you're still having problems using SQL Power Doc after reading through this guide please post in the
+<a href="https://sqlpowerdoc.codeplex.com/discussions">Discussions</a> or reach out to
+<a href="https://twitter.com/sqldba" target="_blank">@SQLDBA</a> on Twitter.</p>
+</div><div class="ClearBoth"></div>

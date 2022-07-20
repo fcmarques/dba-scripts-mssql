@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1200676",
+    "ThreadId": "528360",
+    "Html": "Hello,\r<br />\nWhen I run Get-WindowInventoryToClixml.ps1, I get the output that no machines found!  I'm running this on my own pc on our company network. Here is the command:\r<br />\n<br />\n.\\Get-WindowsInventoryToClixml.ps1 -Computername $env:COMPUTERNAME -LoggingPreference Verbose\r<br />\n<br />\nAnd here is the logging info:\r<br />\n2014-01-29 15:22:25.9093 ? Starting Script: \\WindowsPowerShell\\Get-WindowsInventoryToClixml.ps1\r<br />\n2014-01-29 15:22:25.9363 ? Beginning network scan\r<br />\n2014-01-29 15:22:25.9393 ? \t-ComputerName: MyMachine\r<br />\n2014-01-29 15:22:25.9413 ? \t-PrivateOnly: False\r<br />\n2014-01-29 15:22:25.9433 ? \t-MaxConcurrencyThrottle: 8\r<br />\n2014-01-29 15:22:25.9453 ? \t-ResolveAliases: False\r<br />\n2014-01-29 15:22:25.9483 ? Resolving IP address for MyMachine\r<br />\n2014-01-29 15:22:26.0253 ? Testing PING connectivity to 1 addresses\r<br />\n2014-01-29 15:22:26.0393 $ Testing PING connectivity to MyMachine (##.##.##.##) [1 of 1]\r<br />\n2014-01-29 15:22:28.1133 $ PING response from MyMachine (##.##.#.##): True\r<br />\n2014-01-29 15:22:28.3683 $ PING connectivity test complete\r<br />\n2014-01-29 15:22:28.3713 ? Testing WMI connectivity to 1 addresses\r<br />\n2014-01-29 15:22:28.3813 $ Testing WMI connectivity to MyMachine (##.##.#.##) [1 of 1]\r<br />\n2014-01-29 15:22:28.6343 $ WMI response from MyMachine (##.##.#.##): True\r<br />\n2014-01-29 15:22:28.8943 $ WMI connectivity test complete\r<br />\n2014-01-29 15:22:28.9153 ? Network scan complete\r<br />\n2014-01-29 15:22:28.9183 ? \t-IP Addresses Scanned: 1\r<br />\n2014-01-29 15:22:28.9203 ? \t-PING Replies: 1\r<br />\n2014-01-29 15:22:28.9233 ? \t-WMI Replies: 1\r<br />\n2014-01-29 15:22:28.9293 ? Beginning machine scan\r<br />\n2014-01-29 15:22:29.0253 ? Scanning MyMachine on IP address ##.##.#.## [Machine 1 of 1]\r<br />\n2014-01-29 15:22:36.5693 ? Machine scan complete (Success: 0; Failure: 0)\r<br />\n2014-01-29 15:22:36.5763 + No machines found!\r<br />\n2014-01-29 15:22:36.5813 ? End Script: \\WindowsPowerShell\\Get-WindowsInventoryToClixml.ps1\r<br />\n \r<br />\nAny help would be greatly appreciated.  If I need to provide more information, please let me know.\r<br />\nThanks,\r<br />\nJoey<br />\n",
+    "PostedDate": "2014-01-29T14:20:07.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1219901",
+    "ThreadId": "528360",
+    "Html": "Hi Joey,\r<br />\nWhat version of SQL Power Doc are you running? (Noted: I really should include that in the log file!)\r<br />\n<br />\nAt first glance I'm not sure what's going on here, but let's start with the version so I can look at the code and see if there's something I didn't account for somewhere...\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-03-06T07:45:21.837-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

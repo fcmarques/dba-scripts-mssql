@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Firstly thanks for creating and sharing such a great tool. I found a small bug and delving into the internals of this script has certainly increased my powershell understanding.\r\n\r\nOk now onto the bug. On the reliability tab in the exported 'SQL Server Inventory - Database Engine Assessment.xlsx'  the \"No Alerts for Sev 19-25\" check incorrectly lists servers that do have these correctly setup.\r\n\r\nThe underlying code in question does the following check\r\n```\r\n\t# No Alerts for Sev 19-25\r\n\t#region\r\n\tif (\r\n\t\t$DatabaseServer.Agent.Alerts -and \r\n\t\t$(\r\n\t\t\t$_.Agent.Alerts | Where-Object { \r\n\t\t\t\t$_.General.ID -and\r\n\t\t\t\t$_.General.Definition.Severity -ge 19 -and\r\n\t\t\t\t$_.General.Definition.Severity -le 25\r\n\t\t\t} | Measure-Object\r\n\t\t).Count -eq 0\r\n```\r\n\r\nBut the $_.General.Definition.Severity property holds strings such as the one's below\r\n000 - Unknown\r\n000 - Unknown\r\n000 - Unknown\r\n000 - Unknown\r\n017 - Insufficient Resources\r\n018 - Non-Fatal Internal Error\r\n019 - Fatal Error in Resource\r\n020 - Fatal Error in Current Process\r\n021 - Fatal Error in Database Processes\r\n022 - Fatal Error: Table Integrity Suspect\r\n023 - Fatal Error: Database Integrity Suspect\r\n024 - Fatal Error: Hardware Error\r\n025 - Fatal Error\r\n\r\nI changed the following code at line 1963 in SqlServerInventory.psm1 to correctly output when these alerts haven't been set.\r\n```\r\n\t# No Alerts for Sev 19-25\r\n\t#region\r\n\tif (\r\n\t\t$DatabaseServer.Agent.Alerts -and \r\n\t\t$(\r\n\t\t\t$_.Agent.Alerts | Where-Object { \r\n\t\t\t\t$_.General.ID -and\r\n\t\t\t\t$(($_.General.Definition.Severity).Substring(0,3) -as [int]) -ge 19 -and\r\n\t\t\t\t$(($_.General.Definition.Severity).Substring(0,3) -as [int]) -le 25\r\n\t\t\t} | Measure-Object\r\n\t\t).Count -eq 0\r\n\r\n```",
+    "LastUpdatedDate": "2014-08-05T21:19:30.76-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2014-08-05T21:19:30.76-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Minor bug in Database engine assessment",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 11
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

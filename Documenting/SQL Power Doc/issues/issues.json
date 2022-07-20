@@ -1,0 +1,106 @@
+[
+  {
+    "Id": 1,
+    "Title": "Errors not correctly reported"
+  },
+  {
+    "Id": 2,
+    "Title": "LogHelper and SQLServerInventory modules not found"
+  },
+  {
+    "Id": 3,
+    "Title": "Mountpoints"
+  },
+  {
+    "Id": 4,
+    "Title": "Remote Wmi connection on Windows 2008 R2 host"
+  },
+  {
+    "Id": 5,
+    "Title": "Convert-SqlServerInventoryClixmlToExcel.ps1 cannot be loaded."
+  },
+  {
+    "Id": 6,
+    "Title": "NetShell.psm1 Code Signing Error"
+  },
+  {
+    "Id": 7,
+    "Title": "Divide by zero error in Excel conversion"
+  },
+  {
+    "Id": 8,
+    "Title": "windows inventory works, but not sqlserver inventory"
+  },
+  {
+    "Id": 9,
+    "Title": "Issue with Convert-WindowsInventoryClixmlToExcel.ps1 and Excel"
+  },
+  {
+    "Id": 10,
+    "Title": "Stuck formatting worksheet 34"
+  },
+  {
+    "Id": 11,
+    "Title": "Minor bug in Database engine assessment"
+  },
+  {
+    "Id": 12,
+    "Title": ".\\Convert-SqlServerInventoryClixmlToExcel.ps1 stuck at  formatting  sheet  55"
+  },
+  {
+    "Id": 13,
+    "Title": "A way to combine several xml.gz from several domain"
+  },
+  {
+    "Id": 14,
+    "Title": "Obj XML tag is not recognized"
+  },
+  {
+    "Id": 15,
+    "Title": "Problems with scanning"
+  },
+  {
+    "Id": 16,
+    "Title": "): Exception calling \"EndInvoke\" with \"1\" argument(s): "
+  },
+  {
+    "Id": 17,
+    "Title": "Problem with databases having 6.5 compatibility level"
+  },
+  {
+    "Id": 18,
+    "Title": "No valid module"
+  },
+  {
+    "Id": 19,
+    "Title": "Exception calling \"EndInvoke\" with \"1\" argument(s)"
+  },
+  {
+    "Id": 20,
+    "Title": "Computername - forced to put into comma delimited format"
+  },
+  {
+    "Id": 21,
+    "Title": "Named SQL Instance is Reported as Disabled"
+  },
+  {
+    "Id": 22,
+    "Title": "Question"
+  },
+  {
+    "Id": 23,
+    "Title": "Exception calling \"SizeOf\" with \"1\" argument(s): "
+  },
+  {
+    "Id": 24,
+    "Title": "module RDS-Manager causes issue Win10 PS 5"
+  },
+  {
+    "Id": 25,
+    "Title": "Microsoft SQL Server unknown for SQL Server 2014 Instances"
+  },
+  {
+    "Id": 26,
+    "Title": "Convert-SqlServerInventoryClixmlToExcel.ps1 fails on PS 5"
+  }
+]

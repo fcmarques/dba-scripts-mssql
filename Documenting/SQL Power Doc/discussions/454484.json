@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1084706",
+    "ThreadId": "454484",
+    "Html": "Hi Kendal\r<br />\n<br />\nit seems that the scripts does not consider volumes attached to the system via mountpoints. \r<br />\n<br />\nWe attach out LUNs using mountpoints like this:<br />\n<pre><code>E: -&gt; LUN01\nE:\\Data01 -&gt; LUN02\nE:\\TLOG01 -&gt; LUN03\nE:\\BACKUP -&gt; LUN04</code></pre>\n\nVolume E:\\ will be considered during the checks and can be found in the Excel and XML. The other LUNs attached using mountpoints can not be found in the XML or Excel. \r<br />\n<br />\nGreetings, \r<br />\nAndre<br />\n",
+    "PostedDate": "2013-08-25T13:32:48.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1088413",
+    "ThreadId": "454484",
+    "Html": "Andre,\r<br />\nI'll have to play around with mountpoints in my VM lab. I've got a round of changes coming in an update soon and as soon as those are published I'll have a look at mountpoints.\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-09-04T12:48:48.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1088433",
+    "ThreadId": "454484",
+    "Html": "Hello Kendal,\r<br />\n<br />\nthanks for your answer.\r<br />\nI hope you will have a solution for this issue soon. If you need some help with testing, or some info, etc. please let me know.\r<br />\n<br />\nThanks \r<br />\nAndre<br />\n",
+    "PostedDate": "2013-09-04T13:38:40.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

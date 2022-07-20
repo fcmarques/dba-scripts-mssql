@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1193562",
+    "ThreadId": "522741",
+    "Html": "Hello\r<br />\nFor some reason I see only Connect and Execute permissions for the 'DB Config - permissions'.\r<br />\nShould it be so or I've missed some settings?\r<br />\n<br />\nThanks,\r<br />\nOlegas<br />\n",
+    "PostedDate": "2014-01-23T13:10:28.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1219900",
+    "ThreadId": "522741",
+    "Html": "Olegas,\r<br />\nSorry I missed your question when you posted it...Database object permissions are not included by default. Are you using the -IncludeDatabaseObjectPermissions switch parameter when running SQL Power Doc?\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-03-06T07:43:22.293-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

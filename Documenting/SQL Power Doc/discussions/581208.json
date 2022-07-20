@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1353464",
+    "ThreadId": "581208",
+    "Html": "Hi\r<br />\n<br />\nI have a server with 13 instances, 4 instance in 2008 (log on as localsystem) , 9 instance in 2012 (log on as virtual account).\r<br />\n<br />\nwhen i execute this command, .\\Get-SqlServerInventoryToClixml.ps1 -Computername MyServer -LoggingPreference Standard\r<br />\n<br />\nOnly 4 SQL 2008 instances are found.\r<br />\n<br />\nAny idea ?<br />\n",
+    "PostedDate": "2015-02-17T09:10:08.33-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1354326",
+    "ThreadId": "581208",
+    "Html": "What version of SMO is installed on the machine where you're running the scripts? Does the account you're running the scripts as have access to the instances that aren't being found?<br />\n",
+    "PostedDate": "2015-02-20T06:45:03.987-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1355279",
+    "ThreadId": "581208",
+    "Html": "Hi Kendal\r<br />\n<br />\nI think both SMO (2008,2012) are installed.\r<br />\n<br />\nWhen I execute the powerdoc command from my desktop then only 4 SQL 2008 instances are found. \r<br />\nWhen I execute the powerdoc command from the sql machine then all instances are found. \r<br />\n<br />\nAny Idea ?\r<br />\n<br />\nThanks.<br />\n",
+    "PostedDate": "2015-02-24T08:35:27.26-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1355381",
+    "ThreadId": "581208",
+    "Html": "When both 2008 and 2012 SMO assemblies are on a machine sometimes the lower version of the assembly is the one that ends up being loaded. When the 2008 assemblies are loaded the 2012 instances aren't found.\r<br />\n<br />\nThe latest version of NetworkScan.psm1 that I committed today should fix this; I updated the module check the target machine's registry for instances in addition to using the ManagedComputer object in SMO.\r<br />\n<br />\nTry replacing your copy with the latest version and let me know if all the instances are discovered.\r<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2015-02-24T13:08:07.687-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1355583",
+    "ThreadId": "581208",
+    "Html": "Hi<br />\n<br />\nSame result, Only 4 SQL 2008 instances are found.<br />\n<br />\nI downloaded the lastest source, plus replaced the NetworkScan.psm1 with the last commit (as of commit 4af83ca09712, 16 hours ago).<br />\n<br />\nWhen I execute the powerdoc command from my desktop then only 4 SQL 2008 instances are found. <strong>Only Sql Server 2008 R2 is installed on my desktop</strong>.<br />\n<br />\nWhen I execute the powerdoc command from the SQL machine then all instances are found. Both Sql Server 2008 and 2012 are installed on the SQL machine.<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2015-02-25T05:04:27.103-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1362872",
+    "ThreadId": "581208",
+    "Html": "Ok, that makes sense - officially Microsoft does not support forwards compatibility (see <a href=\"https://connect.microsoft.com/SQLServer/feedback/details/622441\" rel=\"nofollow\">https://connect.microsoft.com/SQLServer/feedback/details/622441</a>). This is why I call it out in the documentation: &quot;You don't need the absolute latest version installed, but it's a good idea to make sure that the version you do have installed at least matches the highest version of SQL Server that will be included in your inventory&quot;. I should probably add some kind of warning message to the logs and/or console, too.\r<br />\n<br />\nI refactored the NetworkScan module for the opposite reason - to find lower version of instances running side by side with more recent versions, e.g. SQL 2000 and 2005 on the same machine. However, the latest change I just committed should work the other way and find those 2012 instances.  Can you grab the latest version of the NetworkScan module that I just committed and try that out one more time? \r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2015-03-12T09:36:48.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

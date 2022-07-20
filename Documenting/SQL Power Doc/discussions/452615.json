@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1077461",
+    "ThreadId": "452615",
+    "Html": "Hello,\r<br />\nThank you for creating SQL Power Doc, this is amazing.  Coming from a Unix background into a MS Windows environment, I was overwhelmed trying to get an overview of all the servers and SQL Servers on the network.  Thank you for sharing this amazing tool.\r<br />\n<br />\nA comment about the 'readme' files included in the download &quot;SqlServerInventory Readme.txt&quot; and &quot;WindowsInventory Readme.txt&quot; - in the section explaining how to run the Convert...toExcel.ps1 script(s), it does not show the input file (-FromPath) as being the .gz file.   The online doc DOES show this but I happened to be following the readme.  So I mistakenly gunzip'd the file and of course the Convert...toExcel.ps1 failed (but thank you for easy to understand error message).  I re-gzip'd my output and the Convert ran fine.\r<br />\nPlease either update the readme.txt in the download, or remove them as you have provided excellent online documentation.\r<br />\n<br />\nAgain, thanks for this utility program, it's a real blessing.<br />\n",
+    "PostedDate": "2013-08-06T15:07:21.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077895",
+    "ThreadId": "452615",
+    "Html": "Hi normajean,\r<br />\nThanks for the positive feedback! I've got an updated version of the readme files that is based on the CodePlex documentation. I'll try to get them into the next beta this week.\r<br />\n<br />\n-- Kendal<br />\n",
+    "PostedDate": "2013-08-07T11:53:36.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

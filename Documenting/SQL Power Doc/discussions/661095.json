@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1492085",
+    "ThreadId": "661095",
+    "Html": "I used the Examples on the &quot;How to&quot; page to run the script against a single machine, single instance. I am Admin for both the box and SQL.\r<br />\n<br />\nUsing verbose logging, there is a lot of detail about the items and elements found during the scan... everything looks good until the last 4 lines of the log file which read something like this:\r<br />\n<br />\nXXXX (datetime) Scanned [MachineName] at IP Address x.x.x.x with 0 errors\r<br />\nXXXX (datetime) Machine scan complete (Success: 1; Failure: 0)\r<br />\nXXXX (datetime) Writing Inventory to disk\r<br />\nXXXX (datetime) No machines found!\r<br />\n<br />\nI tried the script both with and without specifying &quot;-DirectoryPath&quot;\r<br />\n<br />\nSame results in the log file... no output file from the scan.<br />\n",
+    "PostedDate": "2017-02-01T16:12:38.88-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1498271",
+    "ThreadId": "661095",
+    "Html": "it seems you did not provide a validate computer name, or you have issue to access the remote machine.  if it runs successfully, the output file will locate in your user home folder, not the current working folder. <br />\n",
+    "PostedDate": "2017-10-17T13:28:42.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

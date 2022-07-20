@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1274895",
+    "ThreadId": "552358",
+    "Html": "Hi Kendal, This is great work that you've done and shared. Thanks!\r<br />\nBy chance, do you plan on adding a feature to pull the extended properties of database objects? At least at the Database level to add a description about the purpose of each database. For example, I would add in extended properties myself or use <a href=\"https://datadictionary.codeplex.com/\" rel=\"nofollow\">Data Dictionary Creator</a> to add properties and then use your tool to do an inventory that would include the properties to better describe databases and objects.\r<br />\n<br />\nThanks,\r<br />\nDarren<br />\n",
+    "PostedDate": "2014-07-21T12:52:47.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1414545",
+    "ThreadId": "552358",
+    "Html": "Hi Kendal\r<br />\nGreat work! \r<br />\nI would also like support for pulling the extended properties of database objects. This would be helpful in creating documentation for the schema - what the columns in a table mean etc. Was this idea rejected for any specific reason?\r<br />\n<br />\n-Rajesh.<br />\n",
+    "PostedDate": "2015-04-15T23:23:45.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

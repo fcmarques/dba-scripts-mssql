@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello Kendal!\r\n\r\nFirst thanks for great Tool! It's very useful.\r\n\r\nAnd than about issue.\r\nIn my case when I collected inventory from servers and try to export to Excel I have got error:\r\nException calling \"Add\" with \"0\" argument(s): \"Old format or invalid type library. (Exception from HRESULT: 0x80028018 (TYPE_E_INVDATAREAD))\".\r\nAfter short search I found MS KB http://support.microsoft.com/kb/320369/en-us.\r\nAs I understand there is problem when PowerShell and Excel run with non-English OS version (may be non-English Office too).\r\n\r\nPlease take into account in the next versions Tool.\r\nI resolved the issue by adding this code in PS Module SqlServerInventory.psm1:\r\n[Threading.Thread]::CurrentThread.CurrentCulture = 'en-US'\r\n",
+    "LastUpdatedDate": "2013-12-19T06:28:55.557-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2013-12-16T06:49:36.663-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Issue with Convert-WindowsInventoryClixmlToExcel.ps1 and Excel",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 9
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

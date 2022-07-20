@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "When I was trying to run either the Get-SqlServerInventoryToClixml or the Convert-SqlServerInventoryClixmlToExcel I came across an ExecutionPolicy error in that the Modules needed to be signed.  I went through and signed all the modules, but one... NetShell.psm1.  This script errored when I tried to sign it with the following message:\r\n\r\nUTF-16(Big-Endian) and UTF-32 can't be code signed.  Convert your script to Default ANSI, UTF-16(Little Endian) or UTF-8.\r\n\r\nI'm at a loss on how to do that.  Can you advise?\r\n\r\nThanks!\r\n\r\nBrandon_Forest@calquake.com\r\n",
+    "LastUpdatedDate": "2014-01-03T15:22:08.417-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2013-10-16T13:42:55.66-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NetShell.psm1 Code Signing Error",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 6
+  },
+  "FileAttachments": [
+    {
+      "FileId": 744382,
+      "FileName": "Err_UTF16.gif",
+      "DownloadUrl": ".\\744382"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Brandon,\nIf the file is unblocked and your execution policy is set to RemoteSigned you shouldn't have any issues running the scripts. Do you have a different execution policy set?\n\n--Kendal\n",
+      "PostedDate": "2013-10-22T12:03:28.25-07:00",
+      "Id": 119243
+    },
+    {
+      "Message": "Kendal,\n\n1)  I'm on a totally new laptop, \n2)  My ExecutionPolicy is RemoteSigned.\n3)  I've downloaded the zip file \"SQL Power Doc v1.0.2.1\" from this website.\n4)  I've unblocked the zip file by right clicking on it and clicking on \"Unblock\"\n5)  I've unzipped the zip file to a fresh subdirectory \"C:\\Users\\bforest\\Documents\\WindowsPowerShell\".\n6)  I've signed the Get-SqlServerInventoryClixmlToExcel.ps1 and LogHelper.PSM1.\n7)  When I run the command .\\Get-SqlServerInventoryClixmlToExcel.ps1 -ComputerName <myserver> I get the error: \"The file <mypath>\\Modules\\NetShell\\NetShell.psm1 is not digitally signed\" \n8)  When I try to sign this file I get the UTF-16 error message.  \n\nI'm still at a loss to explain why this error is occurring.  I've moved on since the original message above, but I still would like to resolve this issue and add this tool to my bag of tricks.\n\nThanks!\n\nBrandon_Forest@calquake.com",
+      "PostedDate": "2014-01-03T15:22:08.417-08:00",
+      "Id": 129041
+    }
+  ]
+}

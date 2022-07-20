@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": null,
+    "Description": "Hello,\r\n\r\nit seems that the scripts does not consider volumes attached to the System via mountpoints.\r\n\r\nWe attach out LUNs using mountpoints like this:\r\n\r\n```\r\nE: -> LUN01\r\nE:\\Data01 -> LUN02\r\nE:\\TLOG01 -> LUN03\r\nE:\\BACKUP -> LUN04\r\n```\r\n\r\nVolume E:\\ will be considered during the checks and can be found in the Excel and XML. The other LUNs attached using mountpoints can not be found in the XML or Excel.\r\n\r\nGreetings,\r\nAndre",
+    "LastUpdatedDate": "2017-11-28T14:37:36.723-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2013-08-02T05:42:14.473-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mountpoints",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 4,
+    "Id": 3
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Will look into clarifying mountpoints in the next release following 1.0.2.0 (currently in beta)",
+      "PostedDate": "2013-09-04T14:11:50.017-07:00",
+      "Id": 112310
+    },
+    {
+      "Message": "I just downloaded the current version 1.0.2.2 and am still seeing this issue. Has this been resolved or is it still pending?",
+      "PostedDate": "2015-10-14T10:19:03.893-07:00",
+      "Id": 191629
+    },
+    {
+      "Message": "The same issue exists with __Cluster Shared Volumes__. Would love to see this move up the priority list.",
+      "PostedDate": "2016-07-06T07:32:56.53-07:00",
+      "Id": 200455
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "I am trying to put this in a job. So when someone wants an updated inventory. Then can just run the sql agent job,. I got it all working except the conversion to excel. Has any one tried this? or have any suggestions? Ran for 2 hours\r\n\r\nError\r\nException calling \"SaveAs\" with \"1\" argument(s): \"SaveAs method of Workbook \r\nclass failed\"\r\nAt C:\\Users\\sqlsrvadm\\Documents\\WindowsPowerShell\\Modules\\SqlServerInventory\\Sq\r\nlServerInventory.psm1:10481 char:4\r\n+             $Workbook.SaveAs($Path)\r\n+             ~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException\r\n    + FullyQualifiedErrorId : ComMethodTargetInvocation\r\n \r\nException calling \"SaveAs\" with \"1\" argument(s): \"SaveAs method of Workbook \r\nclass failed\"\r\nAt C:\\Users\\agentaccount\\Documents\\WindowsPowerShell\\Modules\\SqlServerInventory\\Sq\r\nlServerInventory.psm1:10991 char:4\r\n+             $Workbook.SaveAs($Path)\r\n+             ~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException\r\n    + FullyQualifiedErrorId : ComMethodTargetInvocation\r\n \r\nException calling \"SaveAs\" with \"1\" argument(s): \"SaveAs method of Workbook \r\nclass failed\"\r\nAt C:\\Users\\agent account\\Documents\\WindowsPowerShell\\Modules\\WindowsInventory\\Wind\r\nowsInventory.psm1:2424 char:4\r\n+             $Workbook.SaveAs($Path)\r\n+             ~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException\r\n    + FullyQualifiedErrorId : ComMethodTargetInvocation",
+    "LastUpdatedDate": "2016-05-27T11:40:17.573-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2016-04-01T16:45:27.363-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Question",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This is probably a COM Interop issue. Does the account the job is running under have permissions to save the file to the path? Is the path you're trying to save to a valid path?",
+      "PostedDate": "2016-05-27T11:40:17.573-07:00",
+      "Id": 199745
+    }
+  ]
+}

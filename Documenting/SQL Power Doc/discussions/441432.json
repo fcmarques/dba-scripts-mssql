@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1035143",
+    "ThreadId": "441432",
+    "Html": "Hi Kendal,\r<br />\nNice script! Got the CliXML file no problem. However, I'm running Excel 2013 on Server 2012, is that the reason I get this error? Debug content at bottom:\r<br />\n<br />\n<br />\nPS C:\\my doc folder\\WindowsPowerShell&gt; .\\Convert-WindowsInventoryClixmlToExcel.ps1 -FromPath &quot;C:\\my doc folder\\Windows Inventory - 2013-04-24-10-07.xml&quot; -LoggingPreference debug\r<br />\nProperty 'DisplayAlerts' cannot be found on this object; make sure it exists and is settable.\r<br />\nAt C:\\my doc folder\\WindowsPowerShell\\Modules\\WindowsInventory\\WindowsInventory.psm1:2377 char:4<br />\n<ul>\n<li>$Worksheet.Application.DisplayAlerts = $false</li>\n<li>\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br />\n<ul>\n<li>CategoryInfo          : InvalidOperation: (:) [], RuntimeException</li>\n<li>\nFullyQualifiedErrorId : PropertyNotFound<br />\n</li>\n</ul>\n</li>\n</ul>\nMethod invocation failed because [System.__ComObject] doesn't contain a method named 'SaveAs'.\r<br />\nAt C:\\my doc folder\\WindowsPowerShell\\Modules\\WindowsInventory\\WindowsInventory.psm1:2378 char:4<br />\n<ul>\n<li>$Workbook.SaveAs($Path)</li>\n<li>\n~~~~~~~~~~~~~~~~~~~~~~~<br />\n<ul>\n<li>CategoryInfo          : InvalidOperation: (:) [], RuntimeException</li>\n<li>\nFullyQualifiedErrorId : MethodNotFound<br />\n</li>\n</ul>\n</li>\n</ul>\nProperty 'Saved' cannot be found on this object; make sure it exists and is settable.\r<br />\nAt C:\\my doc folder\\WindowsPowerShell\\Modules\\WindowsInventory\\WindowsInventory.psm1:2379 char:4<br />\n<ul>\n<li>$Workbook.Saved = $true</li>\n<li>\n~~~~~~~~~~~~~~~~~~~~~~~<br />\n<ul>\n<li>CategoryInfo          : InvalidOperation: (:) [], RuntimeException</li>\n<li>\nFullyQualifiedErrorId : PropertyAssignmentException<br />\n</li>\n</ul>\n</li>\n</ul>\nException setting &quot;ScreenUpdating&quot;: &quot;Exception from HRESULT: 0x800AC472&quot;\r<br />\nAt C:\\my doc folder\\WindowsPowerShell\\Modules\\WindowsInventory\\WindowsInventory.psm1:2382 char:4<br />\n<ul>\n<li>$Excel.ScreenUpdating = $true</li>\n<li>\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br />\n<ul>\n<li>CategoryInfo          : NotSpecified: (:) [], SetValueInvocationException</li>\n<li>\nFullyQualifiedErrorId : ExceptionWhenSetting<br />\n</li>\n</ul>\n</li>\n</ul>\nException calling &quot;Quit&quot; with &quot;0&quot; argument(s): &quot;Exception from HRESULT: 0x800AC472&quot;\r<br />\nAt C:\\my doc folder\\WindowsPowerShell\\Modules\\WindowsInventory\\WindowsInventory.psm1:2387 char:4<br />\n<ul>\n<li>$Excel.Quit()</li>\n<li>\n~~~~~~~~~~~~~<br />\n<ul>\n<li>CategoryInfo          : NotSpecified: (:) [], MethodInvocationException</li>\n<li>\nFullyQualifiedErrorId : COMException<br />\n</li>\n</ul>\n</li>\n</ul>\nMethod invocation failed because [System.__ComObject] doesn't contain a method named 'Item'.\r<br />\nAt C:\\my doc folder\\WindowsPowerShell\\Modules\\WindowsInventory\\WindowsInventory.psm1:884 char:4<br />\n<ul>\n<li>$Worksheet = $Excel.Worksheets.Item($WorksheetNumber)</li>\n<li>\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br />\n<ul>\n<li>CategoryInfo          : InvalidOperation: (Item:String) [], ParentContainsErrorRecordException</li>\n<li>\nFullyQualifiedErrorId : MethodNotFound<br />\n</li>\n</ul>\n</li>\n</ul>\nLog file content (in debug mode):\r<br />\n2013-04-24 10:28:25.8548 ? Starting Script: c:\\my doc folder\\WindowsPowerShell\\Convert-WindowsInventoryClixmlToExcel.ps1\r<br />\n2013-04-24 10:28:25.9773 ? Loading inventory from 'c:\\my doc folder\\Windows Inventory - 2013-04-24-10-07.xml'\r<br />\n2013-04-24 10:28:27.7348 * Start Function: Export-WindowsInventoryToExcel\r<br />\n2013-04-24 10:28:27.7448 ? Beginning output to Excel\r<br />\n2013-04-24 10:28:27.7573 ? Beginning output to Excel\r<br />\n2013-04-24 10:28:29.7755 $ Writing Worksheet #1: Overview<br />\n",
+    "PostedDate": "2013-04-24T07:36:03.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1035151",
+    "ThreadId": "441432",
+    "Html": "I've used Excel 2013 running on Windows 8 and haven't run into this problem. Do you have the .NET Programmability Support feature for Excel installed?\r<br />\n<br />\nThe image below shows where this is for Office 2007 but it's more or less the same for 2013 as well:\r<br />\n<img src=\"http://consultingblogs.emc.com/blogs/markmann/WindowsLiveWriter/TFSErrorTF80042_F10B/image_thumb_3.png\" alt=\"Image\" />\r<br />\n<br />\n<br />\nKendal<br />\n",
+    "PostedDate": "2013-04-24T07:49:36.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1035164",
+    "ThreadId": "441432",
+    "Html": "It looks the same in 2013 and is installed.\r<br />\nexcel isn't activated, get activation error 0xc004c032.\r<br />\nDisregard this issue till I investigate this lovely Excel error message.<br />\n",
+    "PostedDate": "2013-04-24T08:07:22.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1035215",
+    "ThreadId": "441432",
+    "Html": "Activating Excel 2013 didn't solve. \r<br />\nTurns out installing Excel 2010 solves the problem. Ran for a much shorter time against Excel 2013, and it was erroring out early and attempting to save the workbook object.<br />\n",
+    "PostedDate": "2013-04-24T10:00:23.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1035217",
+    "ThreadId": "441432",
+    "Html": "That's really odd - I wonder if there's some issue specific to your installation that was fixed by installing Excel 2010. I've got a clean install of Office 2013 on my dev machine and did not run into the problem you reported.\r<br />\n<br />\nI guess for now I'll consider it resolved until I hear that other people are experiencing similar issues with Excel 2013.\r<br />\n<br />\nKendal <br />\n",
+    "PostedDate": "2013-04-24T10:06:27.807-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

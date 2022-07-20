@@ -1,0 +1,362 @@
+[
+  {
+    "Id": "439974",
+    "Title": "Getting error when running -- Convert-SqlServerInventoryClixmlToExcel.ps1",
+    "LatestDate": "2013-04-11T12:21:33.367-07:00"
+  },
+  {
+    "Id": "440870",
+    "Title": "How to use Wildcards to exclude Computers",
+    "LatestDate": "2013-04-24T00:57:24.507-07:00"
+  },
+  {
+    "Id": "441340",
+    "Title": "Not seeing named instance if default instance exists on server",
+    "LatestDate": "2013-04-23T13:04:17.73-07:00"
+  },
+  {
+    "Id": "441432",
+    "Title": "What excel versions supported?",
+    "LatestDate": "2013-04-24T10:06:27.807-07:00"
+  },
+  {
+    "Id": "441470",
+    "Title": "Extract runs but doesn't write data",
+    "LatestDate": "2013-04-25T11:29:54.697-07:00"
+  },
+  {
+    "Id": "441952",
+    "Title": "SQL Service Pack",
+    "LatestDate": "2013-04-29T09:40:33.693-07:00"
+  },
+  {
+    "Id": "442388",
+    "Title": "Cannot convert value \"832984089040\" to type \"System.Int32\". Error: \"Arithmetic operation resulted in an overflow.\" (RDS-Manager.psm1 line 1640, char 23)",
+    "LatestDate": "2013-05-02T12:51:29.997-07:00"
+  },
+  {
+    "Id": "442401",
+    "Title": "Entered issue under Issue Tracker",
+    "LatestDate": "2013-05-07T07:14:28.137-07:00"
+  },
+  {
+    "Id": "442793",
+    "Title": "Windows Inventory discovery problem",
+    "LatestDate": "2013-05-08T03:37:32.063-07:00"
+  },
+  {
+    "Id": "443612",
+    "Title": "Get-SqlServerInventoryToClixml.ps1 failing",
+    "LatestDate": "2014-03-05T13:20:51.617-08:00"
+  },
+  {
+    "Id": "443812",
+    "Title": "Upload to SQL DB",
+    "LatestDate": "2013-07-31T22:34:03.483-07:00"
+  },
+  {
+    "Id": "443851",
+    "Title": "Awsome stuff",
+    "LatestDate": "2013-05-16T08:47:03.67-07:00"
+  },
+  {
+    "Id": "444255",
+    "Title": "Impressive Power Doc Module.",
+    "LatestDate": "2013-07-10T14:47:39.587-07:00"
+  },
+  {
+    "Id": "444977",
+    "Title": "DTS/SSIS Packages",
+    "LatestDate": "2013-07-10T14:43:56.163-07:00"
+  },
+  {
+    "Id": "449524",
+    "Title": "Failed to scan error message",
+    "LatestDate": "2013-07-11T14:29:02.077-07:00"
+  },
+  {
+    "Id": "451222",
+    "Title": "Network Scan Procedures",
+    "LatestDate": "2013-08-07T12:29:54.023-07:00"
+  },
+  {
+    "Id": "452217",
+    "Title": "Document a cluster",
+    "LatestDate": "2014-11-11T08:49:29.45-08:00"
+  },
+  {
+    "Id": "452272",
+    "Title": "Error \"Exception calling \"Add\" with \"0\" argument(s): \"Old format or invalid type library. ...\"\"",
+    "LatestDate": "2013-08-07T22:52:23.233-07:00"
+  },
+  {
+    "Id": "452615",
+    "Title": "update or remove Readme.txt",
+    "LatestDate": "2013-08-07T11:53:36.98-07:00"
+  },
+  {
+    "Id": "452616",
+    "Title": "server region and date/time settings",
+    "LatestDate": "2013-08-07T20:42:56.837-07:00"
+  },
+  {
+    "Id": "452961",
+    "Title": "Network load when doing scan",
+    "LatestDate": "2013-08-09T12:16:05.377-07:00"
+  },
+  {
+    "Id": "452997",
+    "Title": "did not get an xml file",
+    "LatestDate": "2013-09-04T13:54:25.103-07:00"
+  },
+  {
+    "Id": "453469",
+    "Title": "Can't connect Running locally as admin with SA SQL privilege no firewall",
+    "LatestDate": "2013-10-22T11:54:09.58-07:00"
+  },
+  {
+    "Id": "454484",
+    "Title": "Mountpoints",
+    "LatestDate": "2013-09-04T13:38:40.113-07:00"
+  },
+  {
+    "Id": "455497",
+    "Title": "Write-Log : Failed to scan error",
+    "LatestDate": "2013-09-13T07:15:04.813-07:00"
+  },
+  {
+    "Id": "456208",
+    "Title": "[ValidatePattern('^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|^auto$|^automatic$')]",
+    "LatestDate": "2013-09-12T13:50:05.393-07:00"
+  },
+  {
+    "Id": "456516",
+    "Title": "Export in other formats",
+    "LatestDate": "2013-09-13T07:01:06.89-07:00"
+  },
+  {
+    "Id": "458703",
+    "Title": "DNS error",
+    "LatestDate": "2013-10-08T08:34:34.947-07:00"
+  },
+  {
+    "Id": "460868",
+    "Title": "TRY/CATCH Handling for Server Logon Permission Errors",
+    "LatestDate": "2013-10-03T12:36:05.07-07:00"
+  },
+  {
+    "Id": "463042",
+    "Title": "No XML file produced after running Get-SqlServerInventoryToClixml.ps1",
+    "LatestDate": "2013-11-12T07:23:21.31-08:00"
+  },
+  {
+    "Id": "463311",
+    "Title": "Exception calling \"Invoke\" error when loading inventory",
+    "LatestDate": "2014-10-27T06:10:44.677-07:00"
+  },
+  {
+    "Id": "471053",
+    "Title": "NumberFormat error running convert script",
+    "LatestDate": "2013-11-26T01:21:04.793-08:00"
+  },
+  {
+    "Id": "495998",
+    "Title": "Modules folder location",
+    "LatestDate": "2014-01-23T12:31:35.173-08:00"
+  },
+  {
+    "Id": "522741",
+    "Title": "Database permissions",
+    "LatestDate": "2014-03-06T07:43:22.293-08:00"
+  },
+  {
+    "Id": "528360",
+    "Title": "No machines found!",
+    "LatestDate": "2014-03-06T07:45:21.837-08:00"
+  },
+  {
+    "Id": "528770",
+    "Title": "Unblock downloaded setup files",
+    "LatestDate": "2014-02-17T14:07:35.307-08:00"
+  },
+  {
+    "Id": "528864",
+    "Title": "merge xml or gzip",
+    "LatestDate": "2015-02-23T02:15:41.377-08:00"
+  },
+  {
+    "Id": "534999",
+    "Title": "Use a variable to pass computer list",
+    "LatestDate": "2014-03-14T06:54:26.883-07:00"
+  },
+  {
+    "Id": "535225",
+    "Title": "Inventory to database tables",
+    "LatestDate": "2014-09-26T09:41:48.437-07:00"
+  },
+  {
+    "Id": "535429",
+    "Title": "WARNING: Multiple versions of Microsoft.SqlServer.SMO are loaded; reverting to the lowest version to avoid problems",
+    "LatestDate": "2014-03-05T09:22:21.833-08:00"
+  },
+  {
+    "Id": "538158",
+    "Title": "Windows Authentication",
+    "LatestDate": "2014-03-06T07:34:03.187-08:00"
+  },
+  {
+    "Id": "538214",
+    "Title": "No machines found! and no xml file written when executing Get-SqlServerInventoryToClixml.ps1",
+    "LatestDate": "2014-03-06T12:23:36.84-08:00"
+  },
+  {
+    "Id": "539213",
+    "Title": "List of SQL Servers & more",
+    "LatestDate": "2014-04-29T08:07:44.487-07:00"
+  },
+  {
+    "Id": "539457",
+    "Title": "No Machines found - Instance scan complete (Success: 0; Failure: 0)",
+    "LatestDate": "2016-06-23T05:25:06.59-07:00"
+  },
+  {
+    "Id": "541606",
+    "Title": "Minimum service pack requirement for SQL server 2005?",
+    "LatestDate": "2014-04-15T09:11:29.277-07:00"
+  },
+  {
+    "Id": "543367",
+    "Title": "SQL Browser Service?",
+    "LatestDate": "2014-04-29T08:05:30.467-07:00"
+  },
+  {
+    "Id": "543747",
+    "Title": "\"No Machines Found\" - one possible solution",
+    "LatestDate": "2014-04-29T08:22:30.193-07:00"
+  },
+  {
+    "Id": "544566",
+    "Title": "-AdditionalData",
+    "LatestDate": "2014-05-07T03:12:59.557-07:00"
+  },
+  {
+    "Id": "547777",
+    "Title": "Is there an option to export inventory to a database",
+    "LatestDate": "2014-06-06T08:13:45.187-07:00"
+  },
+  {
+    "Id": "549571",
+    "Title": "DNS permissions errors (Access is denied) - what permissions are needed?",
+    "LatestDate": "2014-08-12T08:16:03.84-07:00"
+  },
+  {
+    "Id": "552003",
+    "Title": "Errors on Server 2012, Office 2013",
+    "LatestDate": "2014-07-18T09:49:00.467-07:00"
+  },
+  {
+    "Id": "552358",
+    "Title": "Inventory Extended Properties?",
+    "LatestDate": "2015-04-15T23:23:45.66-07:00"
+  },
+  {
+    "Id": "554767",
+    "Title": "Ignore all SQLEXPRESS instances",
+    "LatestDate": "2014-07-31T12:37:40.09-07:00"
+  },
+  {
+    "Id": "560867",
+    "Title": "estimate on merge xml and WMI timeout?",
+    "LatestDate": "2014-08-11T11:14:38.023-07:00"
+  },
+  {
+    "Id": "560996",
+    "Title": "Feature Request: detect mountpoints",
+    "LatestDate": "2014-11-11T11:04:26.79-08:00"
+  },
+  {
+    "Id": "561803",
+    "Title": "SQL Power Doc ROCKS!",
+    "LatestDate": "2014-11-11T11:03:32.413-08:00"
+  },
+  {
+    "Id": "567080",
+    "Title": "WMI Connectivity SQL 2000 Cluster",
+    "LatestDate": "2014-11-11T11:02:02.317-08:00"
+  },
+  {
+    "Id": "567095",
+    "Title": "NO MACHINE FOUND",
+    "LatestDate": "2014-11-11T10:59:01.72-08:00"
+  },
+  {
+    "Id": "570444",
+    "Title": "Scan by OU?",
+    "LatestDate": "2014-11-11T09:41:48.387-08:00"
+  },
+  {
+    "Id": "574097",
+    "Title": "http://www.kendalvandyke.com/2014/02/using-sysobjects-when-scripting.html",
+    "LatestDate": "2015-02-20T06:41:38.457-08:00"
+  },
+  {
+    "Id": "578034",
+    "Title": "An exception occurred in SMO while trying to manage a service",
+    "LatestDate": "2015-02-20T06:46:54.28-08:00"
+  },
+  {
+    "Id": "581208",
+    "Title": "Only 4 on 13 Instances are found",
+    "LatestDate": "2015-03-12T09:36:48.18-07:00"
+  },
+  {
+    "Id": "637954",
+    "Title": "Error gathering Database information",
+    "LatestDate": "2016-03-07T11:50:16.51-08:00"
+  },
+  {
+    "Id": "644223",
+    "Title": "Mounted Volumes",
+    "LatestDate": "2016-03-07T11:51:31.563-08:00"
+  },
+  {
+    "Id": "645544",
+    "Title": "SQLPowerDoc error connecting to Domain",
+    "LatestDate": "2016-03-07T11:56:51.733-08:00"
+  },
+  {
+    "Id": "646473",
+    "Title": "WTS.Dll Error",
+    "LatestDate": "2015-12-18T14:05:43.207-08:00"
+  },
+  {
+    "Id": "649028",
+    "Title": "Powershell noob",
+    "LatestDate": "2016-03-07T11:49:15.08-08:00"
+  },
+  {
+    "Id": "651665",
+    "Title": "Is SQL Server Management Objects (SMO) needed for only Windows inventory?",
+    "LatestDate": "2016-03-07T11:48:14.847-08:00"
+  },
+  {
+    "Id": "653154",
+    "Title": "Adding support for SQL2014,2016",
+    "LatestDate": "2016-04-01T13:09:50.53-07:00"
+  },
+  {
+    "Id": "658008",
+    "Title": "Unable to fetch database config info",
+    "LatestDate": "2016-10-21T10:31:37.353-07:00"
+  },
+  {
+    "Id": "660564",
+    "Title": "Get-SqlServerInventoryToClixml.ps1 runs but produces no .xml.gz output file, just the log",
+    "LatestDate": "2017-01-08T20:40:02.123-08:00"
+  },
+  {
+    "Id": "661095",
+    "Title": "Script Runs successfully - but no output file",
+    "LatestDate": "2017-10-17T13:28:42.303-07:00"
+  }
+]

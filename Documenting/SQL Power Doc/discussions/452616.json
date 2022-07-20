@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1077464",
+    "ThreadId": "452616",
+    "Html": "suggestion -\r<br />\nIt would be nice if SQL Power Doc collected the windows server Region and Date/Time settings.  I am currently trying to sort out our windows server settings that impact SQL Server settings so we can decide on some standard server &amp; SQL build settings.  SQL Power Doc nicely collects SQL Server instance and database collations, but i don't see the locale/region/date/time being collected at windows server level.\r<br />\n<br />\nI love this utility.  Great tool for collecting a baseline and the database assessment spreadsheet is a great summary of issues for me to tackle.<br />\n",
+    "PostedDate": "2013-08-06T15:27:54.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077906",
+    "ThreadId": "452616",
+    "Html": "Hi normajean,\r<br />\nGood suggestion! SQL Power Doc currently collects the Time Zone and OS Language but they're not exposed in the Excel workbook. Would having these two properties in the workbook cover everything you need or are there other properties that you'd like to see?\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-08-07T12:06:56.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1078053",
+    "ThreadId": "452616",
+    "Html": "Hi Kendal,\r<br />\nI thought I saw those being collected in process log, so I had another look in Excel as there are so many tabs of info but I didn't see them.\r<br />\nThe properties I would like to see added in Excel, to make sure I convey this properly, for example on a windows 2012 server:\r<br />\n1)  Control Panel -&gt; Clock,Language,Region -&gt; Date and Time -&gt;  TimeZone  (i.e. UTC)\r<br />\n2)  Control Panel -&gt; Clock,Language,Region -&gt; Language -&gt;  list the one at the top of the language list (i.e. English (New Zealand)) since that impact #3\r<br />\n3) Control Panel -&gt; Clock,Language,Region -&gt; Region -&gt; Format    (i.e. &quot;Match Windows display language (recommended)&quot;\r<br />\n4) Control Panel -&gt; Clock,Language,Region -&gt; Region -&gt;Location -&gt; Home Location (i.e. New Zealand)\r<br />\n5) Control Panel -&gt; Clock,Language,Region -&gt; Region -&gt; Administrative -&gt; System Locale  (i.e. English (New Zealand))\r<br />\n<br />\nAlso, are you collecting and reporting on the SQL server services (all avail in sql config manager), reporting what login is used to run the service?\r<br />\n<br />\ngreedy aren't I?    I saw part of your 24HrsOfPass presentation last week... look forward to meeting you at the Summit.\r<br />\nthanks,\r<br />\nNJ<br />\n",
+    "PostedDate": "2013-08-07T20:42:56.837-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

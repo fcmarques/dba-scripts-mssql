@@ -1,0 +1,175 @@
+<div class="wikidoc">
+<h1>Change History</h1>
+<a name="1.0.2.2"></a>
+<h2>Version 1.0.2.2</h2>
+<h5>Updates to SqlServerInventory.psm1 module</h5>
+<ul>
+<li>Added version for SQL 2014 </li><li>Modified Import-GzCliXml, Export-GzCliXml, ConvertFrom-GzCliXml, and ConvertTo-GzCliXml
+<ul>
+<li>Fixed bug introduced in Windows 8.1 where a new method overload appeared and sometimes borked serialization/deserialization</li></ul>
+</li><li>Modified Get-SqlServerInventoryDatabaseEngineAssessment
+<ul>
+<li>Updated check for missing alerts on sev 19-25 to try and explictly convert severity values to INT when evaluating their range
+</li><li>Added specific check for Priority Boost Enabled </li><li>Fixed check for torn page detection - previous versions recommended TORN_PAGE_DETECTION for SQL 2000 but that wasn't an option</li></ul>
+</li><li>Modified Export-SqlServerInventoryDatabaseEngineConfigToExcel
+<ul>
+<li>Updated Worksheet 13 (Server Security - Logins) to limit display of a Windows Group login's member list to 5000 characters</li></ul>
+</li></ul>
+<h5>Updates to SqlServerDatabaseEngineInformation.psm1 module</h5>
+<ul>
+<li>Added version for SQL 2014 </li><li>Changed ad-hoc queries to use whatever database ConnectionContext object is connected to for executing ad-hoc queries instead of explicitly using master database
+</li><li>Modified Get-ServerConfigurationInformation to consolidate code for enumerating server and server object permissions
+</li><li>Modified Get-SqlServerSecurityInformation to note that the list AD group members is incomplete if an error enumerating membership occurs but we can still resolve some members
+</li><li>Modified Get-DatabaseInformation to include permissions for Assemblies, Asymmetric Keys, Certificates, Database Principals, Fulltext Catalogs, Fulltext Stoplists, Message Types, Remote Service Bindings, Routes, Schemas, Services, Service Contracts, Symmetric
+ Keys, Types, and XML Schema Collections in addition to object permissions</li></ul>
+<h5>Updates to NetworkScan.psm1 module</h5>
+<ul>
+<li>Added additional service name pattern to check for when looking in a machine's registry for SQL Server instances</li></ul>
+<p>&nbsp;</p>
+<a name="1.0.2.1"></a>
+<h2>Version 1.0.2.1</h2>
+<h5>Updates to NetworkScan.psm1</h5>
+<ul>
+<li>Modified Find-SqlServerService
+<ul>
+<li>Fixed an issue with properly identifying the name of a named instance using only the shared memory protocol. (This affetected a lot of people running developer edition as a named instance on their local machine since developer edition uses only shared memory
+ by default) </li><li>Now collecting more information about service protocol configuration</li></ul>
+</li></ul>
+<h5>Updates to SQLServerDatabaseEngineInformation.psm1 module</h5>
+<ul>
+<li>Added Get-NTGroupMemberList
+<ul>
+<li>Wrapper to Win32 API calls to resolve members of a machine or domain NT group</li></ul>
+</li><li>Added Get-FailoverClusterMemberList
+<ul>
+<li>Code called in multiple places so the logic was moved to a function to eliminate cut and paste codin</li></ul>
+</li><li>Modified Get-ServerConfigurationInformation
+<ul>
+<li>Consolidated code to call Get-FailoverClusterMemberList </li><li>Added logic to retrieve shared drive information only if the instance is clustered
+</li><li>Added logic to resolve AlwaysOn failover cluster members only if the instance is an AlwaysOn replica
+</li><li>Added logic to resolve AlwaysOn Subnet information only if the instance is an AlwaysOn replica
+</li><li>Added logic to recursively resolve the members of a Windows group login </li><li>Fixed bug with retrieving the Mapped Class Type for Credentials (not always present depending on version of SMO)
+</li><li>Fixed bug with retrieving the Workload Group Importance for Resource Governer Resource Pools (not always present depending on version of SMO</li></ul>
+</li><li>Modified Get-DatabaseMailInformation
+<ul>
+<li>Added logic to skip retrieving configuration values for SQL Express instance</li></ul>
+</li><li>Modified Get-SqlServerDatabaseEngineInformation
+<ul>
+<li>Added logic to skip retrieving SQL Agent information for SQL Express instances</li></ul>
+</li></ul>
+<h5>Updates to SqlServerInventory.psm1 module</h5>
+<ul>
+<li>Modified Get-SqlServerInventoryDatabaseEngineAssessment
+<ul>
+<li>Fixed bug when checking Server public Permissions</li></ul>
+</li><li>Modified Export-SqlServerInventoryDatabaseEngineConfigToExcel
+<ul>
+<li>Added column and logic to show the definition for server permissions (e.g. GRANT, DENY)
+</li><li>Added column to show the members of a Windows Group server login </li><li>Added column and logic to show the definition for Server Roles </li><li>Fixed bug with displaying all Linked Server Logins </li><li>Added column and logic to show the definition for Database Permissions </li><li>Added debug output for worksheet formatting time</li></ul>
+</li></ul>
+<h5>Updates to WindowsInventory.psm1 module</h5>
+<ul>
+<li>Modified Export-WindowsInventoryToExcel
+<ul>
+<li>Fixed a cosmetic issue with writing progress when retrieving hotfix titles </li><li>Updated output to be sorted by logical disk caption in Logical Drives column </li><li>Updated sorting for Worksheet 7 (Disk Drives) to sort by logical disk caption
+</li><li>Added debug output for worksheet formatting time</li></ul>
+</li></ul>
+<h5>Updates to WindowsMachineInformation.psm1 module</h5>
+<ul>
+<li>Modified Get-ApplicationInformationFromRegistry
+<ul>
+<li>Updated condition to validate contents of Install Date value from registry (should match YYYYMMDD)</li></ul>
+</li></ul>
+<h5>ReadMe Updates</h5>
+<ul>
+<li>Updated SqlServerInventory and WindowsInventory Readme files to match documentation on CodePlex</li></ul>
+<p>&nbsp;</p>
+<a name="1.0.2.0"></a>
+<h2>Version 1.0.2.0</h2>
+<h5>Updates to NetworkScan.psm1</h5>
+<ul>
+<li>Bug fix: Service IP Address and port were not properly reported under some very specific circumstances. Now they are.
+</li><li>Modified Find-IPv4Device
+<ul>
+<li>Added TimeoutSeconds parameter to specify timeout value for WMI connectivity test
+</li><li>Added logic to bail out of WMI connectivity check if TimeoutSeconds is exceeded</li></ul>
+</li></ul>
+<h5>Updates to SQLServerDatabaseEngineInformation.psm1 module:</h5>
+<ul>
+<li>Modified Get-SqlConnection
+<ul>
+<li>Added optional IpAddress parameter to specify the IP address to use for connecting to an instance</li></ul>
+</li><li>Modified Get-SqlServerDatabaseEngineInformation
+<ul>
+<li>Added optional IpAddress parameter to specify the IP address to use when connecting to the instance
+</li><li>Added logic to detect lowest version of SMO assembly currently loaded when module loads to avoid errors that result from calling methods in newer versions of SMO that don't exist in the lowest version loaded</li></ul>
+</li></ul>
+<h5>Updates to SqlServerInventory.psm1 module:</h5>
+<ul>
+<li>Modified Get-SqlServerInventory
+<ul>
+<li>Added optional IP Address parameter to specify the IP address to use when connecting to the instance
+</li><li>Semantic change from &quot;Error&quot; to &quot;Failure&quot; when referring to scan failures in logging messages
+</li><li>Renamed property DatabaseServerScanErrorCount to DatabaseServerScanFailCount in inventory object returned by function
+</li><li>Added logic to skip gathering SQL Agent information for Express edition instances (since Express has no Agent)</li></ul>
+</li><li>Modified Get-SqlServerInventoryDatabaseEngineAssessment
+<ul>
+<li>Fixed bug with checks for Nonaligned partitions and Partition Allocation Unit Size that sometimes resulted in a divide by zero error
+</li><li>Fixed bug with check for Server public Permissions that was incorrectly identifying default permissions as a potential issue</li></ul>
+</li><li>Modified Get-DatabaseMailInformation
+<ul>
+<li>Added logic to skip gathering configuration values for Express edition instances (since Express doesn't have Database Mail)</li></ul>
+</li><li>Modified Get-ResourceGovernorInformation
+<ul>
+<li>Fixed bug gathering information from instances that don't have Resource Governor</li></ul>
+</li><li>Modified Export-SqlServerInventoryDatabaseEngineConfigToExcel
+<ul>
+<li>Fixed bug that was excluding showing linked server logins that didn't have a local login</li></ul>
+</li></ul>
+<h5>Updates to WindowsInventory.psm1 module</h5>
+<ul>
+<li>Modified Get-WindowsInventory
+<ul>
+<li>Semantic change from &quot;Error&quot; to &quot;Failure&quot; when referring to scan failures in logging messages
+</li><li>Renamed property ScanErrorCount to ScanFailCount in inventory object returned by function
+</li><li>Added parameter for parent progress ID when calling Get-HotFixTitle so progress bars appear nested properly on console</li></ul>
+</li></ul>
+<p>&nbsp;</p>
+<a name="1.0.1.0"></a>
+<h2>Version 1.0.1.0</h2>
+<h5>Updates to LogHelper.psm1 module</h5>
+<ul>
+<li>Modified Write-Log function to force writing warning messages if logging to a file is disabled
+</li></ul>
+<h5>Updates to SqlServerInventory.psm1 module</h5>
+<ul>
+<li>Get-SqlServerInventoryDatabaseEngineAssessment
+<ul>
+<li>Updated check for Non-Default Config Values to exclude values with a null or empty configuration name
+</li><li>Updated check for Server public permissions to exclude CONNECT on default endpoints (granted by default so it's OK)
+</li><li>Added check for low disk space (5\10\15% thresholds) </li><li>Added check for Trustworthy Bit and db owner is a member of the sysadmin fixed server role
+</li><li>Added check for sp_configure option 'Network Packet Size' exceeding 8060 bytes
+</li><li>Added check for Weak Symmetric Keys In User Databases </li><li>Added check for User Created Symmetric Keys In System Databases </li><li>Updated check for Guest Access To User Databases </li><li>Added check for Asymmetric Key Encryption Strength </li><li>Added check for Affinity Mask Overlap </li><li>Updated URL for Lightweight Pooling Enabled check </li><li>Added check for Password Policy Not Enforced </li><li>Added check for Password Expiration Not Enabled </li><li>Added check for Password Policy Not Supported </li><li>Added check for Password Expiration Not Supported </li></ul>
+</li><li>Updated Import-SqlServerInventoryFromGzClixml and Get-SqlServerInventory to associate a machine with an instance based on partial machine name and IP address match
+</li><li>Get-SqlServerInventory
+<ul>
+<li>Modified parametersets to fix a bug which led to &quot;Parameter set cannot be resolved using the specified named parameters.&quot; errors when using Windows authentication and discovering instances using DNS or subnet ranges
+</li></ul>
+</li></ul>
+<h5>Updates to SQLServerDatabaseEngineInformation.psm1 module</h5>
+<ul>
+<li>Updated error handling in Get-SqlServerDatabaseEngineInformation to provide the actual line number that errors occurred inside of functions
+</li><li>Updated all functions which return a string value for an enumeration </li><li>Wrapped enum values in switch statement with $() in some cases they were not being evaluated as expected; this corrects that problem
+</li><li>Bug fix: Changed default value for switch statements to $_.ToString() </li></ul>
+<h5>Updates to WindowsMachineInformation.psm1 module</h5>
+<ul>
+<li>Updated error handling in Get-WindowsMachineInformation to provide the actual line number that errors occurred inside of functions
+</li></ul>
+<h5>Updates to Get-SqlServerInventoryToClixml.ps1</h5>
+<ul>
+<li>Modified parametersets to fix a bug which led to &quot;Parameter set cannot be resolved using the specified named parameters.&quot; errors when using Windows authentication and discovering instances using DNS or subnet ranges
+</li></ul>
+<h5>Updates to NetworkScan.psm1 </h5>
+<ul>
+<li>Added -ErrorAction Stop to Get-WmiObject calls throughout module to provide better error handling</li></ul>
+</div><div class="ClearBoth"></div>

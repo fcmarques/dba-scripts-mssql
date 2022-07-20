@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1449270",
+    "ThreadId": "646473",
+    "Html": "Hello Team, \r<br />\n<br />\nI am getting the follwing error while running SQLServerInventorytoClixml. \r<br />\nPlease advice. \r<br />\n<br />\n<br />\n2015-10-21 10:17:49.4884 + Error gathering information about logged on users: Exception calling &quot;QueryAllSessionInformation&quot; with &quot;3&quot; argument(s): &quot;Unable to load DLL 'Wts.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)&quot; (RDS-Manager.psm1 line 608, char 85)\r<br />\n<br />\n<br />\nThank you in advance\r<br />\nRegards\r<br />\nRaj.<br />\n",
+    "PostedDate": "2015-10-21T07:28:49.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1456446",
+    "ThreadId": "646473",
+    "Html": "I also encountered this error.\r<br />\n<br />\nMateen<br />\n",
+    "PostedDate": "2015-12-18T14:05:43.207-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

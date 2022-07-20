@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Another issue I have come across is the requirement of Get-SqlServerInventoryToClixml.ps1 forcing a user to put the ComputerName parameter into a comma delimited format.  In the situation I am in, the client I am advising has over 600 SQL Server instances, and it makes far more sense to use the following than a comma delimited list.  I have tried using get-content and referencing an external file, but your application does not recognize the servers when that approach is used.\r\n\r\n___if (!([string]::IsNullOrEmpty($IncludeFile))) {\r\n       $Computers = ((Get-Content -Path $IncludeFile) | sort -unique)\r\n}___\r\n\r\nA code change to use either a separate InputFile parameter with some code similar to the above, or use the above code to update the ComputerName parameter would make far more sense than requiring a comma delimited list.  Currently, I have to divide the input file using an editor, then in the editor, creating an array using commas which I then instantiate in the ISE to get a valid list of servers so the Get-SqlServerInventoryToClixml.ps1 application uses correctly.\r\n\r\nPlease advise on the code update.\r\n",
+    "LastUpdatedDate": "2016-03-11T09:58:39.133-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2015-08-26T16:03:17.893-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Computername - forced to put into comma delimited format",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "-Computername doesn't have to be a literal comma-separated string. The parameter itself is defined as an array of strings; that means you can load a list of computernames from a text file (where each line contains a computername) into a variable and pass the variable to the script.\n\nThe sample script below will read in the file \"servers.txt\" (again, one computername per line) from your \"My Documents\" folder and collect an inventory with the output going to \"My Documents\\SQL Server Inventory\":\n\n```\n$error.clear()\nclear-host\n\nSet-Location -Path $(Join-Path -Path $([Environment]::GetFolderPath([Environment+SpecialFolder]::MyDocuments)) -ChildPath 'WindowsPowerShell')\n\n$ServerListPath = Join-Path -Path $([Environment]::GetFolderPath([Environment+SpecialFolder]::MyDocuments)) -ChildPath 'servers.txt'\n$DirectoryPath = Join-Path -Path $([Environment]::GetFolderPath([Environment+SpecialFolder]::MyDocuments)) -ChildPath 'SQL Server Inventory'\n\n$ComputerName = Get-Content -Path $ServerListPath | Where-Object { $_.Length -gt 0 }\n.\\Get-SqlServerInventoryToClixml.ps1 -ComputerName $ComputerName -LoggingPreference verbose -DirectoryPath $DirectoryPath -Zip -IncludeDatabaseObjectPermissions\nRemove-Variable -name ComputerName, ServerListPath, DirectoryPath\n```",
+      "PostedDate": "2016-03-11T09:57:24.393-08:00",
+      "Id": 197863
+    }
+  ]
+}

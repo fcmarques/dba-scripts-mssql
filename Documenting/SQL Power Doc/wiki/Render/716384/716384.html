@@ -1,0 +1,44 @@
+<div class="wikidoc">
+<h2>Requirements</h2>
+<p>Before you can document your SQL Server environment with SQL Power Doc you'll to meet the following requirements:</p>
+<h4>Permissions</h4>
+<ul>
+<li>SQL Power Doc makes connections to standalone SQL Server instances using either Windows Authentication or with a SQL Server username and password. Whichever way you connect, the login will need to be a member of the
+<strong>sysadmin</strong> server role on all standalone SQL Server instances you're documenting.
+</li><li>For Windows Azure SQL Database (WASD) a SQL username and password is the only way you can connect. This login should be the WASD Administrator login.
+</li><li>SQL Power Doc also tries to collect information about the Operating System that SQL Server in installed on. The account used to run SQL Power Doc will need
+<strong>Administrator</strong> rights to the OS in order to do this part.</li></ul>
+<h4>Windows Machine To Perform Inventory</h4>
+<ul>
+<li>This can be virtual or physical - either way it's recommended that its located on the same physical network as the servers you are collecting information from. SQL Power Doc collects a
+<em>lot </em>of information and you don't want network latency to become a bottleneck
+<ul>
+<li>You can ignore this requirement if you're documenting a Windows Azure SQL Database since it's not likely that you'll have physical access to the hardware these databases run on!</li></ul>
+</li><li>Just like SQL Server, PowerShell likes memory; For documenting a 10-20 server environment you'll want at least 2 GB of RAM available. Logical CPU count isn't as important, but SQL Power Doc can split its workload across multiple CPUs when doing it's thing
+ so the more CPUs you've got the faster the job will get done. </li><li>The following software needs to be installed:
+<ul>
+<li><strong>Windows PowerShell 2.0 or higher</strong>
+<ul>
+<li>Windows PowerShell 2.0 is available on on all Windows Operating Systems going back to Windows Server 2003 and Windows XP. Chances are you've already got it installed and enabled, but in case you're not sure head over to
+<a title="http://support.microsoft.com/kb/968929" href="http://support.microsoft.com/kb/968929">
+http://support.microsoft.com/kb/968929</a> for a list of requirements and instructions on how to get PowerShell working on your system.</li></ul>
+</li><li><strong>SQL Server Management Objects (SMO)</strong>
+<ul>
+<li>If SQL Server Management Studio is installed on this machine then it's already got SMO.
+</li><li>You don't need the absolute latest version installed, but it's a good idea to make sure that the version you do have installed at least matches the highest version of SQL Server that will be included in your inventory
+</li><li>SMO is part of the SQL 2012 Feature Pack and can be downloaded for free from <a title="http://www.microsoft.com/en-us/download/details.aspx?id=29065" href="http://www.microsoft.com/en-us/download/details.aspx?id=29065">
+http://www.microsoft.com/en-us/download/details.aspx?id=29065</a> (Note - SMO requires the System CLR Types which are on the same download page)</li></ul>
+</li></ul>
+</li><li>Sometimes firewall and group policy restrictions will prevent SQL Power Doc from gathering information from servers. If that's your environment then you'll want to make sure to open up communications for both SQL Server and WMI (Windows Management Instrumentation).
+ Start at <a title="http://msdn.microsoft.com/en-us/library/windows/desktop/aa822854(v=vs.85).aspx" href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa822854(v=vs.85).aspx">
+http://msdn.microsoft.com/en-us/library/windows/desktop/aa822854(v=vs.85).aspx</a> for instructions on how to do so.</li></ul>
+<h4>Windows Machine To Create The Documentation</h4>
+<ul>
+<ul>
+<li>Usually this will be your laptop or desktop </li><li>You'll need the following software installed:
+<ul>
+<li><strong>Windows PowerShell 2.0 or higher</strong> </li><li><strong>Microsoft Excel 2007 or higher</strong></li></ul>
+</li><li>You do <em><u>not </u></em>need SMO or access to SQL Server for this step</li></ul>
+</ul>
+<p>You can use the same machine to collect an inventory and create the documentation as long as it meets all the requirements outlined above. This will be the case if you're documenting one or more Windows Azure SQL Databases.</p>
+</div><div class="ClearBoth"></div>

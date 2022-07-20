@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1490793",
+    "ThreadId": "660564",
+    "Html": "Not sure what is going on my user is in local admin group, is sysadmin on both sql instances (I am just trying to document 2 local instances on this machine).\r<br />\n<br />\nI see this error in the log file:\r<br />\nError gathering Database information: Exception calling &quot;ExecuteWithResults&quot; with &quot;1&quot; argument(s): &quot;Execute with results failed for Database 'CLVQW_ETL'. &quot; (SqlServerDatabaseEngineInformation.psm1 line 8391, char 6)<br />\n",
+    "PostedDate": "2017-01-08T20:40:02.123-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

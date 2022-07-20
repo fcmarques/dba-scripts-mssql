@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Thanks for developing and sharing this powerful tool. I have found that for SQL Server 2014 It's not generating the product name as Microsoft SQL Server 2014 in Database Engine Config file. Sample output as follows\r\n\r\nMicrosoft SQL Server unknown \tEnterprise Edition (64-bit)\tSP2\tNT x64\t12.0.5538.0\r\n",
+    "LastUpdatedDate": "2017-03-26T23:46:53.293-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2017-03-26T23:46:53.293-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Microsoft SQL Server unknown for SQL Server 2014 Instances",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 25
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1045897",
+    "ThreadId": "444255",
+    "Html": "Hi Kendal,\r<br />\nThis is a superb job!\r<br />\nYou prove the power of Powershell and the possibility of managing the whole of IT from a single keyboard.\r<br />\nI started reading your scripts, will take a month or so, just to learn and expand my PS abilities.\r<br />\n<br />\nMinor issue: in both your Get-xxxInventotyToCliXml scripts, there is a Test-FileIsOpen function where the parameter does not match the value used in the body of the script: Path vs. ZipFilePath\r<br />\n<br />\nUsability issue: for a later new version, think about packing packing all your stuff in ONE module, and instructing users to begin their activities with Import-Module. You get a cleaner interface then.\r<br />\n<br />\nBut: My compliments!!!!!<br />\n",
+    "PostedDate": "2013-05-20T01:39:30.173-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1066790",
+    "ThreadId": "444255",
+    "Html": "Thanks for the compliments - they're very much appreciated!\r<br />\n<br />\nI'll check out the issue with Test-FileIsOpen you reported. Thanks for bringing it to my attention.\r<br />\n<br />\nAs for single vs. multiple modules, I took the multiple module route intentionally so that they could be used &amp; extended in creative ways without having to load every single module every time. I've got plans to write some blog posts in the future about doing more lightweight things with each module so stay tuned...\r<br />\n<br />\n-Kendal<br />\n",
+    "PostedDate": "2013-07-10T14:47:39.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

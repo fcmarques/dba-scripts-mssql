@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1090062",
+    "ThreadId": "456208",
+    "Html": "Hi Kendal,<br />\n<br />\nI have started understanding the code you have written and implement in our environment, I am novice at PowerShell.. can you please explain about the code in ValidatePattern?<br />\n<ol>\n<li>(?:(?: </li>\n<li>^</li>\n<li>| - I know this pipe acts as a where in PowerShell, how about here?</li>\n<li>?).</li>\n<li>\nautomatic$ - if anything starts with $, it is variable, what if ends with $?<br />\n</li>\n</ol>\nThanks for sharing this wonderful thing to all of us. <br />\nRD<br />\n",
+    "PostedDate": "2013-09-09T00:35:27.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091908",
+    "ThreadId": "456208",
+    "Html": "Hi RD,\r<br />\nIf you look closely you'll notice that the entire string in ValidatePattern() is surrounded by single quotes - that makes it a literal string...specifically, it's a regular expression for validating that either an IP address or the words &quot;auto&quot; or &quot;automatic&quot; were passed as a value for that parameter.\r<br />\n<br />\nYou can read more about how ValidatePattern works at <a href=\"http://technet.microsoft.com/en-us/library/hh847743.aspx\" rel=\"nofollow\">http://technet.microsoft.com/en-us/library/hh847743.aspx</a> and <a href=\"http://powershell.com/cs/blogs/tips/archive/2013/07/19/using-validatepattern-attribute.aspx\" rel=\"nofollow\">http://powershell.com/cs/blogs/tips/archive/2013/07/19/using-validatepattern-attribute.aspx</a>\r<br />\n<br />\nHope this helps!\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-09-12T13:50:05.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

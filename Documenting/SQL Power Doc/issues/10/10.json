@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi, this is a great tool. However, I have a problem when writing the report to excel. It seems to hang showing the following:\r\n\r\nConvert-SqlServerInventoryClixmlToExcel\r\n   Writing inventory to Excel (Go get a coffee, this can take a few minutes...)\r\n   [ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo                         ]\r\n  Writing SQL Server Inventory To Excel\r\n     Writing Database Engine Database Objects To Excel\r\n     [oooooooooooooooooooooooooooooooooooooooooooooooo                                                ]\r\n    Export-SqlServerInventoryDatabaseEngineDbObjectsToExcel\r\n       Applying formatting to Worksheet #34\r\n       [ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo                     ]\r\nI waited 30 minutes and still the same. Any ideas ??",
+    "LastUpdatedDate": "2014-09-02T21:45:51.237-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2014-02-19T07:21:18.353-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Stuck formatting worksheet 34",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 10
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

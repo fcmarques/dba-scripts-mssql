@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Running Convert-SQLServerInventoryClixmlToExcel.ps1 with a 1.2MB xml.qz file and I get this warning:  WARNING: Could not deserialize : Exception calling \"Invoke\" with \"2\" argument(s): \"'.', hexadecimal value 0x00, is an invalid character. Line 1, position 252. WARNING: Could not deserialize : Exception calling \"Invoke\" with \"2\" argument(s): \"Obj XML tag is not recognized.\" and it repeats infinitely until I stop the process.  It only happens when I try to process a file from one particular domain.",
+    "LastUpdatedDate": "2014-11-14T06:48:56.227-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2014-11-14T05:37:11.62-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Obj XML tag is not recognized",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 14
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1034748",
+    "ThreadId": "441340",
+    "Html": "For servers that contain both a default and named instance, only the default instance is appearing for me in the reports.  If server has multiple instances and all are named, it works fine and  shows all. Do I need to select something special?<br />\n",
+    "PostedDate": "2013-04-23T12:21:23.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034754",
+    "ThreadId": "441340",
+    "Html": "No, you shouldn't have to do anything special with the scripts. Is the SQL Browser service running on the machines that have both a default and named instance?\r<br />\n<br />\nI'd try running the scripts with the <strong>-LoggingPreference Verbose</strong> parameter specified as there could be details in there that can help diagnose what's going on.\r<br />\n<br />\nI'll be happy to look at the logs to see if I can figure out what's going on as well. You can email them to me privately at <a href=\"mailto:kendal.vandyke@gmail.com\" rel=\"nofollow\">kendal.vandyke@gmail.com</a>.<br />\n",
+    "PostedDate": "2013-04-23T12:39:41.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034773",
+    "ThreadId": "441340",
+    "Html": "Thanks, Kendal.\r<br />\n<br />\nYes, SQL Browser service is running in one case, but not in the other.  So far, the common denominator seems to be that these are cases where multiple SQL instances are running on one host, using <em>SEPARATE</em> IP addresses. Where SQL Browser isn't really too applicable.  Multi-instance cluster in one case, and multi-IP host in the other case.\r<br />\n<br />\nI'm sending you a separate Email with details. And already have Verbose logs, so will send those when I next have access to those systems, and can &quot;sanitize&quot; proprietary info out of logs.\r<br />\n<br />\nThanks SO much for making this wornderful tool available!<br />\n",
+    "PostedDate": "2013-04-23T13:04:17.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

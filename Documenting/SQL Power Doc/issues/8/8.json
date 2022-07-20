@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": null,
+    "Description": "SQL Server 2012 & SQL Server 2008R2 on a Windows 2008R2 server\r\n\r\nWhen I run the windows inventory, it produces an inventory file.  However when I run the sql server inventory script, it seems to get into an infinite loop after the message about writing the inventory to disk.  Here are the last 2 lines in the log:  \r\n\r\n2013-12-09 11:38:05.3013 ? Machine scan complete (Success: 1; Failure: 0)\r\n2013-12-09 11:38:05.3243 ? Writing Inventory to disk\r\n\r\nRunning with debug didn't produce any more messages.  The CPU stays running around 50%, and the memory used just keeps getting larger.\r\n\r\nI was running this against a test server that had 3 accessible small instances on it.\r\n\r\nAny ideas?",
+    "LastUpdatedDate": "2017-11-28T14:37:36.723-08:00",
+    "PlannedForRelease": "Version 1.0.2.2 BETA 1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2013-12-09T14:31:56-08:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "windows inventory works, but not sqlserver inventory",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 8
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Oops, a correction to the occurrence of the problem:  It goes into infinite-land when I specify the option -IncludeDatabaseObjectInformation.\r\n\r\nHere's the statement I run:\r\n.\\Get-SQLServerInventoryToClixml.ps1 -Computername xxxxxx -IncludeDatabaseObjectInformation -LoggingPreference standard -directorypath \"c:\\db\\dev\\WindowsPowerShell\"\r\n\r\nThanks for your help.  From what I've seen so far, this is an awesome tool.",
+      "PostedDate": "2013-12-09T20:08:20.17-08:00",
+      "Id": 126708
+    },
+    {
+      "Message": "This is an issue that popped up with Windows PowerShell 4.0 and has been fixed in [SQL Power Doc 1.0.2.2 Beta 1](https://sqlpowerdoc.codeplex.com/releases/view/114187)",
+      "PostedDate": "2013-12-10T07:19:30.407-08:00",
+      "Id": 126778
+    },
+    {
+      "Message": "I downloaded the beta version and tried it again with the same results.  BTW I am running powershell 2.  Sorry for not including that earlier.",
+      "PostedDate": "2013-12-10T09:43:17.353-08:00",
+      "Id": 126810
+    }
+  ]
+}

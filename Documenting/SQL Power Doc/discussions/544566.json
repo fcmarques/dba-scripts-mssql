@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1242477",
+    "ThreadId": "544566",
+    "Html": "I do not want a entire &quot;ALL&quot; content of Additionaldata.\r<br />\ne.g\r<br />\n.\\Get-WindowsInventoryToClixml.ps1 -Computername cenpr012  -AdditionalData &quot;All&quot;\r<br />\n<br />\nBut I would like to have only  &quot;InstalledApplications&quot; and &quot;InstalledPatches&quot; among the additional data members in my inventory.\r<br />\ncan anyone please let me know how to use it?<br />\n",
+    "PostedDate": "2014-05-07T03:12:59.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1088299",
+    "ThreadId": "455497",
+    "Html": "I'm getting the below errors when the 'Get-SqlServerInventoryToClixml.ps1' script is scanning the found SQL instances:\r<br />\n<br />\nWrite-Log : Failed to scan PACEPRINT01.CALOPTIMA.ORG\\HPWJA -  3 errors\r<br />\nAt C:\\Users\\sqlexec\\Documents\\WindowsPowerShell\\Modules\\SqlServerInventory\\SqlServerInventory.psm1:275 char:13<br />\n<ul>\n<li>\nWrite-Log &lt;&lt;&lt;&lt;  -Message $Message -MessageLevel $MessageLevel\n<ul>\n<li>CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException</li>\n<li>FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Write-Log</li>\n</ul>\n</li>\n</ul>\n",
+    "PostedDate": "2013-09-04T09:11:09.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1088363",
+    "ThreadId": "455497",
+    "Html": "Some more information...I ran the PowerShell ISE as an administrator, and with a Windows Credential account that is a domain admin.  This domain admin Windows account is also a member of an AD group that is a SQL sysadmin on all of our SQL servers.<br />\n",
+    "PostedDate": "2013-09-04T10:51:00.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1088440",
+    "ThreadId": "455497",
+    "Html": "Hi Clarencew4,\r<br />\nReplying here since this is where you started the thread...you said you weren't scanning a named instance but the error above shows the instance is &quot;PACEPRINT01.CALOPTIMA.ORG\\HPWJA&quot;.\r<br />\n<br />\nThere's a known issue (well, known to me anyways!) with connecting to named instances on your local machine where only the shared memory protocol is enabled. For now you can get around this by enabling the TCP/IP protocol.\r<br />\n<br />\nAre you running into this problem scanning other machines besides your own?\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-09-04T13:52:57.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1088452",
+    "ThreadId": "455497",
+    "Html": "Sorry for confusing the two threads.  This thread was more for the 'Failed to scan' errors when I was running a full network discovery for all SQL servers.  The other thread was regarding, specifically, not getting an xml file at the end of a successful scan on a targeted SQL server.\r<br />\n<br />\nFor the full network scan I am seeing this a lot for many SQL servers that may have named instances as well as just default instances.  Also, when I run the full network scan with this command [.\\Get-SqlServerInventoryToClixml.ps1 -DNSServer automatic -DNSDomain automatic -PrivateOnly], PowerShell will get to where it is unresponsive and then eventually stop....it never finishes:\r<br />\n<br />\n2013-09-04 12:07:58.4340 ? Gathering information from COMMSERV.CALOPTIMA.ORG\\COMMVAULT at 172.17.70.60 [Instance 109 of 116]\r<br />\n2013-09-04 12:07:58.4496 ? Gathering information from ADRAP2K8.CALOPTIMA.ORG\\SQLEXPRESS at 172.17.70.105 [Instance 110 of 116]\r<br />\n2013-09-04 12:07:58.4652 ? Gathering information from BLUE2.CALOPTIMA.ORG at 172.17.162.24 [Instance 111 of 116]\r<br />\n2013-09-04 12:07:58.8240 ? Gathering information from E6420L46.CALOPTIMA.ORG\\SQLEXPRESS at 172.18.224.14 [Instance 112 of 116]\r<br />\n2013-09-04 12:07:58.8240 ? Gathering information from E6420L46.CALOPTIMA.ORG at 172.18.224.14 [Instance 113 of 116]\r<br />\n2013-09-04 12:07:59.9161 ? Gathering information from BT2010TST.CALOPTIMA.ORG\\BIZTALK10DEV at 172.17.162.37 [Instance 114 of 116]\r<br />\n2013-09-04 12:07:59.9317 ? Gathering information from SOLARWINDS4.CALOPTIMA.ORG at 172.18.77.12 [Instance 115 of 116]\r<br />\n2013-09-04 12:08:01.0081 ? Gathering information from FUELUAT.CALOPTIMA.ORG\\FUELUAT at 172.17.98.24 [Instance 116 of 116]\r<br />\n2013-09-04 12:08:01.3513 ! Failed to scan GOODDYNAMICS.CALOPTIMA.ORG\\SQLEXPRESS -  3 errors\r<br />\n2013-09-04 12:08:01.3513 ! Failed to scan BTSPSQLQA1.CALOPTIMA.ORG -  3 errors\r<br />\n2013-09-04 12:08:01.3669 ! Failed to scan E6420L7.CALOPTIMA.ORG\\SQLEXPRESS -  3 errors\r<br />\n2013-09-04 12:08:02.4745 $ [COPRAV1V.CALOPTIMA.ORG] Gathering Database information\r<br />\n2013-09-04 12:08:06.0782 $ [ESXVCICD10.CALOPTIMA.ORG] Gathering Database information\r<br />\n2013-09-04 12:08:09.7443 $ [755D7.CALOPTIMA.ORG] Gathering Database information\r<br />\n2013-09-04 12:08:10.0563 $ [FA481NPGWSQL.CALOPTIMA.ORG] Gathering Database information\r<br />\n2013-09-04 12:08:15.6101 $ [ITGAPPS01.CALOPTIMA.ORG] Gathering Database information\r<br />\n2013-09-04 12:08:32.9733 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering Server security information\r<br />\n2013-09-04 12:08:38.2775 $ [FA481NPCFGSQL.CALOPTIMA.ORG] Gathering Database information\r<br />\n2013-09-04 12:08:38.5427 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering Endpoint information\r<br />\n2013-09-04 12:08:38.6675 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering Server linked server information\r<br />\n2013-09-04 12:08:38.7611 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering Server startup procedure information\r<br />\n2013-09-04 12:08:38.8235 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering Server Trigger information\r<br />\n2013-09-04 12:08:38.8547 $ [FA481PRARCHSQL.CALOPTIMA.ORG] Gathering Database information\r<br />\n2013-09-04 12:08:38.8859 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering Resource Governor information\r<br />\n2013-09-04 12:08:38.9015 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering SQL Trace information\r<br />\n2013-09-04 12:08:43.9716 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering Trace Flag information\r<br />\n2013-09-04 12:08:43.9716 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering Database Mail information\r<br />\n2013-09-04 12:08:44.0028 + [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Error gathering Database Mail information: Cannot index into a null array. (SqlServerDatabaseEngineInformation.psm1 line 10988, char 63)\r<br />\n2013-09-04 12:08:44.0028 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering SQL Agent service information\r<br />\n2013-09-04 12:08:44.0340 + [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Error gathering SQL Agent service information: Cannot bind argument to parameter 'JobServer' because it is null. (SqlServerDatabaseEngineInformation.psm1 line 11606, char 83)\r<br />\n2013-09-04 12:08:44.0340 $ [SCUAIISV2.CALOPTIMA.ORG\\SQLEXPRESS] Gathering SQL Agent configuration information<br />\n",
+    "PostedDate": "2013-09-04T14:21:21.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092315",
+    "ThreadId": "455497",
+    "Html": "Hi Clarencew4,\r<br />\nOk, let's tackle the two topics here...\r<br />\n<br />\nFor the scan of the targeted server with just a default instance - what edition &amp; version are you running? Any chance you can email me a cleansed version of the verbose log? <a href=\"mailto:(Kendal.vandyke@gmail.com)\r\n\r\nFor\" rel=\"nofollow\">(Kendal.vandyke@gmail.com)\r\n\r\nFor</a> the DNS scan - does the status bar in the PowerShell console get to 100% and then appear to hang? I've noticed that it can take a while (ok, sometimes a really long time!) to write the results of the scan to disk. Admittedly I don't do a great job of reporting that in the log or console so it can look like things are just hung up and leave you wondering what's going on. Maybe that's what's happening here?\r<br />\n<br />\n--ndal<br />\n",
+    "PostedDate": "2013-09-13T07:15:04.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

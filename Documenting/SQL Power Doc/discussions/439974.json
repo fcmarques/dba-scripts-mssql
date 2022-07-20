@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1029159",
+    "ThreadId": "439974",
+    "Html": "When running Convert-SqlServerInventoryClixmlToExcel.ps1, I am getting error as below :\r<br />\n<br />\nPS C:\\Users*<em>\\Documents\\WindowsPowerShell&gt; .\\Convert-SqlServerInventoryClixmlToExcel.ps1 -FromPath &quot;C:\\Users*</em>\\D\r<br />\nocuments\\SQL Server Inventory - 2013-04-11-12-25.xml.gz&quot;\r<br />\nForEach-Object : Array assignment failed because index '1,0' was out of range.\r<br />\nAt C:\\Users**\\Documents\\WindowsPowerShell\\Modules\\SqlServerInventory\\SqlServerInventory.psm1:7206 char:41<br />\n<ul>\n<li>\n$_.Server.Databases | ForEach-Object &lt;&lt;&lt;&lt;  {\n<ul>\n<li>CategoryInfo          : InvalidOperation: (System.Object[]:Object[]) [ForEach-Object], RuntimeException</li>\n<li>FullyQualifiedErrorId : IndexOutOfRange,Microsoft.PowerShell.Commands.ForEachObjectCommand</li>\n</ul>\n</li>\n</ul>\n",
+    "PostedDate": "2013-04-11T11:48:18.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1029170",
+    "ThreadId": "439974",
+    "Html": "Looks like one of the instances scanned didn't have any databases included in the results. If you enabled logging when you ran .\\Get-SqlServerInventoryToClixml.ps1 you can see if there were any errors when collecting information.\r<br />\n<br />\nI'll also look into updating the code so that this particular condition is handled better.<br />\n",
+    "PostedDate": "2013-04-11T12:21:33.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

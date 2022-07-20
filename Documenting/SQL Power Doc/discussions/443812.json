@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1044134",
+    "ThreadId": "443812",
+    "Html": "I would like to see a way to upload this sql power doc results to sql db. is there way to do it?<br />\n",
+    "PostedDate": "2013-05-15T15:02:45.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1066792",
+    "ThreadId": "443812",
+    "Html": "I've thought about persisting the results to a database but I don't have anything concrete in mind right now. The beauty of PowerShell is that you can extend the modules and scripts I've written to do something else custom if you'd like, so please don't wait on me to figure out the best approach here - feel free to crack open the ISE and writing something that best suits your needs! :-)\r<br />\n<br />\n(Or let me know how you see this working and that might help motivate me to write something)\r<br />\n<br />\n-Kendal<br />\n",
+    "PostedDate": "2013-07-10T14:50:22.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1075414",
+    "ThreadId": "443812",
+    "Html": "+1 for this feature, would be great :)<br />\n",
+    "PostedDate": "2013-07-31T22:34:03.483-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

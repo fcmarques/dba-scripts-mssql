@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1238144",
+    "ThreadId": "543367",
+    "Html": "I've seen several discussions mentioning the SQL Browser service. For SQL Power Doc, does it help to enable this service? What is the interaction?\r<br />\n<br />\nLike most places, our browser services are disabled for infosec compliance.<br />\n",
+    "PostedDate": "2014-04-25T11:40:21.073-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1239366",
+    "ThreadId": "543367",
+    "Html": "Good question! Normally SQL Browser needs to be running to connect to a named instance when you don't know what port it's running on. During the discovery phase SQL Power Doc will determine what port is in use for each instance and use that when making its connection...so the short answer is that disabling the SQL Browser service should not impact SQL Power Doc's ability to connect to an instance running on some other port besides 1433.\r<br />\n<br />\nThanks for checking out SQL Power Doc!\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2014-04-29T08:05:30.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

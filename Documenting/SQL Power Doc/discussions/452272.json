@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1076159",
+    "ThreadId": "452272",
+    "Html": "I was receiving an error like this when calling the <em>Convert-SqlServerInventoryClixmlToExcel</em>\r<br />\n<br />\nException calling &quot;Add&quot; with &quot;0&quot; argument(s): &quot;Old format or invalid type library. (Exception from HRESULT: 0x80028018\r<br />\n(TYPE_E_INVDATAREAD))&quot;\r<br />\n<br />\nIt turned out to be an issue with the locale of the system - I was using non-US regional settings so once that was changed to English (United States) the script worked. <br />\n",
+    "PostedDate": "2013-08-02T13:59:36.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1077913",
+    "ThreadId": "452272",
+    "Html": "Did you have to change the entire OS locale to English in order for it to work properly? Or was this a setting that you made elsewhere?\r<br />\n<br />\n--Kendal<br />\n",
+    "PostedDate": "2013-08-07T12:16:33.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1078069",
+    "ThreadId": "452272",
+    "Html": "Hi Kendal,\r<br />\nJust had to change the Formats in Regional Settings. The Windows Locale/Location was English.\r<br />\n<br />\n//ivan<br />\n",
+    "PostedDate": "2013-08-07T22:52:23.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

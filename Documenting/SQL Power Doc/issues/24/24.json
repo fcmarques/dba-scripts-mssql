@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi all,\r\n\r\njust noticed a minor issue which isn't directly related to the Power Doc solution.  \r\nIf you're using Windows 10 and PS Version 5 you'll get a Null reference exception if you have the module RDS-Manager in your modules folder.\r\n\r\nSee here as well: http://stackoverflow.com/questions/37972365/powershell-5-0-windows-10-get-command-null-reference-exception/40406361#40406361\r\n\r\nWorkaround by now is to remove the RDS Manager module\r\n\r\nRegards\r\nDirk",
+    "LastUpdatedDate": "2016-11-03T09:16:55.987-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "sqlpowerdoc",
+    "ReportedDate": "2016-11-03T09:16:55.987-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "module RDS-Manager causes issue Win10 PS 5",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 24
+  },
+  "FileAttachments": [],
+  "Comments": []
+}
