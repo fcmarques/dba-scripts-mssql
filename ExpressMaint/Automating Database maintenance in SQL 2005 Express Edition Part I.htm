@@ -1,0 +1,394 @@
+
+<!-- saved from url=(0041)http://www.sqldbatips.com/print.asp?ID=27 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Automating Database maintenance in SQL 2005 Express Edition Part I</title>
+
+<link href="./Automating Database maintenance in SQL 2005 Express Edition Part I_files/main.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+	function printpage() {
+		window.print();}
+</script>
+<style id="wrc-middle-css" type="text/css">.wrc_whole_window{	display: none;	position: fixed; 	z-index: 2147483647;	background-color: rgba(40, 40, 40, 0.9);	word-spacing: normal !important;	margin: 0px !important;	padding: 0px !important;	border: 0px !important;	left: 0px;	top: 0px;	width: 100%;	height: 100%;	line-height: normal !important;	letter-spacing: normal !important;	overflow: hidden;}.wrc_bar_window{	display: none;	position: fixed; 	z-index: 2147483647;	background-color: rgba(60, 60, 60, 1.0);	word-spacing: normal !important;	font-family: Segoe UI, Arial Unicode MS, Arial, Sans-Serif;	margin: 0px !important;	padding: 0px !important;	border: 0px !important;	left: 0px;	top: 0px;	width: 100%;	height: 40px;	line-height: normal !important;	letter-spacing: normal !important;	color: white !important;	font-size: 13px !important;}.wrc_middle {	display: table-cell;	vertical-align: middle;	width: 100%;}.wrc_middle_main {	font-family: Segoe UI, Arial Unicode MS, Arial, Sans-Serif;	font-size: 14px;	width: 600px;	height: auto;    background: url(chrome-extension://icmlaeflemplmjndnaapfdbbnpncnbda/skin/images/background-body.jpg) repeat-x left top;	background-color: rgb(39, 53, 62);	position: relative;	margin-left: auto;	margin-right: auto;	text-align: left;}.wrc_middle_tq_main {	font-family: Segoe UI, Arial Unicode MS, Arial, Sans-Serif;	font-size: 16px;	width: 615px;	height: 460px;    background: url(chrome-extension://icmlaeflemplmjndnaapfdbbnpncnbda/skin/images/background-sitecorrect.png) no-repeat;	background-color: white;	color: black !important;	position: relative;	margin-left: auto;	margin-right: auto;	text-align: center;}.wrc_middle_logo {    background: url(chrome-extension://icmlaeflemplmjndnaapfdbbnpncnbda/skin/images/logo.jpg) no-repeat left bottom;    width: 140px;    height: 42px;    color: orange;    display: table-cell;    text-align: right;    vertical-align: middle;}.wrc_icon_warning {	margin: 20px 10px 20px 15px;	float: left;	background-color: transparent;}.wrc_middle_title {    color: #b6bec7;	height: auto;    margin: 0px auto;	font-size: 2.2em;	white-space: nowrap;	text-align: center;}.wrc_middle_hline {    height: 2px;	width: 100%;    display: block;}.wrc_middle_description {	text-align: center;	margin: 15px;	font-size: 1.4em;	padding: 20px;	height: auto;	color: white;	min-height: 3.5em;}.wrc_middle_actions_main_div {	margin-bottom: 15px;	text-align: center;}.wrc_middle_actions_blue_button div {	display: inline-block;	width: auto;	cursor: Pointer;	margin: 3px 10px 3px 10px;	color: white;	font-size: 1.2em;	font-weight: bold;}.wrc_middle_actions_blue_button {	-moz-appearance: none;	border-radius: 7px;	-moz-border-radius: 7px/7px;	border-radius: 7px/7px;	background-color: rgb(0, 173, 223) !important;	display: inline-block;	width: auto;	cursor: Pointer;	border: 2px solid #00dddd;	padding: 0px 20px 0px 20px;}.wrc_middle_actions_blue_button:hover {	background-color: rgb(0, 159, 212) !important;}.wrc_middle_actions_blue_button:active {	background-color: rgb(0, 146, 200) !important;	border: 2px solid #00aaaa;}.wrc_middle_actions_grey_button div {	display: inline-block;	width: auto;	cursor: Pointer;	margin: 3px 10px 3px 10px;	color: white !important;	font-size: 15px;	font-weight: bold;}.wrc_middle_actions_grey_button {	-moz-appearance: none;	border-radius: 7px;	-moz-border-radius: 7px/7px;	border-radius: 7px/7px;	background-color: rgb(100, 100, 100) !important;	display: inline-block;	width: auto;	cursor: Pointer;	border: 2px solid #aaaaaa;	text-decoration: none;	padding: 0px 20px 0px 20px;}.wrc_middle_actions_grey_button:hover {	background-color: rgb(120, 120, 120) !important;}.wrc_middle_actions_grey_button:active {	background-color: rgb(130, 130, 130) !important;	border: 2px solid #00aaaa;}.wrc_middle_action_low {	font-size: 0.9em;	white-space: nowrap;	cursor: Pointer;	color: grey !important;	margin: 10px 10px 0px 10px;	text-decoration: none;}.wrc_middle_action_low:hover {	color: #aa4400 !important;}.wrc_middle_actions_rest_div {	padding-top: 5px;	white-space: nowrap;	text-align: center;}.wrc_middle_action {	white-space: nowrap;	cursor: Pointer;	color: red !important;	font-size: 1.2em;	margin: 10px 10px 0px 10px;	text-decoration: none;}.wrc_middle_action:hover {	color: #aa4400 !important;}</style><script id="wrc-script-middle_window" type="text/javascript" language="JavaScript">var g_inputsCnt = 0;var g_InputThis = new Array(null, null, null, null);var g_alerted = false;/* we test the input if it includes 4 digits   (input is a part of 4 inputs for filling the credit-card number)*/function is4DigitsCardNumber(val){	var regExp = new RegExp('[0-9]{4}');	return (val.length == 4 && val.search(regExp) == 0);}/* testing the whole credit-card number 19 digits devided by three '-' symbols or   exactly 16 digits without any dividers*/function isCreditCardNumber(val){	if(val.length == 19)	{		var regExp = new RegExp('[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}');		return (val.search(regExp) == 0);	}	else if(val.length == 16)	{		var regExp = new RegExp('[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}');		return (val.search(regExp) == 0);	}	return false;}function CheckInputOnCreditNumber(self){	if(g_alerted)		return false;	var value = self.value;	if(self.type == 'text')	{		if(is4DigitsCardNumber(value))		{			var cont = true;			for(i = 0; i < g_inputsCnt; i++)				if(g_InputThis[i] == self)					cont = false;			if(cont && g_inputsCnt < 4)			{				g_InputThis[g_inputsCnt] = self;				g_inputsCnt++;			}		}		g_alerted = (g_inputsCnt == 4);		if(g_alerted)			g_inputsCnt = 0;		else			g_alerted = isCreditCardNumber(value);	}	return g_alerted;}function CheckInputOnPassword(self){	if(g_alerted)		return false;	var value = self.value;	if(self.type == 'password')	{		g_alerted = (value.length > 0);	}	return g_alerted;}function onInputBlur(self, bRatingOk, bFishingSite){	var bCreditNumber = CheckInputOnCreditNumber(self);	var bPassword = CheckInputOnPassword(self);	if((!bRatingOk || bFishingSite == 1) && (bCreditNumber || bPassword) )	{		var warnDiv = document.getElementById("wrcinputdiv");		if(warnDiv)		{			/* show the warning div in the middle of the screen */			warnDiv.style.left = "0px";			warnDiv.style.top = "0px";			warnDiv.style.width = "100%";			warnDiv.style.height = "100%";			document.getElementById("wrc_warn_fs").style.display = 'none';			document.getElementById("wrc_warn_cn").style.display = 'none';			if(bFishingSite)				document.getElementById("wrc_warn_fs").style.display = 'block';			else				document.getElementById("wrc_warn_cn").style.display = 'block';			warnDiv.style.display = 'table';		}	}}</script></head>
+<body leftmargin="2" topmargin="2" rightmargin="2" bottommargin="2">
+<table width="400">
+<tbody><tr>
+	<td>
+		<table width="100%" class="rParent">
+		<tbody><tr>
+		<td height="20" class="rHead">Automating Database maintenance in SQL 2005 Express Edition Part I</td>
+		</tr>
+		</tbody></table>
+		<br>
+		<table class="rParent" width="100%" border="0" cellspacing="2" cellpadding="2">
+			<tbody><tr><td class="btext" width="11%">Author</td>
+			<td class="stdtext" width="41%">Jasper Smith</td>
+			<td class="btext" width="12%">Hits</td>
+			<td class="stdtext" width="36%">26214</td>
+		  </tr>
+		  <tr>
+			<td class="btext">Create Date</td>
+			<td class="stdtext">31-07-2004</td>
+			<td class="btext">Last Updated</td>
+			<td class="stdtext">28-07-2008</td>
+		  </tr>
+		  <tr>
+			<td class="btext">Versions</td>
+			<td class="stdtext">SQL2005</td>
+			<td class="btext">Feedback</td>
+			<td><a href="http://www.sqldbatips.com/forums/topic.asp?TOPIC_ID=20" target="_self" class="co">Provide feedback on this article</a></td>
+		  </tr>
+		</tbody></table>
+		<table width="100%">
+		<tbody><tr><td><p class="articleheader">Overview</p>
+<p align="justify" class="stdtext">In this series of articles, I'll demonstrate
+  a couple of different approaches to writing a maintenance utility that mimics
+  some of the behavior of the <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/coprompt/cp_sqlmaint_19ix.asp?frame=true" target="_blank" class="co">sqlmaint
+  utility</a> that
+  is included with SQL Server 2000. SQL Server 2005 Express Edition does not
+  include such a utility, so these
+  articles will show how we can easily create one ourselves using either TSQL
+  or SMO (SQL Management Objects - the successor to SQL-DMO). Rather than
+  dive into the <a href="http://www.sqldbatips.com/displaycode.asp?ID=26" target="_blank" class="co">code</a>,
+  these articles will demonstrate how to use these utilities for backing up and
+  maintaining your databases and how to schedule these tasks
+  using the Scheduled Tasks facility in Windows XP and Windows 2003. In this
+  article we will concentrate on the TSQL version of the utility which is in
+the form of a stored procedure - <a href="http://www.sqldbatips.com/showcode.asp?ID=26" target="_blank" class="co">expressmaint.</a> To download a command line version built using SMO go to <a href="http://www.sqldbatips.com/showarticle.asp?ID=29" target="_self" class="co">Automating Database maintenance in SQL 2005 Express Edition Part II</a>. To vew articles on performing maintenance operations using SMO including sample code see the <a href="http://www.sqldbatips.com/print.asp?ID=27#related" class="co">Related Articles</a> section at the bottom of the page </p>
+<p class="articleheader">Expressmaint Stored Procedure</p>
+<p align="justify" class="stdtext">
+To view the full code for the expressmaint stored procedure click <a href="http://www.sqldbatips.com/displaycode.asp?ID=26" target="_blank" class="co">here</a><br>
+The expressmaint stored procedure supports the following operations</p>
+<ul>
+  <li class="std"> Full Database Backup</li>
+  <li class="std">Differential Database Backup</li>
+  <li class="std">Log Backup</li>
+  <li class="std">Housekeeping of backup files</li>
+  <li class="std">Database Integrity Checks</li>
+  <li class="std">Database Index Rebuilds</li>
+  <li class="std">Database index Reorganization</li>
+  <li class="std">Report Creation</li>
+</ul>
+<table class="rParent" width="100%" cellspacing="2" cellpadding="2">
+  <tbody><tr align="center" valign="middle" class="rHead">
+    <td width="90" align="left" valign="middle">Parameter</td>
+    <td width="70" align="center" valign="middle">Required</td>
+    <td width="70" align="center" valign="middle">Default</td>
+    <td width="513">Description</td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@database</strong></td>
+    <td width="70" align="center" valign="middle">Y</td>
+    <td width="70" align="center" valign="middle">NONE</td>
+    <td align="left" valign="middle"><div align="justify">The target database for the maintenance
+        operation. Valid values are a single database name, ALL_USER which will
+        process all user databases and ALL_SYSTEM which will process all system
+      databases</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@optype </strong></td>
+    <td width="70" align="center" valign="middle">Y</td>
+    <td width="70" align="center" valign="middle">NONE</td>
+    <td align="left" valign="middle"><p align="justify">The type of maintenance
+        operation to be performed. Valid values are</p>
+      <div align="justify">
+        <ul>
+          <li> DB - Full Database Backup</li>
+            <li>DIFF - Differential Database Backup</li>
+            <li>LOG - Log Backup</li>
+            <li>CHECKDB - Database Integrity Check</li>
+            <li>REINDEX - Rebuild all indexes</li>
+            <li>REORG - Reorganize all indexes</li>
+        </ul>
+    </div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@backupwith</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">NULL</td>
+    <td align="left" valign="middle"><div align="justify">Specify additional backup options as documented
+      in BOL for the BACKUP WITH command</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@backupfldr</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">NULL</td>
+    <td align="left" valign="middle"><div align="justify">The base folder to
+        write the backups to. Sub folders will be created for each database</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@verify</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">1</td>
+    <td align="left" valign="middle"><div align="justify">Indicates whether to verify the backup file.<br>
+      Valid values are 1 and 0 with 1 = TRUE and 0 = FALSE</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@verifywith</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">NULL</td>
+    <td align="left" valign="middle"><div align="justify">Specify additional verify options as documented
+    in BOL for the VERIFY WITH command</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@dbretainunit</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">NULL</td>
+    <td align="left" valign="middle"><div align="justify">The unit of measure for the @dbretainval
+        parameter. Valid values are minutes, hours, days, weeks, months and copies.
+        The combination of these two parameters determines how long or how
+      many copies of old backup files are kept</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@dbretainval</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">1</td>
+    <td align="left" valign="middle"><div align="justify">The time period or number of copies of old
+      backups to keep</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@report</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">1</td>
+    <td align="left" valign="middle"><div align="justify">Indicates whether to produce a report of
+        the maintenance carried out.<br>
+      Valid values are 1 and 0 with 1 = TRUE and 0 = FALSE</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@reportfldr</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">NULL</td>
+    <td align="left" valign="middle"><div align="justify">The folder where maintenance reports are
+      written to if @report = 1</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@rptretainunit</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">NULL</td>
+    <td align="left" valign="middle"><div align="justify">The unit of measure for the @rptretainval
+        parameter. Valid values are minutes, hours, days, weeks, months and copies.
+        The combination of these two parameters determines how long or how
+    many copies of old reports are kept</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@rptretainval</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">1</td>
+    <td align="left" valign="middle"><div align="justify">The time period or number of copies of old
+    reports to keep</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@checkattrib</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">0</td>
+    <td align="left" valign="middle"><div align="justify">Indicates whether to check the archive bit
+        on a backup file before deleting it. This is a safety check to prevent
+        deletion of files that have not been backed up onto tape.<br>
+      Valid values are 1 and 0 with 1 = TRUE and 0 = FALSE</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" height="20" align="left" valign="middle"><strong>@delfirst</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">0</td>
+    <td align="left" valign="middle"><div align="justify">Indicates whether to delete old backups
+        prior to doing the current backup. This is not advisable but can be useful
+        if disk space is limited.<br>Valid values are 1 and 0 with 1 = TRUE and 0 = FALSE</div></td>
+  </tr>
+  <tr class="stdtext">
+    <td width="90" align="left" valign="middle"><strong>@debug</strong></td>
+    <td width="70" align="center" valign="middle">N</td>
+    <td width="70" align="center" valign="middle">0</td>
+    <td align="left" valign="middle"><div align="justify">Indicates whether print out debug information
+        such as the commands generated and the contents of the temporary tables
+        used in the procedure.<br>Valid values are 1 and 0 with 1 = TRUE
+    and 0 = FALSE</div></td>
+  </tr>
+</tbody></table>
+<p class="articleheader">Examples</p>
+<p align="justify" class="stdtext">To load the stored procedure into SQL Express
+  using the sqlcmd utility simply download the code from <a href="http://www.sqldbatips.com/showcode.asp?ID=26" target="_blank" class="co">here</a> and
+  save it as c:\expressmaint.sql. Open a command prompt and run the following
+  command (assuming a named instance
+  called SQLExpress)</p>
+<table width="100%" class="rParent">
+  <tbody><tr>
+    <td><pre class="codesample">sqlcmd -S .\SQLExpress -i c:\expressmaint.sql</pre></td>
+  </tr>
+</tbody></table>
+<p class="stdtext"><span class="btext">1) Full Database Backup of all user databases
+    to c:\backups, verify the backups and report to c:\reports keeping  backups
+    for 1 day and reports for 1 week</span></p>
+<table class="rParent" width="100%">
+  <tbody><tr>
+    <td><pre class="codesample">exec expressmaint
+   @database      = 'ALL_USER', 
+   @optype        = 'DB',
+   @backupfldr    = 'c:\backups',
+   @reportfldr    = 'c:\reports',
+   @verify        = 1,
+   @dbretainunit  = 'days',
+   @dbretainval   = 1,
+   @rptretainunit = 'weeks',
+   @rptretainval  = 1,
+   @report        = 1</pre></td>
+  </tr>
+</tbody></table>
+<p align="justify" class="stdtext"><span class="btext">2) Full Database Backup
+    of all system databases to c:\backups, verify the backups and report to c:\reports
+    keeping backups
+for 1 week and reports for 1 week</span></p>
+<table class="rParent" width="100%">
+  <tbody><tr>
+    <td><pre class="codesample">exec expressmaint
+   @database      = 'ALL_SYSTEM', 
+   @optype        = 'DB',
+   @backupfldr    = 'c:\backups',
+   @reportfldr    = 'c:\reports',
+   @verify        = 1,
+   @dbretainunit  = 'weeks',
+   @dbretainval   = 1,
+   @rptretainunit = 'weeks',
+   @rptretainval  = 1,
+   @report        = 1</pre></td>
+  </tr>
+</tbody></table>
+<p align="justify" class="stdtext"><span class="btext">3) Log Backup of all user
+    databases to c:\backups, don't verify the backups and report to c:\reports
+    keeping backups
+for 1 day and reports for 1 day</span></p>
+<table class="rParent" width="100%">
+  <tbody><tr>
+    <td><pre class="codesample">exec expressmaint
+   @database      = 'ALL_USER', 
+   @optype        = 'LOG',
+   @backupfldr    = 'c:\backups',
+   @reportfldr    = 'c:\reports',
+   @verify        = 0,
+   @dbretainunit  = 'days',
+   @dbretainval   = 1,
+   @rptretainunit = 'days',
+   @rptretainval  = 1,
+   @report        = 1</pre></td>
+  </tr>
+</tbody></table>
+<p align="justify" class="stdtext"><span class="btext">4) Check the integrity
+    of the AdventureWorks database and report to c:\reports keeping reports for
+1 week</span></p>
+<table class="rParent" width="100%">
+  <tbody><tr>
+    <td><pre class="codesample">exec expressmaint
+   @database      = 'AdventureWorks', 
+   @optype        = 'CHECKDB',
+   @reportfldr    = 'c:\reports',
+   @rptretainunit = 'weeks',
+   @rptretainval  = 1,
+
+   @report        = 1</pre></td>
+  </tr>
+</tbody></table>
+<p align="justify" class="stdtext"><span class="btext">5) Rebuild all indexes
+    in 
+    the AdventureWorks database and report to c:\reports keeping reports for
+1 day</span></p>
+<table class="rParent" width="100%">
+  <tbody><tr>
+    <td><pre class="codesample">exec expressmaint
+   @database      = 'AdventureWorks', 
+   @optype        = 'REINDEX',
+   @reportfldr    = 'c:\reports',
+   @rptretainunit = 'days',
+   @rptretainval  = 1,
+   @report        = 1</pre>
+    </td>
+  </tr>
+</tbody></table>
+<p align="justify" class="articleheader">Automating backups using sqlcmd</p>
+<p align="justify" class="stdtext">Since SQL Server 2005 Express Edition does
+  not include SQL Agent, we need to rely on the Windows Task Scheduler to run
+  our maintenance
+  tasks. If you are not familiar with how to set up a scheduled task, it's worth
+  reviewing the Microsoft Knowledge Base article below</p>
+<p class="stdtext"><a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;308569&sd=tech" target="_blank" class="co">How to Schedule Tasks in Windows XP</a></p>
+<p align="justify" class="stdtext">The simplest way to pass our parameters to
+  sqlcmd is to simply save the call to the stored procedure in a file. For example,
+  we
+  could
+  copy
+  the code from the
+  Full Database Backup of all user databases example above (Example 1) and save
+  it to c:\backup scripts\userfullbackup.sql. The walk through below assumes
+  you have
+  a named
+  instance called SQLExpress.</p>
+<ul>
+<li class="std">Double-click Add Scheduled Task to start the Scheduled Task Wizard, and then click Next in the first dialog box</li>
+<li class="std">Click Browse, browse to SQLCMD.exe (by default it can be found in C:\Program Files\Microsoft SQL Server\90\Tools\binn), and then click Open.</li>
+<li class="std">Type a name for the task e.g DAILY FULL BACKUP and then choose Daily from the scheduling options</li>
+<li class="std">Click Next, specify the information about the  time to run the
+  task e.g. 00:00, and then click Next</li>
+<li class="std">Type the name and password of the account that will execute this task. Make sure that you choose an account that is a syadmin for your instance</li>
+<li class="std">Click Next, select the checkbox to Open the Advanced Properties
+  for this task and then click Finish</li>
+<li class="std">In the Run text box append the following to the contents : -S
+  .\SQLExpress -i"c:\backup scripts\userfullbackup.sql" (You must leave
+  a space after the existing contents)</li>
+  <li class="std">Click OK. If prompted, supply the password for the account again</li>
+</ul>
+<p align="justify" class="stdtext">An alternative to the penultimate step above
+  is to remove the entire contents of the Run text box and simply supply the following</p>
+<table class="rParent" width="100%">
+  <tbody><tr>
+    <td><pre class="codesample">sqlcmd -S.\SQLExpress -i"c:\backup scripts\userfullbackup.sql"</pre></td>
+  </tr>
+</tbody></table>
+<p align="justify" class="stdtext">Another alternative rather than maintaining
+  an individual script for each task is to parameterize the script and take advantage
+  of the ability to pass parameters to sqlcmd from the command line.
+If we take the same example script we used in the task above (c:\backup scripts\userfullbackup.sql),
+  we could add parameters to it as shown below</p>
+<table class="rParent" width="100%">
+  <tbody><tr>
+    <td><pre class="codesample">exec expressmaint
+   @database      = '$(DB)', 
+   @optype        = 'DB',
+   @backupfldr    = '$(BACKUPFOLDER)',
+   @reportfldr    = 'c:\reports',
+   @verify        = 1,
+   @dbretainunit  = '$(DBRETAINUNIT)',
+   @dbretainval   = '$(DBRETAINVAL)',
+   @rptretainunit = 'copies',
+   @rptretainval  = 2,
+   @report        = 1</pre></td>
+  </tr>
+</tbody></table>
+<p align="justify" class="stdtext">This allows us to pass in the database,
+  backup folder and backup retention parameters from the command line. To simulate
+  the same parameters as example 1, we would supply the following
+  command to the task (note that this entire command should all be on one line)</p>
+  <table class="rParent" width="100%">
+  <tbody><tr>
+    <td><pre class="codesample">sqlcmd -S .\SQLExpress -i"c:\backup scripts\userfullbackup.sql" -v DB="ALL_USER" 
+ -v BACKUPFOLDER="c:\backups" -v DBRETAINUNIT="days" -v DBRETAINVAL="1"</pre></td>
+  </tr>
+</tbody></table>
+<p align="justify" class="stdtext">As this demonstrates, sqlcmd is a lot more
+  flexible than osql/isql and there are numerous options available for scheduling
+  our maintenance tasks. In Part II of this article, I'll be demonstrating how
+  we can build an expressmaint.exe command line utility using SMO to provide
+  the same functionality. In the meantime, to supply feedback on this article
+   and the code or to report bugs/issues email <a href="mailto:jas@sqldbatips.com&Subject=Feeback%20for%20Expressmaint" class="co">jas@sqldbatips.com</a></p>
+<p align="justify" class="articleheader"><a name="related"></a>Related Articles</p>
+ <img src="./Automating Database maintenance in SQL 2005 Express Edition Part I_files/bullet.jpg">  <a href="http://www.sqldbatips.com/showarticle.asp?ID=29" class="co">Automating Database maintenance in SQL 2005 Express Edition Part II</a><br>
+ <img src="./Automating Database maintenance in SQL 2005 Express Edition Part I_files/bullet.jpg">  <a href="http://www.sqldbatips.com/showarticle.asp?ID=40" class="co">Getting Started with SMO in SQL 2005 - Restores</a><br>
+ <img src="./Automating Database maintenance in SQL 2005 Express Edition Part I_files/bullet.jpg">  <a href="http://www.sqldbatips.com/showarticle.asp?ID=42" class="co">Getting Started with SMO in SQL 2005 - Integrity Checks</a><br>
+ <img src="./Automating Database maintenance in SQL 2005 Express Edition Part I_files/bullet.jpg">  <a href="http://www.sqldbatips.com/showarticle.asp?ID=37" class="co">Getting Started with SMO in SQL 2005 - Backups</a><br>
+ <img src="./Automating Database maintenance in SQL 2005 Express Edition Part I_files/bullet.jpg">  <a href="http://www.sqldbatips.com/showarticle.asp?ID=41" class="co">Getting Started with SMO in SQL 2005 - Verifying Backups</a><br>
+ <img src="./Automating Database maintenance in SQL 2005 Express Edition Part I_files/bullet.jpg">  <a href="http://www.sqldbatips.com/showarticle.asp?ID=45" class="co">SM0 2005 - Populating a list of SQL Servers</a><br>
+ <img src="./Automating Database maintenance in SQL 2005 Express Edition Part I_files/bullet.jpg">  <a href="http://www.sqldbatips.com/showarticle.asp?ID=34" class="co">GettingStarted with SMO in SQL 2005</a><br>
+<br></td></tr>
+		</tbody></table>	
+	</td>
+</tr>
+</tbody></table>
+
+
+</body></html>

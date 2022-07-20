@@ -1,0 +1,12 @@
+COND - Relação de ambientes monitorados - O id desta tabela é usado como sulfixo nas demais tabelas
+COMPR_* - Lista de aplicações
+CONU_* - Lista de logins
+CONM_* - Lista de maquinas
+CONO_* - Lista de databases
+
+
+
+select 'select top 10 ''' + name +''' as TableName, * from ignite.' + name + ';' 
+from sys.tables
+where name like '%_11%'
+order by name

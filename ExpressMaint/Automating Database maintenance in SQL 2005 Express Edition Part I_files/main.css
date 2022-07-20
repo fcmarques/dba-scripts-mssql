@@ -1,0 +1,263 @@
+a.m:link, a.m:visited {
+	font-family: verdana;
+	font-size: 8pt;
+	color: #3E6079;
+	font-weight: bold;
+	text-decoration: underline;
+}
+a.m:hover {
+	font-family: verdana;
+	font-size: 8pt;
+	color: #3E6079;
+	font-weight: bold;
+	text-decoration: underline;
+}
+a.sw:link, a.sw:visited {
+	font-family: verdana;
+	font-size: 8pt;
+	color: #BE0909;
+	font-weight: bold;
+	text-decoration: none;
+}
+a.sw:hover {
+	font-family: verdana;
+	font-size: 8pt;
+	color: #BE0909;
+	font-weight: bold;
+	text-decoration: underline;
+}
+a.as:link, a.as:visited {
+	font-family: verdana;
+	font-size: 7pt;
+	color: #BE0909;
+	font-weight: bold;
+	text-decoration: none;
+}
+a.as:hover {
+	font-family: verdana;
+	font-size: 7pt;
+	color: #BE0909;
+	font-weight: bold;
+	text-decoration: underline;
+}
+#fm {
+	font-family: verdana;
+	font-size: 8pt;
+	color: #000000;
+	font-weight: normal;
+	text-decoration: none;
+	text-align: justify;
+}
+#fs {
+	font-family: verdana;
+	font-size: 7pt;
+	color: #000000;
+	font-weight: normal;
+	text-decoration: none;
+}
+.smen {
+	text-align: right;
+}
+.ff {
+	font-family: arial;
+	font-size: 7pt;
+	color: #ffffff;
+	text-align: left;
+	vertical-align: middle;
+}
+.ft {
+	background-image: url(../images/bg1.jpg);
+}	
+.fti {
+	background-color: #89A4B9;
+}	
+.mb {
+	width: 20px;
+	border-left: solid 1px #cccccc;
+}
+.tmen {
+	background-image: url(../images/mbg1.jpg);
+}
+.rParent
+{
+	border: solid 1px #3E6079;
+	padding: 0px;
+	background-image: url(../images/bgk.jpg);
+
+}
+.rHead
+{
+	font-family: tahoma;
+	font-size: 11px;
+	color: #ffffff;
+	font-weight: bold;
+	background-image: url(../images/bg1.jpg);
+	text-align: center;
+	vertical-align: middle;
+}
+.rBody
+{
+	background-image: url(../images/bgk.jpg);
+	text-align: left;
+	vertical-align: middle;
+	padding: 2px;
+	font-family: tahoma;
+	font-size: 11px;
+	color: #000000;
+	font-weight: normal;
+}
+a.co:link, a.co:visited {
+	font-family: verdana;
+	font-size: 8pt;
+	color: #BE0909;
+	font-weight: bold;
+	text-decoration: none;
+}
+a.co:hover {
+	font-family: verdana;
+	font-size: 8pt;
+	color: #BE0909;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.mmen {
+	text-align: center;
+	border-right: solid 1px #89A4B9;
+}	
+.mmen1 {
+	text-align: center;
+}
+a.mm:link, a.mm:visited {
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: bold;
+	color: #ffffff;
+	text-decoration: none;
+}
+a.mm:hover {
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: bold;
+	color: #ffffff;
+	text-decoration: underline;
+}
+a.footer:link, a.footer:visited {
+	font-family: verdana;
+	font-size: 8pt;
+	font-weight: normal;
+	color: #ffffff;
+	text-decoration: none;
+}
+a.footer:hover {
+	font-family: verdana;
+	font-size: 8pt;
+	font-weight: normal;
+	color: #ffffff;
+	text-decoration: underline;
+}
+.foot{
+	background-image: url(../images/bg1.jpg);
+	font-family: verdana;
+	font-size: 8pt;
+	font-weight: normal;
+	color: #ffffff;
+}
+.searchtype{
+	font-family: verdana;
+	font-size: 8pt;
+	color: #000000;
+	font-weight: bold;
+	text-decoration: none;
+}
+h2.search{
+	font-family: verdana;
+	color: #BE0909;
+}
+.stdtext
+{
+	padding: 2px;
+	font-family: tahoma;
+	font-size: 11px;
+	color: #000000;
+	font-weight: normal;
+}
+li.std
+{
+	padding: 2px;
+	font-family: tahoma;
+	font-size: 11px;
+	color: #000000;
+	font-weight: normal;
+}
+.btext
+{
+	padding: 2px;
+	font-family: tahoma;
+	font-size: 11px;
+	color: #3e6079;
+	font-weight: bold;
+}
+.articleheader
+{
+	padding: 2px;
+	font-family: tahoma;
+	font-size: 16px;
+	color: #3e6079;
+	font-weight: bold;
+}
+.codesample
+{
+	padding: 2px;
+	font-family: courier;
+	font-size: normal;
+	color: #000066;
+	font-weight: normal;
+}
+.stdheader
+{
+	padding: 2px;
+	font-family: tahoma;
+	font-size: 15px;
+	color: #000000;
+	font-weight: bold;
+}
+.rParentkb
+{
+	border: solid 1px #3E6079;
+	padding: 0px;
+	background-image: url(../images/bgk.jpg);
+}
+body {
+	background-color: #ffffff;
+}
+a.article:link, a.article:visited {
+	font-family: tahoma;
+	font-size: 11px;
+	color: #BE0909;
+	font-weight: bold;
+	text-decoration: none;
+}
+a.article:hover {
+	font-family: tahoma;
+	font-size: 11px;
+	color: #BE0909;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.tmen {
+	background-image: url(../images/mbg1.jpg);
+}
+a.s:link, a.s:visited {
+	font-family: arial;
+	color: #ffffff;
+	font-size: 9pt;
+	font-weight: bold;
+	text-decoration: none;
+}
+a.s:hover {
+	font-family: arial;
+	color: #ffffff;
+	font-size: 9pt;
+	font-weight: bold;
+	text-decoration: underline;
+}

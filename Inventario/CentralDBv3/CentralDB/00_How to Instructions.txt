@@ -1,0 +1,43 @@
+Deployment Steps:
+1. Copy the CentralDB folder to c:\ Drive on the server where you want to host the DB. It should have all SQL Server services installed including SSAS and SSRS of SQL Server 2014. If it's 2012, it will not capture Hekaton Info but will run fine.
+2. Run the 01_CentralDB_DDL.sql Script on host SQL Server(Change the DB Directory path as required before executing).
+3. The script creates 1 Database(CentralDB), 32 Tables, 42 Stored Procedures, 1 Table Function and 4 Jobs - Inventory job(runs once a day), Baseline(runs every 5 mins), Waitstats(runs Once a week) and SQLPing(runs every 5 mins).
+4. Enter the server Names and Instance Names into the [Svr].[ServerList] table for the servers which you want to do inventory or baselining for as shown below.
+
+	--Example
+	USE [CentralDB]
+	GO
+
+	INSERT INTO [Svr].[ServerList]
+           ([ServerName]
+           ,[InstanceName]
+           ,[Environment]
+           ,[Inventory]
+           ,[Baseline]
+           ,[Description]
+           ,[BusinessOwner]
+           ,[SQLPing]
+           ,[PingSnooze]
+           ,[MaintStart]
+           ,[MaintEnd])
+     	VALUES
+           ('Your ServerName'   --If it's a cluster, Just enter the ClusterName instead of individual node Names.
+           ,'Your InstanceName' --For Named instance it's "ServerName\InstanceName" and for Default, it's "ServerName".
+           ,'Prod'		--Choose either of these Prod\Stage\QA\Dev- Constrained to 5 chars and required field for Reporting purpose.
+           ,'True' 		--If you provide True, it collects Inventory data.The Inventory job which collets this data runs once a day.
+           ,'False'		--same as above, It's better to collect baseline for critical servers because it collects data every 5 mins.
+           ,'Description of Server'
+           ,'Buisness Owner'
+	   ,'True' -- Choose True if you want to ping the server to see if it's up and able to connect to SQL DB Engine.
+           ,NULL --You can set this value to a particular time to snooze the SQLPing not to alert until then.
+           ,NULL -- You can set this value when you want to schedule a maintenance on a server and keep off the SQLPing from alerting. It holds the value of Maintenance start DateTime.
+           ,NULL )-- You can set this value when you want to schedule a maintenance on a server and keep off the SQLPing from alerting. It holds the value of Maintenance End Datetime.
+
+	GO
+
+5. Once you add all the servers which you want to do inventory for, upload the 36 Reports present in the CentralDB folder into SSRS 2014 or 2012 to see the collected info(Run the SQL Agent Jobs once to get the data populated in DB). If you upload the Reports on a different server, you need to change the datasource to point out to host DB. 
+6. After running the Jobs, If it didn't collect the data as expected, check for the respective logs in the errorlog  folder on "c:\CentralDB\Errorlog" to see if it logged any kind of errors.
+7. Also, make sure that the 4 Job owners have Sys. Admin permissions to access other boxes. Since they are kept to SA by default, the underlying SQL Service account should have Permissions to access other boxes.
+8. The Inventory data like server info, DBInfo etc., is retained for 14 days, DiskGrowth and DB Growth Data is retained for 1 year, Missing Indexes and Wait Stats data for 6 months and Baseline data for 1 year.
+9. You might need to check for SQL Server Service pack updates periodically and change the productlevel value for IsSPUpToDate attribute on CentralInventory.ps1. Otherwise, you will see incorrect update in SPUpDt columns on SSRS Reports.
+10. You also need to change the "-TO", "-From" and "-SMTPServer" properties in SQLPing.ps1 script located in the "c:\CentralDB\" folder with appropriate values for the SQLPing job to send Alerts when the Server is down or unable to connect to SQL.
