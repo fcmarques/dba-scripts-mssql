@@ -1,0 +1,169 @@
+<html><head>
+
+
+
+
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Grant Execute to all SQL Server Stored Procedures</title>
+<meta name="keywords" content="GRANT Execute to stored procedures, GRANT EXEC, REVOKE, DENY, SQL Server 2000, SQL Server 2005 ">
+</head><body>
+
+<div style="margin: 0px; background-color: rgb(255, 255, 255);" bgcolor="#FFFFFF">
+
+<hr>
+                                <table id="table2" border="0" cellpadding="0" cellspacing="0" width="700">
+                <tbody><tr style="background-color: rgb(255, 255, 255);" bgcolor="#ffffff">
+                                <td style="text-align: left; padding-left: 5px;">
+                                <font style="font-size: 16pt; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; padding-left: 5px;" color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="4">
+                                MSSQLTips.com </font><br>
+                                <font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; padding-left: 5px;" color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                                brought to you by Edgewood Solutions</font>
+                                </td>
+                                <td style="text-align: right; padding-right: 5px;">
+                                <font style="font-weight: bold; font-size: 8pt; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="1">
+                                Your daily source for SQL Server Tips</font>
+                                </td>
+                </tr>
+</tbody></table>
+
+
+<table id="table1" border="0" cellpadding="0" cellspacing="0" width="700">
+                <tbody><tr>
+                                <td valign="top"><hr>
+                                <table style="background-color: rgb(255, 255, 255);" id="table2" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody><tr>
+                                                <td align="left" valign="top" width="100%">
+                                                        <font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2">
+                                                        <h3>Grant Execute to all SQL Server Stored Procedures</h3>
+                                                        Written By: Edgewood Solutions Engineers -- 3/20/2007
+                                                        </font>
+                                                <br><br>
+                                                
+                                                <hr>
+                                                <table id="table5" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td valign="center">
+			<br>
+			<font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2">
+			</font><p><font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2"><u><b><font size="2">Problem<br></font></b></u><font size="2">With
+SQL Server 2000 no default server, database or application role was
+available to be able to execute all stored procedures.&nbsp; With SQL
+Server 2005 has this changed with all of the new security
+features?&nbsp; If not, what options do I have to grant execute rights
+to the needed database roles?&nbsp; </font></font></p>
+<p><font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2"><u><b><font size="2">Solution<br></font></b></u><font size="2">Unfortunately,
+with all of the security changes in SQL Server 2005, no default role is
+available to execute all stored procedures in a given database.&nbsp;
+This is the same behavior as with SQL Server 2000.&nbsp; As such, let's
+take a look at the needed code for SQL Server 2000 and 2005:</font></font></p>
+<div align="center">
+<table id="table1" border="1" cellpadding="3" cellspacing="0" width="80%">
+<tbody>
+<tr>
+<td>
+<p style="text-align: center;"><b><font face="Arial" size="2">SQL Server 2000</font></b></p></td></tr>
+<tr>
+<td><font face="Arial"><font color="#0000ff" size="2">CREATE</font><font size="2"> </font><font color="#0000ff" size="2">PROCEDURE</font><font size="2"> spGrantExectoAllStoredProcs @user </font><font color="#0000ff" size="2">sysname<br>AS<br><br></font><font color="#008000" size="2">/*----------------------------------------------------------------------------<br>-- Object Name: spGrantExectoAllStoredProcs<br>-- Author: Edgewood Solutions<br>-- Development Date: 03.19.2007<br>-- Called By: TBD<br>-- Description: Issue GRANT EXEC statement for all stored procedures <br>-- based on the user name that is passed in to this stored procedure<br>-- Project: SQL Server Security<br>-- Database: User defined databases <br>-- Business Process: SQL Server Security<br>-- <br>----------------------------------------------------------------------------<br>-- Num | CRF ID | Date Modified | Developer | Description<br>----------------------------------------------------------------------------<br>-- 001&nbsp; | N\A&nbsp;&nbsp;&nbsp;&nbsp; | 03.15.2007&nbsp;&nbsp;&nbsp; | Edgewood | Original code for the GRANT <br>-- EXEC process<br>--<br>-- <br>*/</font></font><font color="#0000ff" size="2"> 
+</font><p><font color="#0000ff" size="2"><font face="Arial">SET</font></font><font face="Arial"><font size="2"> </font><font color="#0000ff" size="2">NOCOUNT</font><font size="2"> </font></font><font color="#0000ff" size="2"><font face="Arial">ON</font></font></p><font color="#0000ff" size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 1 - Variable declarations<br></font></font><font face="Arial"><font color="#0000ff" size="2">DECLARE</font><font size="2"> @CMD1 </font><font color="#0000ff" size="2">varchar</font><font color="#808080" size="2">(</font><font size="2">8000</font><font color="#808080" size="2">)<br></font><font color="#0000ff" size="2">DECLARE</font><font size="2"> @MAXOID </font><font color="#0000ff" size="2">int<br>DECLARE</font><font size="2"> @OwnerName </font><font color="#0000ff" size="2">varchar</font><font color="#808080" size="2">(</font><font size="2">128</font><font color="#808080" size="2">)<br></font><font color="#0000ff" size="2">DECLARE</font><font size="2"> @ObjectName </font><font color="#0000ff" size="2">varchar</font><font color="#808080" size="2">(</font><font size="2">128</font></font><font color="#808080" size="2"><font face="Arial">)</font></font></p><font color="#808080" size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 2 - Create temporary table<br></font></font><font face="Arial"><font color="#0000ff" size="2">CREATE</font><font size="2"> </font><font color="#0000ff" size="2">TABLE</font><font size="2"> #StoredProcedures<br></font><font color="#808080" size="2">(</font><font size="2">OID </font><font color="#0000ff" size="2">int</font><font size="2"> </font><font color="#0000ff" size="2">IDENTITY</font><font size="2"> </font><font color="#808080" size="2">(</font><font size="2">1</font><font color="#808080" size="2">,</font><font size="2">1</font><font color="#808080" size="2">),<br></font><font size="2">StoredProcOwner </font><font color="#0000ff" size="2">varchar</font><font color="#808080" size="2">(</font><font size="2">128</font><font color="#808080" size="2">)</font><font size="2"> </font><font color="#808080" size="2">NOT</font><font size="2"> </font><font color="#808080" size="2">NULL,<br></font><font size="2">StoredProcName </font><font color="#0000ff" size="2">varchar</font><font color="#808080" size="2">(</font><font size="2">128</font><font color="#808080" size="2">)</font><font size="2"> </font><font color="#808080" size="2">NOT</font><font size="2"> </font></font><font color="#808080" size="2"><font face="Arial">NULL)</font></font></p><font color="#808080" size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 3 - Populate temporary table<br></font></font><font face="Arial"><font color="#0000ff" size="2">INSERT</font><font size="2"> </font><font color="#0000ff" size="2">INTO</font><font size="2"> #StoredProcedures </font><font color="#808080" size="2">(</font><font size="2">StoredProcOwner</font><font color="#808080" size="2">,</font><font size="2"> StoredProcName</font><font color="#808080" size="2">)<br></font><font color="#0000ff" size="2">SELECT</font><font size="2"> u</font><font color="#808080" size="2">.</font><font size="2">[Name]</font><font color="#808080" size="2">,</font><font size="2"> o</font><font color="#808080" size="2">.</font><font size="2">[Name]<br></font><font color="#0000ff" size="2">FROM</font><font size="2"> dbo</font><font color="#808080" size="2">.</font><font size="2">sysobjects o<br></font><font color="#808080" size="2">INNER</font><font size="2"> </font><font color="#808080" size="2">JOIN</font><font size="2"> dbo</font><font color="#808080" size="2">.</font><font size="2">sysusers u<br></font><font color="#0000ff" size="2">ON</font><font size="2"> o</font><font color="#808080" size="2">.</font><font size="2">uid </font><font color="#808080" size="2">=</font><font size="2"> u</font><font color="#808080" size="2">.</font><font size="2">uid<br></font><font color="#0000ff" size="2">WHERE</font><font size="2"> o</font><font color="#808080" size="2">.</font><font color="#0000ff" size="2">Type</font><font size="2"> </font><font color="#808080" size="2">=</font><font size="2"> </font><font color="#ff0000" size="2">'P'<br></font><font color="#808080" size="2">AND</font><font size="2"> o</font><font color="#808080" size="2">.</font><font size="2">[Name] </font><font color="#808080" size="2">NOT</font><font size="2"> </font><font color="#808080" size="2">LIKE</font><font size="2"> </font></font><font color="#ff0000" size="2"><font face="Arial">'dt_%'</font></font></p><font color="#ff0000" size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 4 - Capture the @MAXOID value<br></font></font><font face="Arial"><font color="#0000ff" size="2">SELECT</font><font size="2"> @MAXOID </font><font color="#808080" size="2">=</font><font size="2"> </font><font color="#ff00ff" size="2">MAX</font><font color="#808080" size="2">(</font><font size="2">OID</font><font color="#808080" size="2">)</font><font size="2"> </font><font color="#0000ff" size="2">FROM</font></font><font size="2"><font face="Arial"> #StoredProcedures</font></font></p><font size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 5 - WHILE loop<br></font></font><font face="Arial"><font color="#0000ff" size="2">WHILE</font><font size="2"> @MAXOID </font><font color="#808080" size="2">&gt;</font><font size="2"> 0<br></font><font color="#0000ff" size="2">BEGIN</font></font><font size="2"><font face="Arial"> </font></font></p>
+<p><font size="2"></font><font face="Arial"><font color="#008000" size="2">-- 6 - Initialize the variables<br></font><font color="#0000ff" size="2">SELECT</font><font size="2"> @OwnerName </font><font color="#808080" size="2">=</font><font size="2"> StoredProcOwner</font><font color="#808080" size="2">,<br></font><font size="2">@ObjectName </font><font color="#808080" size="2">=</font><font size="2"> StoredProcName<br></font><font color="#0000ff" size="2">FROM</font><font size="2"> #StoredProcedures<br></font><font color="#0000ff" size="2">WHERE</font><font size="2"> OID </font><font color="#808080" size="2">=</font></font><font size="2"><font face="Arial"> @MAXOID</font></font></p>
+<p><font size="2"></font><font face="Arial"><font color="#008000" size="2">-- 7 - Build the string<br></font><font color="#0000ff" size="2">SELECT</font><font size="2"> @CMD1 </font><font color="#808080" size="2">=</font><font size="2"> </font><font color="#ff0000" size="2">'GRANT EXEC ON '</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">'['</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> @OwnerName </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">']'</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">'.'</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">'['</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> @ObjectName </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">']'</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">' TO '</font><font size="2"> </font><font color="#808080" size="2">+</font></font><font size="2"><font face="Arial"> @user</font></font></p>
+<p><font size="2"></font><font face="Arial"><font color="#008000" size="2">-- 8 - Execute the string<br>-- SELECT @CMD1<br></font><font color="#0000ff" size="2">EXEC</font><font color="#808080" size="2">(</font><font size="2">@CMD1</font></font><font color="#808080" size="2"><font face="Arial">)</font></font></p><font color="#808080" size="2"></font><font size="2">
+</font><p><font size="2"></font><font face="Arial"><font color="#008000" size="2">-- 9 - Decrement @MAXOID<br></font><font color="#0000ff" size="2">SET</font><font size="2"> @MAXOID </font><font color="#808080" size="2">=</font><font size="2"> @MAXOID </font><font color="#808080" size="2">-</font><font size="2"> 1<br></font></font><font color="#0000ff" size="2"><font face="Arial">END</font></font></p><font color="#0000ff" size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 10 - Drop the temporary table<br></font></font><font face="Arial"><font color="#0000ff" size="2">DROP</font><font size="2"> </font><font color="#0000ff" size="2">TABLE</font></font><font size="2"><font face="Arial"> #StoredProcedures</font></font></p><font size="2"></font><font color="#0000ff" size="2">
+</font><p><font color="#0000ff" size="2"><font face="Arial">SET</font></font><font face="Arial"><font size="2"> </font><font color="#0000ff" size="2">NOCOUNT</font><font size="2"> </font><font color="#0000ff" size="2">OFF<br></font><font size="2">GO</font></font></p></td></tr>
+<tr>
+<td>
+<p style="text-align: center;"><b><font face="Arial" size="2">SQL Server 2005</font></b></p></td></tr>
+<tr>
+<td><font face="Arial"><font color="#0000ff" size="2">CREATE</font><font size="2"> </font><font color="#0000ff" size="2">PROCEDURE</font><font size="2"> spGrantExectoAllStoredProcs @user </font><font color="#0000ff" size="2">sysname<br>AS</font></font><font color="#008000" size="2"> 
+<p><font face="Arial">/*----------------------------------------------------------------------------<br>-- Object Name: spGrantExectoAllStoredProcs<br>-- Author: Edgewood Solutions<br>-- Development Date: 03.19.2007<br>-- Called By: TBD<br>-- Description: Issue GRANT EXEC statement for all stored procedures <br>-- based on the user name that is passed in to this stored procedure<br>-- Project: SQL Server Security<br>-- Database: User defined databases <br>-- Business Process: SQL Server Security<br>-- <br>----------------------------------------------------------------------------<br>-- Num | CRF ID | Date Modified | Developer | Description<br>----------------------------------------------------------------------------<br>-- 001 | N\A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 03.15.2007&nbsp;&nbsp;&nbsp; | Edgewood | Original code for the GRANT <br>-- EXEC process<br>--<br>-- <br>*/</font></p></font><font color="#0000ff" size="2">
+</font><p><font color="#0000ff" size="2"><font face="Arial">SET</font></font><font face="Arial"><font size="2"> </font><font color="#0000ff" size="2">NOCOUNT</font><font size="2"> </font></font><font color="#0000ff" size="2"><font face="Arial">ON</font></font></p><font color="#0000ff" size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 1 - Variable declarations<br></font></font><font face="Arial"><font color="#0000ff" size="2">DECLARE</font><font size="2"> @CMD1 </font><font color="#0000ff" size="2">varchar</font><font color="#808080" size="2">(</font><font size="2">8000</font><font color="#808080" size="2">)<br></font><font color="#0000ff" size="2">DECLARE</font><font size="2"> @MAXOID </font><font color="#0000ff" size="2">int<br>DECLARE</font><font size="2"> @OwnerName </font><font color="#0000ff" size="2">varchar</font><font color="#808080" size="2">(</font><font size="2">128</font><font color="#808080" size="2">)<br></font><font color="#0000ff" size="2">DECLARE</font><font size="2"> @ObjectName </font><font color="#0000ff" size="2">varchar</font><font color="#808080" size="2">(</font><font size="2">128</font></font><font color="#808080" size="2"><font face="Arial">)</font></font></p><font color="#808080" size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 2 - Create temporary table<br></font></font><font face="Arial"><font color="#0000ff" size="2">CREATE</font><font size="2"> </font><font color="#0000ff" size="2">TABLE</font><font size="2"> #StoredProcedures<br></font><font color="#808080" size="2">(</font><font size="2">OID </font><font color="#0000ff" size="2">int</font><font size="2"> </font><font color="#0000ff" size="2">IDENTITY</font><font size="2"> </font><font color="#808080" size="2">(</font><font size="2">1</font><font color="#808080" size="2">,</font><font size="2">1</font><font color="#808080" size="2">),<br></font><font size="2">StoredProcOwner </font><font color="#0000ff" size="2">varchar</font><font color="#808080" size="2">(</font><font size="2">128</font><font color="#808080" size="2">)</font><font size="2"> </font><font color="#808080" size="2">NOT</font><font size="2"> </font><font color="#808080" size="2">NULL,<br></font><font size="2">StoredProcName </font><font color="#0000ff" size="2">varchar</font><font color="#808080" size="2">(</font><font size="2">128</font><font color="#808080" size="2">)</font><font size="2"> </font><font color="#808080" size="2">NOT</font><font size="2"> </font></font><font color="#808080" size="2"><font face="Arial">NULL)</font></font></p><font color="#808080" size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 3 - Populate temporary table<br></font></font><font face="Arial"><font color="#0000ff" size="2">INSERT</font><font size="2"> </font><font color="#0000ff" size="2">INTO</font><font size="2"> #StoredProcedures </font><font color="#808080" size="2">(</font><font size="2">StoredProcOwner</font><font color="#808080" size="2">,</font><font size="2"> StoredProcName</font><font color="#808080" size="2">)<br></font><font color="#0000ff" size="2">SELECT</font><font size="2"> ROUTINE_SCHEMA</font><font color="#808080" size="2">,</font><font size="2"> ROUTINE_NAME<br></font><font color="#0000ff" size="2">FROM</font><font size="2"> </font><font color="#008000" size="2">INFORMATION_SCHEMA.ROUTINES</font><font size="2"> <br></font><font color="#0000ff" size="2">WHERE</font><font size="2"> ROUTINE_NAME </font><font color="#808080" size="2">NOT</font><font size="2"> </font><font color="#808080" size="2">LIKE</font><font size="2"> </font><font color="#ff0000" size="2">'dt_%'<br></font><font color="#808080" size="2">AND</font><font size="2"> ROUTINE_TYPE </font><font color="#808080" size="2">=</font><font size="2"> </font></font><font color="#ff0000" size="2"><font face="Arial">'PROCEDURE'</font></font></p><font color="#ff0000" size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 4 - Capture the @MAXOID value<br></font></font><font face="Arial"><font color="#0000ff" size="2">SELECT</font><font size="2"> @MAXOID </font><font color="#808080" size="2">=</font><font size="2"> </font><font color="#ff00ff" size="2">MAX</font><font color="#808080" size="2">(</font><font size="2">OID</font><font color="#808080" size="2">)</font><font size="2"> </font><font color="#0000ff" size="2">FROM</font></font><font size="2"><font face="Arial"> #StoredProcedures</font></font></p><font size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 5 - WHILE loop<br></font></font><font face="Arial"><font color="#0000ff" size="2">WHILE</font><font size="2"> @MAXOID </font><font color="#808080" size="2">&gt;</font><font size="2"> 0<br></font><font color="#0000ff" size="2">BEGIN</font></font><font size="2"><font face="Arial"> </font></font></p>
+<p><font size="2"></font><font face="Arial"><font color="#008000" size="2">-- 6 - Initialize the variables<br></font><font color="#0000ff" size="2">SELECT</font><font size="2"> @OwnerName </font><font color="#808080" size="2">=</font><font size="2"> StoredProcOwner</font><font color="#808080" size="2">,<br></font><font size="2">@ObjectName </font><font color="#808080" size="2">=</font><font size="2"> StoredProcName<br></font><font color="#0000ff" size="2">FROM</font><font size="2"> #StoredProcedures<br></font><font color="#0000ff" size="2">WHERE</font><font size="2"> OID </font><font color="#808080" size="2">=</font></font><font size="2"><font face="Arial"> @MAXOID</font></font></p>
+<p><font size="2"></font><font face="Arial"><font color="#008000" size="2">-- 7 - Build the string<br></font><font color="#0000ff" size="2">SELECT</font><font size="2"> @CMD1 </font><font color="#808080" size="2">=</font><font size="2"> </font><font color="#ff0000" size="2">'GRANT EXEC ON '</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">'['</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> @OwnerName </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">']'</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">'.'</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">'['</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> @ObjectName </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">']'</font><font size="2"> </font><font color="#808080" size="2">+</font><font size="2"> </font><font color="#ff0000" size="2">' TO '</font><font size="2"> </font><font color="#808080" size="2">+</font></font><font size="2"><font face="Arial"> @user</font></font></p>
+<p><font size="2"></font><font face="Arial"><font color="#008000" size="2">-- 8 - Execute the string<br>-- SELECT @CMD1<br></font><font color="#0000ff" size="2">EXEC</font><font color="#808080" size="2">(</font><font size="2">@CMD1</font></font><font color="#808080" size="2"><font face="Arial">)</font></font></p><font color="#808080" size="2"></font><font size="2">
+</font><p><font size="2"></font><font face="Arial"><font color="#008000" size="2">-- 9 - Decrement @MAXOID<br></font><font color="#0000ff" size="2">SET</font><font size="2"> @MAXOID </font><font color="#808080" size="2">=</font><font size="2"> @MAXOID </font><font color="#808080" size="2">-</font><font size="2"> 1<br></font></font><font color="#0000ff" size="2"><font face="Arial">END</font></font></p><font color="#0000ff" size="2"></font><font color="#008000" size="2">
+</font><p><font color="#008000" size="2"><font face="Arial">-- 10 - Drop the temporary table<br></font></font><font face="Arial"><font color="#0000ff" size="2">DROP</font><font size="2"> </font><font color="#0000ff" size="2">TABLE</font></font><font size="2"><font face="Arial"> #StoredProcedures</font></font></p><font size="2"></font><font color="#0000ff" size="2">
+</font><p><font color="#0000ff" size="2"><font face="Arial">SET</font></font><font face="Arial"><font size="2"> </font><font color="#0000ff" size="2">NOCOUNT</font><font size="2"> </font><font color="#0000ff" size="2">OFF<br></font><font size="2">GO</font></font></p></td></tr></tbody></table></div>
+<p><font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2"><font size="2">The
+code above can be used when a new group needs to be granted rights to
+all stored procedures or you are working through a migration when
+rights need to be granted.&nbsp; Based on your naming convention or
+creation date, the query used in both sets of code can be modify to
+include the needed object.&nbsp; In addition, the corresponding user or
+role would need to be passed into this stored procedure to grant the
+rights correctly. </font></font></p>
+<p><font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2"><font size="2">With
+all of this being said, the best approach to address this need is to
+explicitly grant execute rights to stored procedures as the stored
+procedures are created and migrated to the production
+environment.&nbsp; Unfortunately, if you are inheriting a SQL Server
+environment, you may not be that lucky.&nbsp; Then the code above can
+come in handy to streamline the process.</font></font></p>
+<p><font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2"><font size="2">Since
+this tip references granting stored procedures, the value of stored
+procedure based access to SQL Server data cannot be overlooked.&nbsp;
+As such, stored procedure based access to SQL Server from your front
+end applications offers the following benefits:</font></font></p>
+<ul>
+<font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2"><li><font size="2">Security based on the object that can be assigned rights with all business rules incorporated</font> 
+</li><li><font size="2">No direct access to tables or views</font> 
+</li><li><font size="2">Ability to call the stored procedure from any
+piece of code (ASP.NET, VB.NET, C#, CFMX, Job, etc.) to have a
+consistent set of rules executed</font> 
+</li><li><font size="2">Change a single piece of code to streamline the code migration process</font></li></font></ul>
+<p><font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2"><u><b><font size="2">Next Steps</font></b></u></font></p>
+<ul>
+<font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2"><li><font size="2">If
+your applications are not stored procedure driven then consider
+migrating your data access layer to be stored procedure driven based on
+the code deployment, code maintainability and security benefits listed
+above </font>
+</li><li><font size="2">If you have a SQL Server environment with
+elevated rights and you are migrating to stored procedure based access
+with an existing set of roles then the code in this tip may be helpful
+to easily grant the needed rights to the role</font> 
+</li><li><font size="2">Check out these related <a href="http://www.mssqltips.com/" target="_blank">MSSQLTips.com</a> tips:</font> 
+<ul>
+<li><a href="http://www.mssqltips.com/tip.asp?tip=1183" target="_blank"><font size="2">Service Account Privileges </font></a>
+</li><li><a href="http://www.mssqltips.com/tip.asp?tip=1172" target="_blank"><font size="2">Guest User Account</font></a> 
+</li><li><a href="http://www.mssqltips.com/tip.asp?tip=1138" target="_blank"><font size="2">Giving and removing permissions in SQL Server</font></a></li></ul></li></font></ul>
+<font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2">			</font>
+			<br>
+		</td>
+	</tr>
+</tbody></table>
+
+
+
+                                                <br>
+                                                
+                                                </td>
+                                        </tr>
+                                </tbody></table>
+                                </td>
+                </tr>
+                <tr>
+                        <td style="background-color: rgb(237, 237, 237);" colspan="7" align="center" bgcolor="#ededed">
+                        <div style="padding: 10px; text-align: center;">
+                                        <font style="font-size: 10pt; color: rgb(0, 0, 0); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;" color="#000000" face="Verdana, Geneva, Arial, Helvetica, sans-serif" size="2">
+                                        Copyright (c) 2006-2008 <a href="http://www.edgewoodsolutions.com/" target="new">Edgewood Solutions, LLC</a> All rights reserved <br> <a style="color: rgb(0, 0, 0);" shape="rect" color="#000000" href="http://www.mssqltips.com/privacy.asp">privacy statement</a> | <a style="color: rgb(0, 0, 0);" shape="rect" color="#000000" href="http://www.mssqltips.com/disclaimer.asp">disclaimer</a> | <a style="color: rgb(0, 0, 0);" shape="rect" color="#000000" href="http://www.mssqltips.com/copyright.asp">copyright</a>
+                                        <br>
+                                        <font size="1">Some names and products listed are the registered trademarks of their respective owners.</font>
+                                        </font>
+                        </div>
+                        </td>
+        </tr>
+</tbody></table>
+</div>
+<iframe style="position: absolute; display: block; opacity: 0.7; z-index: 500; width: 18px; height: 22px; top: 112px; right: 809px;" src="Grant%20Execute%20to%20all%20SQL%20Server%20Stored%20Procedures_arquivos/blank.htm" id="gnotes-notemagic" frameborder="0"></iframe></body></html>

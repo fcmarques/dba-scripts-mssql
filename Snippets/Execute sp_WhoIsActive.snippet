@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Execute sp_WhoIsActive</Title>
+			<Shortcut></Shortcut>
+			<Description>Execute sp_WhoIsActive.</Description>
+			<Author>Microsoft Corporation</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Code Language="SQL"><![CDATA[
+EXEC sp_WhoIsActive 
+    --@help=1,
+    @find_block_leaders = 1, 
+    @get_plans = 1, 
+    @get_full_inner_text = 1, 
+    @get_locks = 1,
+    @sort_order = '[blocked_session_count] DESC,[start_time] ASC',
+	@show_sleeping_spids = 0
+			]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

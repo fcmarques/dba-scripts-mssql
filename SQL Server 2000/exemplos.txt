@@ -1,0 +1,13 @@
+Atualiza tabela com base em outra tabela
+
+UPDATE ent
+	SET ent.tip_ent_id = tip.tip_ent_id
+	FROM entidade ent, tip_entidade tip
+	WHERE ent.tip_ent_ape = tip.tip_ent_ape
+
+
+Confirma a operação acima
+select top 100 entidade.tip_ent_id,tip_entidade.tip_ent_id, entidade.tip_ent_ape, tip_entidade.tip_ent_ape
+from entidade, tip_entidade
+where entidade.tip_ent_ape = tip_entidade.tip_ent_ape
+

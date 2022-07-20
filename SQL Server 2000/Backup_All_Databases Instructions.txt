@@ -1,0 +1,36 @@
+After the last few years of finding some good ideas and tweaking my script I wanted to let everyone use it. If you want.
+
+Here are some directions on how to use it.
+
+1) Create a text file and name it Backup_All_Databases.sql (or what ever you want).
+
+2) Paste the below script in it:
+
+3) Open scheduler and create a new task that calls the below command line:
+
+Code:
+sqlcmd -S . -i "C:\Backups\BackupSettings\Backup_All_Databases.sql"
+
+Note: I also made a batch file that had the same command line but added a pause so I can test it before the scheduler runs it.
+EXAMPLE:
+
+Code:
+sqlcmd -S . -i "C:\Backups\BackupSettings\Backup_All_Databases.sql"
+pause
+
+4) Just run it every night in a scheduler and you are done.
+
+
+Clean up Old Backup Files.
+
+If you are running Windows Server 2003 you can also run a command utility to delete any files older then x number of days. This helps keep it cleaned up. Just paste this in a batch file and schedule the batch file.
+
+
+Code:
+echo on
+
+rem First Delete old SQL Backup Files
+
+FORFILES /p C:\Backuped_SQL_DB /s /m *.* /d -3 /c "CMD /C del /Q @FILE"
+
+rem pauseThis will also work on SQL Express

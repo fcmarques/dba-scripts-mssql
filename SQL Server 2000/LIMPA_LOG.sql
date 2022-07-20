@@ -1,0 +1,4 @@
+backup log HOSPITALAR_dev
+with TRUNCATE_ONLY
+
+DBCC SHRINKFILE (hospitalar_log, 128, TRUNCATEONLY )

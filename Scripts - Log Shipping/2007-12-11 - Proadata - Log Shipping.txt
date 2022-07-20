@@ -1,0 +1,29 @@
+Simple Log Shipping in SQL Server 2000 Standard Edition
+Simple Log Shipper 
+
+SQL Server 2000 Resource Kit
+
+
+
+ALTER DATABASE MYDATABASE SET SINGLE_USER WITH ROLLBACK
+IMMEDIATE
+GO
+
+
+ALTER DATABASE MYDATABASE SET MULTI_USER
+GO
+
+
+A Guide to SQL Server 2000 Transactional and Snapshot Replication
+
+
+
+---------------------------
+Microsoft SQL-DMO (ODBC SQLState: 42000)
+---------------------------
+Error 5063: Database 'TESTE_LOG_SHIPPING_DEST' is in warm standby. A warm-standby database is read-only.
+ALTER DATABASE statement failed.
+sp_dboption command failed.
+---------------------------
+OK   
+---------------------------

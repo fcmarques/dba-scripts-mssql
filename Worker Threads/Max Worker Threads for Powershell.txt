@@ -1,0 +1,20 @@
+select subsystem, 
+right(subsystem_dll,20) as 'Agent DLL', 
+right(agent_exe,20) as 'Agent Exe', 
+max_worker_threads 
+from msdb.dbo.syssubsystems
+
+UPDATE msdb.dbo.syssubsystems
+SET max_worker_threads = 20
+WHERE subsystem = N'PowerShell'
+
+edit sp_verify_subsystems in msdb. This inserts the value to subsystems table by multiplying an arbitrary number to the no.of processors. you can manipulate this number to get the desired worker threads
+
+For powershell, just change 2 to the number you want
+
+       --PowerShell subsystem     
+       INSERT syssubsystems
+       VALUES
+       (
+              12, N'PowerShell', 14698, @InstRootPath + N'SQLPOWERSHELLSS.DLL', @SQLPSPath, N'PowerShellStart',N'PowerShellEvent',N'PowerShellStop',20
+       )

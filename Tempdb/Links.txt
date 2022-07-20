@@ -1,0 +1,3 @@
+http://technet.microsoft.com/en-us/library/cc966545.aspx
+http://social.msdn.microsoft.com/Forums/sqlserver/en-US/01bc6dec-e4e1-4e7b-b0eb-4c506dad1200/splitting-tempdb-in-more-datafiles?forum=sqldatabaseengine
+http://searchsqlserver.techtarget.com/tip/Optimize-tempdb-in-SQL-Server-by-striping-and-splitting-to-multiple-files

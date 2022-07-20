@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SQLWATCHDB/obj/Debug
+/SQLWATCHDB/.vs/SQLWATCHDB/v15
+/.vs
+*.txt
+*.pdb
+/SQLWATCHDB/bin/Debug
+*.dbmdl
+*.jfm
+/SQLWATCHSSIS/obj/Development
+/SQLWATCHSSIS/import.dtsx
+/SQLWATCHDB/.vs/SQLWATCHDB/v16
+SQLWATCHSSIS/SQLWATCHSSIS.dtproj.user

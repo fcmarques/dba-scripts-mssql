@@ -1,0 +1,18 @@
+    EXEC [dbo].[sp_Manutencao]            
+        Verifica se há disparidade entre o catálogo de sistema e o repositório e faz a atualização    
+
+    EXEC [dbo].[sp_ManutencaoBackup]    @Tip_Backup = 'FULL'
+        Executa Backup 'FULL'', Backup 'DIFF' ou Backup 'LOG'
+
+    EXEC [dbo].[sp_ManutencaoReindex]
+        Executa Reindex
+        
+    EXEC [dbo].[sp_ManutencaoExpurgo]    @Tempo_Exp = 24, @Tip_Expurgo = 'DIFF'
+        Executa deleção de todos arquivos do tipo 'FULL', 'DIFF' ou 'LOG' na respectiva pasta de backups
+        Obs: @Tempo_Exp deleta todos backups com recência de 24 horas OU MAIS (default)
+
+    EXEC [sp_ManutencaoUpdStats] @Tip_UpdStats = 'FULL'
+        Executa Update Statistics nos bancos assinalados pelo repositório. 'FULL' para FULLSCAN ou vazio para default
+        
+    EXEC [sp_ManutencaoCheckDB]
+        Executa CheckDB nos bancos assinalados pelo repositório

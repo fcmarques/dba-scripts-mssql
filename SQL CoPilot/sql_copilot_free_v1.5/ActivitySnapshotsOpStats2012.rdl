@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="Target">
+      <rd:DataSourceID>f978cb01-36f6-44ec-b4d9-a8a6ed42be17</rd:DataSourceID>
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=DUMMY</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>0cm</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="ServerName">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ServerName</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>21cm</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>2.5cm</RightMargin>
+  <LeftMargin>2.5cm</LeftMargin>
+  <BottomMargin>2.5cm</BottomMargin>
+  <rd:ReportID>9734208a-0bba-40c2-8bf6-3d7c9e0cd1b4</rd:ReportID>
+  <EmbeddedImages>
+    <EmbeddedImage Name="copilot">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="help">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <PageWidth>21cm</PageWidth>
+  <DataSets>
+    <DataSet Name="Nav">
+      <Fields>
+        <Field Name="Dummy">
+          <DataField>Dummy</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Target</DataSourceName>
+        <CommandText>select 1 as Dummy</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Code>Private bOddRow As Boolean
+Private sTableId As String
+
+Function AlternateColor(ByVal OddColor As String, ByVal EvenColor As String, ByVal Toggle As Boolean) As String
+	If Toggle Then bOddRow = Not bOddRow
+	If bOddRow Then
+		Return OddColor
+	Else
+		Return EvenColor
+	End If
+End Function
+
+Function RestartColor(ByVal OddColor As String) As String
+	bOddRow = True
+	Return OddColor
+End Function
+
+Function FirstCol(ByVal Id As String)
+	If Id &lt;&gt; sTableId Then
+		sTableId = Id
+		Return RestartColor("White")
+	Else
+		Return AlternateColor("White", "AliceBlue", True)
+	End If
+End Function
+
+Function OtherCol()
+	Return AlternateColor("White", "AliceBlue", False)
+End Function
+</Code>
+  <Width>28.75cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Textbox Name="txtVersion">
+        <Top>0.29531in</Top>
+        <Action>
+          <Drillthrough>
+            <ReportName>About</ReportName>
+            <Parameters>
+              <Parameter Name="ServerName">
+                <Value>=Parameters!ServerName.Value</Value>
+              </Parameter>
+            </Parameters>
+          </Drillthrough>
+        </Action>
+        <Style>
+          <Color>#006ac2</Color>
+          <FontSize>12pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>4</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>10.53281in</Left>
+        <Height>0.29531in</Height>
+        <Value>1.5.1</Value>
+      </Textbox>
+      <Textbox Name="txtVersionLbl">
+        <Top>0.09844in</Top>
+        <Action>
+          <Drillthrough>
+            <ReportName>About</ReportName>
+            <Parameters>
+              <Parameter Name="ServerName">
+                <Value>=Parameters!ServerName.Value</Value>
+              </Parameter>
+            </Parameters>
+          </Drillthrough>
+        </Action>
+        <Style>
+          <Color>#006ac2</Color>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>3</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>10.53281in</Left>
+        <Height>0.19687in</Height>
+        <Value>Version</Value>
+      </Textbox>
+      <Image Name="image1">
+        <Sizing>AutoSize</Sizing>
+        <Action>
+          <Drillthrough>
+            <ReportName>About</ReportName>
+            <Parameters>
+              <Parameter Name="ServerName">
+                <Value>=Parameters!ServerName.Value</Value>
+              </Parameter>
+            </Parameters>
+          </Drillthrough>
+        </Action>
+        <Width>1.8254cm</Width>
+        <Source>Embedded</Source>
+        <Style />
+        <ZIndex>2</ZIndex>
+        <Height>3.70833in</Height>
+        <Value>copilot</Value>
+      </Image>
+      <Rectangle Name="rectangle1">
+        <Left>2cm</Left>
+        <ZIndex>1</ZIndex>
+        <ReportItems>
+          <Textbox Name="txtWhatItShows">
+            <Top>1.18125in</Top>
+            <Width>10.2375in</Width>
+            <Style>
+              <Color>Firebrick</Color>
+              <FontFamily>Segoe UI</FontFamily>
+              <FontSize>12pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>4</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.09844in</Left>
+            <Height>1.47656in</Height>
+            <Value>This report shows you which tables and indexes are having to wait for a lock, page latch or page I/O latch.
+
+It takes a snapshot, waits 10 seconds, then takes another snapshot and compares the differences. Only the indexes that waited on a lock or latch during the 10 seconds are displayed.
+
+This can be extremely useful for identifying areas where code or schema changes may improve performance.
+</Value>
+          </Textbox>
+          <Textbox Name="txtGetSQLCopilot">
+            <Top>2.75625in</Top>
+            <Width>10.2375in</Width>
+            <Style>
+              <Color>Firebrick</Color>
+              <FontFamily>Segoe UI</FontFamily>
+              <FontSize>12pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.09844in</Left>
+            <Height>0.29531in</Height>
+            <Value>Visit www.sqlcopilot.com for the FULL version.</Value>
+          </Textbox>
+          <Table Name="table45">
+            <ZIndex>2</ZIndex>
+            <DataSetName>Nav</DataSetName>
+            <Details>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox110">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>SQL CoPilot</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>AliceBlue</Color>
+                            <BackgroundColor>Gray</BackgroundColor>
+                            <BorderColor>
+                              <Default>White</Default>
+                              <Bottom>Gray</Bottom>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <BorderWidth>
+                              <Top>2pt</Top>
+                            </BorderWidth>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>6</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Home</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox111">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>Databases2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>AliceBlue</Color>
+                            <BackgroundColor>Gray</BackgroundColor>
+                            <BorderColor>
+                              <Default>White</Default>
+                              <Bottom>Gray</Bottom>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <BorderWidth>
+                              <Top>2pt</Top>
+                            </BorderWidth>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>5</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Databases</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox112">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>PerformanceOverview2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>White</Color>
+                            <BackgroundColor>Gray</BackgroundColor>
+                            <BorderColor>
+                              <Default>White</Default>
+                              <Right>Gray</Right>
+                              <Bottom>Gray</Bottom>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <BorderWidth>
+                              <Top>2pt</Top>
+                            </BorderWidth>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>4</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Performance</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox6">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>ActivityCurrentSessions2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>#006ac2</Color>
+                            <BackgroundColor>White</BackgroundColor>
+                            <BorderColor>
+                              <Default>Gray</Default>
+                              <Bottom>White</Bottom>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>3</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Activity</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox8">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>Jobs2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>AliceBlue</Color>
+                            <BackgroundColor>Gray</BackgroundColor>
+                            <BorderColor>
+                              <Default>White</Default>
+                              <Left>Gray</Left>
+                              <Bottom>Gray</Bottom>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <BorderWidth>
+                              <Top>2pt</Top>
+                            </BorderWidth>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>2</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Jobs</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox122">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>LogErrorLog2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>AliceBlue</Color>
+                            <BackgroundColor>Gray</BackgroundColor>
+                            <BorderColor>
+                              <Default>White</Default>
+                              <Bottom>Gray</Bottom>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <BorderWidth>
+                              <Top>2pt</Top>
+                            </BorderWidth>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>1</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Logs</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox7">
+                          <Style>
+                            <Color>AliceBlue</Color>
+                            <BackgroundColor>Gray</BackgroundColor>
+                            <BorderColor>
+                              <Default>White</Default>
+                              <Bottom>Gray</Bottom>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <BorderWidth>
+                              <Top>2pt</Top>
+                            </BorderWidth>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.6cm</Height>
+                </TableRow>
+              </TableRows>
+            </Details>
+            <TableColumns>
+              <TableColumn>
+                <Width>3.7819cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.7819cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.7819cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.7819cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.7819cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.80858cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.80858cm</Width>
+              </TableColumn>
+            </TableColumns>
+            <Height>0.6cm</Height>
+          </Table>
+          <Table Name="table3">
+            <ZIndex>1</ZIndex>
+            <DataSetName>Nav</DataSetName>
+            <Top>1cm</Top>
+            <Width>9.72429cm</Width>
+            <Details>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox3">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>ActivityCurrentSessions2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>Gray</Color>
+                            <BackgroundColor>White</BackgroundColor>
+                            <BorderColor>
+                              <Default>Gray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>2</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Current</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox4">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>ActivityHistCPU2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>Gray</Color>
+                            <BackgroundColor>White</BackgroundColor>
+                            <BorderColor>
+                              <Default>Gray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>1</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Historical</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox5">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>ActivitySnapshots2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>White</Color>
+                            <BackgroundColor>#006ac2</BackgroundColor>
+                            <BorderColor>
+                              <Default>Gray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>10 Seconds</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.6cm</Height>
+                </TableRow>
+              </TableRows>
+            </Details>
+            <TableColumns>
+              <TableColumn>
+                <Width>3.24143cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.24143cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.24143cm</Width>
+              </TableColumn>
+            </TableColumns>
+            <Height>0.6cm</Height>
+            <Left>0.25cm</Left>
+          </Table>
+          <Table Name="table8">
+            <DataSetName>Nav</DataSetName>
+            <Top>2cm</Top>
+            <Width>19.40696cm</Width>
+            <Details>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox31">
+                          <rd:DefaultName>textbox31</rd:DefaultName>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>ActivitySnapshotsVFS2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>#006ac2</Color>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <FontFamily>Calibri</FontFamily>
+                            <TextDecoration>Underline</TextDecoration>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>4</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Virtual File Stats</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox24">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>ActivitySnapshotsWaitStats2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>#006ac2</Color>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <FontFamily>Calibri</FontFamily>
+                            <TextDecoration>Underline</TextDecoration>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>3</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Waits and Latches</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox2">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>ActivitySnapshotsCounters2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>#006ac2</Color>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <FontFamily>Calibri</FontFamily>
+                            <TextDecoration>Underline</TextDecoration>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>2</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Performance Counters</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox28">
+                          <rd:DefaultName>textbox28</rd:DefaultName>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>ActivitySnapshotsQueries2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>#006ac2</Color>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <FontFamily>Calibri</FontFamily>
+                            <TextDecoration>Underline</TextDecoration>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>1</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Active Queries</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox53">
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>ActivitySnapshotsOpStats2012</ReportName>
+                              <Parameters>
+                                <Parameter Name="ServerName">
+                                  <Value>=Parameters!ServerName.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <Color>#006ac2</Color>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <FontFamily>Calibri</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <TextDecoration>Underline</TextDecoration>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>Operational Stats</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.63492cm</Height>
+                </TableRow>
+              </TableRows>
+            </Details>
+            <TableColumns>
+              <TableColumn>
+                <Width>3.91727cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.91727cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.91121cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.91121cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.75cm</Width>
+              </TableColumn>
+            </TableColumns>
+            <Height>0.63492cm</Height>
+            <Left>0.25851cm</Left>
+          </Table>
+        </ReportItems>
+        <Top>1.75cm</Top>
+        <Width>26.52666cm</Width>
+        <Style>
+          <BorderColor>
+            <Default>Gray</Default>
+          </BorderColor>
+          <BorderStyle>
+            <Left>Solid</Left>
+            <Right>Solid</Right>
+            <Top>None</Top>
+            <Bottom>Solid</Bottom>
+          </BorderStyle>
+        </Style>
+        <Height>8cm</Height>
+      </Rectangle>
+      <Textbox Name="textbox1">
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Width>24.5cm</Width>
+        <Style>
+          <Color>#006ac2</Color>
+          <BorderColor>
+            <Bottom>Silver</Bottom>
+          </BorderColor>
+          <BorderWidth>
+            <Bottom>5pt</Bottom>
+          </BorderWidth>
+          <FontFamily>Segoe UI</FontFamily>
+          <FontSize>30pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Left>2cm</Left>
+        <Height>1.75cm</Height>
+        <Value>=Parameters!ServerName.Value</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>10cm</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>2.5cm</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>

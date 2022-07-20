@@ -1,0 +1,25 @@
+SELECT 
+    A.NAME AS TABELA,
+    B.NAME AS CAMPO,
+    C.NAME AS TIPO,
+    B.length AS TAMANHO,
+    B.isnullable AS ACEITA_NULL,
+    ISNULL(D.INDID, 0) As CHAVE
+
+FROM SYSOBJECTS A
+
+INNER JOIN  SYSCOLUMNS B
+            ON A.ID = B.ID
+INNER JOIN  SYSTYPES C
+            ON B.XTYPE = C.XTYPE
+LEFT JOIN   SYSINDEXKEYS D
+            ON A.ID = D.ID
+            AND B.COLID = D.COLID
+            AND D.INDID = 1
+
+WHERE   A.TYPE = 'U'
+        AND LEFT(A.NAME,1) <> '_'
+        AND LEFT(B.NAME,1) <> '_'
+        --AND A.NAME = '  '
+
+ORDER BY A.NAME, B.COLID, D.KEYNO
