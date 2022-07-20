@@ -1,0 +1,1 @@
+DBCC CACHEPROFILE (2) -- stop proc cache profiling

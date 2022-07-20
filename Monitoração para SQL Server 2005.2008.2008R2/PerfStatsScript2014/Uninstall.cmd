@@ -1,0 +1,3 @@
+SQLDiag STOP /A MSSQL2012A
+
+SQLDiag /U /A mssql2012A
