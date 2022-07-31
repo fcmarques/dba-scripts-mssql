@@ -1,12 +1,12 @@
 param(
-	[string]$SQLInst="RSQLADM\MAPS",
+	[string]$SQLInst="servername",
 	[string]$Centraldb="CentralDB"
 	)
 [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO') | out-null
 [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.ConnectionInfo') | out-null
 [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SqlWmiManagement') | out-null
 
-$cn = new-object system.data.sqlclient.sqlconnection(“server=$SQLInst;database=$CentralDB;Integrated Security=true;”);
+$cn = new-object system.data.sqlclient.sqlconnection(ï¿½server=$SQLInst;database=$CentralDB;Integrated Security=true;ï¿½);
 $cn.Open()
 $cmd = $cn.CreateCommand()
 # Fetch Server list into the Data source from Srv.ServerList Table from CentralDB
@@ -21,7 +21,7 @@ while($reader.Read()) {
 	$dateping = Get-Date
 
 	# Open connection table PingStatus
-	$cnlog = new-object system.data.sqlclient.sqlconnection(“server=$SQLInst;database=$CentralDB;Integrated Security=true;”);
+	$cnlog = new-object system.data.sqlclient.sqlconnection(ï¿½server=$SQLInst;database=$CentralDB;Integrated Security=true;ï¿½);
 	$cnlog.Open()
 	$cmdlog = $cnlog.CreateCommand()
 	$querylog = "INSERT INTO Inst.PingStatus VALUES('{0}','{1}','{2}','{3}','{4}')" 
@@ -41,7 +41,7 @@ while($reader.Read()) {
 		$cmdlog.CommandText = $querylog -f $server,$instance,1,0,$dateping
 		$cmdlog.ExecuteNonQuery()
 				
-		Send-MailMessage -To "fabio.marques@riachuelo.com.br" -From "ntsvcs@riachuelo.com.br" -SmtpServer "10.1.0.38" -Subject "CentralDB: Unable to connect to $instance" -body "Unable to connect to $instance Instance. Please make sure if you are able to RDP to the box and Check SQL Services. "
+		Send-MailMessage -To "username@seuemail.com.br" -From "username@seuemail.com.br" -SmtpServer "x.x.x.x" -Subject "CentralDB: Unable to connect to $instance" -body "Unable to connect to $instance Instance. Please make sure if you are able to RDP to the box and Check SQL Services. "
 		}
 		else{
 			# Write table PingStatus connection success
@@ -53,7 +53,7 @@ while($reader.Read()) {
 		# Write table PingStatus ping fail success
 		$cmdlog.CommandText = $querylog -f $server,$instance,0,0,$dateping
 		$cmdlog.ExecuteNonQuery()
-		Send-MailMessage -To "fabio.marques@riachuelo.com.br" -From "ntsvcs@riachuelo.com.br" -SmtpServer "10.1.0.38" -Subject "CentralDB: Unable to ping $server" -body "Unable to ping $server Server. Please make sure if you are able to RDP to the box and Check SQL Services. "
+		Send-MailMessage -To "username@seuemail.com.br" -From "username@seuemail.com.br" -SmtpServer "x.x.x.x" -Subject "CentralDB: Unable to ping $server" -body "Unable to ping $server Server. Please make sure if you are able to RDP to the box and Check SQL Services. "
 	}
 	$cnlog.close()
 }

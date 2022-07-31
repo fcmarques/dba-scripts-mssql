@@ -58,5 +58,5 @@ INNER JOIN sysobjects so
 WHERE su.altuid <> 1
 	AND su.uid NOT IN (1,2)
 	AND '?' NOT IN ('master','msdb','model','tempdb')
-	--AND su.name = 'RIACHUELO\GRP-US-S-INVETARIO-AUDITORIA'
+	--AND su.name = 'username@seuemail.com.br'
 ORDER BY su.NAME
